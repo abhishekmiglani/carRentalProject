@@ -1,0 +1,20 @@
+.fuel-Button{
+    width: 100%;
+    border: 1px solid black;
+    border-color: green;
+    color: green;
+    align-content: center;
+}
+.text{
+    font-size: 11px;
+    color: gray;
+}
+.sort{
+    border: 1px ;
+    border-color: green;
+    color: grey;
+    align-content: center;
+}
+.pointer{
+    cursor: pointer;
+}
