@@ -1,0 +1,94 @@
+.form-control {
+    height: 30px;
+    margin: 0 0 13px 0;
+    font-family: 'Courier New', Courier, monospace
+}
+
+.form-radio {
+    border: 1px #000 solid;
+    padding: 5px;
+    border-radius: 2px;
+    margin: 0 0 15px 0
+}
+
+.inner-form {
+    margin: 0 0 0 20px;
+    transition-delay: 1s
+}
+
+label {
+    font-size: 12px;
+    font-family: 'Californian FB'
+}
+
+input {
+    font-size: 12px
+}
+
+.main {
+    background: #eeecec
+}
+
+.card-name {
+    font-family: 'Courier New', Courier, monospace;
+    color: red
+}
+
+.bg-success {
+    color: #fff
+}
+
+.paypal-name {
+    font-family: 'Courier New', Courier, monospace;
+    color: red
+}
+
+.pay-button {
+    margin: 25px 300px;
+    height: 35px;
+    width: 100px;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #fff;
+    vertical-align: middle;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.cardView {
+    background-image : url('/assets/sea.jpg');
+    background-size: cover;
+    height: 170px;
+    margin : auto;
+    width: 300px;
+    border-radius: 10px;
+    color:red;
+    box-shadow: 10px 10px 5px grey;
+}
+.cardChip{
+    position: absolute;
+    top: 130px;
+    left : 130px;
+}
+.cardNumberStyle{
+    position: absolute;
+    top: 165px;
+    left: 155px;
+    font-size: 20px;
+    font-style: bold;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+.expiryDateStyle{
+    position: absolute;
+    top : 200px;
+    left: 180px;
+    font-size : 10px;
+}
+.holderNameStyle{
+    position: absolute;
+    top: 220px;
+    left: 130px;
+}
+.card-logo-style{
+    padding: 20px;
+}

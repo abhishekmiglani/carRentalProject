@@ -1,0 +1,109 @@
+<div class="container row">
+    <div class="col-md-6 main">
+        <form action="" class="form-group">
+            <div>
+                <label for="BillingHeading">
+                    <h4>Billing Details</h4>
+                </label><br>
+                <label for="firstName">First Name</label>
+                <input type="text" id="biilingPersonFirstName" class="form-control" placeholder="First Name" required>
+                <label for="lastName">Last Name</label>
+                <input type="text" id="biilingPersonLastName" class="form-control" placeholder="Last Name" required>
+                <label for="email">Email Id</label>
+                <input type="email" id="biilingEmailId" class="form-control" placeholder="Email ID" required>
+            </div>
+            <div class="">
+                <label for="paymentHeading">
+                    <h4>Payment Options</h4>
+                </label>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                                <div class="row">
+                                    <div class="col-md-9"><span class="card-name">Credit Card / Debit Card</span></div>
+                                    <div class="col-md-3"><img src="/assets/card.png" alt="Credit Card"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body" id="cardArea">
+                                <div class="inner-form" *ngIf="isCardDetailsEntered">
+                                    <form action="">
+                                        <input type="text" name="creditCardNo" id="creditCardNo"
+                                            placeholder="Card Number" class="form-control" [(ngModel)]='cardNumber'>
+                                        <div class="row">
+                                            <div class="input-group mb-2 col-md-4">
+                                                <input type="text" id="creditCardExpiryMonth"
+                                                    name="creditCardExpiryMonth" class="form-control" placeholder="MM"
+                                                    (input)="focusYearTab()" maxlength="2" (blur)="blurYearTab()"
+                                                    [(ngModel)]='validMonth'>
+
+                                                <input type="text" id="creditCardExpiryYear" name="creditCardExpiryYear"
+                                                    class="form-control" placeholder="YY" maxlength="2"
+                                                    [(ngModel)]='validYear'>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" name="creditCvv" id="creditCvv" class="form-control"
+                                                    placeholder="cvv" maxlength="3">
+                                            </div>
+                                        </div>
+                                        <input type="text" name="cardHolderName" id="cardHolderName"
+                                            placeholder="Card Holder Name" required class="form-control"
+                                            [(ngModel)]='cardHolderName'>
+                                        <input type="button" value="Add Card" class="form-control bg-success"
+                                            (click)="cardHandler()">
+                                    </form>
+                                </div>
+                                <div class="container" *ngIf="showCard">
+                                    <div id="card" class="cardView">
+                                        <img src="/assets/chip.png" alt="chip" class="cardChip">
+                                        <label for="cardNumber" id="cardNumberView"
+                                            class="cardNumberStyle">{{cardNumber}}</label>
+                                        <label for="expiryDate" id="expiryDateView" class="expiryDateStyle">VALID UPTO
+                                            &nbsp; &nbsp;{{validMonth}}/{{validYear}} </label>
+                                        <label for="cardHolderName" id="cardHolderName"
+                                            class="holderNameStyle">{{cardHolderName}}</label>
+                                    </div>
+                                </div>
+                                <div class="savedCardInfo shadow" *ngIf="isCardSaved">
+                                    <div class="row">
+                                        <div class="col-md-3 card-logo-style" style="background: red;">
+                                            <img src={{cardLogo}} alt="logo" />
+                                        </div>
+                                        <div class="col-md-5" style="background: green;">
+                                            <label for="cardLastDigits">Ending with {{cardLast4Digits}}</label><br>
+                                            <label
+                                                for="ExpiriesIn">Expires&nbsp;&nbsp;{{validMonth}}/{{validYear}}</label>
+                                        </div>
+                                        <div class="col-md-4" style="background: blue;">
+                                            <a href="">Edit</a>
+                                            &nbsp;|&nbsp;
+                                            <a href="">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" href="#">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <span class="paypal-name">PayPal</span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="/assets/paypal.png" alt="paypal">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Pay" class="bg-success pay-button form-control">
+        </form>
+    </div>
+</div>
