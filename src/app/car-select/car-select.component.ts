@@ -57,41 +57,68 @@ export class CarSelectComponent implements OnInit {
 
   }
 
+  toggleHatchback(){
+    if(this.hatchbackFilter){
+      this.hatchbackFilter = false;
+      document.getElementById('hatchback').style.backgroundColor = 'white';
+    }
+    else{
+      this.hatchbackFilter = true;
+      document.getElementById('hatchback').style.backgroundColor = 'MediumAquamarine';
+    }
+  }
+
   hideHatchback(){
     this.hatchbackFilter = false;
     document.getElementById('hatchback').style.backgroundColor = 'white';
   }
 
-  displayHatchback(){
-    this.hatchbackFilter = true;
-    document.getElementById('hatchback').style.backgroundColor = 'MediumAquamarine';
+  toggleSedan(){
+    if(this.sedanFilter){
+      this.sedanFilter = false;
+      document.getElementById('sedan').style.backgroundColor = 'white';
+    }
+    else{
+      this.sedanFilter = true;
+      document.getElementById('sedan').style.backgroundColor = 'MediumAquamarine';
+    }
   }
+
   hideSedan(){
     this.sedanFilter = false;
     document.getElementById('sedan').style.backgroundColor = 'white';
   }
 
-  displaySedan(){
-    this.sedanFilter = true;
-    document.getElementById('sedan').style.backgroundColor = 'MediumAquamarine';
+  toggleSUV(){
+    if(this.suvFilter){
+      this.suvFilter = false;
+      document.getElementById('suv').style.backgroundColor = 'white';
+    }
+    else{
+      this.suvFilter = true;
+      document.getElementById('suv').style.backgroundColor = 'MediumAquamarine';
+    }
   }
+
   hideSUV(){
     this.suvFilter = false;
     document.getElementById('suv').style.backgroundColor = 'white';
   }
 
-  displaySUV(){
-    this.suvFilter = true;
-    document.getElementById('suv').style.backgroundColor = 'MediumAquamarine';
+  toggleMiniSUV(){
+    if(this.miniSUVFilter){
+      this.miniSUVFilter = false;
+      document.getElementById('miniSuv').style.backgroundColor = 'white';
+    }
+    else{
+      this.miniSUVFilter = true;
+      document.getElementById('miniSuv').style.backgroundColor = 'MediumAquamarine';
+    }
   }
+
   hideMiniSUV(){
     this.miniSUVFilter = false;
     document.getElementById('miniSuv').style.backgroundColor = 'white';
-  }
-
-  displayMiniSUV(){
-    this.miniSUVFilter = true;
-    document.getElementById('miniSuv').style.backgroundColor = 'MediumAquamarine';
   }
 
   displayPetrol(){
