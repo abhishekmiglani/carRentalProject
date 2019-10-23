@@ -10,6 +10,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentOptionsComponent } from './payment-options/payment-options.component';
 import { CarSelectComponent } from './car-select/car-select.component';
 import { LocationHeaderComponent } from './location-header/location-header.component';
+import { DragDropDirective } from './drag-drop.directive';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,9 @@ import { LocationHeaderComponent } from './location-header/location-header.compo
     PaymentComponent,
     PaymentOptionsComponent,
     CarSelectComponent,
-    LocationHeaderComponent
-  ],
+    LocationHeaderComponent,
+    DragDropDirective,
+    UploadFileComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
