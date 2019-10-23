@@ -19,10 +19,9 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     PaymentComponent,
     PaymentOptionsComponent,
     CarSelectComponent,
-    LocationHeaderComponent,
+    LocationHeaderComponent
     DragDropDirective,
-    UploadFileComponent
-  ],
+    UploadFileComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
