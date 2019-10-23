@@ -10,6 +10,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentOptionsComponent } from './payment-options/payment-options.component';
 import { CarSelectComponent } from './car-select/car-select.component';
 import { LocationHeaderComponent } from './location-header/location-header.component';
+
 @NgModule({
   declarations: [
     AppComponent,
