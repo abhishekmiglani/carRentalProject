@@ -1,0 +1,38 @@
+
+#footer{
+    background-color: rgb(14, 20, 20);
+    height: 130px;
+  
+  }
+  
+  #btn{
+    height: 130px;
+    width: 160px;
+    background-color:  rgb(14, 20, 20);
+    border: none;
+    
+    
+  }
+  
+  #btn:hover{
+    background-color:#6b6b6b;
+  }
+  
+  #txt{
+    
+    margin-left: -9px;
+    
+    font-style: italic;
+  }
+  
+  #carIcon{
+    margin-top:-10%;
+  }
+  
+  #footlower{
+    text-align: center;
+    background-color: rgb(14, 20, 20);
+    height: 300px;
+  }
+
+  
