@@ -16,6 +16,8 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardetailComponent } from './cardetail/cardetail.component';
+import { BanersComponent } from './baners/baners.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { CardetailComponent } from './cardetail/cardetail.component';
     UploadFileComponent,
     HeaderComponent,
     FooterComponent,
-    CardetailComponent  ],
+    CardetailComponent,
+    BanersComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
