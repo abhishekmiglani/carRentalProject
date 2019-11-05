@@ -7,15 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadFileComponent implements OnInit {
   files: any = [];
+  buttonState:boolean=false;
 
   uploadFile(event) {
+    
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files.push(element.name)
+      if(this.files.length==2){
+        this.buttonState=true;
+      }
     }  
   }
   deleteAttachment(index) {
-    this.files.splice(index, 1)
+    this.files.splice(index, 1);
+    if(this.files.length==2){
+      this.buttonState=true;
+    }
+    else{
+      this.buttonState=false;
+    }
   }
   
   constructor() { }
