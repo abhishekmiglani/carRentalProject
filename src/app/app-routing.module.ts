@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CarDetailsComponent } from './car-details/car-details.component';
+import { CarSelectComponent } from './car-select/car-select.component';
+import { BanersComponent } from './baners/baners.component';
+import { CardetailComponent } from './cardetail/cardetail.component';
 
 
-const routes: Routes = [{path:"/carDetails",Component:CarDetailsComponent}];
+
+const routes: Routes = [{path: "", component:BanersComponent},
+{path: "car", children:[{path:"", component: CarSelectComponent},
+{path: ":modelNo" , component: CardetailComponent}]}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

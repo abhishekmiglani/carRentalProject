@@ -15,6 +15,9 @@ import { DragDropDirective } from './drag-drop.directive';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CardetailComponent } from './cardetail/cardetail.component';
+import { BanersComponent } from './baners/baners.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { FooterComponent } from './footer/footer.component';
     DragDropDirective,
     UploadFileComponent,
     HeaderComponent,
-    FooterComponent  ],
+    FooterComponent,
+    CardetailComponent,
+    BanersComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
