@@ -1,0 +1,35 @@
+.tab{
+    padding: 10px;
+}
+.detail{
+    margin-top: 30px;
+}
+.detailLabel{
+    margin-bottom: 20px;
+    text-align: right;
+
+}
+.labelName{
+    margin-right: 10px;
+    color:grey;
+    font-style: bold;
+}
+.detailLabelName{
+    margin-bottom: 20px;
+    color: grey;
+    
+}
+.insideTab{
+    padding: 30px;
+}
+a:link , a:visited{
+    color: green;
+    text-decoration: none ;
+    font-style: bold;
+    margin-left: 10px;
+}
+.distanceLabel, .hoursLabel{
+    margin-right: 15px;
+    font-style: bold;
+}
+

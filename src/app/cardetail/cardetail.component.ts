@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UploadFileComponent } from 'app/upload-file/upload-file.component';
+import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-cardetail',
@@ -21,6 +23,15 @@ export class CardetailComponent implements OnInit {
 
 
   ngOnInit() {
+    $(function() {
+      $("#sortMenu a").click(function() {
+        console.log("Hey!");
+        $("#selected").text($(this).text());
+        $("#selected").val($(this).text());
+      });
+    });
   }
+
+  
 
 }

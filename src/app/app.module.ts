@@ -15,6 +15,9 @@ import { DragDropDirective } from './drag-drop.directive';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './DashboardComp/dashboard/dashboard.component';
+import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashboard-routing.module';
+
 import { CardetailComponent } from './cardetail/cardetail.component';
 import { BanersComponent } from './baners/baners.component';
 
@@ -30,6 +33,7 @@ import { BanersComponent } from './baners/baners.component';
     UploadFileComponent,
     HeaderComponent,
     FooterComponent,
+    DashboardComponent,
     CardetailComponent,
     BanersComponent  ],
   imports: [
@@ -38,6 +42,7 @@ import { BanersComponent } from './baners/baners.component';
     FormsModule,
     CalendarModule,
     BrowserAnimationsModule,
+    DashboardRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
       libraries: ["places"]
