@@ -7,10 +7,20 @@ import { PaymentOptionsComponent } from './payment-options/payment-options.compo
 
 
 
-const routes: Routes = [{path: "", component:BanersComponent},
-{path: "car", children:[{path:"", component: CarSelectComponent},
-{path: ":modelNo" , component: CardetailComponent},
-{path:"payment", component:PaymentOptionsComponent}]}];
+const routes: Routes = [
+        {
+          path: "", component:BanersComponent
+        },
+        {
+          path: "car", children:[
+          {
+            path:"", component: CarSelectComponent
+          },
+          {
+            path: ":modelNo" , component: CardetailComponent
+          }
+        ]
+        }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

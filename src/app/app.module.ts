@@ -16,10 +16,10 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './DashboardComp/dashboard/dashboard.component';
-import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashboard-routing.module';
 
 import { CardetailComponent } from './cardetail/cardetail.component';
 import { BanersComponent } from './baners/baners.component';
+import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashboard-routing.module';
 
 
 @NgModule({

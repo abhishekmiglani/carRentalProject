@@ -1,24 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileComponent } from '../profile/profile.component';
-import { ChangePasswordComponent } from '../change-password/change-password.component';
-import { WalletComponent } from '../wallet/wallet.component';
-import { Routes, RouterModule } from '@angular/router';
 
-const dashboard_routes: Routes = [
-  {
-    path:"profile", component : ProfileComponent
-  },
-  {
-    path:"change-password", component : ChangePasswordComponent
-  },
-  {
-    path:"wallet", component : WalletComponent
-  }
-];
+import { DashboardRoutingRoutingModule } from './dashboard-routing-routing.module';
+import { ProfileComponent } from '../profile/profile.component';
+import { WalletComponent } from '../wallet/wallet.component';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
+
 
 @NgModule({
-  imports: [CommonModule,RouterModule.forChild(dashboard_routes)],
-  exports: [RouterModule]
+  declarations: [
+    ProfileComponent,
+    WalletComponent,
+    ChangePasswordComponent
+  ],
+  imports: [
+    CommonModule,
+    DashboardRoutingRoutingModule
+  ]
 })
 export class DashboardRoutingModule { }
