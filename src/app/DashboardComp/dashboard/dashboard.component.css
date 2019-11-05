@@ -1,0 +1,19 @@
+.dashboard-menu{
+    background: #cfcfcf;
+    margin: 20px 0 0 70px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+li:hover{
+    background: grey;
+    color: white;
+}
+.descr{
+    margin: 30px 0px 0 40px;
+}
+.background{
+    background: rgb(183,220,233);
+    background: linear-gradient(143deg, rgba(183,220,233,0.3449754901960784) 46%, rgba(227,199,225,0.29175420168067223) 51%);
+}
