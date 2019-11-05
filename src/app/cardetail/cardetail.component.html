@@ -59,8 +59,8 @@
             <div class="fuel-package-heading">
               <h5 style=" font-family: proxima-Nova; color: #1f2d3d; font-size: 20px">Fuel Package</h5>
             </div>
-            <div class="border border-0">
-              <span class="selected-package">
+            <div class="btn-group border rounded" style="width: 310px;">
+              <!-- <span class="selected-package">
   
                <button type="button" class="btn btn-primary"  disabled>Selected Package</button>  
                <button type="button" class=" btn btn-primary">
@@ -71,7 +71,22 @@
                   <option value="3">180 kms</option>
                 </select>
                </button>
-              </span>
+              </span> -->
+              <button style="background-color: lightgrey; width: 150px; color: white; " type="button" disabled class="btn bg-info">
+                Selected Package</button>
+            <div class="btn-group sort">
+                <button style="background-color: white; width: 150px; color: white;" type="button" class="btn dropdown-toggle bg-info"
+                    data-toggle="dropdown">
+                    <span id="selected">
+                    Choose
+                    </span>
+                </button>
+                <div class="dropdown-menu" id="sortMenu">
+                    <a class="dropdown-item" >60 Km</a>
+                    <a class="dropdown-item" >120 Km</a>
+                    <a class="dropdown-item" >180 Km</a>
+                </div>
+            </div>
               
             </div>
             <div class="info-text">
@@ -188,7 +203,7 @@
           <div class="block-heading " style="padding:10px">Fare Details</div>
           <div class="fare-block" style="padding:10px">
   
-            <span class="fare-name " style="font-family:proxima-nova; color: #77899b; font-size: 10px">Weekend
+            <span class="fare-name " style="font-family:proxima-nova; color: #77899b; font-size: 13px">Weekend
               charges</span>
             <span class="fare-amount">10187</span>
           </div>
@@ -227,9 +242,6 @@
                   <span style="color  :#1f2d3d; font-size : 12px; font-weight : 500">
                     Rider, You are just one step away from confirming your booking. Confirm that you are above 21 and you
                     agree to all the terms mentioned in
-  
-  
-  
                   </span>
   
                 </label>
