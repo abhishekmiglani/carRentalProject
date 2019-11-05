@@ -1,17 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+
+declare var $: any;
 
 @Component({
-  selector: 'app-location-header',
-  templateUrl: './location-header.component.html',
-  styleUrls: ['./location-header.component.css']
+  selector: "app-location-header",
+  templateUrl: "./location-header.component.html",
+  styleUrls: ["./location-header.component.css"]
 })
 export class LocationHeaderComponent implements OnInit {
-  value : Date;
-  title = 'Dummy';
+  value: Date;
+  valueDrop: Date;
+  title = "Dummy";
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    $(function() {
+      $("#locationMenu a").click(function() {
+        console.log("Hey!");
+        $("#selectedOption").text($(this).text());
+        $("#selectedOption").val($(this).text());
+      });
+    });
   }
-
 }
