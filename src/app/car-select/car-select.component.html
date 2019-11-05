@@ -1,5 +1,7 @@
-<div style="margin-top: 120px "> </div>
-<div class="container-fluid">
+
+<app-location-header></app-location-header>
+<div class="container-fluid" style="margin-top:110px">
+         
     <div class="row">
 
         <div class="col-md-3" style="float: left; margin-left: 10px;">
@@ -11,8 +13,8 @@
                         <hr>
                         <div class="rounded border"> <span>
                                 <a (click)="onWithoutFuelSelect()" id="withoutFuel"
-                                    style="width: 49%; margin-right: 1%;" href="#" class="btn">Without Fuel</a>
-                                <a (click)="onWithFuelSelect()" id="withFuel" style="width: 49%;" href="#"
+                                    style="width: 49%; margin-right: 1%;"  class="btn">Without Fuel</a>
+                                <a (click)="onWithFuelSelect()" id="withFuel" style="width: 50%;"
                                     class="btn">With Fuel</a>
                             </span> </div>
 
@@ -54,40 +56,33 @@
                         <p style="font-size: 13px;">Car Type</p>
 
                         <div style="margin-bottom: 25px;">
-                            <button class="btn border rounded" id="hatchback"
-                                style="margin-right: 4%; width: 120px;"
+                            <button class="btn border rounded" id="hatchback" style="margin-right: 4%; width: 120px;"
                                 (click)="toggleHatchback()">Hatchback</button>
-                            <button class="btn border rounded" id="sedan"
-                            style=" width: 120px"
-                            (click)="toggleSedan()">Sedan
+                            <button class="btn border rounded" id="sedan" style=" width: 120px"
+                                (click)="toggleSedan()">Sedan
                             </button>
                             <button class="btn border rounded" id="suv"
                                 style="margin-top: 10px;margin-right: 4%; width: 120px;"
                                 (click)="toggleSUV()">SUV</button>
-                            <button class="btn border rounded" id="miniSuv"
-                            style="margin-top: 10px; width: 120px;"
-                            (click)="toggleMiniSUV()">Mini-SUV</button>
+                            <button class="btn border rounded" id="miniSuv" style="margin-top: 10px; width: 120px;"
+                                (click)="toggleMiniSUV()">Mini-SUV</button>
                         </div>
                         <p style="font-size: 13px;">Transmission Type</p>
 
                         <div style="margin-bottom: 25px;">
-                            <button class="btn border rounded" id="manual"
-                            style="margin-right: 4%; width: 120px;"
-                            (click)="displayManual()">Manual</button>
-                            <button class="btn border rounded" id="automatic"
-                            style=" width: 120px"
-                            (click)="displayAutomatic()">Automatic
+                            <button class="btn border rounded" id="manual" style="margin-right: 4%; width: 120px;"
+                                (click)="displayManual()">Manual</button>
+                            <button class="btn border rounded" id="automatic" style=" width: 120px"
+                                (click)="displayAutomatic()">Automatic
                             </button>
                         </div>
                         <p style="font-size: 13px;">Fuel Type</p>
 
                         <div style="margin-bottom: 25px;">
-                            <button class="btn border rounded" id="petrol"
-                            style="margin-right: 4%; width: 120px;"
-                            (click)="displayPetrol()">Petrol</button>
-                            <button class="btn border rounded" id="diesel"
-                            style=" width: 120px"
-                            (click)="displayDiesel()">Diesel
+                            <button class="btn border rounded" id="petrol" style="margin-right: 4%; width: 120px;"
+                                (click)="displayPetrol()">Petrol</button>
+                            <button class="btn border rounded" id="diesel" style=" width: 120px"
+                                (click)="displayDiesel()">Diesel
                             </button>
                         </div>
 
@@ -103,75 +98,65 @@
                     <div class="row">
                         <div class="col-md-9">
                             <div style="margin-top: 10px;">
-                                <span class="border rounded" 
-                                style="padding: 8px; margin-right: 8px;" 
-                                *ngIf = "hatchbackFilter">Hatchback<span
-                                        class="pointer far fa-window-close"
+                                <span class="border rounded" style="padding: 8px; margin-right: 8px;"
+                                    *ngIf="hatchbackFilter">Hatchback<span class="pointer far fa-window-close"
                                         style="margin-left: 5px; font-size: 17px;"
                                         (click)="hideHatchback()"></span></span>
 
-                                <span class="border rounded" 
-                                style="padding: 8px; margin-right: 8px"
-                                *ngIf = "sedanFilter">Sedan<span
-                                        class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;"
-                                        (click)="hideSedan()"></span></span>
-                                <span class="border rounded" 
-                                style="padding: 8px;margin-right: 8px"
-                                *ngIf = "suvFilter">SUV<span
-                                        class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;"
-                                        (click)="hideSUV()"></span></span>
-                                <span class="border rounded" 
-                                style="padding: 8px;margin-right: 8px"
-                                *ngIf = "miniSUVFilter">Mini-SUV<span
-                                        class="pointer far fa-window-close"
+                                <span class="border rounded" style="padding: 8px; margin-right: 8px"
+                                    *ngIf="sedanFilter">Sedan<span class="pointer far fa-window-close"
+                                        style="margin-left: 5px; font-size: 17px;" (click)="hideSedan()"></span></span>
+                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
+                                    *ngIf="suvFilter">SUV<span class="pointer far fa-window-close"
+                                        style="margin-left: 5px; font-size: 17px;" (click)="hideSUV()"></span></span>
+                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
+                                    *ngIf="miniSUVFilter">Mini-SUV<span class="pointer far fa-window-close"
                                         style="margin-left: 5px; font-size: 17px;"
                                         (click)="hideMiniSUV()"></span></span>
-                                <span class="border rounded" 
-                                style="padding: 8px;margin-right: 8px"
-                                *ngIf = "manualTransmissionFilter">Manual<span
-                                        class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;"
-                                        (click)="hideManual()"
-                                        ></span></span>
-                                <span class="border rounded" 
-                                style="padding: 8px;margin-right: 8px"
-                                *ngIf = "petrolFilter">Petrol<span
-                                        class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;"
-                                        (click)="hidePetrol()"></span></span>
+                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
+                                    *ngIf="manualTransmissionFilter">Manual<span class="pointer far fa-window-close"
+                                        style="margin-left: 5px; font-size: 17px;" (click)="hideManual()"></span></span>
+                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
+                                    *ngIf="petrolFilter">Petrol<span class="pointer far fa-window-close"
+                                        style="margin-left: 5px; font-size: 17px;" (click)="hidePetrol()"></span></span>
                             </div>
                             <br>
                             <div>
-                                <span class="border rounded" 
-                                style="padding: 8px;margin-right: 8px"
-                                *ngIf = "autoTransmissionFilter">Automatic<span
-                                        class="pointer far fa-window-close"
+                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
+                                    *ngIf="autoTransmissionFilter">Automatic<span class="pointer far fa-window-close"
                                         style="margin-left: 5px; font-size: 17px;"
                                         (click)="hideAutomatic()"></span></span>
-                                <span class="border rounded" 
-                                style="padding: 8px;margin-right: 8px"
-                                *ngIf = "dieselFilter">Diesel<span
-                                        class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;"
-                                        (click)="hideDiesel()"></span></span>
+                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
+                                    *ngIf="dieselFilter">Diesel<span class="pointer far fa-window-close"
+                                        style="margin-left: 5px; font-size: 17px;" (click)="hideDiesel()"></span></span>
                             </div>
                             <br>
 
                         </div>
                         <div class="col-md-3">
-                            <div class="btn-group border rounded float-right">
-                                <button style="background-color: lightgrey;" type="button" disabled class="btn">Sort
+                
+                            <div class="btn-group border rounded float-right" style="width: 300px;">
+                                <!-- <button style="background-color: lightgrey;" type="button" disabled class="btn">
+                                    Sort by</button>
+                                <div>
+                                    <select style="border: 0ch; align-self: auto; height: 40px">
+                                        <option value="" disabled selected>No Fuel</option>
+                                        <option value="1">Price - Low to High</option>
+                                        <option value="2">Price - High to Low</option>
+                                    </select>
+                                </div> -->
+                                <button style="background-color: lightgrey; width: 100px; " type="button" disabled class="btn">Sort
                                     by</button>
                                 <div class="btn-group sort">
-                                    <button style="background-color: white " type="button" class="btn dropdown-toggle"
+                                    <button style="background-color: white; width: 200px; " type="button" class="btn dropdown-toggle"
                                         data-toggle="dropdown">
+                                        <span id="selected">
                                         Choose
+                                        </span>
                                     </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Price - Low to High</a>
-                                        <a class="dropdown-item" href="#">Price - High to Low</a>
+                                    <div class="dropdown-menu" id="sortMenu">
+                                        <a class="dropdown-item" >Price - Low to High</a>
+                                        <a class="dropdown-item" >Price - High to Low</a>
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +164,7 @@
                     </div>
 
                 </div>
-               
+
                 <button class="card" style="width: 31%; margin-left: 15px; margin-bottom: 15px; margin-top: 10px;"
                     *ngFor="let car of carsList">
                     <img src="../assets/demoCar.png" class="card-img-top" alt="...">
@@ -188,11 +173,11 @@
                         <hr>
                         <h6>Rs.600</h6>
                         <hr>
-
                         <h5 class="card-title">{{car}}</h5>
 
                         <p class="card-text">4 Seater, 2 Airbag, Manual, Model 2017</p>
-                        <a href="#" class="btn btn-primary">Quick View</a>
+                        <a class="btn btn-info" routerLink="/car/1">Quick View</a>
+                        <!-- <a href="#" class="btn btn-info">Quick View</a> -->
                     </div>
                 </button>
             </div>

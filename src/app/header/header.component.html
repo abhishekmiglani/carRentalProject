@@ -3,8 +3,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar" *ngIf="dislplayNav" class="bg-light">
             <div class="sidebar-header">
-                    
-               <span> <img src="https://img.icons8.com/bubbles/50/000000/car.png" width="50"
+               <span> <img src="https://image.flaticon.com/icons/svg/741/741407.svg" width="50"
                 id="carIcon"><i style="font-size: 30;"><b> DhoomCar </b></i></span>
             </div>
            <hr>
@@ -25,16 +24,11 @@
                     <a href="#">Contact</a>
                 </li>
             </ul>
-
-           
         </nav>
-
-       
-
         <!-- Page Content  -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light " style="background-color: rgb(230, 218, 218); border-radius: 10px;">
                 <div class="container-fluid">
 
                     <button type="button" style="background-color: black; color: white;" id="sidebarCollapse" class="btn text-sidebar " (click)="displaySideNavbar()">
@@ -48,8 +42,8 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <input id="locationBorderShadow" value="{{address}}" data-toggle="modal" data-target="#myModal1" type="text" placeholder="Location " (focus)="locationWindow()"
-          style="background-color:white; border-color: white ; color: black; border-radius: 50px;outline: none;margin-top: 4%;">
+                                <input id="locationBorderShadow" value="{{address}}" data-toggle="modal" data-target="#myModal1" type="text" placeholder="Select Location " (focus)="locationWindow()"
+          style="background-color:white; border-color: darkgray ; color: black; border-radius: 12px; outline: none; margin-top: 4%; text-align: center; color: black;">
                             </li>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <li class="nav-item">
@@ -92,15 +86,10 @@
                       </div>
                       
                     </div>
-            
-              
                   </div>
                 </div>
               </div>
-        
-
-
-
+      
            <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
           

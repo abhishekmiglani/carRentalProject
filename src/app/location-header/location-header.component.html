@@ -2,45 +2,66 @@
   class="card container-fluid fixed-top rounded"
   style=" background :whitesmoke ; padding-top: 8px; padding-bottom: 12px"
 >
-  <div class="row">
-    <div class="col-md-4  col-sm-4">
-      <div class="div-margin">I need my vehicle near</div>
-      <div class="card border-dark" style="padding: 5px">
-        <button
-          class="btn btn-light dropdown-toggle "       
-        >
-          Location Name
-          <span class="caret"></span>
-        </button>
+  <div class="ui-g ui-fluid">
+    <div class="col-md-3  col-sm-3">
+      <div class="div-margin" style="margin-top: 8px">
+        I need my vehicle near
       </div>
+      <!-- <div class="card border" style="padding: 5px; margin-top: 5px"> -->
+      <!-- <button
+          class="btn btn-light dropdown-toggle "       
+        > -->
+      <!-- Location Name
+          <span class="caret"></span> -->
+      <!-- <select
+        style="border: 0.8px solid; align-self: auto; height: 40px"
+        class="form-control shadow-none"
+      >
+        <option value="" disabled selected>Select Location</option>
+        <option value="1">Bengaluru</option>
+        <option value="2">Delhi</option>
+      </select> -->
+
+      <div style="margin-top: 5px;">
+          <button style="background-color: white ; border : black 0.8px solid" type="button" class="btn dropdown-toggle form-control  shadow-none"
+              data-toggle="dropdown">
+              <span id="selectedOption">
+              Choose
+              </span>
+          </button>
+          <div class="dropdown-menu" id="locationMenu">
+              <a class="dropdown-item" >Bengaluru</a>
+              <a class="dropdown-item" >Delhi</a>
+              <a class="dropdown-item" >Mumbai</a>
+
+          </div>
+      </div>
+      <!-- </button> -->
+      <!-- </div> -->
     </div>
-    <div class="col-md-3 col-sm-3 ">
-      <div class="div-margin ">Select your pickup date</div>
-      <button class="btn  shadow-none">
-        <p-calendar
-          [(ngModel)]="value"
-          [showTime]="true"
-        
-        ></p-calendar>
-      </button>
+    <div class="ui-g-12 ui-md-3 ">
+      <div class="div-margin">Select your pickup date</div>
+      <!-- <button class="btn  shadow-none "> -->
+      <div class=" border-dark" style="margin-top: 6px">
+        <p-calendar [(ngModel)]="value" [showTime]="true"></p-calendar>
+      </div>
+      <!-- </button> -->
     </div>
-    <div class="col-md-3 col-sm-3 ">
+    <div class="ui-g-12 ui-md-3 ">
       <div class="div-margin">Select your drop date</div>
-      <button class="btn shadow-none">
-        <p-calendar
-          [(ngModel)]="value"
-          [showTime]="true"
-        ></p-calendar>
-      </button>
+      <!-- <button class="btn shadow-none"> -->
+      <div style="margin-top: 6px">
+        <p-calendar [(ngModel)]="valueDrop" [showTime]="true"></p-calendar>
+      </div>
+      <!-- </button> -->
     </div>
-    <div class="col-md-2 col-sm-2 text-center">
+    <div class="ui-g-12 ui-md-3 text-center">
       <div>
-        <div><br></div>
+        <!-- <div><br></div> --><br />
         <button class="btn btn-success" style="width: 80%">
           Search
         </button>
       </div>
     </div>
   </div>
-
 </div>

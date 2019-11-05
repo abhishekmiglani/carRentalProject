@@ -1,170 +1,216 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
+declare var $: any;
 @Component({
-  selector: 'app-car-select',
-  templateUrl: './car-select.component.html',
-  styleUrls: ['./car-select.component.css']
+  selector: "app-car-select",
+  templateUrl: "./car-select.component.html",
+  styleUrls: ["./car-select.component.css"]
 })
 export class CarSelectComponent implements OnInit {
+  flag: boolean = false;
+  hatchbackFilter: boolean = false;
+  sedanFilter: boolean = false;
+  suvFilter: boolean = false;
+  miniSUVFilter: boolean = false;
+  autoTransmissionFilter: boolean = false;
+  manualTransmissionFilter: boolean = false;
+  petrolFilter: boolean = false;
+  dieselFilter: boolean = false;
 
-  flag : boolean = false;
-  hatchbackFilter : boolean = false;
-  sedanFilter : boolean = false;
-  suvFilter : boolean = false;
-  miniSUVFilter : boolean = false;
-  autoTransmissionFilter : boolean = false;
-  manualTransmissionFilter : boolean = false;
-  petrolFilter : boolean = false;
-  dieselFilter : boolean = false;
+  carsList = [
+    "Suzuki Baleno",
+    "Swift DZire",
+    "Honda City",
+    "Honda Civic",
+    "Toyota Fortuner"
+  ];
 
-
-  carsList = ["Suzuki Baleno","Swift DZire","Honda City","Honda Civic","Toyota Fortuner"]
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    $(function() {
+      $("#sortMenu a").click(function() {
+        console.log("Hey!");
+        $("#selected").text($(this).text());
+        $("#selected").val($(this).text());
+      });
+    });
   }
 
-  filter60Color(){
-    document.getElementById('60km').style.backgroundColor = 'MediumAquamarine';
-    document.getElementById('120km').style.backgroundColor = 'white';
-    document.getElementById('180km').style.backgroundColor = 'white';
+  filter60Color() {
+    document.getElementById("60km").style.backgroundColor = "#3aa5c5";
+    document.getElementById("60km").style.color = "white";
+    document.getElementById("120km").style.backgroundColor = "white";
+    document.getElementById("120km").style.color = "black";
+    document.getElementById("180km").style.backgroundColor = "white";
+    document.getElementById("180km").style.color = "black";
   }
 
-  filter120Color(){
-    document.getElementById('60km').style.backgroundColor = 'white';
-    document.getElementById('120km').style.backgroundColor = 'MediumAquamarine';
-    document.getElementById('180km').style.backgroundColor = 'white';
+  filter120Color() {
+    document.getElementById("60km").style.backgroundColor = "white";
+    document.getElementById("120km").style.backgroundColor = "#3aa5c5";
+    document.getElementById("120km").style.color = "white";
+    document.getElementById("180km").style.backgroundColor = "white";
+    document.getElementById("60km").style.color = "black";
+    document.getElementById("180km").style.color = "black";
   }
 
-  filter180Color(){
-    document.getElementById('60km').style.backgroundColor = 'white';
-    document.getElementById('120km').style.backgroundColor = 'white';
-    document.getElementById('180km').style.backgroundColor = 'MediumAquamarine';
+  filter180Color() {
+    document.getElementById("60km").style.backgroundColor = "white";
+    document.getElementById("180km").style.backgroundColor = "#3aa5c5";
+    document.getElementById("180km").style.color = "white";
+    document.getElementById("120km").style.backgroundColor = "white";
+    document.getElementById("60km").style.color = "black";
+    document.getElementById("120km").style.color = "black";
   }
 
-  onWithoutFuelSelect(){
+  onWithoutFuelSelect() {
     this.flag = false;
-    document.getElementById('withoutFuel').style.backgroundColor = 'MediumAquamarine';
-    document.getElementById('withFuel').style.backgroundColor = 'white';
-
+    document.getElementById("withoutFuel").style.backgroundColor = "#3aa5c5";
+    document.getElementById("withoutFuel").style.color = "white";
+    document.getElementById("withFuel").style.backgroundColor = "white";
+    document.getElementById("withFuel").style.color = "black";
   }
 
-  onWithFuelSelect(){
+  onWithFuelSelect() {
     this.flag = true;
-    document.getElementById('withFuel').style.backgroundColor = 'MediumAquamarine';
-    document.getElementById('withoutFuel').style.backgroundColor = 'white';
-
+    document.getElementById("withFuel").style.backgroundColor = "#3aa5c5";
+    document.getElementById("withFuel").style.color = "white";
+    document.getElementById("withoutFuel").style.backgroundColor = "white";
+    document.getElementById("withoutFuel").style.color = "black";
   }
 
-  toggleHatchback(){
-    if(this.hatchbackFilter){
+  toggleHatchback() {
+    if (this.hatchbackFilter) {
       this.hatchbackFilter = false;
-      document.getElementById('hatchback').style.backgroundColor = 'white';
-    }
-    else{
+      document.getElementById("hatchback").style.backgroundColor = "white";
+      document.getElementById("hatchback").style.color = "black";
+    } else {
       this.hatchbackFilter = true;
-      document.getElementById('hatchback').style.backgroundColor = 'MediumAquamarine';
+      document.getElementById("hatchback").style.backgroundColor = "#3aa5c5";
+      document.getElementById("hatchback").style.color = "white";
     }
   }
 
-  hideHatchback(){
+  hideHatchback() {
     this.hatchbackFilter = false;
-    document.getElementById('hatchback').style.backgroundColor = 'white';
+    document.getElementById("hatchback").style.backgroundColor = "white";
+    document.getElementById("hatchback").style.color = "black";
   }
 
-  toggleSedan(){
-    if(this.sedanFilter){
+  toggleSedan() {
+    if (this.sedanFilter) {
       this.sedanFilter = false;
-      document.getElementById('sedan').style.backgroundColor = 'white';
-    }
-    else{
+      document.getElementById("sedan").style.backgroundColor = "white";
+      document.getElementById("sedan").style.color = "black";
+    } else {
       this.sedanFilter = true;
-      document.getElementById('sedan').style.backgroundColor = 'MediumAquamarine';
+      document.getElementById("sedan").style.backgroundColor = "#3aa5c5";
+      document.getElementById("sedan").style.color = "white";
     }
   }
 
-  hideSedan(){
+  hideSedan() {
     this.sedanFilter = false;
-    document.getElementById('sedan').style.backgroundColor = 'white';
+    document.getElementById("sedan").style.backgroundColor = "white";
+    document.getElementById("sedan").style.color = "black";
   }
 
-  toggleSUV(){
-    if(this.suvFilter){
+  toggleSUV() {
+    if (this.suvFilter) {
       this.suvFilter = false;
-      document.getElementById('suv').style.backgroundColor = 'white';
-    }
-    else{
+      document.getElementById("suv").style.backgroundColor = "white";
+      document.getElementById("suv").style.color = "black";
+    } else {
       this.suvFilter = true;
-      document.getElementById('suv').style.backgroundColor = 'MediumAquamarine';
+      document.getElementById("suv").style.backgroundColor = "#3aa5c5";
+      document.getElementById("suv").style.color = "white";
     }
   }
 
-  hideSUV(){
+  hideSUV() {
     this.suvFilter = false;
-    document.getElementById('suv').style.backgroundColor = 'white';
+    document.getElementById("suv").style.backgroundColor = "white";
+    document.getElementById("suv").style.color = "black";
   }
 
-  toggleMiniSUV(){
-    if(this.miniSUVFilter){
+  toggleMiniSUV() {
+    if (this.miniSUVFilter) {
       this.miniSUVFilter = false;
-      document.getElementById('miniSuv').style.backgroundColor = 'white';
-    }
-    else{
+      document.getElementById("miniSuv").style.backgroundColor = "white";
+      document.getElementById("miniSuv").style.color = "black";
+    } else {
       this.miniSUVFilter = true;
-      document.getElementById('miniSuv').style.backgroundColor = 'MediumAquamarine';
+      document.getElementById("miniSuv").style.backgroundColor = "#3aa5c5";
+      document.getElementById("miniSuv").style.color = "white";
     }
   }
 
-  hideMiniSUV(){
+  hideMiniSUV() {
     this.miniSUVFilter = false;
-    document.getElementById('miniSuv').style.backgroundColor = 'white';
+    document.getElementById("miniSuv").style.backgroundColor = "white";
+    document.getElementById("miniSuv").style.color = "black";
   }
 
-  displayPetrol(){
+  displayPetrol() {
     this.petrolFilter = true;
     this.dieselFilter = false;
-    document.getElementById('petrol').style.backgroundColor = 'MediumAquamarine';
-    document.getElementById('diesel').style.backgroundColor = 'white';
+    document.getElementById("petrol").style.backgroundColor = "#3aa5c5";
+    document.getElementById("petrol").style.color = "white";
+    document.getElementById("diesel").style.backgroundColor = "white";
+    document.getElementById("diesel").style.color = "black";
   }
 
-  hidePetrol(){
+  hidePetrol() {
     this.petrolFilter = false;
-    document.getElementById('petrol').style.backgroundColor = 'white';
+    document.getElementById("petrol").style.backgroundColor = "white";
+    document.getElementById("petrol").style.color = "black";
   }
 
-  displayDiesel(){
+  displayDiesel() {
     this.petrolFilter = false;
     this.dieselFilter = true;
-    document.getElementById('diesel').style.backgroundColor = 'MediumAquamarine';
-    document.getElementById('petrol').style.backgroundColor = 'white';
-  }
-  hideDiesel(){
-    this.dieselFilter = false;
-    document.getElementById('diesel').style.backgroundColor = 'white';
-  }
-  displayManual(){
-    this.manualTransmissionFilter = true;
-    this.autoTransmissionFilter = false;
-    document.getElementById('manual').style.backgroundColor = 'MediumAquamarine';
-    document.getElementById('automatic').style.backgroundColor = 'white';
-  }
-  hideManual(){
-    this.manualTransmissionFilter = false;
-    document.getElementById('manual').style.backgroundColor = 'white';
+    document.getElementById("diesel").style.backgroundColor = "#3aa5c5";
+    document.getElementById("diesel").style.color = "white";
+    document.getElementById("petrol").style.backgroundColor = "white";
+    document.getElementById("petrol").style.color = "black";
   }
 
-  displayAutomatic(){
+  hideDiesel() {
+    this.dieselFilter = false;
+    document.getElementById("diesel").style.backgroundColor = "white";
+    document.getElementById("diesel").style.color = "black";
+  }
+  displayManual() {
+    this.manualTransmissionFilter = true;
+    this.autoTransmissionFilter = false;
+    document.getElementById("manual").style.backgroundColor = "#3aa5c5";
+    document.getElementById("manual").style.color = "white";
+    document.getElementById("automatic").style.backgroundColor = "white";
+    document.getElementById("automatic").style.color = "black";
+  }
+  hideManual() {
+    this.manualTransmissionFilter = false;
+    document.getElementById("manual").style.backgroundColor = "white";
+    document.getElementById("manual").style.color = "black";
+  }
+
+  displayAutomatic() {
     this.autoTransmissionFilter = true;
     this.manualTransmissionFilter = false;
-    document.getElementById('manual').style.backgroundColor = 'white';
-    document.getElementById('automatic').style.backgroundColor = 'MediumAquamarine';
+    document.getElementById("manual").style.backgroundColor = "white";
+    document.getElementById("manual").style.color = "black";
+    document.getElementById("automatic").style.backgroundColor = "#3aa5c5";
+    document.getElementById("automatic").style.color = "white";
   }
-  hideAutomatic(){
+
+  hideAutomatic() {
     this.autoTransmissionFilter = false;
-    document.getElementById('automatic').style.backgroundColor = 'white';
+    document.getElementById("automatic").style.backgroundColor = "white";
+    document.getElementById("automatic").style.color = "black";
   }
-  clearAll(){
+
+  clearAll() {
     this.hideAutomatic();
     this.hideDiesel();
     this.hideHatchback();
@@ -174,5 +220,4 @@ export class CarSelectComponent implements OnInit {
     this.hideSUV();
     this.hideSedan();
   }
-
 }

@@ -1,8 +1,8 @@
 .fuel-Button{
     width: 100%;
     border: 1px solid black;
-    border-color: green;
-    color: green;
+    border-color: #5bc0de;
+    color: darkgreen;
     align-content: center;
 }
 .text{
