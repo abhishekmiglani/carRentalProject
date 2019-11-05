@@ -6,9 +6,20 @@ import { CardetailComponent } from './cardetail/cardetail.component';
 
 
 
-const routes: Routes = [{path: "", component:BanersComponent},
-{path: "car", children:[{path:"", component: CarSelectComponent},
-{path: ":modelNo" , component: CardetailComponent}]}];
+const routes: Routes = [
+        {
+          path: "", component:BanersComponent
+        },
+        {
+          path: "car", children:[
+          {
+            path:"", component: CarSelectComponent
+          },
+          {
+            path: ":modelNo" , component: CardetailComponent
+          }
+        ]
+        }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
