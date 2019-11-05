@@ -26,7 +26,7 @@ export class CarSelectComponent implements OnInit {
   }
 
   filter60Color() {
-    document.getElementById('60km').style.backgroundColor = '#5bc0de';
+    document.getElementById('60km').style.backgroundColor = '#3aa5c5';
     document.getElementById('60km').style.color = 'white';
     document.getElementById('120km').style.backgroundColor = 'white';
     document.getElementById('120km').style.color = 'black';
@@ -36,7 +36,7 @@ export class CarSelectComponent implements OnInit {
 
   filter120Color() {
     document.getElementById('60km').style.backgroundColor = 'white';
-    document.getElementById('120km').style.backgroundColor = '#5bc0de';
+    document.getElementById('120km').style.backgroundColor = '#3aa5c5';
     document.getElementById('120km').style.color = 'white';
     document.getElementById('180km').style.backgroundColor = 'white';
     document.getElementById('60km').style.color = 'black';
@@ -45,7 +45,7 @@ export class CarSelectComponent implements OnInit {
 
   filter180Color() {
     document.getElementById('60km').style.backgroundColor = 'white';
-    document.getElementById('180km').style.backgroundColor = '#5bc0de';
+    document.getElementById('180km').style.backgroundColor = '#3aa5c5';
     document.getElementById('180km').style.color = 'white';
     document.getElementById('120km').style.backgroundColor = 'white';
     document.getElementById('60km').style.color = 'black';
@@ -54,7 +54,7 @@ export class CarSelectComponent implements OnInit {
 
   onWithoutFuelSelect() {
     this.flag = false;
-    document.getElementById('withoutFuel').style.backgroundColor = '#5bc0de';
+    document.getElementById('withoutFuel').style.backgroundColor = '#3aa5c5';
     document.getElementById('withoutFuel').style.color = 'white';
     document.getElementById('withFuel').style.backgroundColor = 'white';
     document.getElementById('withFuel').style.color = 'black';
@@ -62,7 +62,7 @@ export class CarSelectComponent implements OnInit {
 
   onWithFuelSelect() {
     this.flag = true;
-    document.getElementById('withFuel').style.backgroundColor = '#5bc0de';
+    document.getElementById('withFuel').style.backgroundColor = '#3aa5c5';
     document.getElementById('withFuel').style.color = 'white';
     document.getElementById('withoutFuel').style.backgroundColor = 'white';
     document.getElementById('withoutFuel').style.color = 'black';
@@ -76,7 +76,7 @@ export class CarSelectComponent implements OnInit {
     }
     else {
       this.hatchbackFilter = true;
-      document.getElementById('hatchback').style.backgroundColor = '#5bc0de';
+      document.getElementById('hatchback').style.backgroundColor = '#3aa5c5';
       document.getElementById('hatchback').style.color = "white"
     }
   }
@@ -95,7 +95,7 @@ export class CarSelectComponent implements OnInit {
     }
     else {
       this.sedanFilter = true;
-      document.getElementById('sedan').style.backgroundColor = '#5bc0de';
+      document.getElementById('sedan').style.backgroundColor = '#3aa5c5';
       document.getElementById('sedan').style.color = 'white';
     }
   }
@@ -114,7 +114,7 @@ export class CarSelectComponent implements OnInit {
     }
     else {
       this.suvFilter = true;
-      document.getElementById('suv').style.backgroundColor = '#5bc0de';
+      document.getElementById('suv').style.backgroundColor = '#3aa5c5';
       document.getElementById('suv').style.color = 'white';
     }
   }
@@ -133,7 +133,7 @@ export class CarSelectComponent implements OnInit {
     }
     else {
       this.miniSUVFilter = true;
-      document.getElementById('miniSuv').style.backgroundColor = '#5bc0de';
+      document.getElementById('miniSuv').style.backgroundColor = '#3aa5c5';
       document.getElementById('miniSuv').style.color = 'white';
     }
   }
@@ -147,7 +147,7 @@ export class CarSelectComponent implements OnInit {
   displayPetrol() {
     this.petrolFilter = true;
     this.dieselFilter = false;
-    document.getElementById('petrol').style.backgroundColor = '#5bc0de';
+    document.getElementById('petrol').style.backgroundColor = '#3aa5c5';
     document.getElementById('petrol').style.color = 'white';
     document.getElementById('diesel').style.backgroundColor = 'white';
     document.getElementById('diesel').style.color = 'black';
@@ -162,7 +162,7 @@ export class CarSelectComponent implements OnInit {
   displayDiesel() {
     this.petrolFilter = false;
     this.dieselFilter = true;
-    document.getElementById('diesel').style.backgroundColor = '#5bc0de';
+    document.getElementById('diesel').style.backgroundColor = '#3aa5c5';
     document.getElementById('diesel').style.color = 'white';
     document.getElementById('petrol').style.backgroundColor = 'white';
     document.getElementById('petrol').style.color = 'black';
@@ -176,7 +176,7 @@ export class CarSelectComponent implements OnInit {
   displayManual() {
     this.manualTransmissionFilter = true;
     this.autoTransmissionFilter = false;
-    document.getElementById('manual').style.backgroundColor = '#5bc0de';
+    document.getElementById('manual').style.backgroundColor = '#3aa5c5';
     document.getElementById('manual').style.color = 'white';
     document.getElementById('automatic').style.backgroundColor = 'white';
     document.getElementById('automatic').style.color = 'black';
@@ -192,7 +192,7 @@ export class CarSelectComponent implements OnInit {
     this.manualTransmissionFilter = false;
     document.getElementById('manual').style.backgroundColor = 'white';
     document.getElementById('manual').style.color = 'black';
-    document.getElementById('automatic').style.backgroundColor = '#5bc0de';
+    document.getElementById('automatic').style.backgroundColor = '#3aa5c5';
     document.getElementById('automatic').style.color = 'white';
   }
 
