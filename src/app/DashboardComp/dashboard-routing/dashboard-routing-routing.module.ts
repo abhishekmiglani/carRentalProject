@@ -9,10 +9,10 @@ import { CommonModule } from '@angular/common';
 const dashboard_routes: Routes = [
 
   {
-    path: 'blog',children: [
+    path: 'dashboard',children: [
       {path:'',component:ProfileComponent},
       {path: 'wallet',component:WalletComponent},
-      {path:':change-password',component : ChangePasswordComponent}
+      {path:'change-password',component : ChangePasswordComponent}
     ]
   }
 ]
