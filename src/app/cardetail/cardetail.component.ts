@@ -21,15 +21,15 @@ export class CardetailComponent implements OnInit {
 
 
   changeState(){
-    console.log("parent");
+    
     if(this.loginServ.isLoggedIn){
-      console.log("upload")
+     
       this.isLogged=true;
       this.upload.open();
       
     }
     else{
-      console.log("login")
+     
       this.isLogged=false;
       this.login.openModalDialog();
     }

@@ -4,13 +4,15 @@ import { ProfileComponent } from '../profile/profile.component';
 import { WalletComponent } from '../wallet/wallet.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { CommonModule } from '@angular/common';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 
 const dashboard_routes: Routes = [
 
   {
     path: 'dashboard',children: [
-      {path:'',component:ProfileComponent},
+      {path:'',component:DashboardComponent},
+      {path:'profile',component:ProfileComponent},
       {path: 'wallet',component:WalletComponent},
       {path:'change-password',component : ChangePasswordComponent}
     ]
