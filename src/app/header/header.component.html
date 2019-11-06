@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" >
   <!-- Sidebar  -->
   <nav id="sidebar" *ngIf="dislplayNav" class="bg-light">
     <div class="sidebar-header">
@@ -56,7 +56,7 @@
               <div *ngIf="loginState;else elseBlock"><a class="nav-link" data-toggle="modal" data-target="#myModal"
                   href="#"><i class="fa fa-user-circle" aria-hidden="true" style="font-size:30px;"></i></a></div>
               <ng-template #elseBlock><a class="nav-link" routerLink="/dashboard"><i class="fa fa-user-circle"
-                    aria-hidden="true" style="font-size:30px;"></i></a></ng-template>
+                    aria-hidden="true" style="font-size:30px;color: midnightblue;border-radius: 50%;background-color: white;"></i></a></ng-template>
             </li>
             <!-- <li class="nav-item">
                                 <a class="nav-link" href="#">Page</a>
@@ -72,15 +72,17 @@
      <div class="modal container modal fade" id="myModal1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
-
+          <div class="modal-header" style="background-color:midnightblue ; color: white;">
+            <h4 class="modal-title">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              PICK UP LOCATION</h4>
+            <button type="button" class="close" style="color: white;" data-dismiss="modal">&times;</button>
+          </div>
 
           <!-- Modal body -->
           <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+           
             <div class="container">
-
-              <h1>Pick Up Your Location</h1>
-
               <div class="form-group container">
                 <label>Enter address</label>
                 <input type="text" style="width: 400px;" class="form-control" value="{{address}}"
