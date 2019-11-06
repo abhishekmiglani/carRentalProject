@@ -7,10 +7,12 @@ import { PaymentComponent } from './payment/payment.component';
 
 
 
+
 const routes: Routes = [
         {
           path: "", component:BanersComponent
         },
+       
         {
           path: "car", children:[
           {
