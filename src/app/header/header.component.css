@@ -70,6 +70,9 @@
 /*#47748b*/
 /*#fff*/
 /*#fff*/
+
+
+
  .text-sidebar {
 	 color: #6b6b6b;
 }
@@ -85,13 +88,7 @@
 	 background:white;
 	 color: black;
 	 transition: all 0.3s;
-
-	
-		z-index: 9999;
-	
-	 
-
-	 
+    	z-index: 9999; 
 	 
 }
  #sidebar.active {
