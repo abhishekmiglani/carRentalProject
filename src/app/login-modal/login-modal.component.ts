@@ -9,7 +9,7 @@ export class LoginModalComponent implements OnInit {
 
   constructor() { }
   openModalDialog(){
-    document.getElementById("openModal").click();
+    document.getElementById("openLogin").click();
   }
   ngOnInit() {
   }
