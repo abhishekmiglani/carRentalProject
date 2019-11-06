@@ -5,7 +5,7 @@ import { HeaderComponent } from 'app/header/header.component';
 import { LoginModalComponent } from 'app/login-modal/login-modal.component';
 
 
-
+declare var $: any;
 @Component({
   selector: 'app-cardetail',
   templateUrl: './cardetail.component.html',
@@ -38,10 +38,14 @@ export class CardetailComponent implements OnInit {
   
   }
 
-
-
   ngOnInit() {
-    
+    $(function() {
+      $("#sortMenu a").click(function() {
+        console.log("Hey!");
+        $("#selected").text($(this).text());
+        $("#selected").val($(this).text());
+      });
+    });
   }
 
   
