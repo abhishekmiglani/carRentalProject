@@ -5,13 +5,15 @@ import { DashboardRoutingRoutingModule } from './dashboard-routing-routing.modul
 import { ProfileComponent } from '../profile/profile.component';
 import { WalletComponent } from '../wallet/wallet.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { BankDetailsComponent } from '../bank-details/bank-details.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     WalletComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    BankDetailsComponent
   ],
   imports: [
     CommonModule,
