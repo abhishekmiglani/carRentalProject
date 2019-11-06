@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UploadFileComponent } from 'app/upload-file/upload-file.component';
+import { LoginService } from 'app/login.service';
+import { HeaderComponent } from 'app/header/header.component';
 
 
 
@@ -9,15 +11,24 @@ import { UploadFileComponent } from 'app/upload-file/upload-file.component';
   styleUrls: ['./cardetail.component.css']
 })
 export class CardetailComponent implements OnInit {
+  isLogged:boolean=false;
+  
+  constructor(private loginServ:LoginService) { }
 
-  constructor() { }
   @ViewChild(UploadFileComponent,{static:false}) upload:UploadFileComponent;
+  @ViewChild(HeaderComponent, {static:false} ) header:HeaderComponent;
   modalState:boolean=false;
 
 
   changeState(){
     console.log("parent");
-  this.upload.open();
+    if(this.loginServ.isLoggedIn){
+      this.isLogged=true;
+      this.upload.open();
+    }
+    
+    
+  
   }
 
 
