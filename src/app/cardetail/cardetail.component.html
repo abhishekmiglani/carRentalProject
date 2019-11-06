@@ -218,7 +218,7 @@
                       <hr>
                   </div>
 
-                  <div class="total-charge" style="paddding:20px">
+                  <div class="total-charge" style="padding:20px">
                       <span class="fare-name "
                           style="font-family:proxima-nova; color: #77899b; font-size: 20px ;padding: 20px">
 
@@ -281,7 +281,7 @@
           <div class="col-md-4">
               <div class="add-to-cart " style="padding-top: 5%">
                   <button type="button" class="btn btn-light">Add to Cart</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-success">Quick Book</button>
+                  <button type="button" class="btn btn-success" (click)="changeState()">Quick Book</button>
               </div>
               <div class="Quick Book ">
 
@@ -294,3 +294,5 @@
 
   </div>
 </div>
+<app-upload-file></app-upload-file>
+<app-login-modal></app-login-modal>
