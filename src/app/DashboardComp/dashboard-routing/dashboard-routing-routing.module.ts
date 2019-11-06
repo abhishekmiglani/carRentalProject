@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from '../profile/profile.component';
 import { WalletComponent } from '../wallet/wallet.component';
@@ -8,25 +8,24 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 
 
 const dashboard_routes: Routes = [
-
   {
-    path: 'dashboard',children: [
-      {path:'',component:DashboardComponent},
-      {path:'profile',component:ProfileComponent},
-      {path: 'wallet',component:WalletComponent},
-      {path:'change-password',component : ChangePasswordComponent}
-    ]
+    path: "dashboard", component:DashboardComponent,  children:[
+      {
+        path:"", component: ProfileComponent
+      }, { path: 'wallet', component: WalletComponent },
+      { path: 'change-password', component: ChangePasswordComponent }]
   }
+
 ]
 
-  @NgModule({
-    declarations: [],
-    imports: [
-      CommonModule,
-      RouterModule.forChild(dashboard_routes)
-    ],
-    exports: [
-      RouterModule
-    ]
-  })
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(dashboard_routes)
+  ],
+  exports: [
+
+  ]
+})
 export class DashboardRoutingRoutingModule { }
