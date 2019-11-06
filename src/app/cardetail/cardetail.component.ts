@@ -4,7 +4,7 @@ import { LoginService } from 'app/login.service';
 import { HeaderComponent } from 'app/header/header.component';
 
 
-
+declare var $: any;
 @Component({
   selector: 'app-cardetail',
   templateUrl: './cardetail.component.html',
@@ -26,15 +26,16 @@ export class CardetailComponent implements OnInit {
       this.isLogged=true;
       this.upload.open();
     }
-    
-    
-  
   }
 
-
-
   ngOnInit() {
-    
+    $(function() {
+      $("#sortMenu a").click(function() {
+        console.log("Hey!");
+        $("#selected").text($(this).text());
+        $("#selected").val($(this).text());
+      });
+    });
   }
 
   
