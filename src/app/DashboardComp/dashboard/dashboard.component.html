@@ -1,0 +1,44 @@
+<div class="row background">
+    <div class="col-md-3 card dashboard-menu shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="card-header">
+            <h3> Hi {{userName}} </h3>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush ">
+                <a routerLink="/profile">
+                    <li class="list-group-item">
+                        <h5 class="far fa-user-circle"> Profile</h5>
+                    </li>
+                </a>
+                <a routerLink="/bookings">
+                    <li class="list-group-item">
+                        <h5 class="far fa-calendar-alt"> My Bookings</h5>
+                    </li>
+                </a>
+                <a routerLink="/wallet">
+                    <li class="list-group-item">
+                        <h5 class="far fa-money-bill-alt"> My Wallet</h5>
+                    </li>
+                </a>
+                <a routerLink="/bankDetails">
+                    <li class="list-group-item">
+                        <h5 class="far fa-credit-card"> My Cards</h5>
+                    </li>
+                </a>
+                <a routerLink="/changePassword">
+                    <li class="list-group-item">
+                        <h5 class="fab fa-keycdn"> Change Password</h5>
+                    </li>
+                </a>
+                <a routerLink="/logout">
+                    <li class="list-group-item">
+                        <h5 class="fas fa-sign-out-alt"> Logout</h5>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-7 descr">
+        <router-outlet></router-outlet>
+    </div>
+</div>
