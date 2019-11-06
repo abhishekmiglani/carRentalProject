@@ -22,7 +22,8 @@ export class CarSelectComponent implements OnInit {
     "Swift DZire",
     "Honda City",
     "Honda Civic",
-    "Toyota Fortuner"
+    "Toyota Fortuner",
+    "Hyundai Verna"
   ];
 
   constructor() {}

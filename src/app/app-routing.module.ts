@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CarSelectComponent } from './car-select/car-select.component';
 import { BanersComponent } from './baners/baners.component';
 import { CardetailComponent } from './cardetail/cardetail.component';
-import { PaymentOptionsComponent } from './payment-options/payment-options.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -17,8 +17,12 @@ const routes: Routes = [
             path:"", component: CarSelectComponent
           },
           {
+            path: "payments" , component: PaymentComponent
+          },
+          {
             path: ":modelNo" , component: CardetailComponent
           }
+         
         ]
         }];
 

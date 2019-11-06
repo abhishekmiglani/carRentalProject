@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 
+
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
@@ -9,6 +10,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 export class UploadFileComponent implements OnInit {
   files: any = [];
   buttonState:boolean=false;
+  constructor() { }
 
   uploadFile(event) {
     
@@ -31,10 +33,10 @@ export class UploadFileComponent implements OnInit {
   }
   open(){
     console.log("child");
-    document.getElementById("openModal").click();
+    document.getElementById("openModal2").click();
   }
   
-  constructor() { }
+ 
 
   ngOnInit() {
   }
