@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone  } from '@angular/core';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { LoginService } from 'app/login.service';
 // import {} from '@types/googlemaps';
 @Component({
   selector: 'app-header',
@@ -7,6 +8,8 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  loginState:boolean=false;
+
   dislplayNav = false;
 
   latitude: number;
@@ -19,7 +22,7 @@ export class HeaderComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone, private loginServ:LoginService) { }
 
   displaySideNavbar(){
     console.log(this.dislplayNav);
@@ -30,7 +33,21 @@ export class HeaderComponent implements OnInit {
    
   }
 
+  isLogged(){
+    if(this.loginServ.isLoggedIn){
+      console.log("hshwch")
+      this.loginState=true;
+
+    }
+    else{
+      this.loginState=false;
+    }
+  }
+
   ngOnInit() {
+    this.isLogged();  //for login and dashboard switch
+
+
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
