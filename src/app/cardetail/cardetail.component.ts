@@ -22,7 +22,7 @@ export class CardetailComponent implements OnInit {
 
   changeState(){
     
-    if(this.loginServ.isLoggedIn){
+    if(this.loginServ.isLoggedIn==false){
      
       this.isLogged=true;
       this.upload.open();
