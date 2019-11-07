@@ -23,18 +23,21 @@
       </select> -->
 
       <div style="margin-top: 5px;">
-          <button style="background-color: white ; border : black 0.8px solid" type="button" class="btn dropdown-toggle form-control  shadow-none"
-              data-toggle="dropdown">
-              <span id="selectedOption">
-              Choose
-              </span>
-          </button>
-          <div class="dropdown-menu" id="locationMenu">
-              <a class="dropdown-item" >Bengaluru</a>
-              <a class="dropdown-item" >Delhi</a>
-              <a class="dropdown-item" >Mumbai</a>
-
-          </div>
+        <button
+          style="background-color: white ; border : black 0.8px solid"
+          type="button"
+          class="btn dropdown-toggle form-control  shadow-none"
+          data-toggle="dropdown"
+        >
+          <span id="selectedOption">
+            Choose
+          </span>
+        </button>
+        <div class="dropdown-menu" id="locationMenu">
+          <a class="dropdown-item">Bengaluru</a>
+          <a class="dropdown-item">Delhi</a>
+          <a class="dropdown-item">Mumbai</a>
+        </div>
       </div>
       <!-- </button> -->
       <!-- </div> -->
@@ -43,7 +46,12 @@
       <div class="div-margin">Select your pickup date</div>
       <!-- <button class="btn  shadow-none "> -->
       <div class=" border-dark" style="margin-top: 6px">
-        <p-calendar [(ngModel)]="value" [showTime]="true"></p-calendar>
+        <p-calendar
+          [(ngModel)]="value"
+          [showTime]="true"
+          hourFormat="12"
+          dateFormat="dd MM yy"
+        ></p-calendar>
       </div>
       <!-- </button> -->
     </div>
@@ -51,7 +59,12 @@
       <div class="div-margin">Select your drop date</div>
       <!-- <button class="btn shadow-none"> -->
       <div style="margin-top: 6px">
-        <p-calendar [(ngModel)]="valueDrop" [showTime]="true"></p-calendar>
+        <p-calendar
+          [(ngModel)]="valueDrop"
+          [showTime]="true"
+          hourFormat="12"
+          dateFormat="dd MM yy"
+        ></p-calendar>
       </div>
       <!-- </button> -->
     </div>
