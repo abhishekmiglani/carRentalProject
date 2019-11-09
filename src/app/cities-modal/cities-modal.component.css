@@ -1,0 +1,9 @@
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.text-background{
+    margin-left: 1%;
+    text-align: center; 
+    padding: 10px;
+}
