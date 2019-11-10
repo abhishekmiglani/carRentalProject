@@ -21,6 +21,7 @@ import { CardetailComponent } from './cardetail/cardetail.component';
 import { BanersComponent } from './baners/baners.component';
 import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashboard-routing.module';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
     DashboardComponent,
     CardetailComponent,
     BanersComponent,
-    LoginModalComponent  ],
+    LoginModalComponent,
+    CitiesModalComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
