@@ -15,5 +15,5 @@ li:hover{
 }
 .background{
     background: rgb(183,220,233);
-    background: linear-gradient(143deg, rgba(183,220,233,0.3449754901960784) 46%, rgba(227,199,225,0.29175420168067223) 51%);
+    background: linear-gradient(143deg, rgba(181, 217, 230, 0.345) 20%, rgba(152, 163, 168, 0.345) 70%);
 }
