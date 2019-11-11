@@ -70,7 +70,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "carRental:build:production"
+              "browserTarget": "carRental:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             }
           }
         },
