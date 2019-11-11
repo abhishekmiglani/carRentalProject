@@ -4,6 +4,9 @@ import { FormsModule } from "@angular/forms";
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
+import * as $ from "jquery";
+import * as bootstrap from "bootstrap";
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

@@ -1,5 +1,5 @@
 <div class="row background">
-    <div class="col-md-3 card dashboard-menu shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="col-md-3 col-sm-4 col-5 card dashboard-menu shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-header">
             <h3> Hi {{userName}} </h3>
         </div>
@@ -20,7 +20,7 @@
                         <h5 class="far fa-money-bill-alt"> My Wallet</h5>
                     </li>
                 </a>
-                <a routerLink="/dashboard/saved-cards">
+                <a routerLink="/dashboard/bank-detail">
                     <li class="list-group-item">
                         <h5 class="far fa-credit-card"> My Cards</h5>
                     </li>
@@ -38,8 +38,8 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-7 descr">
-        <router-outlet></router-outlet>
-        
+    <div class="col-md-7 col-sm-6 col-7 descr">
+        <!-- <app-bank-details></app-bank-details> -->
+        <router-outlet></router-outlet>        
     </div>
 </div>

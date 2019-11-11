@@ -35,4 +35,18 @@
     height: 250px;
   }
 
+  .fas{
+    color: white;
+    font-size: 250%;
+    margin-left: 35%;
+  }
+  .footer-icon-text
+  {
+    color: white;
+    text-align: center;
+  }
+button{
+  background: transparent;
+  border: 0 transparent;
+}
   
