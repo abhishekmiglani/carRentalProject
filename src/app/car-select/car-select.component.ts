@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { GetCarsService } from 'app/get-cars.service';
 
 declare var $: any;
 @Component({
@@ -17,6 +18,8 @@ export class CarSelectComponent implements OnInit {
   petrolFilter: boolean = false;
   dieselFilter: boolean = false;
 
+  public cars = [];
+
   carsList = [
     "Suzuki Baleno",
     "Swift DZire",
@@ -24,9 +27,9 @@ export class CarSelectComponent implements OnInit {
     "Honda Civic",
     "Toyota Fortuner",
     "Hyundai Verna"
-  ];
+  ]
 
-  constructor() {}
+  constructor(private getCarsService : GetCarsService) {}
 
   ngOnInit() {
     $(function() {
@@ -36,6 +39,9 @@ export class CarSelectComponent implements OnInit {
         $("#selected").val($(this).text());
       });
     });
+
+    this.getCarsService.getCars()
+    .subscribe(data => this.cars = data);
   }
 
   filter60Color() {
@@ -221,4 +227,14 @@ export class CarSelectComponent implements OnInit {
     this.hideSUV();
     this.hideSedan();
   }
+
+
+
+
+
+
+
+
+
+
 }
