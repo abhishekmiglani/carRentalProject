@@ -85,6 +85,11 @@
                                 (click)="displayDiesel()">Diesel
                             </button>
                         </div>
+                    <hr>
+                        <div class="text-center">
+                            <button class="btn border rounded btn-success" id="applyFilters" style=" width:120px;">
+                                Apply Filters </button>
+                        </div>
 
                     </div>
 
@@ -130,6 +135,7 @@
                                     *ngIf="dieselFilter">Diesel<span class="pointer far fa-window-close"
                                         style="margin-left: 5px; font-size: 17px;" (click)="hideDiesel()"></span></span>
                             </div>
+                            
                             <br>
                         </div>
 
@@ -163,8 +169,8 @@
                         <h6>{{car.booking_price}}</h6>
                         <hr>
                         <h5 class="card-title">{{car.name}}</h5>
-                        <p class="card-text">4 Seater, 2 Airbag, {{car.transmission_type}}, Model 2017</p>
-                        <a class="btn btn-info" routerLink="/car/1">Quick View</a>
+                        <p class="card-text">{{car.num_of_seats}} Seater, 2 Airbag, {{car.transmission_type}}, Model 2017</p>
+                        <a class="btn btn-info" routerLink="/car/{{car.id}}">Quick View</a>
                     </div>
                 </div>
             </div>
