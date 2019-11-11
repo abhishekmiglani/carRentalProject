@@ -1,11 +1,7 @@
 <div class="wrapper" >
   <!-- Sidebar  -->
-  <nav id="sidebar" *ngIf="dislplayNav" class="bg-light">
-    <div class="sidebar-header">
-      <span> <img src="https://image.flaticon.com/icons/svg/741/741407.svg" width="50" id="carIcon"><i
-          style="font-size: 30;"><b> DhoomCar </b></i></span>
-    </div>
-    <hr>
+  <nav id="sidebar" *ngIf="dislplayNav" class="bg-light" style="margin-top:97px; margin-left:18px;">
+  
     <ul class="list-unstyled components">
 
       <li>
@@ -23,14 +19,12 @@
         <a href="#">Contact</a>
       </li>
     </ul>
-
-
   </nav>
 
   <!-- Page Content  -->
   <div id="content">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-info " style="border-radius: 10px;">
+    <nav class="navbar navbar-collapse-lg navbar-light bg-info " style="border-radius: 10px;">
       <div class="container-fluid">
 
         <button type="button" style="background-color:turquoise; color: white;" id="sidebarCollapse"
@@ -38,13 +32,10 @@
           <i class="fa fa-align-left" style="font-size:25px;"></i>
           <span></span>
         </button>
-        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <i class="fa fa-align-justify" style="font-size:24px"></i>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+          
           <ul class="nav navbar-nav ml-auto">
             <li class="nav-item active">
               <input id="locationBorderShadow" value="{{address}}" data-toggle="modal" data-target="#myModal1"
@@ -65,7 +56,7 @@
                                 <a class="nav-link" href="#">Page</a>
                             </li> -->
           </ul>
-        </div>
+        
       </div>
     </nav>
 

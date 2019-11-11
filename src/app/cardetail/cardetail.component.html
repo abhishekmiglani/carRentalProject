@@ -1,15 +1,16 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid row">
+  
 
       <!-- <div class="checkout-details"> -->
-      <div class="left-pane col-md-8">
-          <div class="left-wrapper box-shadow"
-              style="border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4)">
-
+      <div class="left-pane col-md-8" style="display: flex">
+          <div class="left-wrapper box-shadow "
+              style="  border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4)">
+            
 
               <div style="padding : 20px" class="checkout-vehicle-template">
-                  <div class="listing-car-body">
-                      <div class="detail-section">
+                  <div class="listing-car-body" style="display: flex">
+                      
+                      <div class="detail-section style = flex">
 
                           <div class="car-name">
                               <h3>Hyundai Eon(petrol)</h3>
@@ -42,12 +43,13 @@
 
                           <!-- </div> -->
                       </div>
-
-                      <span class="img-section">
-                          <img class="load-img " src="./assets/demoCar.png" height="125px" width="180px"
-                              style="margin-left: 70%;margin-top:-80px ">
-
-                      </span>
+                      
+                      <div class="img-section " >
+                          <img class="load-img float-right" src="./assets/demoCar.png">
+                              <!-- style="margin-left: 70%;margin-top:-80px;height:125px;width:180px; "> -->
+                            
+                      </div>
+                      
 
                   </div>
               </div>
@@ -92,13 +94,13 @@
                   <hr>
               </div>
 
-              <div class="ride-details" style="padding:20px">
+              <div class="ride-details" style="padding:20px; display:flex ; flex-direction: column">
                   <div class="pickup-drop-time">
-                      <div class="block-heading ">
+                      <div class="block-heading  " style="display: flex">
                           Pick up & Drop
                       </div>
-                      <div class="start-time row">
-                          <div class="col-md-4">
+                      <div class="start-time " style="display: flex">
+                          
 
                               <div class="date-time-format">
 
@@ -112,21 +114,21 @@
                                   </div>
                               </div>
 
-                          </div>
+                          
 
-                          <div class="col-md-4">
-                              <div class="trip-hour">
+                          
+                              <div class="trip-hour " style="display: flex ; justify-content : center">
                                   <span style="color: #77899b">
                                       Duration
                                   </span>
                                   12h
                               </div>
 
-                          </div>
+                         
 
-                          <div class="col-md-4">
+                          
 
-                              <div class="date-time-format" style="margin-left:100px">
+                              <div class="date-time-format" style="display: flex" >
                                   <div class="left-section">20</div>
                                   <div class="right-section">
                                       <div class="month-year">Oct-2019</div>
@@ -144,7 +146,7 @@
 
 
 
-                          </div>
+                          
 
 
 
@@ -226,7 +228,7 @@
               </div>
               <!-- </div> -->
           </div>
-      </div>
+      
   
 </div>
 
@@ -241,7 +243,7 @@
                   <div class="custom-control custom-checkbox ">
                       <form>
                           <input type="checkbox" class="custom-control-input" id="accept-agreement"
-                              name="accept-agreement-checkbox">
+                              name="accept-agreement-checkbox" (change)="changeQuickBookState($event)" >
                           <label class="custom-control-label" for="accept-agreement">
                               <span style="color  :#1f2d3d; font-size : 12px; font-weight : 500">
                                   Rider, You are just one step away from confirming your booking. Confirm that you are
@@ -260,10 +262,9 @@
           <div class="col-md-4">
               <div class="add-to-cart " style="padding-top: 6%">
                   <!-- <button type="button" class="btn btn-light">Add to Cart</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -->
-                  <button type="button" class="btn btn-success" (click)="changeState()">Quick Book</button>
+                  <button type="button" class="btn btn-success" (click)="changeState()" id="quick" disabled>Quick Book</button>
               </div>
-              <div class="Quick Book ">
-              </div>
+              
           </div>
       </div>
   </div>

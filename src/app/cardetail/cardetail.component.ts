@@ -18,11 +18,12 @@ export class CardetailComponent implements OnInit {
   @ViewChild(UploadFileComponent,{static:false}) upload:UploadFileComponent;
   @ViewChild(LoginModalComponent, {static:false} ) login:LoginModalComponent;
   modalState:boolean=false;
+  checkBoxState:boolean=false;
 
 
   changeState(){
     
-    if(this.loginServ.isLoggedIn){
+    if(this.loginServ.isLoggedIn==false){
      
       this.isLogged=true;
       this.upload.open();
@@ -36,6 +37,19 @@ export class CardetailComponent implements OnInit {
     
   
   }
+  changeQuickBookState(e:any){
+    this.checkBoxState=e.target.checked;
+    if(this.checkBoxState){
+      document.getElementById("quick").removeAttribute("disabled");
+    }
+    else{
+      document.getElementById("quick").setAttribute("disabled","true")
+    }
+  }
+
+  
+   
+
 
   ngOnInit() {
     $(function() {
