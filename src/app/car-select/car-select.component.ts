@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { CarService } from 'app/car.service';
+import { Subscription } from 'rxjs';
 
 declare var $: any;
 @Component({
@@ -17,6 +19,11 @@ export class CarSelectComponent implements OnInit {
   petrolFilter: boolean = false;
   dieselFilter: boolean = false;
 
+  transmissionType:string="";
+  fuelType:string="";
+  carType:string[]=[];
+  
+
   carsList = [
     "Suzuki Baleno",
     "Swift DZire",
@@ -25,10 +32,20 @@ export class CarSelectComponent implements OnInit {
     "Toyota Fortuner",
     "Hyundai Verna"
   ];
-
-  constructor() {}
-
+  duplicateCarList: any[];
+  carList:any[]=[];
+  carSubscription:Subscription;
+  constructor(private carService:CarService) {}
+  
   ngOnInit() {
+    this.carSubscription=this.carService.getCars()
+    .subscribe((dataList:any[])=>{
+    console.log(dataList);
+    this.carList=dataList;
+    this.duplicateCarList=dataList;
+    }
+    );
+
     $(function() {
       $("#sortMenu a").click(function() {
         console.log("Hey!");
@@ -84,10 +101,14 @@ export class CarSelectComponent implements OnInit {
   toggleHatchback() {
     if (this.hatchbackFilter) {
       this.hatchbackFilter = false;
+      
+      var  indexType=this.carType.indexOf("Hatchback");
+      this.carType.splice(indexType,1);
       document.getElementById("hatchback").style.backgroundColor = "white";
       document.getElementById("hatchback").style.color = "black";
     } else {
       this.hatchbackFilter = true;
+      this.carType.push("Hatchback");
       document.getElementById("hatchback").style.backgroundColor = "#3aa5c5";
       document.getElementById("hatchback").style.color = "white";
     }
@@ -101,11 +122,15 @@ export class CarSelectComponent implements OnInit {
 
   toggleSedan() {
     if (this.sedanFilter) {
+      
+      var  indexType=this.carType.indexOf("Sedan");
+      this.carType.splice(indexType,1);
       this.sedanFilter = false;
       document.getElementById("sedan").style.backgroundColor = "white";
       document.getElementById("sedan").style.color = "black";
     } else {
       this.sedanFilter = true;
+      this.carType.push("Sedan");
       document.getElementById("sedan").style.backgroundColor = "#3aa5c5";
       document.getElementById("sedan").style.color = "white";
     }
@@ -119,11 +144,15 @@ export class CarSelectComponent implements OnInit {
 
   toggleSUV() {
     if (this.suvFilter) {
+      
+      var  indexType=this.carType.indexOf("SUV");
+      this.carType.splice(indexType,1);
       this.suvFilter = false;
       document.getElementById("suv").style.backgroundColor = "white";
       document.getElementById("suv").style.color = "black";
     } else {
       this.suvFilter = true;
+      this.carType.push("SUV");
       document.getElementById("suv").style.backgroundColor = "#3aa5c5";
       document.getElementById("suv").style.color = "white";
     }
@@ -137,11 +166,15 @@ export class CarSelectComponent implements OnInit {
 
   toggleMiniSUV() {
     if (this.miniSUVFilter) {
+      var  indexType=this.carType.indexOf("Mini SUV");
+      this.carType.splice(indexType,1);
       this.miniSUVFilter = false;
       document.getElementById("miniSuv").style.backgroundColor = "white";
       document.getElementById("miniSuv").style.color = "black";
     } else {
       this.miniSUVFilter = true;
+      this.carType.push("Mini SUV");
+     
       document.getElementById("miniSuv").style.backgroundColor = "#3aa5c5";
       document.getElementById("miniSuv").style.color = "white";
     }
@@ -156,6 +189,7 @@ export class CarSelectComponent implements OnInit {
   displayPetrol() {
     this.petrolFilter = true;
     this.dieselFilter = false;
+    this.fuelType="Petrol";
     document.getElementById("petrol").style.backgroundColor = "#3aa5c5";
     document.getElementById("petrol").style.color = "white";
     document.getElementById("diesel").style.backgroundColor = "white";
@@ -171,6 +205,7 @@ export class CarSelectComponent implements OnInit {
   displayDiesel() {
     this.petrolFilter = false;
     this.dieselFilter = true;
+    this.fuelType="Diesel";
     document.getElementById("diesel").style.backgroundColor = "#3aa5c5";
     document.getElementById("diesel").style.color = "white";
     document.getElementById("petrol").style.backgroundColor = "white";
@@ -185,6 +220,7 @@ export class CarSelectComponent implements OnInit {
   displayManual() {
     this.manualTransmissionFilter = true;
     this.autoTransmissionFilter = false;
+    this.transmissionType="Manual";
     document.getElementById("manual").style.backgroundColor = "#3aa5c5";
     document.getElementById("manual").style.color = "white";
     document.getElementById("automatic").style.backgroundColor = "white";
@@ -199,6 +235,7 @@ export class CarSelectComponent implements OnInit {
   displayAutomatic() {
     this.autoTransmissionFilter = true;
     this.manualTransmissionFilter = false;
+    this.transmissionType="Automatic";
     document.getElementById("manual").style.backgroundColor = "white";
     document.getElementById("manual").style.color = "black";
     document.getElementById("automatic").style.backgroundColor = "#3aa5c5";
@@ -220,5 +257,11 @@ export class CarSelectComponent implements OnInit {
     this.hidePetrol();
     this.hideSUV();
     this.hideSedan();
+  }
+
+  filterApply(){
+    console.log("aassss:"+this.carType.length)
+    console.log("bassss:"+this.fuelType)
+    console.log("cassss:"+this.transmissionType)
   }
 }
