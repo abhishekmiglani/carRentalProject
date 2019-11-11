@@ -85,6 +85,11 @@
                                 (click)="displayDiesel()">Diesel
                             </button>
                         </div>
+                    <hr>
+                        <div class="text-center">
+                            <button class="btn border rounded btn-success" id="applyFilters" style=" width:120px;">
+                                Apply Filters </button>
+                        </div>
 
                     </div>
 
@@ -130,12 +135,11 @@
                                     *ngIf="dieselFilter">Diesel<span class="pointer far fa-window-close"
                                         style="margin-left: 5px; font-size: 17px;" (click)="hideDiesel()"></span></span>
                             </div>
-                            <button (click)="filterApply()" class="btn btn-info">Filter</button>
+                            
                             <br>
-
                         </div>
+
                         <div class="col-md-3">
-                
                             <div class="btn-group border rounded float-right" style="width: 300px;">
                                 <button style="background-color: lightgrey; width: 100px; " type="button" disabled class="btn">Sort
                                     by</button>
@@ -154,22 +158,19 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="card" style="width: 31%; margin-left: 15px; margin-bottom: 15px; margin-top: 10px; box-shadow: none;"
-                    *ngFor="let car of carsList">
-                    <img src="../assets/demoCar.png" class="card-img-top" alt="...">
+                    *ngFor="let car of cars">
+                    <img src={{car.img_url}} class="card-img-top" alt="...">
 
                     <div class="card-body" style="margin-top: -30px; text-align: center;">
                         <hr>
-                        <h6>Rs.600</h6>
+                        <h6>{{car.booking_price}}</h6>
                         <hr>
-                        <h5 class="card-title">{{car}}</h5>
-
-                        <p class="card-text">4 Seater, 2 Airbag, Manual, Model 2017</p>
-                        <a class="btn btn-info" routerLink="/car/1">Quick View</a>
-                        <!-- <a href="#" class="btn btn-info">Quick View</a> -->
+                        <h5 class="card-title">{{car.name}}</h5>
+                        <p class="card-text">{{car.num_of_seats}} Seater, 2 Airbag, {{car.transmission_type}}, Model 2017</p>
+                        <a class="btn btn-info" routerLink="/car/{{car.id}}">Quick View</a>
                     </div>
                 </div>
             </div>

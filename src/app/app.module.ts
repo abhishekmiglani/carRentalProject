@@ -4,6 +4,9 @@ import { FormsModule } from "@angular/forms";
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
+import * as $ from "jquery";
+import * as bootstrap from "bootstrap";
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +24,8 @@ import { CardetailComponent } from './cardetail/cardetail.component';
 import { BanersComponent } from './baners/baners.component';
 import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashboard-routing.module';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+import { CitiesModalComponent } from './cities-modal/cities-modal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -37,8 +42,10 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
     DashboardComponent,
     CardetailComponent,
     BanersComponent,
-    LoginModalComponent  ],
+    LoginModalComponent,
+    CitiesModalComponent  ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

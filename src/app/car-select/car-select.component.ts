@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { CarService } from 'app/car.service';
-import { Subscription } from 'rxjs';
+import { GetCarsService } from 'app/get-cars.service';
 
 declare var $: any;
 @Component({
@@ -23,6 +22,7 @@ export class CarSelectComponent implements OnInit {
   fuelType:string="";
   carType:string[]=[];
   
+  public cars = [];
 
   carsList = [
     "Suzuki Baleno",
@@ -34,17 +34,11 @@ export class CarSelectComponent implements OnInit {
   ];
   duplicateCarList: any[];
   carList:any[]=[];
-  carSubscription:Subscription;
-  constructor(private carService:CarService) {}
+
+  constructor(private getCarsService:GetCarsService) {}
   
   ngOnInit() {
-    this.carSubscription=this.carService.getCars()
-    .subscribe((dataList:any[])=>{
-    console.log(dataList);
-    this.carList=dataList;
-    this.duplicateCarList=dataList;
-    }
-    );
+
 
     $(function() {
       $("#sortMenu a").click(function() {
@@ -53,6 +47,9 @@ export class CarSelectComponent implements OnInit {
         $("#selected").val($(this).text());
       });
     });
+
+    this.getCarsService.getCars()
+    .subscribe(data => this.cars = data);
   }
 
   filter60Color() {
