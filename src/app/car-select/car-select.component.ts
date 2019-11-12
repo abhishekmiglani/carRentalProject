@@ -62,7 +62,7 @@ export class CarSelectComponent implements OnInit {
       this.cars = data;
         this.duplicateCarList = data;
       });
-    console.log(this.cars)
+    
   }
 
   filter60Color() {

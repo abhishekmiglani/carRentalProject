@@ -1,17 +1,18 @@
-import { Injectable } from "@angular/core";
+import { Injectable, ViewChild } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Car } from "./Bean/cars";
 import { Observable } from "rxjs";
+import { CardetailComponent } from './cardetail/cardetail.component';
 
 @Injectable({
   providedIn: "root"
 })
 export class GetCarsService {
   constructor(private http: HttpClient) {}
+  
+id:any;
 
-
-
-  constructor(private http: HttpClient) { }
+  
 
   private _url: string = "http://localhost:8082/cars";
 
@@ -20,7 +21,12 @@ export class GetCarsService {
     return this.http.get<Car[]>(this._url);
   }
 
-  private _url2: string = "http://localhost:8089/cars/id";
+ getid(carid:any){
+   this.id = carid;
+   console.log("service id" + this.id);
+ }
+ 
+  private _url2: string = "http://localhost:8089/cars/"+this.id;
 
   getCarById() : Observable<Car[]>{
     return this.http.get<Car[]>(this._url2);

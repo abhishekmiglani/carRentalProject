@@ -60,9 +60,17 @@ export class CardetailComponent implements OnInit {
     }
   }
 
-  carId: any;
+   id:any;
 
   ngOnInit() {
+  
+    this.route.paramMap.subscribe((parms:ParamMap)=>{
+          this.id = parseInt(parms.get('modelNo'));
+         console.log("selected id" + this.id);
+    });
+
+    this.getCarsService.getid(this.id);
+
     $(function() {
       $("#sortMenu a").click(function() {
         console.log("Hey!");
@@ -79,5 +87,10 @@ export class CardetailComponent implements OnInit {
 
     this.getCarsService.getCarById()
     .subscribe(data => this.cars = data);
+      
   }
+
+  
+
+
 }
