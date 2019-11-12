@@ -32,7 +32,8 @@
   #footlower{
     text-align: center;
     background-color: rgb(14, 20, 20);
-    height: 250px;
+    height: 300px;
+    width: 100%;
   }
 
   .fas{

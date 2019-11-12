@@ -1,3 +1,13 @@
+.box-shadow{
+    background: #fff;
+    border-radius : 6px;
+    box-shadow: 0 2px 8px -2px rgba(31,45,61,.4);
+    padding-top:24px;
+    padding-bottom:24px;
+    padding-right: 32px;
+    padding-left:32px;
+    margin-bottom:20px;
+}
 .block-heading{
     color : #1f2d3d;
     padding-bottom:8px;
@@ -81,4 +91,68 @@
 }
 .font{
     font-size: 13px;
+}
+.fare-amount{
+
+    display: inline-flex;
+    color : #1f2d3d;
+    font-family: proxima-nova;
+    font-size : 14px;
+    padding-left:60px
+}
+.venue-detail-block
+{
+    display: flex;
+    justify-content: space-between;
+    padding-top:16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #dde2e8;
+    font-family: proxima-nova;
+}
+.pickup-venue-block
+{
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    max-width: 320px;
+    font-family : proxima-nova;
+}
+
+.venue-name-icon
+{
+    display: flex;
+    font-family: proxima-nova;
+    color: #41b6ac;
+    cursor: pointer;
+
+}
+.venue-address
+{
+    color : #77899b;
+    font-size : 12px;
+    font-weight :300;
+    line-height: 17px;
+    padding-top : 4px;
+    font-family : proxima-nova;
+    text-rendering : optimizeLegibility;
+}
+.venue-distance
+{
+    color : #1f2d3d;
+    font-size : 12px;
+    font-weight:300;
+    line-height:17px;
+    padding-top:4px;
+    font-family:proxima-nova;
+    text-rendering : optimizeLegibility;
+}
+.drop-venue-block
+{
+    display : flex;
+    flex-direction: column;
+    background: #fff;
+    align-items: flex-end;
+    max-width: 320px;
+    font-family: proxima-nova;
+    text-rendering: optimizeLegibility;
 }
