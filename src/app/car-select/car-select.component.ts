@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { GetCarsService } from 'app/get-cars.service';
 import { LocationHeaderComponent } from 'app/location-header/location-header.component';
+import { RouterLink, Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 declare var $: any;
 @Component({
@@ -25,6 +26,7 @@ export class CarSelectComponent implements OnInit {
   carType: string[] = [];
 
   public cars = [];
+  carId: number;
 
   carsList = [
     "Suzuki Baleno",
@@ -37,7 +39,8 @@ export class CarSelectComponent implements OnInit {
   duplicateCarList: any[];
 
 
-  constructor(private getCarsService: GetCarsService) { }
+  
+  constructor(private getCarsService : GetCarsService, private router : Router) {}
 
 
 
@@ -413,15 +416,35 @@ export class CarSelectComponent implements OnInit {
 
 
       }
-
     }
   }
 
 
+  runValidation(carId :number){
+    if(this.locationHeader.value != null && this.locationHeader.valueDrop != null){
+      this.router.navigateByUrl('/car/' + carId);
+    }
+    else{
+      window.alert("Please select Pickup and Drop Date first")
+    }
+    
+  }
 
+
+
+  // filterApply(){
+  //   if(this.carType.length!=0){
+      
+  //   }
+  //   else{
+  //     console.log(this.cars.length);
+  //     console.log(this.duplicateCarList.length);
+  //   }
+  //}
 }
   
 
 
 
 
+  
