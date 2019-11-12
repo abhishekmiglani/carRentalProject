@@ -51,7 +51,7 @@
 
                         <div style="margin-bottom: 25px;">
                             <span style="font-size: 17px; font-weight: 600;">Filter</span>
-                            <a (click)="clearAll()" href="#" class="float-right">Clear All</a>
+                            <a (click)="clearAll()" href="" class="float-right">Clear All</a>
                         </div>
                         <p style="font-size: 13px;">Car Type</p>
 
@@ -87,7 +87,7 @@
                         </div>
                     <hr>
                         <div class="text-center">
-                            <button class="btn border rounded btn-success" id="applyFilters" style=" width:120px;">
+                            <button class="btn border rounded btn-success" id="applyFilters" style=" width:120px;" (click)="filterApply()">
                                 Apply Filters </button>
                         </div>
 
@@ -149,8 +149,8 @@
                                         </span>
                                     </button>
                                     <div class="dropdown-menu" id="sortMenu">
-                                        <a class="dropdown-item" >Price - Low to High</a>
-                                        <a class="dropdown-item" >Price - High to Low</a>
+                                        <a class="dropdown-item" (click)="sortByPriceAsc()" >Price - Low to High</a>
+                                        <a class="dropdown-item" (click)="sortByPriceDesc()" >Price - High to Low</a>
                                     </div>
                                 </div>
                             </div>
@@ -160,15 +160,21 @@
 
                 <div class="card" style="width: 31%; margin-left: 15px; margin-bottom: 15px; margin-top: 10px; box-shadow: none;"
                     *ngFor="let car of cars">
-                    <img src={{car.imgUrl}} class="card-img-top" alt="...">
+                    <img src={{car.imageUrl}} class="card-img-top" alt="...">
 
                     <div class="card-body" style="margin-top: -30px; text-align: center;">
                         <hr>
-                        <h6>{{car.bookingPrice}}</h6>
+                        <h6>Rs. {{car.bookingPrice}}</h6>
                         <hr>
+
                         <h5 class="card-title">{{car.name}}</h5>
                         <p class="card-text">{{car.numOfSeats}} Seater, 2 Airbag, {{car.transmissionType}}, Model 2017</p>
                         <button class="btn btn-info" id="carView" (click)="runValidation(car.id)" >Quick View</button>
+
+                        <h5 class="card-title">{{car.carName}}</h5>
+                        <h6 class="card-title">{{car.carType}}</h6>
+                        <p class="card-text">{{car.numOfSeats}} Seater, 2 Airbag, {{car.transmissionType}}, {{car.fuelType}}</p>
+                        <a class="btn btn-info" routerLink="/car/{{car.id}}">Quick View</a>
                     </div>
                 </div>
             </div>

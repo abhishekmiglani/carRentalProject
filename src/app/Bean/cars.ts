@@ -1,13 +1,15 @@
 export interface Car {
     id: number,
-    name: string,
+    carName: string,
     location: string,
-    bookingPrice : string,
+    city:string,
+    bookingPrice : number,
     carType:string,
     fuelType:string,
     numOfSeats:number,
-    pricePerKm:string,
+    pricePerKm:number,
     transmissionType:string,
-    imgUrl: string
+    imageUrl: string
+    isBooked:boolean;
     
 }
