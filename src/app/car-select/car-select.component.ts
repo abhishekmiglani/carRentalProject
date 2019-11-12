@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { GetCarsService } from 'app/get-cars.service';
+import { LocationHeaderComponent } from 'app/location-header/location-header.component';
 
 declare var $: any;
 @Component({
@@ -17,6 +18,7 @@ export class CarSelectComponent implements OnInit {
   manualTransmissionFilter: boolean = false;
   petrolFilter: boolean = false;
   dieselFilter: boolean = false;
+  withoutFuel: boolean = true;
 
   transmissionType:string="";
   fuelType:string="";
@@ -37,6 +39,10 @@ export class CarSelectComponent implements OnInit {
 
   constructor(private getCarsService:GetCarsService) {}
   
+
+
+  @ViewChild(LocationHeaderComponent, {static:false} ) locationHeader:LocationHeaderComponent;
+
   ngOnInit() {
 
 

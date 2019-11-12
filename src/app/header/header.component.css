@@ -90,8 +90,9 @@
 	 transition: all 0.3s;
 	 z-index: 9999; 
       position:absolute;
-	  height:0px ;
+	 height: 0px;
 	  color: white;
+	  
 	  
 }
  #sidebar.active {
@@ -183,3 +184,14 @@ agm-map {
   .fa-cog {
 	color:pink;
   }
+  .cursor-pointer {
+	cursor: pointer;
+	text-align: center;
+  }
+  
+  .text-background {
+	margin-left: 1%;
+	text-align: center;
+	padding: 10px;
+  }
+  

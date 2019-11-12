@@ -12,10 +12,10 @@
                         <h6 class="card-text">Select Your Fuel Package</h6>
                         <hr>
                         <div class="rounded border"> <span>
-                                <a (click)="onWithoutFuelSelect()" id="withoutFuel"
-                                    style="width: 49%; margin-right: 1%;"  class="btn">Without Fuel</a>
-                                <a (click)="onWithFuelSelect()" id="withFuel" style="width: 50%;"
-                                    class="btn">With Fuel</a>
+                                <button (click)="onWithoutFuelSelect()" id="withoutFuel"
+                                    style="width: 49%; margin-right: 1%; background-color: #3aa5c5; color: white;"  class="btn">Without Fuel</button>
+                                <button (click)="onWithFuelSelect()" id="withFuel" style="width: 50%;"
+                                    class="btn">With Fuel</button>
                             </span> </div>
 
                         <div style="margin-top: 10px;" *ngIf="!flag">
@@ -135,10 +135,8 @@
                                     *ngIf="dieselFilter">Diesel<span class="pointer far fa-window-close"
                                         style="margin-left: 5px; font-size: 17px;" (click)="hideDiesel()"></span></span>
                             </div>
-                            
                             <br>
                         </div>
-
                         <div class="col-md-3">
                             <div class="btn-group border rounded float-right" style="width: 300px;">
                                 <button style="background-color: lightgrey; width: 100px; " type="button" disabled class="btn">Sort
