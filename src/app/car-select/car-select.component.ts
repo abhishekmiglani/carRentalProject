@@ -33,7 +33,7 @@ export class CarSelectComponent implements OnInit {
     "Hyundai Verna"
   ];
   duplicateCarList: any[];
-  carList:any[]=[];
+  
 
   constructor(private getCarsService:GetCarsService) {}
   
@@ -49,7 +49,9 @@ export class CarSelectComponent implements OnInit {
     });
 
     this.getCarsService.getCars()
-    .subscribe(data => this.cars = data);
+    .subscribe(data => {this.cars = data;
+      this.duplicateCarList=data;});
+    console.log(this.cars)
   }
 
   filter60Color() {
@@ -256,9 +258,26 @@ export class CarSelectComponent implements OnInit {
     this.hideSedan();
   }
 
+  sortByPriceAsc(){
+    for(let i=0;i<this.cars.length;i++){
+      for(let j=0;j<this.cars.length;j++){
+
+      }
+    }
+  }
+  sortByPriceDesc(){
+    console.log("snxbnxbnmbnmxbmxnx");
+    console.log(this.cars.length);
+      console.log(this.duplicateCarList.length)
+  }
+
   filterApply(){
-    console.log("aassss:"+this.carType.length)
-    console.log("bassss:"+this.fuelType)
-    console.log("cassss:"+this.transmissionType)
+    if(this.carType.length!=0){
+      console.log(this.cars.length);
+      console.log(this.duplicateCarList.length)
+    }
+    else{
+
+    }
   }
 }
