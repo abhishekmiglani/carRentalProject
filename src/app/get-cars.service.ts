@@ -10,25 +10,22 @@ import { CardetailComponent } from './cardetail/cardetail.component';
 export class GetCarsService {
   constructor(private http: HttpClient) {}
   
-id:any;
-
-  
-
+ public id:String;
+ public _url2: string;
   private _url: string = "http://localhost:8082/cars";
-
-
   getCars(): Observable<Car[]> {
     return this.http.get<Car[]>(this._url);
   }
 
- getid(carid:any){
+ getid(carid:String){
    this.id = carid;
+   this._url2= "http://localhost:8082/cars"+"/"+this.id;
    console.log("service id" + this.id);
  }
  
-  private _url2: string = "http://localhost:8089/cars/"+this.id;
+ 
 
-  getCarById() : Observable<Car[]>{
-    return this.http.get<Car[]>(this._url2);
+  getCarById() : Observable<Car>{
+    return this.http.get<Car>(this._url2);
   }
 }

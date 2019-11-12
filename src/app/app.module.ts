@@ -28,6 +28,7 @@ import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
+import { GetCarsService } from './get-cars.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { CookieService } from 'ngx-cookie-service';
       libraries: ["places"]
     })
   ],
-  providers: [CookieService],
+  providers: [CookieService,GetCarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
