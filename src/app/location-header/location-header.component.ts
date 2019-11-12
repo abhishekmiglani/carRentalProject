@@ -25,7 +25,6 @@ export class LocationHeaderComponent implements OnInit {
   }
 
   runValidations(){
-    console.log("Not null")
     if(this.value == null || this.valueDrop == null){
       window.alert("Please select date");  
     }
