@@ -33,8 +33,9 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="cardDNumber">Number</label>
                         <div class="col-md-6">
-                            <input id="cardDNumber" name="cardDNumber" type="text" value={{cardLast4Digits}}
-                                placeholder="Enter your card Number" class="form-control" required="">
+                            <input id="cardNum" name="cardNumber" type="text" [(ngModel)]='cardNumber'
+                                placeholder="Enter your card Number" autofocus="" class="form-control" required=""
+                                (input)=enableConfirmButton(cardNumber)>
 
                         </div>
                     </div>
@@ -44,12 +45,12 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="month">Enter expiry</label>
                         <div class="col-md-2">
-                            <input id="month" name="month" type="text" placeholder="MM" value={{validMonth}}
-                                class="form-control" required="">
+                            <input id="month" name="month" type="text" placeholder="MM" [(ngModel)]='validMonth'
+                                class="form-control" required="" (input)=enableConfirmButton(validMonth)>
                         </div>
                         <div class="col-md-2">
-                            <input id="year" name="year" type="text" placeholder="YY" value={{validYear}}
-                                class="form-control" required="">
+                            <input id="year" name="year" type="text" placeholder="YY" [(ngModel)]='validYear'
+                                class="form-control" required="" (input)=enableConfirmButton(validYear)>
                         </div>
                     </div>
                 </div>
@@ -57,7 +58,7 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success">Confirm</button>
+                    <button type="button" class="btn btn-success" disabled="" id="editConfirmButton">Confirm</button>
                 </div>
             </div>
         </div>
