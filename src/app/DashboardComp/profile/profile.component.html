@@ -9,30 +9,36 @@
         </div>
     </div>
     <div class="row shadow-lg p-3 mb-5 bg-white rounded tab">
-        <div class="col-md-1 col-sm-10 col-12 insideTab">
+        <div class="col-md-8 col-sm-8 col-12 insideTab">
             <label for="personalInfoHeading">
                 <h5>Personal Information</h5>
             </label>
             <div class="detail row">
-                <div class="col-md-4 col-sm-4 col-4">
+                <div class="col-md-6 col-sm-6 col-6">
                     <div class="detailLabelName"><label for="fullNameLabel">Full Name</label></div>
                     <div class="detailLabelName"><label for="emailLabel">E-mail ID</label></div>
                     <div class="detailLabelName"><label for="mobileLabel">Mobile Number</label></div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-4">
-                    <div class="detailLabel">
-                        <label for="fullName">{{fullName}}</label>
-                        <label class="hoverLabel">Edit</label></div>
-                    <div class="detailLabel">
-                        <label for="email">{{email}}</label>
-                        <label class="hoverLabel">Edit</label>
+                <div class="col-md-6 col-sm-6 col-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Name" id="userName" name="userName" value={{fullName}} disabled="">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-info">Edit</span>
+                        </div>
                     </div>
-                    <div class="detailLabel">
-                        <input type="text" >
-                        <label class="hoverLabel">Edit</label></div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Mobile" id="mobile" name="mobile" value={{mobile}} disabled="">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-info" >Edit</span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email" value={{email}} disabled="">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-info" >Edit</span>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
-</div>

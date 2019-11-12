@@ -4,11 +4,6 @@
 .detail{
     margin-top: 30px;
 }
-.detailLabel{
-    margin-bottom: 20px;
-    text-align: right;
-
-}
 .labelName{
     margin-right: 10px;
     color:grey;
@@ -22,11 +17,12 @@
 .insideTab{
     padding: 30px;
 }
-.hoverLabel{
-    color: green;
+.input-group-text{
+    color: white;
+
     text-decoration: none ;
     font-style: bold;
-    margin-left: 10px;
+    cursor: pointer;
 }
 .distanceLabel, .hoursLabel{
     margin-right: 15px;
