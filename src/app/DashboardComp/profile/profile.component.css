@@ -22,7 +22,7 @@
 .insideTab{
     padding: 30px;
 }
-a:link , a:visited{
+.hoverLabel{
     color: green;
     text-decoration: none ;
     font-style: bold;
