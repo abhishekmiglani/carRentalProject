@@ -8,9 +8,16 @@ declare var $ :any;
   styleUrls: ['./cities-modal.component.css']
 })
 export class CitiesModalComponent implements OnInit {
-
+    public city:any ="Banglore,India";
   constructor() { }
+ 
   selectBengaluru() {
+
+    this.city="banglore";
+    
+    console.log("banglore");
+    console.log(this.city);
+    
     this.focusBengaluru();
     this.unfocusDelhi();
     this.unfocusHyderabad();
@@ -101,6 +108,7 @@ export class CitiesModalComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("on location " + this.city);
   }
 
 }

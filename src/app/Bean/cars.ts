@@ -1,6 +1,6 @@
 export interface Car {
     id: number,
-    name: string,
+    carName: string,
     location: string,
     bookingPrice : string,
     carType:string,

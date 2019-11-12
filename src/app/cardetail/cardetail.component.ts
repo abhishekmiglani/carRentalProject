@@ -11,6 +11,13 @@ declare var $: any;
   styleUrls: ['./cardetail.component.css']
 })
 export class CardetailComponent implements OnInit {
+
+  location:String;
+  weekday_fare:number = 140;
+  weekend_fare:number = 150;
+  total_fare:number = this.weekday_fare+this.weekend_fare;
+  duration:String="2h";
+
   isLogged:boolean=false;
   
   constructor(private loginServ:LoginService) { }
