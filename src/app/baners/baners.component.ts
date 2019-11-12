@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 declare var $:any;
 
 @Component({
@@ -8,7 +10,7 @@ declare var $:any;
 })
 export class BanersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
 
@@ -25,8 +27,11 @@ export class BanersComponent implements OnInit {
     
     if(a=="Location"){
       
-      confirm("Please select the Location");
-
+   alert("Please select the Location");
+    }
+   else{
+    this.router.navigateByUrl('/car');
+   }
      
     
 
@@ -34,5 +39,4 @@ export class BanersComponent implements OnInit {
 
   }
 
-  }
 
