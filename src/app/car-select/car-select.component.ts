@@ -290,13 +290,13 @@ GetSortOrderDesc(key) {
   }
 
 
-  filterApply(){
-    if(this.carType.length!=0){
+  // filterApply(){
+  //   if(this.carType.length!=0){
       
-    }
-    else{
-      console.log(this.cars.length);
-      console.log(this.duplicateCarList.length);
-    }
-  }
+  //   }
+  //   else{
+  //     console.log(this.cars.length);
+  //     console.log(this.duplicateCarList.length);
+  //   }
+  //}
 }
