@@ -263,27 +263,41 @@ export class CarSelectComponent implements OnInit {
     this.hideSUV();
     this.hideSedan();
   }
+  GetSortOrderAsc(key) {  
+    return (a, b)=> {  
+        if (a[key] > b[key]) {  
+            return 1;  
+        } else if (a[key] < b[key]) {  
+            return -1;  
+        }  
+        return 0;  
+    }  
+}  
 
+GetSortOrderDesc(key) {  
+  return (a, b)=> {  
+      if (a[key] < b[key]) {  
+          return 1;  
+      } else if (a[key] > b[key]) {  
+          return -1;  
+      }  
+      return 0;  
+  }  
+}
   sortByPriceAsc(){
-    for(let i=0;i<this.cars.length;i++){
-      for(let j=0;j<this.cars.length;j++){
-
-      }
-    }
+    this.cars.sort(this.GetSortOrderAsc("bookingPrice"));
   }
   sortByPriceDesc(){
-    console.log("snxbnxbnmbnmxbmxnx");
-    console.log(this.cars.length);
-      console.log(this.duplicateCarList.length)
+    this.cars.sort(this.GetSortOrderDesc("bookingPrice"));
   }
 
   filterApply(){
     if(this.carType.length!=0){
-      console.log(this.cars.length);
-      console.log(this.duplicateCarList.length)
+      
     }
     else{
-
+      console.log(this.cars.length);
+      console.log(this.duplicateCarList.length);
     }
   }
 }
