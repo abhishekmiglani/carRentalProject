@@ -4,6 +4,9 @@ import { FormsModule } from "@angular/forms";
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
+import * as $ from "jquery";
+import * as bootstrap from "bootstrap";
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +27,7 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
 import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
       libraries: ["places"]
     })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
