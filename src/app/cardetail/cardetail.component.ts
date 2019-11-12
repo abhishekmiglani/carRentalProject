@@ -33,7 +33,7 @@ export class CardetailComponent implements OnInit {
   modalState:boolean=false;
   checkBoxState:boolean=false;
  
-  public cars = [];
+  public cars : Car;
 
   changeState(){
     
@@ -56,13 +56,14 @@ export class CardetailComponent implements OnInit {
       document.getElementById("quick").removeAttribute("disabled");
     }
     else{
-      document.getElementById("quick").setAttribute("disabled","true")
+      document.getElementById("quick").setAttribute("disabled","true");
     }
   }
 
   carId: any;
 
   ngOnInit() {
+ 
     $(function() {
       $("#sortMenu a").click(function() {
         console.log("Hey!");
@@ -71,13 +72,16 @@ export class CardetailComponent implements OnInit {
       });
     });
 
-    // this.route.paramMap.subscribe((params : ParamMap) => {
-    //   console.log("id " + params.get('carId'));
-    //   let id = parseInt(params.get('carId'));
-    //   this.carId = id;
-    //   console.log(this.carId);
+    this.route.paramMap.subscribe((params : ParamMap) => {
+      let id = parseInt(params.get('id'));
+      this.carId = id;
+      console.log(this.carId);
 
-    this.getCarsService.getCarById()
-    .subscribe(data => this.cars = data);
+      this.getCarsService.getcarId(this.carId);
+   });
+
+   this.getCarsService.getCarById()
+   .subscribe(data => this.cars = data);
   }
 }
+
