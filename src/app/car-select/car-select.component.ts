@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { GetCarsService } from 'app/get-cars.service';
 import { LocationHeaderComponent } from 'app/location-header/location-header.component';
+import { RouterLink, Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 declare var $: any;
 @Component({
@@ -22,8 +23,9 @@ export class CarSelectComponent implements OnInit {
 
 
   public cars = [];
+  carId: number;
 
-  constructor(private getCarsService : GetCarsService) {}
+  constructor(private getCarsService : GetCarsService, private router : Router) {}
 
   @ViewChild(LocationHeaderComponent, {static:false} ) locationHeader:LocationHeaderComponent;
 
@@ -37,7 +39,7 @@ export class CarSelectComponent implements OnInit {
     });
 
     this.getCarsService.getCars()
-    .subscribe(data => this.cars = data);
+    .subscribe(data => this.cars = data);   
   }
 
   filter60Color() {
@@ -224,13 +226,14 @@ export class CarSelectComponent implements OnInit {
     this.hideSedan();
   }
 
-
-
-
-
-
-
-
-
+  runValidation(carId :number){
+    if(this.locationHeader.value != null && this.locationHeader.valueDrop != null){
+      this.router.navigateByUrl('/car/' + carId);
+    }
+    else{
+      window.alert("Please select Pickup and Drop Date first")
+    }
+    
+  }
 
 }

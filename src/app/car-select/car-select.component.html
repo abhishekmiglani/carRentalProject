@@ -168,7 +168,7 @@
                         <hr>
                         <h5 class="card-title">{{car.name}}</h5>
                         <p class="card-text">{{car.numOfSeats}} Seater, 2 Airbag, {{car.transmissionType}}, Model 2017</p>
-                        <button class="btn btn-info"  id="carView" (click)="this.locationHeader.runValidations()" routerLink="/car/{{car.id}}">Quick View</button>
+                        <button class="btn btn-info" id="carView" (click)="runValidation(car.id)" >Quick View</button>
                     </div>
                 </div>
             </div>

@@ -15,4 +15,10 @@ export class GetCarsService {
   getCars() :Observable<Car[]>{
     return this.http.get<Car[]>(this._url);
   }
+
+  private _url2: string = "http://localhost:8089/cars/id";
+
+  getCarById() : Observable<Car[]>{
+    return this.http.get<Car[]>(this._url2);
+  }
 }
