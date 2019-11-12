@@ -20,6 +20,19 @@ export class BanersComponent implements OnInit {
       });
     });
   }
+  myValidation(){
+    var a=document.getElementById("loc").innerText;
+    
+    if(a=="Location"){
+      
+      confirm("Please select the Location");
+
+     
+    
+
+    }
+
   }
 
+  }
 
