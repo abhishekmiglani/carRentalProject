@@ -23,4 +23,10 @@ export class LocationHeaderComponent implements OnInit {
       });
     });
   }
+
+  runValidations(){
+    if(this.value == null || this.valueDrop == null){
+      window.alert("Please select date");  
+    }
+  }
 }

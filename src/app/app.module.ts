@@ -27,6 +27,7 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
 import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
       libraries: ["places"]
     })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
