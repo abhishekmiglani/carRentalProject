@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable, ViewChild } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Car } from "./Bean/cars";
 import { Observable } from "rxjs";
+import { CardetailComponent } from './cardetail/cardetail.component';
 
 @Injectable({
   providedIn: "root"

@@ -21,22 +21,36 @@ export class CarSelectComponent implements OnInit {
   dieselFilter: boolean = false;
   withoutFuel: boolean = true;
 
-  transmissionType:string="";
-  fuelType:string="";
-  carType:string[]=[];
-  
+  transmissionType: string = "";
+  fuelType: string = "";
+  carType: string[] = [];
+
   public cars = [];
   carId: number;
 
+  carsList = [
+    "Suzuki Baleno",
+    "Swift DZire",
+    "Honda City",
+    "Honda Civic",
+    "Toyota Fortuner",
+    "Hyundai Verna"
+  ];
+  duplicateCarList: any[];
+
+
+  
   constructor(private getCarsService : GetCarsService, private router : Router) {}
 
-  @ViewChild(LocationHeaderComponent, {static:false} ) locationHeader:LocationHeaderComponent;
+
+
+  @ViewChild(LocationHeaderComponent, { static: false }) locationHeader: LocationHeaderComponent;
 
   ngOnInit() {
 
 
-    $(function() {
-      $("#sortMenu a").click(function() {
+    $(function () {
+      $("#sortMenu a").click(function () {
         console.log("Hey!");
         $("#selected").text($(this).text());
         $("#selected").val($(this).text());
@@ -44,7 +58,11 @@ export class CarSelectComponent implements OnInit {
     });
 
     this.getCarsService.getCars()
-    .subscribe(data => this.cars = data);   
+      .subscribe(data => {
+      this.cars = data;
+        this.duplicateCarList = data;
+      });
+    
   }
 
   filter60Color() {
@@ -93,9 +111,9 @@ export class CarSelectComponent implements OnInit {
   toggleHatchback() {
     if (this.hatchbackFilter) {
       this.hatchbackFilter = false;
-      
-      var  indexType=this.carType.indexOf("Hatchback");
-      this.carType.splice(indexType,1);
+
+      var indexType = this.carType.indexOf("Hatchback");
+      this.carType.splice(indexType, 1);
       document.getElementById("hatchback").style.backgroundColor = "white";
       document.getElementById("hatchback").style.color = "black";
     } else {
@@ -114,9 +132,9 @@ export class CarSelectComponent implements OnInit {
 
   toggleSedan() {
     if (this.sedanFilter) {
-      
-      var  indexType=this.carType.indexOf("Sedan");
-      this.carType.splice(indexType,1);
+
+      var indexType = this.carType.indexOf("Sedan");
+      this.carType.splice(indexType, 1);
       this.sedanFilter = false;
       document.getElementById("sedan").style.backgroundColor = "white";
       document.getElementById("sedan").style.color = "black";
@@ -136,9 +154,9 @@ export class CarSelectComponent implements OnInit {
 
   toggleSUV() {
     if (this.suvFilter) {
-      
-      var  indexType=this.carType.indexOf("SUV");
-      this.carType.splice(indexType,1);
+
+      var indexType = this.carType.indexOf("SUV");
+      this.carType.splice(indexType, 1);
       this.suvFilter = false;
       document.getElementById("suv").style.backgroundColor = "white";
       document.getElementById("suv").style.color = "black";
@@ -158,15 +176,15 @@ export class CarSelectComponent implements OnInit {
 
   toggleMiniSUV() {
     if (this.miniSUVFilter) {
-      var  indexType=this.carType.indexOf("Mini SUV");
-      this.carType.splice(indexType,1);
+      var indexType = this.carType.indexOf("Mini SUV");
+      this.carType.splice(indexType, 1);
       this.miniSUVFilter = false;
       document.getElementById("miniSuv").style.backgroundColor = "white";
       document.getElementById("miniSuv").style.color = "black";
     } else {
       this.miniSUVFilter = true;
       this.carType.push("Mini SUV");
-     
+
       document.getElementById("miniSuv").style.backgroundColor = "#3aa5c5";
       document.getElementById("miniSuv").style.color = "white";
     }
@@ -181,7 +199,7 @@ export class CarSelectComponent implements OnInit {
   displayPetrol() {
     this.petrolFilter = true;
     this.dieselFilter = false;
-    this.fuelType="Petrol";
+    this.fuelType = "Petrol";
     document.getElementById("petrol").style.backgroundColor = "#3aa5c5";
     document.getElementById("petrol").style.color = "white";
     document.getElementById("diesel").style.backgroundColor = "white";
@@ -190,6 +208,7 @@ export class CarSelectComponent implements OnInit {
 
   hidePetrol() {
     this.petrolFilter = false;
+    this.fuelType="";
     document.getElementById("petrol").style.backgroundColor = "white";
     document.getElementById("petrol").style.color = "black";
   }
@@ -197,7 +216,7 @@ export class CarSelectComponent implements OnInit {
   displayDiesel() {
     this.petrolFilter = false;
     this.dieselFilter = true;
-    this.fuelType="Diesel";
+    this.fuelType = "Diesel";
     document.getElementById("diesel").style.backgroundColor = "#3aa5c5";
     document.getElementById("diesel").style.color = "white";
     document.getElementById("petrol").style.backgroundColor = "white";
@@ -205,6 +224,7 @@ export class CarSelectComponent implements OnInit {
   }
 
   hideDiesel() {
+    this.fuelType="";
     this.dieselFilter = false;
     document.getElementById("diesel").style.backgroundColor = "white";
     document.getElementById("diesel").style.color = "black";
@@ -212,7 +232,7 @@ export class CarSelectComponent implements OnInit {
   displayManual() {
     this.manualTransmissionFilter = true;
     this.autoTransmissionFilter = false;
-    this.transmissionType="Manual";
+    this.transmissionType = "Manual";
     document.getElementById("manual").style.backgroundColor = "#3aa5c5";
     document.getElementById("manual").style.color = "white";
     document.getElementById("automatic").style.backgroundColor = "white";
@@ -220,6 +240,7 @@ export class CarSelectComponent implements OnInit {
   }
   hideManual() {
     this.manualTransmissionFilter = false;
+    this.transmissionType="";
     document.getElementById("manual").style.backgroundColor = "white";
     document.getElementById("manual").style.color = "black";
   }
@@ -227,7 +248,7 @@ export class CarSelectComponent implements OnInit {
   displayAutomatic() {
     this.autoTransmissionFilter = true;
     this.manualTransmissionFilter = false;
-    this.transmissionType="Automatic";
+    this.transmissionType = "Automatic";
     document.getElementById("manual").style.backgroundColor = "white";
     document.getElementById("manual").style.color = "black";
     document.getElementById("automatic").style.backgroundColor = "#3aa5c5";
@@ -236,6 +257,7 @@ export class CarSelectComponent implements OnInit {
 
   hideAutomatic() {
     this.autoTransmissionFilter = false;
+    this.transmissionType="";
     document.getElementById("automatic").style.backgroundColor = "white";
     document.getElementById("automatic").style.color = "black";
   }
@@ -249,33 +271,152 @@ export class CarSelectComponent implements OnInit {
     this.hidePetrol();
     this.hideSUV();
     this.hideSedan();
+    this.fuelType="";
+    this.transmissionType="";
+    this.cars=this.duplicateCarList;
   }
-  GetSortOrderAsc(key) {  
-    return (a, b)=> {  
-        if (a[key] > b[key]) {  
-            return 1;  
-        } else if (a[key] < b[key]) {  
-            return -1;  
-        }  
-        return 0;  
-    }  
-}  
+  GetSortOrderAsc(key) {
+    return (a, b) => {
+      if (a[key] > b[key]) {
+        return 1;
+      } else if (a[key] < b[key]) {
+        return -1;
+      }
+      return 0;
+    }
+  }
 
-GetSortOrderDesc(key) {  
-  return (a, b)=> {  
-      if (a[key] < b[key]) {  
-          return 1;  
-      } else if (a[key] > b[key]) {  
-          return -1;  
-      }  
-      return 0;  
-  }  
-}
-  sortByPriceAsc(){
+  GetSortOrderDesc(key) {
+    return (a, b) => {
+      if (a[key] < b[key]) {
+        return 1;
+      } else if (a[key] > b[key]) {
+        return -1;
+      }
+      return 0;
+    }
+  }
+  sortByPriceAsc() {
     this.cars.sort(this.GetSortOrderAsc("bookingPrice"));
   }
-  sortByPriceDesc(){
+  sortByPriceDesc() {
     this.cars.sort(this.GetSortOrderDesc("bookingPrice"));
+  }
+
+  carsTemp: any[] = [];
+  filterApply() {
+    this.cars=this.duplicateCarList;
+    if (this.carType.length != 0) {
+      
+
+
+    }
+    else {
+
+      if (this.fuelType == "Petrol") {
+
+        if (this.transmissionType == "") {
+          for (let i = 0,j=0; i < this.cars.length; i++) {
+            if (this.cars[i].fuelType == "Petrol") {
+              this.carsTemp[j] = this.cars[i];
+              j=j+1;
+              
+            }
+          }
+          //console.log("petrol:"+this.carsTemp.length)
+          this.cars=[];
+   
+          this.cars=this.carsTemp;
+        }
+        else if (this.transmissionType == "Manual") {
+          for (let i = 0,j=0; i < this.cars.length; i++) {
+            if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Manual") {
+              this.carsTemp[j] = this.cars[i];
+              j=j+1;
+            }
+          }
+          this.cars=[];
+   
+          this.cars=this.carsTemp;
+        
+        } else if(this.transmissionType=="Automatic"){
+          for (let i = 0,j=0; i < this.cars.length; i++) {
+            if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Automatic") {
+              this.carsTemp[j] = this.cars[i];
+              j=j+1;
+            }
+          }
+          this.cars=[];
+   
+          this.cars=this.carsTemp;
+        }
+
+      }
+      else if (this.fuelType == "Diesel") {
+        if (this.transmissionType == "") {
+          for (let i = 0,j=0; i < this.cars.length; i++) {
+            if (this.cars[i].fuelType == "Diesel") {
+              this.carsTemp[j] = this.cars[i];
+              j=j+1;
+              
+            }
+          }
+          //console.log("petrol:"+this.carsTemp.length)
+          this.cars=[];
+   
+          this.cars=this.carsTemp;
+        }
+        else if (this.transmissionType == "Manual") {
+          for (let i = 0,j=0; i < this.cars.length; i++) {
+            if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Manual") {
+              this.carsTemp[j] = this.cars[i];
+              j=j+1;
+            }
+          }
+          this.cars=[];
+   
+          this.cars=this.carsTemp;
+        
+        } else if (this.transmissionType == "Automatic") {
+          for (let i = 0,j=0; i < this.cars.length; i++) {
+            if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Automatic") {
+              this.carsTemp[j] = this.cars[i];
+              j=j+1;
+            }
+          }
+          this.cars=[];
+   
+          this.cars=this.carsTemp;
+        }
+
+      }
+      else{
+       if (this.transmissionType == "Manual") {
+          for (let i = 0,j=0; i < this.cars.length; i++) {
+            if (this.cars[i].transmissionType == "Manual") {
+              this.carsTemp[j] = this.cars[i];
+              j=j+1;
+            }
+          }
+          this.cars=[];
+   
+          this.cars=this.carsTemp;
+        
+        } else {
+          for (let i = 0,j=0; i < this.cars.length; i++) {
+            if (this.cars[i].transmissionType == "Automatic") {
+              this.carsTemp[j] = this.cars[i];
+              j=j+1;
+            }
+          }
+          this.cars=[];
+   
+          this.cars=this.carsTemp;
+        }
+
+
+      }
+    }
   }
 
 
@@ -290,6 +431,7 @@ GetSortOrderDesc(key) {
   }
 
 
+
   // filterApply(){
   //   if(this.carType.length!=0){
       
@@ -300,3 +442,9 @@ GetSortOrderDesc(key) {
   //   }
   //}
 }
+  
+
+
+
+
+  
