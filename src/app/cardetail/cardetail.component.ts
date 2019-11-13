@@ -60,7 +60,7 @@ export class CardetailComponent implements OnInit {
     }
   }
 
-   carId:any;
+   id:any;
 
   ngOnInit() {
  
@@ -73,11 +73,10 @@ export class CardetailComponent implements OnInit {
     });
 
     this.route.paramMap.subscribe((params : ParamMap) => {
-      let id = parseInt(params.get('id'));
-      this.carId = id;
-      console.log(this.carId);
+      this.id = parseInt(params.get('modelNo'));
+      console.log(this.id);
 
-      this.getCarsService.getcarId(this.carId);
+      this.getCarsService.getId(this.id);
    });
 
    this.getCarsService.getCarById()

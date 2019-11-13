@@ -22,7 +22,7 @@ const routes: Routes = [
             path: "payments" , component: PaymentComponent
           },
           {
-            path: ":id" , component: CardetailComponent
+            path: ":modelNo" , component: CardetailComponent
           }
          
         ]
