@@ -2,8 +2,9 @@ import { Component, OnInit,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { DashboardService } from 'app/dashboard.service';
-
 import { UserCard } from 'app/Bean/UserCard';
+
+
 
 declare var $:any;
 
@@ -14,7 +15,7 @@ declare var $:any;
 })
 export class BanersComponent implements OnInit {
   
-  cards:UserCard[];
+  public cards:any[];
 
   constructor(private router : Router , private cookieservice : CookieService,private userCard:DashboardService) { }
    cookievalue:any;
@@ -33,7 +34,7 @@ export class BanersComponent implements OnInit {
     });
 
     this.cookievalue = this.cookieservice.get('location');
-
+    this.fetchUserCardDetails();
 
 
   }
@@ -58,11 +59,9 @@ export class BanersComponent implements OnInit {
      
     
    }  
-
-    }
     fetchUserCardDetails(){
 
-  this.userCard.getUserCardDetails().subscribe((data)=>this.cards=data)
+    this.userCard.getUserCardDetails().subscribe(data => this.cards = data);
     }
 
 
