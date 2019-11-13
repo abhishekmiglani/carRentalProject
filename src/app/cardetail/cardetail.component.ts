@@ -3,7 +3,7 @@ import { UploadFileComponent } from 'app/upload-file/upload-file.component';
 import { LoginService } from 'app/login.service';
 import { LoginModalComponent } from 'app/login-modal/login-modal.component';
 import { GetCarsService } from 'app/get-cars.service';
-import { Car } from 'app/Bean/cars';
+import { Car } from 'app/Bean/Car';
 import { CarSelectComponent } from 'app/car-select/car-select.component';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -33,7 +33,7 @@ export class CardetailComponent implements OnInit {
   modalState:boolean=false;
   checkBoxState:boolean=false;
  
-  public cars = [];
+  public cars:Car;
 
   changeState(){
     
@@ -60,7 +60,7 @@ export class CardetailComponent implements OnInit {
     }
   }
 
-  carId: any;
+  id: any;
 
   ngOnInit() {
     $(function() {
@@ -71,11 +71,14 @@ export class CardetailComponent implements OnInit {
       });
     });
 
-    // this.route.paramMap.subscribe((params : ParamMap) => {
-    //   console.log("id " + params.get('carId'));
-    //   let id = parseInt(params.get('carId'));
-    //   this.carId = id;
-    //   console.log(this.carId);
+   
+    
+    this.route.paramMap.subscribe((params : ParamMap) => {
+      this.id = parseInt(params.get('modelNo'));
+      console.log(this.id);
+
+      this.getCarsService.getId(this.id);
+   });
 
     this.getCarsService.getCarById()
     .subscribe(data => this.cars = data);

@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { DashboardService } from 'app/dashboard.service';
+import { UserCard } from 'app/Bean/UserCard';
+
+
 
 declare var $:any;
 
@@ -9,8 +14,14 @@ declare var $:any;
   styleUrls: ['./baners.component.css']
 })
 export class BanersComponent implements OnInit {
+  
+  public cards:any[];
 
-  constructor(private router : Router) { }
+  constructor(private router : Router , private cookieservice : CookieService,private userCard:DashboardService) { }
+   cookievalue:any;
+  public message="Banglore,India";
+   
+  
 
   ngOnInit() {
 
@@ -21,7 +32,19 @@ export class BanersComponent implements OnInit {
         $("#loc").val($(this).text());
       });
     });
+
+    this.cookievalue = this.cookieservice.get('location');
+    this.fetchUserCardDetails();
+
+
   }
+
+  location(){
+    this.cookievalue = this.cookieservice.get('location');
+    console.log("message is" + this.message);
+  }
+
+
   myValidation(){
     var a=document.getElementById("loc").innerText;
     
@@ -31,11 +54,16 @@ export class BanersComponent implements OnInit {
     }
    else{
     this.router.navigateByUrl('/car');
+    
    }
      
     
+   }  
+    fetchUserCardDetails(){
 
+    this.userCard.getUserCardDetails().subscribe(data => this.cards = data);
     }
+
 
   }
 
