@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SendDateService } from './send-date.service';
+import { GetLocationService } from './get-location.service';
 
-describe('SendDateService', () => {
+describe('GetLocationService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SendDateService = TestBed.get(SendDateService);
+    const service: GetLocationService = TestBed.get(GetLocationService);
     expect(service).toBeTruthy();
   });
 });

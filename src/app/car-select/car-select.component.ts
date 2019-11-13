@@ -39,8 +39,8 @@ export class CarSelectComponent implements OnInit {
   duplicateCarList: any[];
 
 
-  
-  constructor(private getCarsService : GetCarsService, private router : Router) {}
+
+  constructor(private getCarsService: GetCarsService, private router: Router) { }
 
 
 
@@ -59,10 +59,9 @@ export class CarSelectComponent implements OnInit {
 
     this.getCarsService.getCars()
       .subscribe(data => {
-      this.cars = data;
+        this.cars = data;
         this.duplicateCarList = data;
       });
-    
   }
 
   filter60Color() {
@@ -112,7 +111,7 @@ export class CarSelectComponent implements OnInit {
     if (this.hatchbackFilter) {
       this.hatchbackFilter = false;
 
-      var indexType = this.carType.indexOf("Hatchback");
+      let indexType = this.carType.indexOf("Hatchback");
       this.carType.splice(indexType, 1);
       document.getElementById("hatchback").style.backgroundColor = "white";
       document.getElementById("hatchback").style.color = "black";
@@ -125,6 +124,8 @@ export class CarSelectComponent implements OnInit {
   }
 
   hideHatchback() {
+    let indexType = this.carType.indexOf("Hatchback");
+    this.carType.splice(indexType, 1);
     this.hatchbackFilter = false;
     document.getElementById("hatchback").style.backgroundColor = "white";
     document.getElementById("hatchback").style.color = "black";
@@ -208,7 +209,7 @@ export class CarSelectComponent implements OnInit {
 
   hidePetrol() {
     this.petrolFilter = false;
-    this.fuelType="";
+    this.fuelType = "";
     document.getElementById("petrol").style.backgroundColor = "white";
     document.getElementById("petrol").style.color = "black";
   }
@@ -224,7 +225,7 @@ export class CarSelectComponent implements OnInit {
   }
 
   hideDiesel() {
-    this.fuelType="";
+    this.fuelType = "";
     this.dieselFilter = false;
     document.getElementById("diesel").style.backgroundColor = "white";
     document.getElementById("diesel").style.color = "black";
@@ -240,7 +241,7 @@ export class CarSelectComponent implements OnInit {
   }
   hideManual() {
     this.manualTransmissionFilter = false;
-    this.transmissionType="";
+    this.transmissionType = "";
     document.getElementById("manual").style.backgroundColor = "white";
     document.getElementById("manual").style.color = "black";
   }
@@ -257,7 +258,7 @@ export class CarSelectComponent implements OnInit {
 
   hideAutomatic() {
     this.autoTransmissionFilter = false;
-    this.transmissionType="";
+    this.transmissionType = "";
     document.getElementById("automatic").style.backgroundColor = "white";
     document.getElementById("automatic").style.color = "black";
   }
@@ -271,12 +272,12 @@ export class CarSelectComponent implements OnInit {
     this.hidePetrol();
     this.hideSUV();
     this.hideSedan();
-    this.fuelType="";
-    this.transmissionType="";
-    this.cars=this.duplicateCarList;
+    this.fuelType = "";
+    this.transmissionType = "";
+    this.cars = this.duplicateCarList;
+    this.carType = [];
+    this.carsTemp = [];
   }
-
-
   GetSortOrderAsc(key) {
     return (a, b) => {
       if (a[key] > b[key]) {
@@ -306,115 +307,580 @@ export class CarSelectComponent implements OnInit {
   }
 
   carsTemp: any[] = [];
-
-
   filterApply() {
-    this.cars=this.duplicateCarList;
+    this.cars = this.duplicateCarList;
+    this.carsTemp = [];
     if (this.carType.length != 0) {
-    
+
+
+      for (let m = 0; m < this.carType.length; m++) {
+        if (this.carType[m] == "Hatchback") {
+          if (this.fuelType == "Petrol") {
+            this.carsTemp = [];
+            if (this.transmissionType == "") {
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+
+            }
+            else if (this.transmissionType == "Manual") {
+              this.carsTemp = [];
+              for (let i = 0; i < this.cars.length; i++) {
+
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+                  console.log("cars temp:" + this.carsTemp.length)
+                }
+              }
+
+
+
+            } else if (this.transmissionType == "Automatic") {
+              this.carsTemp = [];
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            }
+
+          }
+          else if (this.fuelType == "Diesel") {
+            if (this.transmissionType == "") {
+              this.carsTemp = [];
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+            }
+            else if (this.transmissionType == "Manual") {
+              this.carsTemp = [];
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            } else if (this.transmissionType == "Automatic") {
+              this.carsTemp = [];
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+
+          }
+          else {
+            if (this.transmissionType == "Manual") {
+              this.carsTemp = [];
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            } else if (this.transmissionType == "Automatic") {
+              this.carsTemp = [];
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+            else {
+              this.carsTemp = [];
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].carType == "Hatchback") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+
+
+          }
+
+
+        }
+
+        if (this.carType[m] == "Sedan") {
+          if (this.fuelType == "Petrol") {
+
+            if (this.transmissionType == "") {
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+
+            }
+            else if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            }
+
+          }
+          else if (this.fuelType == "Diesel") {
+            if (this.transmissionType == "") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+            }
+            else if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+
+          }
+          else {
+            if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+            else {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].carType == "Sedan") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+
+
+            }
+
+
+          }
+
+
+        }
+
+
+        if (this.carType[m] == "SUV") {
+          if (this.fuelType == "Petrol") {
+
+            if (this.transmissionType == "") {
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+
+            }
+            else if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            }
+
+          }
+          else if (this.fuelType == "Diesel") {
+            if (this.transmissionType == "") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+            }
+            else if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+
+          }
+          else {
+            if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+            else {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].carType == "SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+
+
+            }
+
+
+          }
+
+
+        }
+
+
+        if (this.carType[m] == "Mini SUV") {
+          if (this.fuelType == "Petrol") {
+
+            if (this.transmissionType == "") {
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+
+            }
+            else if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            }
+
+          }
+          else if (this.fuelType == "Diesel") {
+            if (this.transmissionType == "") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+            }
+            else if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+
+          }
+          else {
+            if (this.transmissionType == "Manual") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+
+            } else if (this.transmissionType == "Automatic") {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+                }
+              }
+
+            }
+            else {
+
+              for (let i = 0; i < this.cars.length; i++) {
+                if (this.cars[i].carType == "Mini SUV") {
+                  this.carsTemp.push(this.cars[i]);
+
+
+                }
+              }
+
+
+
+            }
+
+
+          }
+
+
+        }
+
+
+      }
+
+      this.cars = this.carsTemp;
 
     }
-    else {
 
+
+
+
+
+    else {
+      console.log("car type:" + this.carType.length)
       if (this.fuelType == "Petrol") {
 
         if (this.transmissionType == "") {
-          for (let i = 0,j=0; i < this.cars.length; i++) {
+          for (let i = 0, j = 0; i < this.cars.length; i++) {
             if (this.cars[i].fuelType == "Petrol") {
               this.carsTemp[j] = this.cars[i];
-              j=j+1;
-              
+              j = j + 1;
+
             }
           }
           //console.log("petrol:"+this.carsTemp.length)
-          this.cars=[];
-   
-          this.cars=this.carsTemp;
+          this.cars = [];
+
+          this.cars = this.carsTemp;
         }
         else if (this.transmissionType == "Manual") {
-          for (let i = 0,j=0; i < this.cars.length; i++) {
+          for (let i = 0, j = 0; i < this.cars.length; i++) {
             if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Manual") {
               this.carsTemp[j] = this.cars[i];
-              j=j+1;
+              j = j + 1;
             }
           }
-          this.cars=[];
-   
-          this.cars=this.carsTemp;
-        
-        } else if(this.transmissionType=="Automatic"){
-          for (let i = 0,j=0; i < this.cars.length; i++) {
+          this.cars = [];
+
+          this.cars = this.carsTemp;
+
+        } else if (this.transmissionType == "Automatic") {
+          for (let i = 0, j = 0; i < this.cars.length; i++) {
             if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Automatic") {
               this.carsTemp[j] = this.cars[i];
-              j=j+1;
+              j = j + 1;
             }
           }
-          this.cars=[];
-   
-          this.cars=this.carsTemp;
+          this.cars = [];
+
+          this.cars = this.carsTemp;
         }
 
       }
       else if (this.fuelType == "Diesel") {
         if (this.transmissionType == "") {
-          for (let i = 0,j=0; i < this.cars.length; i++) {
+          for (let i = 0, j = 0; i < this.cars.length; i++) {
             if (this.cars[i].fuelType == "Diesel") {
               this.carsTemp[j] = this.cars[i];
-              j=j+1;
-              
+              j = j + 1;
+
             }
           }
           //console.log("petrol:"+this.carsTemp.length)
-          this.cars=[];
-   
-          this.cars=this.carsTemp;
+          this.cars = [];
+
+          this.cars = this.carsTemp;
         }
         else if (this.transmissionType == "Manual") {
-          for (let i = 0,j=0; i < this.cars.length; i++) {
+          for (let i = 0, j = 0; i < this.cars.length; i++) {
             if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Manual") {
               this.carsTemp[j] = this.cars[i];
-              j=j+1;
+              j = j + 1;
             }
           }
-          this.cars=[];
-   
-          this.cars=this.carsTemp;
-        
+          this.cars = [];
+
+          this.cars = this.carsTemp;
+
         } else if (this.transmissionType == "Automatic") {
-          for (let i = 0,j=0; i < this.cars.length; i++) {
+          for (let i = 0, j = 0; i < this.cars.length; i++) {
             if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Automatic") {
               this.carsTemp[j] = this.cars[i];
-              j=j+1;
+              j = j + 1;
             }
           }
-          this.cars=[];
-   
-          this.cars=this.carsTemp;
+          this.cars = [];
+
+          this.cars = this.carsTemp;
         }
 
       }
-      else{
-       if (this.transmissionType == "Manual") {
-          for (let i = 0,j=0; i < this.cars.length; i++) {
+      else {
+        if (this.transmissionType == "Manual") {
+          for (let i = 0, j = 0; i < this.cars.length; i++) {
             if (this.cars[i].transmissionType == "Manual") {
               this.carsTemp[j] = this.cars[i];
-              j=j+1;
+              j = j + 1;
             }
           }
-          this.cars=[];
-   
-          this.cars=this.carsTemp;
-        
+          this.cars = [];
+
+          this.cars = this.carsTemp;
+
         } else {
-          for (let i = 0,j=0; i < this.cars.length; i++) {
+          for (let i = 0, j = 0; i < this.cars.length; i++) {
             if (this.cars[i].transmissionType == "Automatic") {
               this.carsTemp[j] = this.cars[i];
-              j=j+1;
+              j = j + 1;
             }
           }
-          this.cars=[];
-   
-          this.cars=this.carsTemp;
+          this.cars = [];
+
+          this.cars = this.carsTemp;
         }
 
 
@@ -423,31 +889,22 @@ export class CarSelectComponent implements OnInit {
   }
 
 
-  runValidation(carId :number){
-    if(this.locationHeader.value != null && this.locationHeader.valueDrop != null){
+  runValidation(carId: number) {
+    if (this.locationHeader.value != null && this.locationHeader.valueDrop != null) {
       this.router.navigateByUrl('/car/' + carId);
     }
-    else{
+    else {
       window.alert("Please select Pickup and Drop Date first")
     }
-    
+
   }
 
 
 
-  // filterApply(){
-  //   if(this.carType.length!=0){
-      
-  //   }
-  //   else{
-  //     console.log(this.cars.length);
-  //     console.log(this.duplicateCarList.length);
-  //   }
-  //}
+
 }
-  
 
 
 
 
-  
+

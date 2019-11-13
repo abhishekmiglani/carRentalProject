@@ -1,12 +1,12 @@
-<app-location-header></app-location-header>
-<div class="container-fluid row" style="margin-top: 110px;">
-       
+<div class="container-fluid row">
+  
 
       <!-- <div class="checkout-details"> -->
       <div class="left-pane col-md-8" style="display: flex">
           <div class="left-wrapper box-shadow "
               style="  border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4)">
             
+
               <div style="padding : 20px" class="checkout-vehicle-template">
                   <div class="listing-car-body" style="display: flex">
                       
@@ -15,16 +15,18 @@
                           <div class="car-name">
                               <h3>{{cars.carName}}</h3>
                           </div>
+
+
                           <div class="features car-features" style="padding:1px">
                               <!-- <div style="float:right"><img src=" demoCar.png " height=80px width="50px"></div> -->
                               <!-- <div class="car-features"> -->
                               <span>
                                   <br><br><i class='fas fa-gas-pump' ></i>
-                                  Petrol
+                                   {{cars.fuelType}}
                               </span>
                               <span>
                                   <i class="fa fa-users"></i>
-                                  5 Seater
+                                  {{cars.numOfSeats}}Seater
                               </span>
                               <span>
 
@@ -43,9 +45,12 @@
                       </div>
                       
                       <div class="img-section " >
-                          <img class="load-img float-right" src="./assets/demoCar.png">
+                          <img class="load-img float-right" src={{cars.imageUrl}}>
                               <!-- style="margin-left: 70%;margin-top:-80px;height:125px;width:180px; "> -->
+                            
                       </div>
+                      
+
                   </div>
               </div>
 
@@ -95,6 +100,7 @@
                           Pick up & Drop
                       </div>
                       <div class="start-time " style="display: flex">
+                          
 
                               <div class="date-time-format">
 
@@ -106,13 +112,21 @@
                                           11:30 PM
                                       </div>
                                   </div>
-                              </div>                          
+                              </div>
+
+                          
+
+                          
                               <div class="trip-hour " style="display: flex ; justify-content : center">
                                   <span style="color: #77899b">
                                       Duration
                                   </span>
                                   {{duration}}
                               </div>
+
+                         
+
+                          
 
                               <div class="date-time-format" style="display: flex;align-items: flex-end" >
                                   <div class="left-section">20</div>
@@ -125,7 +139,20 @@
                                       </div>
                                   </div>
                               </div>
+
+                              
+
+
+
+                          
+
+
+
                       </div>
+                     
+
+
+
                   </div>
                   <div class="venue-detail-block">
                       <div class="pickup-venue-block">
@@ -279,7 +306,6 @@
 
                           </label>
                       </form>
-                      
                   </div>
               </div>
           </div>

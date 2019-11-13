@@ -1,6 +1,5 @@
 <div>
-  <app-header></app-header>
-
+  <app-header (childEvent)="message=$event"></app-header>
 </div>
 
 
@@ -20,11 +19,11 @@
 <div class="row col-sm-12">
   <div class="col-md-12 textalign col-sm-12">
     <div class="btn-group dropright">
-      <button type="button" class="btn  "  id="myDrop" style="background-color:#3aa5c5;color: white;">
-        <span id="loc">Location</span>
+      <button type="button" class="btn  " (click)="location()" id="myDrop" style="background-color:#3aa5c5;color: white; ">
+        <span id="loc">{{message}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </button>
-      <button type="button" class="btn  dropdown-toggle dropdown-toggle-split btn-lg" data-toggle="dropdown"
+      <!-- <button type="button" class="btn  dropdown-toggle dropdown-toggle-split btn-lg" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false" style="background-color:#3aa5c5">
         <span class="sr-only">Toggle Dropright</span> 
       </button>
@@ -41,7 +40,7 @@
         <a id="drop1" class="dropdown-item">Pune</a>
 
 
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
