@@ -6,13 +6,13 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardService {
+export class DashboardService{
 
   constructor(private http: HttpClient ) {
   }
 
   getWalletDetails(): Observable<Wallet>{
-    let url = "";
+    let url = "http://localhost:8088/wallet/11";
     return this.http.get<Wallet>(url);
   }
 }
