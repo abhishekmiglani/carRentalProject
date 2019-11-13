@@ -51,7 +51,7 @@
 
                         <div style="margin-bottom: 25px;">
                             <span style="font-size: 17px; font-weight: 600;">Filter</span>
-                            <a (click)="clearAll()" href="#" class="float-right">Clear All</a>
+                            <a (click)="clearAll()" class="float-right">Clear All</a>
                         </div>
                         <p style="font-size: 13px;">Car Type</p>
 
@@ -169,7 +169,7 @@
                         <h5 class="card-title">{{car.carName}}</h5>
                         <h6 class="card-title">{{car.carType}}</h6>
                         <p class="card-text">{{car.numOfSeats}} Seater, 2 Airbag, {{car.transmissionType}}, {{car.fuelType}}</p>
-                        <a class="btn btn-info" routerLink="/car/{{car.id}}">Quick View</a>
+                        <button class="btn btn-info" (click)="runValidation(car.id)">Quick View</button>
                     </div>
                 </div>
             </div>

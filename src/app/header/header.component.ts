@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit  {
   loginState:boolean=false;
 
   dislplayNav = false;
-   city:any;
+   city:any ="Banglore,India";
   latitude: number;
   longitude: number;
   zoom: number;
@@ -156,6 +156,7 @@ export class HeaderComponent implements OnInit  {
 
   selectMumbai() {
     this.city="Mumbai,India";
+
     this.focusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
