@@ -9,10 +9,6 @@ import { Observable } from "rxjs";
 export class GetCarsService {
   constructor(private http: HttpClient) { }
 
-
-  public _url2: string;
-  constructor(private http: HttpClient) {}
-
   public id : number;
 
 
