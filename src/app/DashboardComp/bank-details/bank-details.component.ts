@@ -18,6 +18,8 @@ export class BankDetailsComponent implements OnInit {
   isCardSaved = true;
   cardLogo = "/assets/masterCardLogo.png"
   items = [1, 2];
+
+  
   constructor() { }
 
   cardController() {

@@ -1,4 +1,4 @@
-<div class="">
+<div class="container">
     <div>
         <img src="/assets/user.png" alt="user">
         <!-- <h3>{{fullName}}</h3> --><br><br>
@@ -9,33 +9,39 @@
         </div>
     </div>
     <div class="row shadow-lg p-3 mb-5 bg-white rounded tab">
-        <div class="col-md-8 col-sm-8 col-12 insideTab">
+        <div class="col-md-10 col-sm-10 col-12 insideTab">
             <label for="personalInfoHeading">
                 <h5>Personal Information</h5>
             </label>
             <div class="detail row">
                 <div class="col-md-6 col-sm-6 col-6">
                     <div class="detailLabelName"><label for="fullNameLabel">Full Name</label></div>
-                    <div class="detailLabelName"><label for="emailLabel">E-mail ID</label></div>
                     <div class="detailLabelName"><label for="mobileLabel">Mobile Number</label></div>
+                    <div class="detailLabelName"><label for="emailLabel">E-mail ID</label></div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-6">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Name" id="userName" name="userName" value={{fullName}} disabled="">
+                        <input type="text" class="form-control" placeholder="Name" id="userName" name="userName"
+                            value={{fullName}} disabled="">
                         <div class="input-group-append">
-                            <span class="input-group-text bg-info">Edit</span>
+                            <button class="input-group-text bg-warning" id="nameEditBtn"
+                                (click)="editButtonHandler('userName','nameEditBtn')">Edit</button>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Mobile" id="mobile" name="mobile" value={{mobile}} disabled="">
+                        <input type="text" class="form-control" placeholder="Mobile" id="mobile" name="mobile"
+                            value={{mobile}} disabled="">
                         <div class="input-group-append">
-                            <span class="input-group-text bg-info" >Edit</span>
+                            <button class="input-group-text bg-warning" id="mobileEditBtn"
+                                (click)="editButtonHandler('mobile','mobileEditBtn')">Edit</button>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Email" id="email" name="email" value={{email}} disabled="">
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email"
+                            value={{email}} disabled="">
                         <div class="input-group-append">
-                            <span class="input-group-text bg-info" >Edit</span>
+                            <button class="input-group-text bg-warning" id="emailEditBtn"
+                                (click)="editButtonHandler('email','emailEditBtn')">Edit</button>
                         </div>
                     </div>
                 </div>

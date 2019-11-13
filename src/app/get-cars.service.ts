@@ -9,8 +9,10 @@ import { CardetailComponent } from './cardetail/cardetail.component';
 })
 export class GetCarsService {
 
+
   public _url2: string;
   constructor(private http: HttpClient) {}
+
 
   public id : number;
   private _url: string = "http://localhost:8082/cars";
