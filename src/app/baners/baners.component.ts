@@ -1,11 +1,9 @@
 import { Component, OnInit,  } from '@angular/core';
 import { Router } from '@angular/router';
-<<<<<<< Updated upstream
 import { CookieService } from 'ngx-cookie-service';
-=======
 import { DashboardService } from 'app/dashboard.service';
+
 import { UserCard } from 'app/Bean/UserCard';
->>>>>>> Stashed changes
 
 declare var $:any;
 
@@ -18,14 +16,11 @@ export class BanersComponent implements OnInit {
   
   cards:UserCard[];
 
-<<<<<<< Updated upstream
-  constructor(private router : Router , private cookieservice : CookieService) { }
+  constructor(private router : Router , private cookieservice : CookieService,private userCard:DashboardService) { }
    cookievalue:any;
   public message="Banglore,India";
-=======
-    constructor(private router : Router,private userCard:DashboardService) { }
+   
   
->>>>>>> Stashed changes
 
   ngOnInit() {
 
@@ -58,17 +53,14 @@ export class BanersComponent implements OnInit {
     }
    else{
     this.router.navigateByUrl('/car');
-<<<<<<< Updated upstream
     
    }
      
     
-=======
    }  
 
     }
     fetchUserCardDetails(){
->>>>>>> Stashed changes
 
   this.userCard.getUserCardDetails().subscribe((data)=>this.cards=data)
     }
