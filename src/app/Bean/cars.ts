@@ -1,5 +1,5 @@
 export interface Car {
-    modelNo: number,
+    id: number,
     carName: string,
     location: string,
     city:string,

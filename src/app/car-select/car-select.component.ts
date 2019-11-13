@@ -62,7 +62,6 @@ export class CarSelectComponent implements OnInit {
         this.cars = data;
         this.duplicateCarList = data;
       });
-
   }
 
   filter60Color() {
@@ -279,8 +278,6 @@ export class CarSelectComponent implements OnInit {
     this.carType = [];
     this.carsTemp = [];
   }
-
-
   GetSortOrderAsc(key) {
     return (a, b) => {
       if (a[key] > b[key]) {
@@ -310,8 +307,6 @@ export class CarSelectComponent implements OnInit {
   }
 
   carsTemp: any[] = [];
-
-
   filterApply() {
     this.cars = this.duplicateCarList;
     this.carsTemp = [];
