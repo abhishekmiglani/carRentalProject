@@ -3,7 +3,7 @@ import { UploadFileComponent } from 'app/upload-file/upload-file.component';
 import { LoginService } from 'app/login.service';
 import { LoginModalComponent } from 'app/login-modal/login-modal.component';
 import { GetCarsService } from 'app/get-cars.service';
-import { Car } from 'app/Bean/cars';
+import { Car } from 'app/Bean/Car';
 import { CarSelectComponent } from 'app/car-select/car-select.component';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
