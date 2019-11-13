@@ -1,7 +1,7 @@
 <div>
     <div class="wallet-balance shadow-sm p-3 mb-3 bg-white rounded">
         <label>wallet Balance :</label>
-        <label for="walletBalance">&nbsp;{{amount | currency: 'INR':true}}</label>
+        <label for="walletBalance">&nbsp;{{balance | currency: 'INR':true}}</label>
     </div>
     <div class="wallet-transaction shadow-sm p-3 mb-5 bg-white rounded">
         <div *ngIf="noTransaction" class="no-transaction">
