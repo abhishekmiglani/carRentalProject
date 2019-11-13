@@ -173,7 +173,7 @@ export class HeaderComponent implements OnInit  {
   }
 
   selectHyderabad(){
-    this.city="Hyderabadh,India"
+    this.city="Hyderabad,India"
     this.focusHyderabad();
     this.unfocusMumbai();
     this.unfocusDelhi();
