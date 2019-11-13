@@ -46,6 +46,7 @@ export class BanersComponent implements OnInit {
     }
    else{
     this.router.navigateByUrl('/car');
+    
    }
      
     
