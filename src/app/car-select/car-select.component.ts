@@ -275,6 +275,8 @@ export class CarSelectComponent implements OnInit {
     this.transmissionType="";
     this.cars=this.duplicateCarList;
   }
+
+
   GetSortOrderAsc(key) {
     return (a, b) => {
       if (a[key] > b[key]) {
@@ -304,11 +306,12 @@ export class CarSelectComponent implements OnInit {
   }
 
   carsTemp: any[] = [];
+
+
   filterApply() {
     this.cars=this.duplicateCarList;
     if (this.carType.length != 0) {
-      
-
+    
 
     }
     else {

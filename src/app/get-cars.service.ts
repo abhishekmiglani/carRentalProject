@@ -7,9 +7,7 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class GetCarsService {
-  constructor(private http: HttpClient) {}
-
-
+  
 
   constructor(private http: HttpClient) { }
 
