@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocationService } from 'app/location.service';
 
 declare var $:any;
 
@@ -11,14 +10,11 @@ declare var $:any;
 })
 export class BanersComponent implements OnInit {
 
-  constructor(private router : Router,private data:LocationService) { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
 
     $(function() {
-
-      this.data.currentMessage.subscribe(message=>this.message=message)
-
       $("#dropLocation a").click(function() {
         console.log("Hey!");
         $("#loc").text($(this).text());
@@ -26,12 +22,6 @@ export class BanersComponent implements OnInit {
       });
     });
   }
-
-  newMessage(){
-    this.data.changedMessage("i am from ist child")
-  }
-
-  
   myValidation(){
     var a=document.getElementById("loc").innerText;
     

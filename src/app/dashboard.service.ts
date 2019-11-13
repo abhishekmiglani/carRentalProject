@@ -11,8 +11,8 @@ export class DashboardService {
   constructor(private http: HttpClient ) {
   }
 
-  getWalletDetails(): Observable<Wallet[]>{
+  getWalletDetails(): Observable<Wallet>{
     let url = "";
-    return this.http.get<Wallet[]>(url);
+    return this.http.get<Wallet>(url);
   }
 }
