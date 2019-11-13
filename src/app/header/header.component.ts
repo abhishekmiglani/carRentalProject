@@ -3,6 +3,7 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
 import { LoginService } from 'app/login.service';
 import { CitiesModalComponent } from 'app/cities-modal/cities-modal.component';
 import { CookieService } from 'ngx-cookie-service';
+import { LocationService } from 'app/location.service';
 // import {} from '@types/googlemaps';
 @Component({
   selector: 'app-header',
@@ -10,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit  {
+  message:String;
  
   //  ngAfterViewInit() {
   //   this.cities = this.citiesModal.city;
@@ -39,7 +41,7 @@ export class HeaderComponent implements OnInit  {
   
   
   constructor(private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone, private loginServ:LoginService, private cookieservice : CookieService) { }
+    private ngZone: NgZone, private loginServ:LoginService, private cookieservice : CookieService)  { }
 
   displaySideNavbar(){
     console.log(this.dislplayNav);
@@ -62,6 +64,11 @@ export class HeaderComponent implements OnInit  {
   }
  
   ngOnInit() {
+
+
+
+
+
     this.isLogged();  //for login and dashboard switch
      this.cookieservice.set('location','cities');
      this.cookievalue = this.cookieservice.get('location');
@@ -92,6 +99,8 @@ export class HeaderComponent implements OnInit  {
       });
     });
   }
+
+ 
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -128,6 +137,9 @@ export class HeaderComponent implements OnInit  {
  
     });
   }
+
+
+
   selectBengaluru() {
 
     this.city="Bengaluru,India";
