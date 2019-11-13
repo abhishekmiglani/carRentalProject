@@ -8,7 +8,7 @@ import { CardetailComponent } from './cardetail/cardetail.component';
   providedIn: "root"
 })
 export class GetCarsService {
-  
+
   public _url2: string;
   constructor(private http: HttpClient) {}
 
