@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 declare var $:any;
 
@@ -10,7 +11,9 @@ declare var $:any;
 })
 export class BanersComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router , private cookieservice : CookieService) { }
+   cookievalue:any;
+  public message="Banglore,India";
 
   ngOnInit() {
 
@@ -21,7 +24,19 @@ export class BanersComponent implements OnInit {
         $("#loc").val($(this).text());
       });
     });
+
+    this.cookievalue = this.cookieservice.get('location');
+
+
+
   }
+
+  location(){
+    this.cookievalue = this.cookieservice.get('location');
+    console.log("message is" + this.message);
+  }
+
+
   myValidation(){
     var a=document.getElementById("loc").innerText;
     
@@ -36,6 +51,7 @@ export class BanersComponent implements OnInit {
     
 
     }
+
 
   }
 
