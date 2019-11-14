@@ -9,8 +9,9 @@ import { Observable } from "rxjs";
 export class GetCarsService {
   constructor(private http: HttpClient) { }
 
-  public id : number;
-  public _url2:string;
+  public id: number;
+  public _url2: string;
+  public package: any = "No Package"
 
   private _url: string = "http://localhost:8082/cars";
 
@@ -18,13 +19,23 @@ export class GetCarsService {
   getCars(): Observable<Car[]> {
     return this.http.get<Car[]>(this._url);
   }
-  getId(carId: number){
-    this.id = carId;
-    this._url2= "http://localhost:8082/cars/"+this.id;
-    console.log(this.id);
-}
 
-  getCarById() : Observable<Car>{
+  getId(carId: number) {
+    this.id = carId;
+    this._url2 = "http://localhost:8082/cars/" + this.id;
+    console.log(this.id);
+  }
+
+  getCarById(): Observable<Car> {
     return this.http.get<Car>(this._url2);
+  }
+
+  setCarPackage(carPackage : any){
+      this.package = carPackage;
+      this.getCarPackage();
+  }
+
+  getCarPackage(){
+      return this.package;
   }
 }

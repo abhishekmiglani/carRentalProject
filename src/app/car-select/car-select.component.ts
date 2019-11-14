@@ -27,28 +27,14 @@ export class CarSelectComponent implements OnInit {
 
   public cars = [];
   carId: number;
+  public package;
 
-  carsList = [
-    "Suzuki Baleno",
-    "Swift DZire",
-    "Honda City",
-    "Honda Civic",
-    "Toyota Fortuner",
-    "Hyundai Verna"
-  ];
   duplicateCarList: any[];
 
-
-
   constructor(private getCarsService: GetCarsService, private router: Router) { }
-
-
-
   @ViewChild(LocationHeaderComponent, { static: false }) locationHeader: LocationHeaderComponent;
 
   ngOnInit() {
-
-
     $(function () {
       $("#sortMenu a").click(function () {
         console.log("Hey!");
@@ -71,6 +57,7 @@ export class CarSelectComponent implements OnInit {
     document.getElementById("120km").style.color = "black";
     document.getElementById("180km").style.backgroundColor = "white";
     document.getElementById("180km").style.color = "black";
+    this.getCarsService.setCarPackage('60 kms');
   }
 
   filter120Color() {
@@ -80,6 +67,7 @@ export class CarSelectComponent implements OnInit {
     document.getElementById("180km").style.backgroundColor = "white";
     document.getElementById("60km").style.color = "black";
     document.getElementById("180km").style.color = "black";
+    this.getCarsService.setCarPackage('120 kms');
   }
 
   filter180Color() {
@@ -89,6 +77,7 @@ export class CarSelectComponent implements OnInit {
     document.getElementById("120km").style.backgroundColor = "white";
     document.getElementById("60km").style.color = "black";
     document.getElementById("120km").style.color = "black";
+    this.getCarsService.setCarPackage('180 kms');
   }
 
   onWithoutFuelSelect() {
@@ -524,21 +513,11 @@ export class CarSelectComponent implements OnInit {
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].carType == "Sedan") {
                   this.carsTemp.push(this.cars[i]);
-
-
                 }
               }
-
-
-
             }
-
-
           }
-
-
         }
-
 
         if (this.carType[m] == "SUV") {
           if (this.fuelType == "Petrol") {
@@ -547,37 +526,26 @@ export class CarSelectComponent implements OnInit {
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].fuelType == "Petrol" && this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
-
                 }
               }
-
-
             }
-            else if (this.transmissionType == "Manual") {
 
+            else if (this.transmissionType == "Manual") {
               for (let i = 0; i < this.cars.length; i++) {
 
                 if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
                 }
               }
-
-
-
-            } else if (this.transmissionType == "Automatic") {
+            } 
+            else if (this.transmissionType == "Automatic") {
 
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
                 }
               }
-
-
             }
-
           }
           else if (this.fuelType == "Diesel") {
             if (this.transmissionType == "") {
@@ -585,75 +553,50 @@ export class CarSelectComponent implements OnInit {
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].fuelType == "Diesel" && this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
-
                 }
               }
 
             }
             else if (this.transmissionType == "Manual") {
-
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
                 }
               }
-
-
-            } else if (this.transmissionType == "Automatic") {
-
+            } 
+            else if (this.transmissionType == "Automatic") {
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].fuelType == "Diesel" && this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
                 }
               }
-
             }
-
           }
+
           else {
             if (this.transmissionType == "Manual") {
-
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
                 }
               }
-
-
-            } else if (this.transmissionType == "Automatic") {
-
+            } 
+            else if (this.transmissionType == "Automatic") {
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].transmissionType == "Automatic" && this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
                 }
               }
-
             }
             else {
-
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].carType == "SUV") {
                   this.carsTemp.push(this.cars[i]);
-
-
                 }
               }
-
-
-
             }
-
-
           }
-
-
         }
-
 
         if (this.carType[m] == "Mini SUV") {
           if (this.fuelType == "Petrol") {
@@ -662,23 +605,16 @@ export class CarSelectComponent implements OnInit {
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].fuelType == "Petrol" && this.cars[i].carType == "Mini SUV") {
                   this.carsTemp.push(this.cars[i]);
-
-
                 }
               }
-
-
             }
+
             else if (this.transmissionType == "Manual") {
-
               for (let i = 0; i < this.cars.length; i++) {
-
                 if (this.cars[i].fuelType == "Petrol" && this.cars[i].transmissionType == "Manual" && this.cars[i].carType == "Mini SUV") {
                   this.carsTemp.push(this.cars[i]);
-
                 }
               }
-
 
 
             } else if (this.transmissionType == "Automatic") {
@@ -754,31 +690,14 @@ export class CarSelectComponent implements OnInit {
               for (let i = 0; i < this.cars.length; i++) {
                 if (this.cars[i].carType == "Mini SUV") {
                   this.carsTemp.push(this.cars[i]);
-
-
                 }
               }
-
-
-
             }
-
-
           }
-
-
         }
-
-
       }
-
       this.cars = this.carsTemp;
-
     }
-
-
-
-
 
     else {
       console.log("car type:" + this.carType.length)
@@ -887,8 +806,6 @@ export class CarSelectComponent implements OnInit {
       }
     }
   }
-
-
   runValidation(carId: number) {
     if (this.locationHeader.value != null && this.locationHeader.valueDrop != null) {
       this.router.navigateByUrl('/car/' + carId);
