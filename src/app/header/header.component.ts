@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit  {
   loginState:boolean=false;
 
   dislplayNav = false;
-  city:any ="Banglore,India";
+  city:any ="Banglore";
   latitude: number;
   longitude: number;
   zoom: number;
@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit  {
     this.isLogged();  //for login and dashboard switch
     this.cookieservice.set('location',this.city);
     this.cookievalue = this.cookieservice.get('location');
-    console.log("cookied" + this.cookievalue);
+    console.log("cookied " + this.cookievalue);
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();

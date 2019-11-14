@@ -19,7 +19,7 @@ export class BanersComponent implements OnInit {
 
   constructor(private router : Router , private cookieservice : CookieService,private userCard:DashboardService) { }
    cookievalue:any;
-  public message="Banglore,India";
+  public message="Banglore";
    
   
 
@@ -35,8 +35,6 @@ export class BanersComponent implements OnInit {
 
     this.cookievalue = this.cookieservice.get('location');
     this.fetchUserCardDetails();
-
-
   }
 
   location(){

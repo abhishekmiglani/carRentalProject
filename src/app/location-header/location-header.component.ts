@@ -17,13 +17,14 @@ export class LocationHeaderComponent implements OnInit {
 
   public locations = [];
   ngOnInit() {
-    $(function() {
-      $("#locationMenu span").click(function() {
-        console.log("Hey!");
-        $("#selectedOption").text($(this).text());
-        $("#selectedOption").val($(this).text());
-      });
-    });
+
+    //$(function() {
+    //   $("#locationMenu span").click(function() {
+    //     console.log("Hey!");
+    //     $("#selectedOption").text($(this).text());
+    //     $("#selectedOption").val($(this).text());
+    //   });
+    // });
 
     this.locationService.getLocationByCity().
     subscribe(data=>
@@ -37,5 +38,16 @@ export class LocationHeaderComponent implements OnInit {
     if(this.value == null || this.valueDrop == null){
       window.alert("Please select date");  
     }
+  }
+  
+  locationSelect(){
+    console.log('inside location methofd');
+    $(function() {
+      $("#locationMenu a").click(function() {
+        console.log("Hey!");
+        $("#selectedOption").text($(this).text());
+        $("#selectedOption").val($(this).text());
+      });
+    });
   }
 }

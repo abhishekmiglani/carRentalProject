@@ -8,10 +8,6 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: "root"
 })
 export class GetCarsService {
-  
-
-
-
   constructor(private http: HttpClient, private cookieService : CookieService) {}
 
   public id: number;
