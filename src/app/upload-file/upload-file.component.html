@@ -34,15 +34,15 @@
           <div class="container-fluid">   
             <div class="row">
               <div class="col-sm-6">
-              <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event,fileInput.files)">
+              <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFileFront($event,fileInput.files)">
             <div class="uploadfilecontainertext">Upload Front Image</div>
-            <input hidden type="file" accept='image/*' #fileInput (change)="uploadFile($event.target.files,fileInput.files)">
+            <input hidden type="file" accept='image/*' #fileInput (change)="uploadFileFront($event.target.files,fileInput.files)">
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="uploadfilecontainer" (click)="fileInput2.click()" appDragDrop (onFileDropped)="uploadFile($event,fileInput2.files)">
+          <div class="uploadfilecontainer" (click)="fileInput2.click()" appDragDrop (onFileDropped)="uploadFileBack($event,fileInput2.files)">
             <div class="uploadfilecontainertext">Upload Back Image</div>
-            <input hidden type="file" accept='image/*' #fileInput2 (change)="uploadFile($event.target.files,fileInput2.files)">
+            <input hidden type="file" accept='image/*' #fileInput2 (change)="uploadFileBack($event.target.files,fileInput2.files)">
           </div>
         </div>
         <span style="color:red;" *ngIf="message">{{message}}</span>
@@ -75,7 +75,7 @@
      
        <div class="modal-footer">
         <span *ngIf="buttonState;else elseBlock">
-        <button type="button" class="btn btn-success" data-dismiss="modal" ><a routerLink="/car/payments">  Upload License</a></button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" ><a routerLink="/car/payments" (click)="onUploadFile()" >  Upload License</a></button>
         </span>
         <ng-template #elseBlock><button type="button" class="btn btn-success"  style="margin:20px;" disabled>Upload License</button></ng-template>
         
