@@ -1,5 +1,5 @@
-export interface Wallet {
-    walletId
-    userId
-    balance
+export interface Wallet{
+    balance;
+    userId;
+    walletId;
 }
