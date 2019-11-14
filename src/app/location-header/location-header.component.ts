@@ -13,28 +13,24 @@ export class LocationHeaderComponent implements OnInit {
   valueDrop: Date;
   title = "Dummy";
 
-  constructor(private locationService:GetLocationService) {}
-    
-    public locations = [];
+  constructor(private locationService : GetLocationService) {}
 
+  public locations = [];
   ngOnInit() {
     $(function() {
-      $("#locationMenu a").click(function() {
+      $("#locationMenu span").click(function() {
         console.log("Hey!");
         $("#selectedOption").text($(this).text());
         $("#selectedOption").val($(this).text());
       });
     });
 
-     this.locationService.getLocationByCity().
-     subscribe(data=>
-      {
-       this.locations=data;
-       console.log(this.locations);
-     });
-
-
-
+    this.locationService.getLocationByCity().
+    subscribe(data=>
+     {
+      this.locations=data;
+      console.log(this.locations);
+    });
   }
 
   runValidations(){

@@ -38,13 +38,10 @@ export class HeaderComponent implements OnInit  {
 
   @ViewChild(CitiesModalComponent,{static:false})
   citiesModal : CitiesModalComponent;
-   
-  
-
-  
   
   constructor(private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone, private loginServ:LoginService, private cookieservice : CookieService,private locationService:GetLocationService) { }
+    private ngZone: NgZone, private loginServ:LoginService, private cookieservice : CookieService,
+    private locationService : GetLocationService) { }
 
   displaySideNavbar(){
     console.log(this.dislplayNav);
@@ -148,7 +145,6 @@ export class HeaderComponent implements OnInit  {
 
   selectMumbai() {
     this.city="Mumbai";
-
     this.focusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
@@ -172,7 +168,7 @@ export class HeaderComponent implements OnInit  {
   }
 
   selectHyderabad(){
-    this.city="Hyderabad";
+    this.city="Hyderabad"
     this.focusHyderabad();
     this.unfocusMumbai();
     this.unfocusDelhi();
@@ -181,7 +177,6 @@ export class HeaderComponent implements OnInit  {
     this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
     this.locationService.getLocation(this.city);
-    
   }
 
   selectDelhi() {

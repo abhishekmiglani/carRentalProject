@@ -21,7 +21,7 @@ export class CardetailComponent implements OnInit {
   weekend_fare:number = 150;
   total_fare:number = this.weekday_fare+this.weekend_fare;
   duration:String="2h";
- public carPackage;
+
   isLogged:boolean=false;
   
   constructor(private loginServ:LoginService, private getCarsService : GetCarsService,  private route : ActivatedRoute) { }
@@ -61,6 +61,8 @@ export class CardetailComponent implements OnInit {
   }
 
   id: any;
+  package :any;
+  carPackage :any;
 
   ngOnInit() {
     $(function() {
@@ -71,19 +73,17 @@ export class CardetailComponent implements OnInit {
       });
     });
 
-   
-    
     this.route.paramMap.subscribe((params : ParamMap) => {
-      this.id = parseInt(params.get('modelNo'));
-      console.log(this.id);
-
+      this.id = parseInt(params.get('modelNo')),
+      this.package = parseInt(params.get('package'))
+      console.log(this.package);
+      
       this.getCarsService.getId(this.id);
    });
 
     this.getCarsService.getCarById()
     .subscribe(data => this.cars = data);
 
-    this.carPackage =  this.getCarsService.getCarPackage();
-
+     this.carPackage =  this.getCarsService.getCarPackage();
   }
 }
