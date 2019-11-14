@@ -15,7 +15,7 @@ export class GetCarsService {
 
   public id : number;
   public _url2:string;
-  public package="No-Fuel";
+  public package:any="No-Fuel";
 
   private _url: string = "http://localhost:8082/cars";
 
