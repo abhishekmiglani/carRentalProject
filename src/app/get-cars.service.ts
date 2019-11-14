@@ -11,6 +11,7 @@ export class GetCarsService {
 
   public id : number;
   public _url2:string;
+  public package="No-Fuel";
 
   private _url: string = "http://localhost:8082/cars";
 
@@ -27,4 +28,12 @@ export class GetCarsService {
   getCarById() : Observable<Car>{
     return this.http.get<Car>(this._url2);
   }
+  setCarPackage(carPackage : number){
+    this.package = carPackage;
+    this.getCarPackage();
+}
+
+getCarPackage(){
+    return this.package;
+}
 }

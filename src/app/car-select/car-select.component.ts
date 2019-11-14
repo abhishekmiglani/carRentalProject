@@ -28,14 +28,7 @@ export class CarSelectComponent implements OnInit {
   public cars = [];
   carId: number;
 
-  carsList = [
-    "Suzuki Baleno",
-    "Swift DZire",
-    "Honda City",
-    "Honda Civic",
-    "Toyota Fortuner",
-    "Hyundai Verna"
-  ];
+ 
   duplicateCarList: any[];
 
 
@@ -71,6 +64,7 @@ export class CarSelectComponent implements OnInit {
     document.getElementById("120km").style.color = "black";
     document.getElementById("180km").style.backgroundColor = "white";
     document.getElementById("180km").style.color = "black";
+    this.getCarsService.setCarPackage(60);
   }
 
   filter120Color() {
@@ -80,6 +74,7 @@ export class CarSelectComponent implements OnInit {
     document.getElementById("180km").style.backgroundColor = "white";
     document.getElementById("60km").style.color = "black";
     document.getElementById("180km").style.color = "black";
+    this.getCarsService.setCarPackage(120);
   }
 
   filter180Color() {
@@ -89,6 +84,7 @@ export class CarSelectComponent implements OnInit {
     document.getElementById("120km").style.backgroundColor = "white";
     document.getElementById("60km").style.color = "black";
     document.getElementById("120km").style.color = "black";
+    this.getCarsService.setCarPackage(180);
   }
 
   onWithoutFuelSelect() {

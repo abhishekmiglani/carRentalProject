@@ -21,7 +21,7 @@ export class CardetailComponent implements OnInit {
   weekend_fare:number = 150;
   total_fare:number = this.weekday_fare+this.weekend_fare;
   duration:String="2h";
-
+ public carPackage;
   isLogged:boolean=false;
   
   constructor(private loginServ:LoginService, private getCarsService : GetCarsService,  private route : ActivatedRoute) { }
@@ -82,5 +82,8 @@ export class CardetailComponent implements OnInit {
 
     this.getCarsService.getCarById()
     .subscribe(data => this.cars = data);
+
+    this.carPackage =  this.getCarsService.getCarPackage();
+
   }
 }
