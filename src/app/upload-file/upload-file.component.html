@@ -27,28 +27,42 @@
             <li>A valid 4 wheeler license is must to drive a car and a valid 2 wheeler to drive a bike</li>
             <li>Learner's license is not a valid government ID proof</li>
             <li>Once a license is linked to an account, it cannot be modified.</li>
+            
+
           </ul>
           <br>
           <div class="container-fluid">   
             <div class="row">
               <div class="col-sm-6">
-              <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+              <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event,fileInput.files)">
             <div class="uploadfilecontainertext">Upload Front Image</div>
-            <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+            <input hidden type="file" accept='image/*' #fileInput (change)="uploadFile($event.target.files,fileInput.files)">
           </div>
         </div>
         <div class="col-sm-6">
-          <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+          <div class="uploadfilecontainer" (click)="fileInput2.click()" appDragDrop (onFileDropped)="uploadFile($event,fileInput2.files)">
             <div class="uploadfilecontainertext">Upload Back Image</div>
-            <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+            <input hidden type="file" accept='image/*' #fileInput2 (change)="uploadFile($event.target.files,fileInput2.files)">
           </div>
         </div>
+        <span style="color:red;" *ngIf="message">{{message}}</span>
       </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5" *ngFor="let imgURL of url">
+
+        <img [src]="imgURL" height="200" width="250"><br>
+        </div>
+        <div class="col-sm-1"></div>
+        
+      </div>
+      <br>
       
           <div  class="files-list" *ngFor="let file of files;let i= index">
               <p> {{ file }} </p>
               <button class="delete-file" (click)="deleteAttachment(i)">
-                <img src="./assets/assets/Recycle_Bin_Full.png">
+                <img src="./assets/close_it.jpg">
               </button>
            </div>
           
