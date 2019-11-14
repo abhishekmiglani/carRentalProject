@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { GetLocationService } from 'app/get-location.service';
 
 declare var $: any;
 
@@ -12,15 +13,23 @@ export class LocationHeaderComponent implements OnInit {
   valueDrop: Date;
   title = "Dummy";
 
-  constructor() {}
+  constructor(private locationService : GetLocationService) {}
 
+  public locations = [];
   ngOnInit() {
     $(function() {
-      $("#locationMenu a").click(function() {
+      $("#locationMenu span").click(function() {
         console.log("Hey!");
         $("#selectedOption").text($(this).text());
         $("#selectedOption").val($(this).text());
       });
+    });
+
+    this.locationService.getLocationByCity().
+    subscribe(data=>
+     {
+      this.locations=data;
+      console.log(this.locations);
     });
   }
 
