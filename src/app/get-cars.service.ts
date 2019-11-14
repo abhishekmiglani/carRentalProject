@@ -1,13 +1,17 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Car } from "./Bean/cars";
+import { Car } from "./Bean/Car";
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class GetCarsService {
-  constructor(private http: HttpClient) { }
+  
+
+
+
+  constructor(private http: HttpClient) {}
 
   public id : number;
   public _url2:string;
