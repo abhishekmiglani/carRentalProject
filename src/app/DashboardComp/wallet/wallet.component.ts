@@ -14,12 +14,13 @@ export class WalletComponent implements OnInit {
 
 
   getWalletDetails(){
-    this.dashboardService.getWalletDetails().subscribe(walletData=>{
-      this.balance = walletData.balance;
-    })
+    
 
   }
   ngOnInit() {
+    this.dashboardService.getWalletDetails().subscribe(walletData=>{
+      this.balance = walletData.balance;
+    })
 
 
   }

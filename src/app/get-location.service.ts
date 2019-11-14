@@ -8,11 +8,9 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class GetLocationService {
-
-  public location: any;
-  public _url: string;
-  constructor(private http: HttpClient, private cookieservice : CookieService) { }
-
+  public location:any;
+  public _url:string;
+  constructor(private http:HttpClient,private cookieservice:CookieService) { }
   getLocation(location: any) {
     this.location = this.cookieservice.get('location');
     console.log("service " + this.location);
