@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Car } from "./Bean/Car";
 import { Observable } from "rxjs";
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: "root"
@@ -11,16 +12,18 @@ export class GetCarsService {
 
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookieService : CookieService) {}
 
   public id: number;
+  private _url: string
   public _url2: string;
   public package: any = "No Package"
-
-  private _url: string = "http://localhost:8082/cars";
-
+  public city;
 
   getCars(): Observable<Car[]> {
+    this.city = this.cookieService.get('location');
+    console.log("inside get cars method" + this.city);
+    this._url = "http://localhost:8082/cars/list/"+this.city;
     return this.http.get<Car[]>(this._url);
   }
 

@@ -47,6 +47,7 @@ export class CarSelectComponent implements OnInit {
       .subscribe(data => {
         this.cars = data;
         this.duplicateCarList = data;
+        console.log(this.cars);
       });
   }
 
