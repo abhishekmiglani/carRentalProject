@@ -30,6 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { GetCarsService } from './get-cars.service';
 import { DashboardService } from './dashboard.service';
+import { SignupComponent } from './signup/signup.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { DashboardService } from './dashboard.service';
     CardetailComponent,
     BanersComponent,
     LoginModalComponent,
-    CitiesModalComponent  ],
+    CitiesModalComponent,
+    SignupComponent  ],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -60,7 +63,7 @@ import { DashboardService } from './dashboard.service';
       libraries: ["places"]
     })
   ],
-  providers: [CookieService,GetCarsService,DashboardService],
+  providers: [CookieService,GetCarsService,DashboardService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
