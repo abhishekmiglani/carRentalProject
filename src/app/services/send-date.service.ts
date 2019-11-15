@@ -15,7 +15,6 @@ export class SendDateService {
       this.dropDate = drop;
       this.dates[0] = this.pickupDate;
       this.dates[1] = this.dropDate;
-      console.log(this.dates);
   }
 
   getDate(){

@@ -69,6 +69,8 @@ export class CardetailComponent implements OnInit {
   carPackage :any;
   locality: string;
   dates = [];
+  pickup : any;
+  drop  :any;
 
   ngOnInit() {
     $(function() {
@@ -93,5 +95,8 @@ export class CardetailComponent implements OnInit {
      this.carPackage =  this.getCarsService.getCarPackage();
      this.locality = this.locationService.getLocality();
       this.dates = this.dateService.getDate();
+      this.pickup = this.dates[0];
+      this.drop = this.dates[1];
+      console.log("ts file date" + this.pickup + this.drop);
   }
 }
