@@ -49,7 +49,7 @@
     <div class="ui-g-12 ui-md-3 " >
       <div class="div-margin">Select your drop date</div>
       <!-- <button class="btn shadow-none"> -->
-      <div style="margin-top: 6px" (click)="checkDate()">
+      <div style="margin-top: 6px" (click)="checkDate()" >
         <p-calendar
           [(ngModel)]="valueDrop"
           [showTime]="true"
@@ -57,7 +57,7 @@
           [minDate]="valuePickup"
           dateFormat="dd MM yy"
           [showOnFocus] = "visible"
-          
+      
         ></p-calendar>
       </div>
       <!-- </button> -->
@@ -65,7 +65,7 @@
     <div class="ui-g-12 ui-md-3 text-center">
       <div>
         <!-- <div><br></div> --><br />
-        <button class="btn btn-success" (click) ="setDate()" (click)="runValidations()" style="width: 80%">
+        <button class="btn btn-success" (click)="runValidations()" (click)="setDate()" style="width: 80%">
           Search
         </button>
       </div>
