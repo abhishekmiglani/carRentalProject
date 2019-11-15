@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { GetLocationService } from 'app/get-location.service';
+import { GetLocationService } from 'app/services/get-location.service';
 import { CookieService } from 'ngx-cookie-service';
+import { SendDateService } from 'app/services/send-date.service';
 
 declare var $: any;
 
@@ -14,7 +15,8 @@ export class LocationHeaderComponent implements OnInit {
   valueDrop: Date;
   title = "Dummy";
 
-  constructor(public locationService : GetLocationService, private cookieservice : CookieService) {}
+  constructor(public locationService : GetLocationService, private cookieservice : CookieService,
+            private dateService : SendDateService) {}
 
   public locations = [];
   public locality : string;
@@ -47,6 +49,10 @@ export class LocationHeaderComponent implements OnInit {
   setLocality(){
     this.locality = document.getElementById('locationMenu').value;
      this.locationService.setLocality(this.locality);
+  }
+
+  setDate(){
+        this.dateService.setDate(this.valuePickup, this.valueDrop);
   }
      
  

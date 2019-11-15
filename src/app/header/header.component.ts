@@ -10,10 +10,10 @@ import {
   EventEmitter
 } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
-import { LoginService } from "app/login.service";
+import { LoginService } from "app/services/login.service";
 import { CitiesModalComponent } from "app/cities-modal/cities-modal.component";
 import { CookieService } from "ngx-cookie-service";
-import { GetLocationService } from "app/get-location.service";
+import { GetLocationService } from "app/services/get-location.service";
 
 // import {} from '@types/googlemaps';
 @Component({

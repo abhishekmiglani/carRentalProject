@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { GetCarsService } from 'app/get-cars.service';
+import { GetCarsService } from 'app/services/get-cars.service';
 declare var $: any;
 
 @Component({

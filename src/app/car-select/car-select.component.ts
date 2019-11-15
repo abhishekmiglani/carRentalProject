@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { GetCarsService } from 'app/get-cars.service';
+import { GetCarsService } from 'app/services/get-cars.service';
 import { LocationHeaderComponent } from 'app/location-header/location-header.component';
 import { RouterLink, Router, ActivatedRoute, ParamMap } from '@angular/router';
 

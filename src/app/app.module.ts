@@ -28,7 +28,7 @@ import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
-import { GetCarsService } from './get-cars.service';
+import { GetCarsService } from './services/get-cars.service';
 import { DashboardService } from './dashboard.service';
 import { SignupComponent } from './signup/signup.component';
 import { UserService } from './services/user.service';

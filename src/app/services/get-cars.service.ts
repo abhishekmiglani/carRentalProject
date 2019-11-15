@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Car } from "./Bean/Car";
+import { Car } from "../Bean/Car";
 import { Observable } from "rxjs";
 import { CookieService } from 'ngx-cookie-service';
 

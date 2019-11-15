@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UploadFileComponent } from 'app/upload-file/upload-file.component';
-import { LoginService } from 'app/login.service';
+import { LoginService } from 'app/services/login.service';
 import { LoginModalComponent } from 'app/login-modal/login-modal.component';
-import { GetCarsService } from 'app/get-cars.service';
+import { GetCarsService } from 'app/services/get-cars.service';
 import { Car } from 'app/Bean/Car';
 import { CarSelectComponent } from 'app/car-select/car-select.component';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { GetLocationService } from 'app/get-location.service';
+import { GetLocationService } from 'app/services/get-location.service';
+import { SendDateService } from 'app/services/send-date.service';
 
 
 declare var $: any;
@@ -26,7 +27,8 @@ export class CardetailComponent implements OnInit {
   isLogged:boolean=false;
   
   constructor(private loginServ:LoginService, private getCarsService : GetCarsService, 
-     private route : ActivatedRoute, private locationService : GetLocationService) { }
+     private route : ActivatedRoute, private locationService : GetLocationService,
+      private dateService : SendDateService) { }
 
   @ViewChild(UploadFileComponent,{static:false}) upload:UploadFileComponent;
   @ViewChild(LoginModalComponent, {static:false} ) login:LoginModalComponent;
@@ -66,6 +68,7 @@ export class CardetailComponent implements OnInit {
   package :any;
   carPackage :any;
   locality: string;
+  dates = [];
 
   ngOnInit() {
     $(function() {
@@ -89,5 +92,6 @@ export class CardetailComponent implements OnInit {
 
      this.carPackage =  this.getCarsService.getCarPackage();
      this.locality = this.locationService.getLocality();
+      this.dates = this.dateService.getDate();
   }
 }

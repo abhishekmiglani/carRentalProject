@@ -5,15 +5,20 @@ import { Injectable } from '@angular/core';
 })
 export class SendDateService {
 
-  date : Date;
+  pickupDate : Date;
+  dropDate : Date
+  public dates =[];
   constructor() { }
 
-  setDate(dateFromPage : Date){
-      this.date = dateFromPage;
-      console.log("Date set : "+ this.date);
+  setDate(pickup : Date, drop : Date){
+      this.pickupDate = pickup;
+      this.dropDate = drop;
+      this.dates[0] = this.pickupDate;
+      this.dates[1] = this.dropDate;
+      console.log(this.dates);
   }
 
   getDate(){
-    return this.date;
+    return this.dates;
   }
 }
