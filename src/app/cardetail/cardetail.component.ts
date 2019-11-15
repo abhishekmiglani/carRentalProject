@@ -6,6 +6,7 @@ import { GetCarsService } from 'app/get-cars.service';
 import { Car } from 'app/Bean/Car';
 import { CarSelectComponent } from 'app/car-select/car-select.component';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { GetLocationService } from 'app/get-location.service';
 
 
 declare var $: any;
@@ -24,7 +25,8 @@ export class CardetailComponent implements OnInit {
 
   isLogged:boolean=false;
   
-  constructor(private loginServ:LoginService, private getCarsService : GetCarsService,  private route : ActivatedRoute) { }
+  constructor(private loginServ:LoginService, private getCarsService : GetCarsService, 
+     private route : ActivatedRoute, private locationService : GetLocationService) { }
 
   @ViewChild(UploadFileComponent,{static:false}) upload:UploadFileComponent;
   @ViewChild(LoginModalComponent, {static:false} ) login:LoginModalComponent;
@@ -63,6 +65,7 @@ export class CardetailComponent implements OnInit {
   id: any;
   package :any;
   carPackage :any;
+  locality: string;
 
   ngOnInit() {
     $(function() {
@@ -85,5 +88,6 @@ export class CardetailComponent implements OnInit {
     .subscribe(data => this.cars = data);
 
      this.carPackage =  this.getCarsService.getCarPackage();
+     this.locality = this.locationService.getLocality();
   }
 }

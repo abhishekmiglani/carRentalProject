@@ -10,18 +10,28 @@ import { CookieService } from 'ngx-cookie-service';
 export class GetLocationService {
   public location:any;
   public _url:string;
-  constructor(private http:HttpClient,private cookieservice:CookieService) { }
+  public locality : string;
 
-  getLocation(location: any) {
-    this.location = this.cookieservice.get('location');
-    console.log("service " + this.location);
-    this._url = "http://localhost:8084/locations/" + this.location;
-  }
+  constructor(private http:HttpClient,private cookieservice:CookieService) { }
+  // getLocation(location: any) {
+  //   this.location = this.cookieservice.get('location');
+  //   console.log("service " + this.location);
+  //   this._url = "http://localhost:8084/locations/" + this.location;
+  // }
 
   getLocationByCity(): Observable<Locations[]> {
     this.location = this.cookieservice.get('location');
     this._url = "http://localhost:8084/locations/" + this.location;
-    return this.http.get<Locations[]>(this._url);
+      return this.http.get<Locations[]>(this._url);
+  }
+
+  setLocality(area :string){
+     this.locality = area;
+     console.log("inside service set " +  this.locality);
+  }
+
+  getLocality(){
+    return this.locality;
   }
 
 }
