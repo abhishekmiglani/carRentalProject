@@ -802,13 +802,11 @@ export class CarSelectComponent implements OnInit {
 
           this.cars = this.carsTemp;
         }
-
-
       }
     }
   }
   runValidation(carId: number) {
-    if (this.locationHeader.value != null && this.locationHeader.valueDrop != null) {
+    if (this.locationHeader.valuePickup != null && this.locationHeader.valueDrop != null) {
       this.router.navigateByUrl('/car/' + carId);
     }
     else {

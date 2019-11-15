@@ -24,23 +24,13 @@
       </select> -->
 
       <div style="margin-top: 5px;">
-        <button
-          style="background-color: white ; border : black 0.8px solid"
-          type="button"
-          class="btn dropdown-toggle form-control  shadow-none"
-          data-toggle="dropdown"
-        >
-          <span id="selectedOption">
-            Choose
-          </span>
-        </button>
-        <div class="dropdown-menu" id="locationMenu" >
-          <a (click) ="locationSelect()" class="dropdown-item"
-           *ngFor="let location of locations">{{location.locality}}</a>
+        <div>
+          <select class="form-control shadow-none outline-none" id="locationMenu"
+           (change) ="setLocality()">
+            <option id="locality" *ngFor="let location of locations">{{location.locality}}</option>
+          </select>
         </div>
       </div>
-      <!-- </button> -->
-      <!-- </div> -->
     </div>
     <div class="ui-g-12 ui-md-3 ">
       <div class="div-margin">Select your pickup date</div>

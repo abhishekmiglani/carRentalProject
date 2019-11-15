@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { GetLocationService } from 'app/get-location.service';
+import { CookieService } from 'ngx-cookie-service';
 
 declare var $: any;
 
@@ -9,45 +10,44 @@ declare var $: any;
   styleUrls: ["./location-header.component.css"]
 })
 export class LocationHeaderComponent implements OnInit {
-  value: Date;
+  valuePickup: Date;
   valueDrop: Date;
   title = "Dummy";
 
-  constructor(private locationService : GetLocationService) {}
+  constructor(public locationService : GetLocationService, private cookieservice : CookieService) {}
 
   public locations = [];
+  public locality : string;
   ngOnInit() {
-
-    //$(function() {
-    //   $("#locationMenu span").click(function() {
-    //     console.log("Hey!");
-    //     $("#selectedOption").text($(this).text());
-    //     $("#selectedOption").val($(this).text());
-    //   });
-    // });
-
     this.locationService.getLocationByCity().
     subscribe(data=>
      {
       this.locations=data;
       console.log(this.locations);
     });
+
   }
 
   runValidations(){
-    if(this.value == null || this.valueDrop == null){
+    if(this.valuePickup == null || this.valueDrop == null){
       window.alert("Please select date");  
     }
   }
   
-  locationSelect(){
-    console.log('inside location methofd');
-    $(function() {
-      $("#locationMenu a").click(function() {
-        console.log("Hey!");
-        $("#selectedOption").text($(this).text());
-        $("#selectedOption").val($(this).text());
-      });
-    });
+  // locationSelect(){
+  //   $(function() {
+  //     $("#locationMenu option").click(function() {
+  //       $("#selectedOption").text($(this).text());
+  //       $("#selectedOption").val($(this).text());
+  //       console.log("inside method")
+  //     });
+  //   });
+  // }
+
+  setLocality(){
+    this.locality = document.getElementById('locationMenu').value;
+     this.locationService.setLocality(this.locality);
   }
+     
+ 
 }
