@@ -16,12 +16,21 @@ export class LocationHeaderComponent implements OnInit {
   constructor(private locationService : GetLocationService) {}
 
   public locations = [];
-  ngOnInit() {
+  ngOnInit()
+   {
+    // $(function() {
+    //   $("#locationMenu a").click(function() {
+    //     console.log("Hey!");
+    //     $("#selectedOption").text($(this).text());
+    //     $("#selectedOption").val($(this).text());
+    //   });
+    // });
+
     $(function() {
-      $("#locationMenu span").click(function() {
+      $("#locationMenu a").click(function() {
         console.log("Hey!");
-        $("#selectedOption").text($(this).text());
-        $("#selectedOption").val($(this).text());
+        $("#selectedMenu").text($(this).text());
+        $("#selectedMenu").val($(this).text());
       });
     });
 

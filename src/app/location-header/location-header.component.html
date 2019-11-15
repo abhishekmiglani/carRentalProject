@@ -29,13 +29,16 @@
           type="button"
           class="btn dropdown-toggle form-control  shadow-none"
           data-toggle="dropdown"
-        >
-          <span id="selectedOption">
+
+          >
+          <span id="selectedMenu">
             Choose
           </span>
         </button>
         <div class="dropdown-menu" id="locationMenu" >
-          <span class="dropdown-item" *ngFor="let location of locations">{{location.locality}}</span>
+          
+          <a class="dropdown-item" *ngFor="let location of locations" >{{location.locality}}</a>
+
         </div>
       </div>
       <!-- </button> -->
