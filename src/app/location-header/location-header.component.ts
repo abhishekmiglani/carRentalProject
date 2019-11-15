@@ -22,7 +22,7 @@ export class LocationHeaderComponent implements OnInit {
             private dateService : SendDateService) {}
 
   public locations = [];
-  public locality : string;
+  public locality : any;
   ngOnInit() {
     this.locationService.getLocationByCity().
     subscribe(data=>

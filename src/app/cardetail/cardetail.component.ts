@@ -67,7 +67,7 @@ export class CardetailComponent implements OnInit {
   id: any;
   package :any;
   carPackage :any;
-  locality: string;
+  locality: any;
   dates = [];
   pickup : any;
   drop  :any;

@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class GetLocationService {
   public location:any;
   public _url:string;
-  public locality : string;
+  public locality : any;
 
   constructor(private http:HttpClient,private cookieservice:CookieService) { }
   // getLocation(location: any) {
@@ -25,7 +25,7 @@ export class GetLocationService {
       return this.http.get<Locations[]>(this._url);
   }
 
-  setLocality(area :string){
+  setLocality(area :any){
      this.locality = area;
      console.log("inside service set " +  this.locality);
   }
