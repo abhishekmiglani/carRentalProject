@@ -10,13 +10,10 @@ import { CookieService } from 'ngx-cookie-service';
 export class GetCarsService {
   constructor(private http: HttpClient, private cookieService : CookieService) {}
 
-  public id : number;
-  public _url2:string;
-  public package:any="No-Fuel";
-
-  private _url: string = "http://localhost:8082/cars";
-
- 
+  public id: number;
+  private _url: string
+  public _url2: string;
+  public package: any = "No Package"
   public city;
 
   getCars(): Observable<Car[]> {
