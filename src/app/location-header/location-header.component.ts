@@ -55,6 +55,7 @@ export class LocationHeaderComponent implements OnInit {
   }
 
   setDate(){
+    console.log("inside set date");
         this.dateService.setDate(this.valuePickup  , this.valueDrop);
   }
      
