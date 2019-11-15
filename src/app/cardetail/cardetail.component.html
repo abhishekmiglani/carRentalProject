@@ -94,12 +94,12 @@
 
                               <div class="date-time-format">
 
-                                  <div class="left-section">20</div>
+                                  <div class="left-section">{{pickup.getDate()}}</div>
                                   <div class="right-section ">
-                                      <div class="month-year">Oct-2019</div>
+                                      <div class="month-year"><label>{{month[pickup.getMonth()]}}</label>-{{pickup.getFullYear()}}</div>
 
                                       <div class="hour-minute">
-                                          11:30 PM
+                                          {{pickup | date:'shortTime'}}
                                       </div>
                                   </div>
                               </div>
@@ -111,12 +111,12 @@
                                   {{duration}}
                               </div>
                               <div class="date-time-format" style="display: flex;align-items: flex-end" >
-                                  <div class="left-section">20</div>
+                                  <div class="left-section">{{drop.getDate()}}</div>
                                   <div class="right-section">
-                                      <div class="month-year">Oct-2019</div>
+                                      <div class="month-year"><label>{{month[drop.getMonth()]}}</label>-{{drop.getFullYear()}}</div>
                                       <div class="hour-minute">
                                           <span>
-                                              11:30 PM
+                                            {{pickup | date:'shortTime'}}
                                           </span>
                                       </div>
                                   </div>

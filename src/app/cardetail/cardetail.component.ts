@@ -69,8 +69,11 @@ export class CardetailComponent implements OnInit {
   carPackage :any;
   locality: string;
   dates = [];
-  pickup : any;
-  drop  :any;
+  pickup : Date;
+  drop  :Date;
+  month = ["Jan","Feb","Mar","Apr","may","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  
+
 
   ngOnInit() {
     $(function() {
@@ -80,6 +83,8 @@ export class CardetailComponent implements OnInit {
         $("#selected").val($(this).text());
       });
     });
+
+    
 
     this.route.paramMap.subscribe((params : ParamMap) => {
       this.id = parseInt(params.get('modelNo')),
@@ -98,5 +103,11 @@ export class CardetailComponent implements OnInit {
       this.pickup = this.dates[0];
       this.drop = this.dates[1];
       console.log("ts file date" + this.pickup + this.drop);
+      if(this.pickup.getHours()>12){
+  
+        document.getElementById('timeZone').innerHTML="PM"
+  }
+
+      
   }
 }
