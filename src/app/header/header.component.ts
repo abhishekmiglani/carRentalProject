@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit  {
   // }
 
   loginState:boolean=false;
-
   dislplayNav = false;
   city:any ="Banglore";
   latitude: number;
@@ -65,7 +64,7 @@ export class HeaderComponent implements OnInit  {
  
   ngOnInit() {
     this.isLogged();  //for login and dashboard switch
-    this.cookieservice.set('location',this.city);
+    this.cookieservice.set('location',this.city,365);
     this.cookievalue = this.cookieservice.get('location');
     console.log("cookied " + this.cookievalue);
 
@@ -140,7 +139,7 @@ export class HeaderComponent implements OnInit  {
     this.unfocusPune();
     this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
-    this.locationService.getLocation(this.city);
+  
   }
 
   selectMumbai() {
@@ -152,7 +151,7 @@ export class HeaderComponent implements OnInit  {
     this.unfocusPune();
     this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
-    this.locationService.getLocation(this.city);
+    
   }
 
   selectPune() {
@@ -164,7 +163,7 @@ export class HeaderComponent implements OnInit  {
     this.unfocusBengaluru()
     this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
-    this.locationService.getLocation(this.city);
+   
   }
 
   selectHyderabad(){
@@ -176,7 +175,6 @@ export class HeaderComponent implements OnInit  {
     this.unfocusBengaluru()
     this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
-    this.locationService.getLocation(this.city);
   }
 
   selectDelhi() {
@@ -188,7 +186,7 @@ export class HeaderComponent implements OnInit  {
     this.unfocusBengaluru()
     this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
-    this.locationService.getLocation(this.city);
+    
   }
 
   focusBengaluru(){

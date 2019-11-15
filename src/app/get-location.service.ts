@@ -13,17 +13,16 @@ export class GetLocationService {
   public locality : string;
 
   constructor(private http:HttpClient,private cookieservice:CookieService) { }
-
-  getLocation(location: any) {
-    this.location = this.cookieservice.get('location');
-    console.log("service " + this.location);
-    this._url = "http://localhost:8084/locations/" + this.location;
-  }
+  // getLocation(location: any) {
+  //   this.location = this.cookieservice.get('location');
+  //   console.log("service " + this.location);
+  //   this._url = "http://localhost:8084/locations/" + this.location;
+  // }
 
   getLocationByCity(): Observable<Locations[]> {
     this.location = this.cookieservice.get('location');
     this._url = "http://localhost:8084/locations/" + this.location;
-    return this.http.get<Locations[]>(this._url);
+      return this.http.get<Locations[]>(this._url);
   }
 
   setLocality(area :string){

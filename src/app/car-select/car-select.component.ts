@@ -43,6 +43,8 @@ export class CarSelectComponent implements OnInit {
       });
     });
 
+    
+
     this.getCarsService.getCars()
       .subscribe(data => {
         this.cars = data;
