@@ -1,18 +1,12 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ElementRef,
-  NgZone,
-  AfterViewInit,
-  Output,
-  EventEmitter
-} from "@angular/core";
-import { MapsAPILoader, MouseEvent } from "@agm/core";
-import { LoginService } from "app/login.service";
-import { CitiesModalComponent } from "app/cities-modal/cities-modal.component";
-import { CookieService } from "ngx-cookie-service";
+
 import { UserService } from "app/services/user.service";
+import { Component, OnInit, ViewChild, ElementRef, NgZone, AfterViewInit, Output ,EventEmitter} from '@angular/core';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { LoginService } from 'app/login.service';
+import { CitiesModalComponent } from 'app/cities-modal/cities-modal.component';
+import { CookieService } from 'ngx-cookie-service';
+import { GetLocationService } from 'app/get-location.service';
+
 
 // import {} from '@types/googlemaps';
 @Component({
@@ -29,7 +23,7 @@ export class HeaderComponent implements OnInit {
   loginState: boolean = false;
 
   dislplayNav = false;
-  city: any = "Banglore,India";
+  city:any ="Banglore";
   latitude: number;
   longitude: number;
   zoom: number;
@@ -51,7 +45,8 @@ export class HeaderComponent implements OnInit {
     private ngZone: NgZone,
     private loginServ: LoginService,
     private cookieservice: CookieService,
-    private userService: UserService
+    private userService: UserService,
+    private locationService : GetLocationService
   ) {}
 
   displaySideNavbar() {
@@ -143,17 +138,20 @@ export class HeaderComponent implements OnInit {
   selectBengaluru() {
     this.city = "Bengaluru,India";
 
+    this.city="Banglore";
     this.focusBengaluru();
     this.unfocusDelhi();
     this.unfocusHyderabad();
     this.unfocusMumbai();
     this.unfocusPune();
+    this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
   }
 
-  selectMumbai() {
-    this.city = "Mumbai,India";
+  
 
+  selectMumbai() {
+    this.city="Mumbai";
     this.focusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
@@ -161,10 +159,13 @@ export class HeaderComponent implements OnInit {
     this.unfocusPune();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
+  
   }
 
+
+
   selectPune() {
-    this.city = "Pune,India";
+    this.city="Pune";
     this.focusPune();
     this.unfocusMumbai();
     this.unfocusDelhi();
@@ -174,8 +175,9 @@ export class HeaderComponent implements OnInit {
     this.childEvent.emit(this.city);
   }
 
-  selectHyderabad() {
-    this.city = "Hyderabad,India";
+
+  selectHyderabad(){
+    this.city="Hyderabad"
     this.focusHyderabad();
     this.unfocusMumbai();
     this.unfocusDelhi();
@@ -185,8 +187,9 @@ export class HeaderComponent implements OnInit {
     this.childEvent.emit(this.city);
   }
 
+
   selectDelhi() {
-    this.city = "Delhi,India";
+    this.city="Delhi";
     this.focusDelhi();
     this.unfocusMumbai();
     this.unfocusHyderabad();
