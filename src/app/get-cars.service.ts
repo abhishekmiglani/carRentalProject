@@ -8,11 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: "root"
 })
 export class GetCarsService {
-  
-
-
-
-  constructor(private http: HttpClient,private cookieService:CookieService) {}
+  constructor(private http: HttpClient, private cookieService : CookieService) {}
 
   public id : number;
   public _url2:string;

@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit  {
     this.isLogged();  //for login and dashboard switch
     this.cookieservice.set('location',this.city,365);
     this.cookievalue = this.cookieservice.get('location');
-    console.log("cookied" + this.cookievalue);
+    console.log("cookied " + this.cookievalue);
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();

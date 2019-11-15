@@ -37,7 +37,7 @@
         </button>
         <div class="dropdown-menu" id="locationMenu" >
           
-          <a class="dropdown-item" *ngFor="let location of locations" >{{location.locality}}</a>
+          <a class="dropdown-item" (click)="locationSelect()" *ngFor="let location of locations" >{{location.locality}}</a>
 
         </div>
       </div>

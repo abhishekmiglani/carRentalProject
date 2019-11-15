@@ -47,4 +47,15 @@ export class LocationHeaderComponent implements OnInit {
       window.alert("Please select date");  
     }
   }
+  
+  locationSelect(){
+    console.log('inside location methofd');
+    $(function() {
+      $("#locationMenu a").click(function() {
+        console.log("Hey!");
+        $("#selectedOption").text($(this).text());
+        $("#selectedOption").val($(this).text());
+      });
+    });
+  }
 }
