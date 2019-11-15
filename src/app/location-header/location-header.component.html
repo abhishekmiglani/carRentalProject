@@ -37,23 +37,27 @@
       <!-- <button class="btn  shadow-none "> -->
       <div class=" border-dark" style="margin-top: 6px">
         <p-calendar
-          [(ngModel)]="value"
+          [(ngModel)]="valuePickup"
           [showTime]="true"
           hourFormat="12"
+          [minDate]="minimumDate"
           dateFormat="dd MM yy"
         ></p-calendar>
       </div>
       <!-- </button> -->
     </div>
-    <div class="ui-g-12 ui-md-3 ">
+    <div class="ui-g-12 ui-md-3 " >
       <div class="div-margin">Select your drop date</div>
       <!-- <button class="btn shadow-none"> -->
-      <div style="margin-top: 6px">
+      <div style="margin-top: 6px" (click)="checkDate()">
         <p-calendar
           [(ngModel)]="valueDrop"
           [showTime]="true"
           hourFormat="12"
+          [minDate]="valuePickup"
           dateFormat="dd MM yy"
+          [showOnFocus] = "visible"
+          
         ></p-calendar>
       </div>
       <!-- </button> -->

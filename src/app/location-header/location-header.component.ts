@@ -13,6 +13,9 @@ export class LocationHeaderComponent implements OnInit {
   valuePickup: Date;
   valueDrop: Date;
   title = "Dummy";
+  minimumDate = new Date();
+  visible = false;
+
 
   constructor(public locationService : GetLocationService, private cookieservice : CookieService) {}
 
@@ -25,8 +28,8 @@ export class LocationHeaderComponent implements OnInit {
       this.locations=data;
       console.log(this.locations);
     });
+    }
 
-  }
 
   runValidations(){
     if(this.valuePickup == null || this.valueDrop == null){
@@ -49,5 +52,15 @@ export class LocationHeaderComponent implements OnInit {
      this.locationService.setLocality(this.locality);
   }
      
+  checkDate(){
+    if (this.valuePickup==null) {
+      alert("please select pickUp date first");
+      this.visible=false;
+      console.log("hello");
+    } 
+    else{
+      this.visible = true;
+    }
+  }
  
 }
