@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
 
   loginState: boolean = false;
   dislplayNav = false;
-  city: any = "Banglore";
+  city: any = "Bangalore";
   latitude: number;
   longitude: number;
   zoom: number;
@@ -141,11 +141,11 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
-  selectBengaluru() {
-    this.city = "Bengaluru,India";
+  selectBangalore() {
+    this.city = "Bangalore,India";
 
-    this.city = "Banglore";
-    this.focusBengaluru();
+    this.city = "Bangalore";
+    this.focusBangalore();
     this.unfocusDelhi();
     this.unfocusHyderabad();
     this.unfocusMumbai();
@@ -159,7 +159,7 @@ export class HeaderComponent implements OnInit {
     this.focusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
-    this.unfocusBengaluru();
+    this.unfocusBangalore();
     this.unfocusPune();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
@@ -171,7 +171,7 @@ export class HeaderComponent implements OnInit {
     this.unfocusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
-    this.unfocusBengaluru();
+    this.unfocusBangalore();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
   }
@@ -182,7 +182,7 @@ export class HeaderComponent implements OnInit {
     this.unfocusMumbai();
     this.unfocusDelhi();
     this.unfocusPune();
-    this.unfocusBengaluru();
+    this.unfocusBangalore();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
   }
@@ -193,18 +193,18 @@ export class HeaderComponent implements OnInit {
     this.unfocusMumbai();
     this.unfocusHyderabad();
     this.unfocusPune();
-    this.unfocusBengaluru();
+    this.unfocusBangalore();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
   }
 
-  focusBengaluru() {
-    document.getElementById("bengaluruCity").style.background = "#3aa5c5";
-    document.getElementById("bengaluruCity").style.color = "white";
+  focusBangalore() {
+    document.getElementById("BangaloreCity").style.background = "#3aa5c5";
+    document.getElementById("BangaloreCity").style.color = "white";
   }
-  unfocusBengaluru() {
-    document.getElementById("bengaluruCity").style.background = "white";
-    document.getElementById("bengaluruCity").style.color = "black";
+  unfocusBangalore() {
+    document.getElementById("BangaloreCity").style.background = "white";
+    document.getElementById("BangaloreCity").style.color = "black";
   }
   focusMumbai() {
     document.getElementById("mumbaiCity").style.background = "#3aa5c5";
@@ -287,5 +287,33 @@ export class HeaderComponent implements OnInit {
       this.result = data;
     });
     this.closeSignupModal();
+  } 
+
+  loginResult:Boolean;
+  userLogin(){
+    let email = (<HTMLInputElement>document.getElementById("loginEmail"))
+      .value;
+    
+      let password = (<HTMLInputElement>document.getElementById("loginPassword"))
+      .value;
+
+    let user = {
+      fullName: null,
+      email: email,
+      phone: null,
+      password: password,
+      backLicenseImageUrl: null,
+      frontLicenseImageUrl: null,
+      userId: null
+    };
+
+    this.userService.userLogin(user).subscribe(data => {
+      this.loginResult = data;
+      this.userService.isLoggedIn=data;
+    });
+    this.closeLoginModal();
   }
+    
+
+ 
 }

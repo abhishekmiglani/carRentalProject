@@ -60,7 +60,8 @@ export class LocationHeaderComponent implements OnInit {
   // }
 
   setLocality(){
-    this.locality =(<HTMLInputElement> document.getElementById('locationMenu')).value;
+ 
+    this.locality = (<HTMLInputElement>document.getElementById('locationMenu')).value;
      this.locationService.setLocality(this.locality);
   }
 
