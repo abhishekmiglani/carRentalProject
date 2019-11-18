@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output,EventEmitter } from "@angular/core";
 import { GetLocationService } from 'app/services/get-location.service';
 import { CookieService } from 'ngx-cookie-service';
 import { SendDateService } from 'app/services/send-date.service';
 import { GetCarsService } from 'app/services/get-cars.service';
 import { CarSelectComponent } from 'app/car-select/car-select.component';
+import { Router } from '@angular/router';
+
 
 declare var $: any;
 
@@ -14,26 +16,30 @@ declare var $: any;
 })
 export class LocationHeaderComponent implements OnInit {
 
+  private carSelect: CarSelectComponent;
   valuePickup: Date;
   valueDrop: Date;
   title = "Dummy";
   minimumDate = new Date();
   visible = false;
   public availableCars: any = [];
+  public cars = [];
   
   @Input() public pickUp;
   @Input() public dropTime;
   @Input() public headerLocation;
-
+  @Output() public childEvent = new EventEmitter();
   constructor(public locationService : GetLocationService, private cookieservice : CookieService,
             private dateService : SendDateService, public carService : GetCarsService,
-            public carSelect : CarSelectComponent) {}
+            private router: Router) {
+              this.carSelect = new CarSelectComponent(this.carService, this.router );
+            }
 
   public locations = [];
   public locality : any;
   public selectedCity ;
   ngOnInit() {
-    
+
     this.locationService.getLocationByCity().
     subscribe(data=>
      {
@@ -42,7 +48,7 @@ export class LocationHeaderComponent implements OnInit {
     });
    
     this.valuePickup = this.pickUp;
-    this.valueDrop = this. dropTime;
+    this.valueDrop = this.dropTime;
     console.log("location service value is"+ this.headerLocation);
     (<HTMLInputElement> document.getElementById('locationMenu')).value=this.headerLocation;
     }
@@ -88,8 +94,7 @@ export class LocationHeaderComponent implements OnInit {
 
   getAvailableCars(){
     this.selectedCity = this.cookieservice.get('location');
-    console.log(this.selectedCity);
-    this.carSelect.getAvailableCars(this.selectedCity);
+     this.carSelect.getAvailableCar(this.selectedCity);
   }
  
 }
