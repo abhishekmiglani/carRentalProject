@@ -287,5 +287,33 @@ export class HeaderComponent implements OnInit {
       this.result = data;
     });
     this.closeSignupModal();
+  } 
+
+  loginResult:Boolean;
+  userLogin(){
+    let email = (<HTMLInputElement>document.getElementById("loginEmail"))
+      .value;
+    
+      let password = (<HTMLInputElement>document.getElementById("loginPassword"))
+      .value;
+
+    let user = {
+      fullName: null,
+      email: email,
+      phone: null,
+      password: password,
+      backLicenseImageUrl: null,
+      frontLicenseImageUrl: null,
+      userId: null
+    };
+
+    this.userService.userLogin(user).subscribe(data => {
+      this.loginResult = data;
+      this.userService.isLoggedIn=data;
+    });
+    this.closeLoginModal();
   }
+    
+
+ 
 }
