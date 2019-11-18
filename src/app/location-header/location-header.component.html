@@ -27,7 +27,7 @@
         <div>
           <select class="form-control shadow-none outline-none" id="locationMenu"
            (change) ="setLocality()">
-            <option id="locality" *ngFor="let location of locations">{{location.locality}}</option>
+            <option id="locality" [value]="location.locality" *ngFor="let location of locations">{{location.locality}}</option>
           </select>
         </div>
       </div>

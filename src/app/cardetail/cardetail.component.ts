@@ -22,7 +22,7 @@ export class CardetailComponent implements OnInit {
   weekday_fare:number = 140;
   weekend_fare:number = 150;
   total_fare:number = this.weekday_fare+this.weekend_fare;
-  duration:String="2h";
+  duration:any="2h";
 
   isLogged:boolean=false;
   
@@ -84,7 +84,6 @@ export class CardetailComponent implements OnInit {
       });
     });
 
-    
 
     this.route.paramMap.subscribe((params : ParamMap) => {
       this.id = parseInt(params.get('modelNo')),

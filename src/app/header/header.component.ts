@@ -144,7 +144,7 @@ export class HeaderComponent implements OnInit {
   selectBangalore() {
     this.city = "Bangalore,India";
 
-    this.city = "Bangalore";
+    // this.city = "Bangalore";
     this.focusBangalore();
     this.unfocusDelhi();
     this.unfocusHyderabad();
