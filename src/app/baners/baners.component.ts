@@ -19,10 +19,8 @@ export class BanersComponent implements OnInit {
 
   constructor(private router : Router , private cookieservice : CookieService,private userCard:DashboardService) { }
    cookievalue:any;
-  public message="Banglore";
+  public message="Bangalore";
    
-  
-
   ngOnInit() {
 
     $(function() {
