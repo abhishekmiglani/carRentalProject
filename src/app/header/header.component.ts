@@ -7,13 +7,16 @@ import {
   NgZone,
   AfterViewInit,
   Output,
-  EventEmitter
+  EventEmitter,
+  Inject
 } from "@angular/core";
 import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { LoginService } from "app/services/login.service";
 import { CitiesModalComponent } from "app/cities-modal/cities-modal.component";
 import { CookieService } from "ngx-cookie-service";
 import { GetLocationService } from "app/services/get-location.service";
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+
 
 // import {} from '@types/googlemaps';
 @Component({
@@ -37,6 +40,7 @@ export class HeaderComponent implements OnInit {
 
   private geoCoder;
   cookievalue: any;
+  public userData:any=[]
 
   @Output() public childEvent = new EventEmitter();
 
@@ -47,34 +51,51 @@ export class HeaderComponent implements OnInit {
   citiesModal: CitiesModalComponent;
 
   constructor(
+ 
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private loginServ: LoginService,
     private cookieservice: CookieService,
     private userService: UserService,
-    private locationService: GetLocationService
-  ) {}
+    private locationService: GetLocationService,
+    @Inject(LOCAL_STORAGE) private storage: WebStorageService
+  ) {
+    
+   
+  }
+  saveInLocal(key, val): void {
+    console.log('recieved= key:' + key + 'value:' + val);
+    this.storage.set(key, val);
+    this.userData[key]= this.storage.get(key);
+   }
 
+   getFromLocal(key):any {
+    console.log('recieved= key:' + key);
+    return this.storage.get(key);
+    
+   }
   displaySideNavbar() {
     console.log(this.dislplayNav);
     if (this.dislplayNav) this.dislplayNav = false;
     else this.dislplayNav = true;
   }
 
-  isLogged() {
-    if (this.loginServ.isLoggedIn == false) {
-      console.log("hshwch");
-      this.loginState = true;
-    } else {
-      this.loginState = false;
+  isLoggedIn() {
+    let status=this.getFromLocal("loginStatus");
+    if(status==true){
+      this.loginState=true;
     }
+    else{
+      this.loginState=false;
+    }
+    
   }
 
   ngOnInit() {
-    this.isLogged(); //for login and dashboard switch
+
     this.cookieservice.set("location", this.city);
     this.cookievalue = this.cookieservice.get("location");
-    console.log("cookied" + this.cookievalue);
+    console.log("cookied " + this.cookievalue);
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -307,9 +328,14 @@ export class HeaderComponent implements OnInit {
 
     this.userService.userLogin(user).subscribe(data => {
       this.loginResult = data;
-      this.userService.isLoggedIn=data;
+      console.log("login:"+this.loginResult)
+      if(this.loginResult==true){
+        this.saveInLocal("email",email);
+        this.saveInLocal("loginStatus",this.loginResult)
+      }
     });
     this.closeLoginModal();
+    this.isLoggedIn();
   }
     
 
