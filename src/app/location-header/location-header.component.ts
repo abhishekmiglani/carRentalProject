@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { GetLocationService } from 'app/services/get-location.service';
 import { CookieService } from 'ngx-cookie-service';
 import { SendDateService } from 'app/services/send-date.service';
@@ -11,12 +11,16 @@ declare var $: any;
   styleUrls: ["./location-header.component.css"]
 })
 export class LocationHeaderComponent implements OnInit {
+
   valuePickup: Date;
   valueDrop: Date;
   title = "Dummy";
   minimumDate = new Date();
   visible = false;
-
+  
+  @Input() public pickUp;
+  @Input() public dropTime;
+  @Input() public headerLocation;
 
   constructor(public locationService : GetLocationService, private cookieservice : CookieService,
             private dateService : SendDateService) {}
@@ -24,12 +28,18 @@ export class LocationHeaderComponent implements OnInit {
   public locations = [];
   public locality : any;
   ngOnInit() {
+    
     this.locationService.getLocationByCity().
     subscribe(data=>
      {
       this.locations=data;
       console.log(this.locations);
     });
+   
+    this.valuePickup = this.pickUp;
+    this.valueDrop = this. dropTime;
+    console.log("location service value is"+ this.headerLocation);
+    (<HTMLInputElement> document.getElementById('locationMenu')).value=this.headerLocation;
     }
 
 
@@ -50,6 +60,7 @@ export class LocationHeaderComponent implements OnInit {
   // }
 
   setLocality(){
+ 
     this.locality = (<HTMLInputElement>document.getElementById('locationMenu')).value;
      this.locationService.setLocality(this.locality);
   }
