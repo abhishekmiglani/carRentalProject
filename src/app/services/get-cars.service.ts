@@ -15,8 +15,7 @@ export class GetCarsService {
   public package:any="No-Fuel";
 
   private _url: string = "http://localhost:8082/cars";
-
- 
+  private _url3 : string ;
   public city;
 
   getCars(): Observable<Car[]> {
@@ -43,5 +42,10 @@ export class GetCarsService {
 
   getCarPackage(){
       return this.package;
+  }
+
+  public getCarsByAvailability(selectedCity : any): Observable<Car[]> {
+    this._url3 = "http://localhost:8082/cars/available/"+selectedCity;
+        return this.http.get<Car[]>(this._url3);
   }
 }

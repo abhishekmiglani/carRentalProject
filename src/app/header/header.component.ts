@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
   loginState: boolean = false;
   dislplayNav = false;
-  city: any = "Banglore";
+  city: any = "Bangalore";
   latitude: number;
   longitude: number;
   zoom: number;
@@ -166,11 +166,9 @@ export class HeaderComponent implements OnInit {
       }
     );
   }
-  selectBengaluru() {
-    this.city = "Bengaluru,India";
-
-    this.city = "Banglore";
-    this.focusBengaluru();
+  selectBangalore() {
+    this.city = "Bangalore";
+    this.focusBangalore();
     this.unfocusDelhi();
     this.unfocusHyderabad();
     this.unfocusMumbai();
@@ -184,7 +182,7 @@ export class HeaderComponent implements OnInit {
     this.focusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
-    this.unfocusBengaluru();
+    this.unfocusBangalore();
     this.unfocusPune();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
@@ -196,7 +194,7 @@ export class HeaderComponent implements OnInit {
     this.unfocusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
-    this.unfocusBengaluru();
+    this.unfocusBangalore();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
   }
@@ -207,7 +205,7 @@ export class HeaderComponent implements OnInit {
     this.unfocusMumbai();
     this.unfocusDelhi();
     this.unfocusPune();
-    this.unfocusBengaluru();
+    this.unfocusBangalore();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
   }
@@ -218,18 +216,18 @@ export class HeaderComponent implements OnInit {
     this.unfocusMumbai();
     this.unfocusHyderabad();
     this.unfocusPune();
-    this.unfocusBengaluru();
+    this.unfocusBangalore();
     this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
   }
 
-  focusBengaluru() {
-    document.getElementById("bengaluruCity").style.background = "#3aa5c5";
-    document.getElementById("bengaluruCity").style.color = "white";
+  focusBangalore() {
+    document.getElementById("BangaloreCity").style.background = "#3aa5c5";
+    document.getElementById("BangaloreCity").style.color = "white";
   }
-  unfocusBengaluru() {
-    document.getElementById("bengaluruCity").style.background = "white";
-    document.getElementById("bengaluruCity").style.color = "black";
+  unfocusBangalore() {
+    document.getElementById("BangaloreCity").style.background = "white";
+    document.getElementById("BangaloreCity").style.color = "black";
   }
   focusMumbai() {
     document.getElementById("mumbaiCity").style.background = "#3aa5c5";

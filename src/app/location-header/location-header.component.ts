@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { GetLocationService } from 'app/services/get-location.service';
 import { CookieService } from 'ngx-cookie-service';
 import { SendDateService } from 'app/services/send-date.service';
+import { GetCarsService } from 'app/services/get-cars.service';
+import { CarSelectComponent } from 'app/car-select/car-select.component';
 
 declare var $: any;
 
@@ -11,25 +13,38 @@ declare var $: any;
   styleUrls: ["./location-header.component.css"]
 })
 export class LocationHeaderComponent implements OnInit {
+
   valuePickup: Date;
   valueDrop: Date;
   title = "Dummy";
   minimumDate = new Date();
   visible = false;
-
+  public availableCars: any = [];
+  
+  @Input() public pickUp;
+  @Input() public dropTime;
+  @Input() public headerLocation;
 
   constructor(public locationService : GetLocationService, private cookieservice : CookieService,
-            private dateService : SendDateService) {}
+            private dateService : SendDateService, public carService : GetCarsService,
+            public carSelect : CarSelectComponent) {}
 
   public locations = [];
   public locality : any;
+  public selectedCity ;
   ngOnInit() {
+    
     this.locationService.getLocationByCity().
     subscribe(data=>
      {
       this.locations=data;
       console.log(this.locations);
     });
+   
+    this.valuePickup = this.pickUp;
+    this.valueDrop = this. dropTime;
+    console.log("location service value is"+ this.headerLocation);
+    (<HTMLInputElement> document.getElementById('locationMenu')).value=this.headerLocation;
     }
 
 
@@ -50,6 +65,7 @@ export class LocationHeaderComponent implements OnInit {
   // }
 
   setLocality(){
+ 
     this.locality = (<HTMLInputElement>document.getElementById('locationMenu')).value;
      this.locationService.setLocality(this.locality);
   }
@@ -68,6 +84,12 @@ export class LocationHeaderComponent implements OnInit {
     else{
       this.visible = true;
     }
+  }
+
+  getAvailableCars(){
+    this.selectedCity = this.cookieservice.get('location');
+    console.log(this.selectedCity);
+    this.carSelect.getAvailableCars(this.selectedCity);
   }
  
 }
