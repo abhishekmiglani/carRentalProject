@@ -25,7 +25,8 @@ export class CarSelectComponent implements OnInit {
   fuelType: string = "";
   carType: string[] = [];
 
-  public cars = [];
+  public cars: any = [];
+  public availableCars = [];
   carId: number;
   public package;
 
@@ -42,8 +43,6 @@ export class CarSelectComponent implements OnInit {
         $("#selected").val($(this).text());
       });
     });
-
-    
 
     this.getCarsService.getCars()
       .subscribe(data => {
@@ -807,6 +806,7 @@ export class CarSelectComponent implements OnInit {
       }
     }
   }
+
   runValidation(carId: number) {
     if (this.locationHeader.valuePickup != null && this.locationHeader.valueDrop != null) {
       this.router.navigateByUrl('/car/' + carId);
@@ -817,8 +817,13 @@ export class CarSelectComponent implements OnInit {
 
   }
 
-
-
+  getAvailableCars(selectedCity : String){
+    this.getCarsService.getCarsByAvailability(selectedCity)
+    .subscribe(data => {
+      this.cars = data;
+      this.duplicateCarList = data;
+      console.log(this.cars);
+    });  }
 
 }
 
