@@ -9,7 +9,6 @@ import { User } from "app/Bean/User";
 
 export class UserService {
   constructor(private http: HttpClient) {}
-  isLoggedIn:Boolean=false;
   getAllUsers(): Observable<User[]> {
     let url: string = "http://localhost:8081/users";
     return this.http.get<User[]>(url);
@@ -23,5 +22,10 @@ export class UserService {
     userLogin(user: User) : Observable<Boolean>{
     let url: string = "http://localhost:8081/users/login";
     return this.http.post<Boolean>(url, user);
+    }
+
+    logout(){
+      localStorage.clear();
+    
     }
 }

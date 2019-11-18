@@ -8,6 +8,7 @@ import { CarSelectComponent } from 'app/car-select/car-select.component';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { GetLocationService } from 'app/services/get-location.service';
 import { SendDateService } from 'app/services/send-date.service';
+import { HeaderComponent } from 'app/header/header.component';
 
 
 declare var $: any;
@@ -26,31 +27,31 @@ export class CardetailComponent implements OnInit {
 
   isLogged:boolean=false;
   
-  constructor(private loginServ:LoginService, private getCarsService : GetCarsService, 
+  constructor(private getCarsService : GetCarsService, 
      private route : ActivatedRoute, private locationService : GetLocationService,
       private dateService : SendDateService) { }
 
   @ViewChild(UploadFileComponent,{static:false}) upload:UploadFileComponent;
-  @ViewChild(LoginModalComponent, {static:false} ) login:LoginModalComponent;
   @ViewChild(CarSelectComponent, {static:false} ) carSelect:CarSelectComponent;
 
   modalState:boolean=false;
   checkBoxState:boolean=false;
  
   public cars:Car;
-
+  
   changeState(){
-    
-    if(this.loginServ.isLoggedIn==false){
-     
+  
+    if(localStorage.getItem("loginStatus")=="true"){
+      console.log("ghcwdhkh")
       this.isLogged=true;
       this.upload.open();
       
     }
     else{
-     
+      console.log("ye chalna chahiye")
+    
       this.isLogged=false;
-      this.login.openModalDialog();
+      
     }
   
   }
