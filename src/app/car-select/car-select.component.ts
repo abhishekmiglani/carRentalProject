@@ -28,8 +28,6 @@ export class CarSelectComponent implements OnInit {
   public cars: any = [];
   carId: number;
   public package;
-  public message: any = [];
-
   duplicateCarList: any[];
 
   constructor(private getCarsService: GetCarsService, private router: Router) { }
@@ -44,13 +42,12 @@ export class CarSelectComponent implements OnInit {
       });
     });
 
-
     this.getCarsService.getCars()
       .subscribe(data => {
         this.cars = data;
         this.duplicateCarList = data;
       });
-    
+
   }
 
   filter60Color() {
@@ -751,14 +748,8 @@ export class CarSelectComponent implements OnInit {
     }
   }
 
-   getAvailableCar(selectedCity : String){
-     
-     console.log("getting cars in carselect TS file");
-    this.getCarsService.getCarsByAvailability(selectedCity)
-    .subscribe(data => {
-      this.cars = data;
-      console.log(this.cars);
-    });
+   getAvailableCar(){
+     console.log(this.message);
     }
 
 }

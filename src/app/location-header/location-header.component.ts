@@ -22,18 +22,14 @@ export class LocationHeaderComponent implements OnInit {
   title = "Dummy";
   minimumDate = new Date();
   visible = false;
-  public availableCars: any = [];
-  public cars = [];
+  public availableCars = [];
   
   @Input() public pickUp;
   @Input() public dropTime;
   @Input() public headerLocation;
   @Output() public childEvent = new EventEmitter();
   constructor(public locationService : GetLocationService, private cookieservice : CookieService,
-            private dateService : SendDateService, public carService : GetCarsService,
-            private router: Router) {
-              this.carSelect = new CarSelectComponent(this.carService, this.router );
-            }
+            private dateService : SendDateService, public carService : GetCarsService,) {}
 
   public locations = [];
   public locality : any;
@@ -93,8 +89,14 @@ export class LocationHeaderComponent implements OnInit {
   }
 
   getAvailableCars(){
+    
     this.selectedCity = this.cookieservice.get('location');
-     this.carSelect.getAvailableCar(this.selectedCity);
+    this.carService.getCarsByAvailability(this.selectedCity)
+    .subscribe(data => {
+      this.availableCars = data;
+      console.log(this.availableCars);
+      this.childEvent.emit(this.availableCars);
+    });
   }
  
 }

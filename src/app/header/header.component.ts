@@ -63,9 +63,6 @@ export class HeaderComponent implements OnInit {
     
    
   }
-
-  
-
   saveInLocal(key, val): void {
     console.log('recieved= key:' + key + 'value:' + val);
     this.storage.set(key, val);
@@ -95,11 +92,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-      
-    
+
     this.cookieservice.set("location", this.city);
     this.cookievalue = this.cookieservice.get("location");
-    console.log("cookied" + this.cookievalue);
+    console.log("cookied " + this.cookievalue);
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
