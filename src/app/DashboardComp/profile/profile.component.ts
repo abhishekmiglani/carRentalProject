@@ -16,23 +16,6 @@ export class ProfileComponent implements OnInit {
 
   constructor() { }
 
-  editButtonHandler(inputId, buttonId){
-    if(document.getElementById(buttonId).innerHTML=="Edit"){
-      $("#"+inputId).removeAttr('disabled')
-      document.getElementById(buttonId).className="input-group-text bg-success"
-      document.getElementById(buttonId).innerHTML = "Save"
-      document.getElementById(inputId).focus();
-    }
-   
-    else if(document.getElementById(buttonId).innerHTML=="Save")
-    {
-      $("#"+inputId).attr('disabled','disabled')
-      document.getElementById(buttonId).className="input-group-text bg-warning"
-      document.getElementById(buttonId).innerHTML = "Edit"
-
-    }
-  }
-  
   ngOnInit() {
   }
 

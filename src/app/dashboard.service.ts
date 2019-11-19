@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { WalletTransaction } from './bean/WalletTransaction';
 import { Booking } from './bean/Booking';
 import { Card } from './bean/Card';
+import { UserCard } from './Bean/UserCard';
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +40,4 @@ export class DashboardService {
     let url = "http://localhost:8085/user/"+userId+"/cards"
     return this.http.get<Card[]>(url);
   }
-
-
-
-
 }

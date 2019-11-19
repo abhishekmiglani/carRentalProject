@@ -29,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { GetCarsService } from './get-cars.service';
+import { DashboardService } from './dashboard.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
       libraries: ["places"]
     })
   ],
-  providers: [CookieService],
+  providers: [CookieService,GetCarsService,DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

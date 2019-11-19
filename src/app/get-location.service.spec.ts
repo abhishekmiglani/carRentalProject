@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DashboardService } from './dashboard.service';
+import { GetLocationService } from './get-location.service';
 
-describe('DashboardService', () => {
+describe('GetLocationService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DashboardService = TestBed.get(DashboardService);
+    const service: GetLocationService = TestBed.get(GetLocationService);
     expect(service).toBeTruthy();
   });
 });
