@@ -749,7 +749,7 @@ export class CarSelectComponent implements OnInit {
   }
 
    getAvailableCar(){
-     console.log(this.message);
+     //console.log(this.message);
     }
 
 }
