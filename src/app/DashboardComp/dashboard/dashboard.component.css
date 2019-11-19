@@ -7,11 +7,11 @@ a{
     color: black;
 }
 li:hover{
-    background: grey;
+    background: lightgray;
     color: white;
 }
 .descr{
-    margin: 30px 0px 0 40px;
+    margin-top: 20px;
 }
 .background{
     background: rgb(183,220,233);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from 'app/dashboard.service';
+import { Card } from 'app/bean/Card';
 declare var $: any;
 
 @Component({
@@ -17,8 +19,10 @@ export class BankDetailsComponent implements OnInit {
   tempValidYear = "XX";
   isCardSaved = true;
   cardLogo = "/assets/masterCardLogo.png"
-  items = [1, 2];
-  constructor() { }
+  cardDetails:Card[];
+
+  
+  constructor(private dashboardService:DashboardService) { }
 
   cardController() {
 
@@ -45,8 +49,15 @@ export class BankDetailsComponent implements OnInit {
 
   }
 
+  getCardDetails(userId){
+    this.dashboardService.getCards(userId).subscribe(cardData=>{
+      this.cardDetails=cardData;
+      console.log(this.cardDetails);
+    })
+  }
 
   ngOnInit(): void {
+    this.getCardDetails(11);
 
   }
 

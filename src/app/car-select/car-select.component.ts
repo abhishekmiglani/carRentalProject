@@ -747,11 +747,6 @@ export class CarSelectComponent implements OnInit {
       window.alert("Please select Pickup and Drop Date first")
     }
   }
-
-   getAvailableCar(){
-     console.log(this.message);
-    }
-
 }
 
 
