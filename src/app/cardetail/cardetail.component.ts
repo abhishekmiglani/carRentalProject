@@ -33,6 +33,7 @@ export class CardetailComponent implements OnInit {
 
   @ViewChild(UploadFileComponent,{static:false}) upload:UploadFileComponent;
   @ViewChild(CarSelectComponent, {static:false} ) carSelect:CarSelectComponent;
+  @ViewChild(LoginModalComponent,{static:false}) login:LoginModalComponent;
 
   modalState:boolean=false;
   checkBoxState:boolean=false;
@@ -41,7 +42,7 @@ export class CardetailComponent implements OnInit {
   
   changeState(){
   
-    if(localStorage.getItem("loginStatus")=="true"){
+    if(true){
       console.log("ghcwdhkh")
       this.isLogged=true;
       this.upload.open();
@@ -49,7 +50,7 @@ export class CardetailComponent implements OnInit {
     }
     else{
       console.log("ye chalna chahiye")
-    
+      this.login.openModalDialog();
       this.isLogged=false;
       
     }

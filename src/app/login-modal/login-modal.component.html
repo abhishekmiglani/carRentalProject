@@ -1,103 +1,244 @@
-<button [hidden]=true data-toggle="modal" data-target="#myModal" id="openLogin">click it</button>
+<button type="button" id="openModal1" class="btn btn-primary" data-toggle="modal" data-target="#myModal1" hidden="true">
+  Open modal
+</button>
 <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
 
-      <!-- Modal content-->
-
-      <div class="modal-content">
-        <div class="modal-header" style="background-color:midnightblue ; color: white;">
-          <h4 class="modal-title">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            LOGIN</h4>
-          <button type="button" class="close" style="color: white;" data-dismiss="modal">&times;</button>
-        </div>
-        <div>
-          <h6 style="text-align: center;">welcome To DhoomCar</h6>
-        </div>
-        <form style="width: 80%;margin-left: 10%;">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-              placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            <br>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#otp" style="width: 100%;">
-              PROCEED</button>
-            <br><br>
-            <h4 style="text-align: center;"> ______OR______</h4>
-            <br><br>
-
-            <button type="button" class="btn btn-primary" style="width: 100%;"> <img
-                src="https://image.flaticon.com/icons/svg/281/281764.svg" width="15px" height="20px"> continue with
-              Gmail </button>
-            &nbsp;&nbsp;
-            <button type="button" class="btn btn-primary" style="width: 100%;"> <img
-                src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" width="18px"
-                height="18px"> continue with facebook</button>
-            <br><br>
-          </div>
-        </form>
+    <div class="modal-content">
+      <div
+        class="modal-header"
+        style="background-color:midnightblue ; color: white;"
+      >
+        <!-- <div class="modal-header" > -->
+        <h4 class="modal-title">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOGIN
+        </h4>
+        <button
+          type="button"
+          class="close"
+          style="color: white;"
+          data-dismiss="modal"
+        >
+          &times;
+        </button>
       </div>
+      <div>
+        <br />
+        <h6 style="text-align: center;">Welcome To DhoomCar</h6>
+      </div>
+      <form style="width: 90%;margin-left: 5%;">
+        <div class="form-group">
+          <span id="emailText" style="font-size: 12px;">Email address</span>
+          <input
+            type="email"
+            class="form-control"
+            id="loginEmail"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+
+          <span id="passwordText" style="font-size: 12px;">Password</span>
+          <input
+            type="password"
+            class="form-control"
+            id="loginPassword"
+            aria-describedby="emailHelp"
+            placeholder="Enter password"
+          />
+          <br />
+          <button
+            type="button"
+            class="btn btn-success"
+            style="width: 100%;"
+            (click)="userLogin()"
+          >
+            Login
+          </button>
+          <br /><br />
+          <!-- <h4 style="text-align: center;"> ______OR______</h4>
+        <br><br> -->
+
+          <!-- <button type="button" class="btn btn-primary" style="width: 100%;"> <img
+            src="https://image.flaticon.com/icons/svg/281/281764.svg" width="15px" height="20px"> continue with
+          Gmail </button>
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-primary" style="width: 100%;"> <img
+            src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" width="18px"
+            height="18px"> continue with facebook</button> -->
+          <!-- <div class="text-center" style="font-size: 13px;">New to DhoomCar? <span  data-toggle="modal" data-target="#signUpModal">Sign up</span></div> -->
+          <hr />
+          <div class="text-center" style="font-size: 14px;">
+            New to DhoomCar?
+          </div>
+          <br />
+          <div class="text-center">
+            <button
+              type="button"
+              class="btn btn-success"
+              data-toggle="modal"
+              data-target="#signUpModal"
+              (click)="closeLoginModal()"
+            >
+              Sign Up
+            </button>
+            <br />
+            <br />
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-
-  <div id="otp" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-
-      <div class="modal-content">
-        <div class="modal-header" style="background-color:midnightblue ; color: white;">
-          <h4 class="modal-title">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ENTER YOUR OTP</h4>
-          <button type="button" class="close" style="color: white;" data-dismiss="modal">&times;</button>
-        </div>
-        <div>
-          &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-          <h6 style="text-align: center;">Verification of your number is required so we can contact you about any
-            information</h6>
-        </div>
-        <br><br><br>
-        <div>
-          <h6 style="text-align: center;">Otp is sent to <a href="#" data-toggle="modal" data-target="#otp"
-              style="color: blue;">(edit)</a> </h6>
-        </div>
-        <br><br>
-
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="0" maxlength="1" />
-          </div>
-          <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="0" maxlength="1" />
-          </div>
-          <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="0" maxlength="1" />
-          </div>
-          <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="0" maxlength="1" />
-          </div>
-        </div>
-        <br><br>
-
-        <div>
-
-          <h6> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Did not recieve otp resend otp <a style="color: blue;" href="#">(Resend
-              otp)</a> </h6>
-
-        </div>
-        <br><br>
-        <div>
-          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp; &nbsp;&nbsp;
-          <button type="button" class="btn btn-success" style="width: 60%; text-align: center;"> Submit</button>
-        </div>
-        <br>
-        <br>
-      </div>
-    </div>
-  </div>
+</div>
+ <!-- Sign up Modal Starts-->
+ <div
+ class="modal fade"
+ id="signUpModal"
+ tabindex="-1"
+ role="dialog"
+ aria-labelledby="exampleModalCenterTitle"
+ aria-hidden="true"
+>
+ <div
+   class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+   role="document"
+ >
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title " id="exampleModalLongTitle">
+         <div class="text-center">Enter Details to Sign Up</div>
+       </h5>
+       <button
+         type="button"
+         class="close"
+         data-dismiss="modal"
+         aria-label="Close"
+       >
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <div class="form-group">
+         <span style="font-size: 12px;">Email address</span>
+         <input
+           id="signUpEmail"
+           type="email"
+           placeholder="Enter email"
+           class="form-control"
+         />
+         <br />
+         <span style="font-size: 12px;">Full Name</span>
+         <input
+           id="signUpName"
+           type="text"
+           placeholder="Enter name"
+           class="form-control"
+         />
+         <br />
+         <span style="font-size: 12px;">Mobile Number</span>
+         <input
+           id="signUpMobile"
+           type="text"
+           placeholder="Enter mobile"
+           class="form-control"
+         />
+         <br />
+         <span style="font-size: 12px;">Password</span>
+         <input
+           id="signUpPassword"
+           type="password"
+           placeholder="Enter password"
+           class="form-control"
+         />
+         <br />
+         <span style="font-size: 12px;">Re-Enter Password</span>
+         <input
+           id="signUpPasswordEnter"
+           type="password"
+           placeholder="Re-Enter password"
+           class="form-control"
+         />
+       </div>
+     </div>
+     <div class="modal-footer">
+       <button
+         type="button"
+         class="btn btn-secondary"
+         data-dismiss="modal"
+       >
+         Close
+       </button>
+       <button
+         type="button"
+         class="btn btn-success"
+         (click)="createNewUser()"
+         data-toggle="modal"
+         data-target="#SignUpMsg"
+       >
+         Proceed
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+<!--Sign Up Modal Ends-->
+<!--Registration message modal-->
+<div class="modal" id="SignUpMsg" tabindex="-1" role="dialog">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title">Sign Up Response</h5>
+       <button
+         type="button"
+         class="close"
+         data-dismiss="modal"
+         aria-label="Close"
+       >
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <div *ngIf="result; else elseBlockReg">
+         <p style="font-family:Helvetica Neue;">
+           Sign Up Successful. Log in to continue
+         </p>
+       </div>
+       <ng-template #elseBlockReg style="font-family:Helvetica Neue;"
+         >User Already Exists! Try Using Different E-Mail Id</ng-template
+       >
+     </div>
+     <div class="modal-footer">
+         <button
+         type="button"
+         class="btn btn-primary"
+         (click)="openLoginModal()"
+       >
+         Login
+       </button>
+       <div *ngIf="result;else signUpButton">
+    
+       <button
+         type="button"
+         class="btn btn-secondary"
+         data-dismiss="modal"
+       >
+         Close
+       </button>
+     </div>
+     <ng-template #signUpButton
+     > 
+   <button
+     type="button"
+     class="btn btn-secondary"
+     data-dismiss="modal"
+     (click)="openSignupModal()"
+   >
+     Sign Up
+   </button></ng-template>
+     </div>
+   </div>
+ </div>
+</div>
+<!--registration message modal ends-->
