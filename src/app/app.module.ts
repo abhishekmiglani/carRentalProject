@@ -28,6 +28,7 @@ import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CookieService } from 'ngx-cookie-service';
     CardetailComponent,
     BanersComponent,
     LoginModalComponent,
-    CitiesModalComponent  ],
+    CitiesModalComponent,
+    ForgotPasswordComponent  ],
   imports: [
     HttpClientModule,
     BrowserModule,
