@@ -1,7 +1,9 @@
-<app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality" ></app-location-header>
-<div class="container-fluid row" style="margin-top: 110px;">
-  
+<div class="container-fluid">
 
+    <app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality" ></app-location-header>
+<div class="container-fluid " style="margin-top: 110px;" style="display: flex;">
+  
+<div class="row">
       <!-- <div class="checkout-details"> -->
       <div class="left-pane col-md-8" style="display: flex">
           <div class="left-wrapper box-shadow "
@@ -275,6 +277,8 @@
           </div>
       </div>
   </div>
+</div>
+</div>
 </div>
 <app-upload-file></app-upload-file>
 <app-login-modal></app-login-modal>
