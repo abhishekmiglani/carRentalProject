@@ -1,7 +1,14 @@
-<button type="button" id="openModal1" class="btn btn-primary" data-toggle="modal" data-target="#myModal1" hidden="true">
+<button
+  type="button"
+  id="openModal1"
+  class="btn btn-primary"
+  data-toggle="modal"
+  data-target="#myModal1"
+  hidden="true"
+>
   Open modal
 </button>
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal1" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
 
@@ -92,153 +99,144 @@
     </div>
   </div>
 </div>
- <!-- Sign up Modal Starts-->
- <div
- class="modal fade"
- id="signUpModal"
- tabindex="-1"
- role="dialog"
- aria-labelledby="exampleModalCenterTitle"
- aria-hidden="true"
+<!-- Sign up Modal Starts-->
+<div
+  class="modal fade"
+  id="signUpModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
 >
- <div
-   class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-   role="document"
- >
-   <div class="modal-content">
-     <div class="modal-header">
-       <h5 class="modal-title " id="exampleModalLongTitle">
-         <div class="text-center">Enter Details to Sign Up</div>
-       </h5>
-       <button
-         type="button"
-         class="close"
-         data-dismiss="modal"
-         aria-label="Close"
-       >
-         <span aria-hidden="true">&times;</span>
-       </button>
-     </div>
-     <div class="modal-body">
-       <div class="form-group">
-         <span style="font-size: 12px;">Email address</span>
-         <input
-           id="signUpEmail"
-           type="email"
-           placeholder="Enter email"
-           class="form-control"
-         />
-         <br />
-         <span style="font-size: 12px;">Full Name</span>
-         <input
-           id="signUpName"
-           type="text"
-           placeholder="Enter name"
-           class="form-control"
-         />
-         <br />
-         <span style="font-size: 12px;">Mobile Number</span>
-         <input
-           id="signUpMobile"
-           type="text"
-           placeholder="Enter mobile"
-           class="form-control"
-         />
-         <br />
-         <span style="font-size: 12px;">Password</span>
-         <input
-           id="signUpPassword"
-           type="password"
-           placeholder="Enter password"
-           class="form-control"
-         />
-         <br />
-         <span style="font-size: 12px;">Re-Enter Password</span>
-         <input
-           id="signUpPasswordEnter"
-           type="password"
-           placeholder="Re-Enter password"
-           class="form-control"
-         />
-       </div>
-     </div>
-     <div class="modal-footer">
-       <button
-         type="button"
-         class="btn btn-secondary"
-         data-dismiss="modal"
-       >
-         Close
-       </button>
-       <button
-         type="button"
-         class="btn btn-success"
-         (click)="createNewUser()"
-         data-toggle="modal"
-         data-target="#SignUpMsg"
-       >
-         Proceed
-       </button>
-     </div>
-   </div>
- </div>
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalLongTitle">
+          <div class="text-center">Enter Details to Sign Up</div>
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <span style="font-size: 12px;">Email address</span>
+          <input
+            id="signUpEmail"
+            type="email"
+            placeholder="Enter email"
+            class="form-control"
+          />
+          <br />
+          <span style="font-size: 12px;">Full Name</span>
+          <input
+            id="signUpName"
+            type="text"
+            placeholder="Enter name"
+            class="form-control"
+          />
+          <br />
+          <span style="font-size: 12px;">Mobile Number</span>
+          <input
+            id="signUpMobile"
+            type="text"
+            placeholder="Enter mobile"
+            class="form-control"
+          />
+          <br />
+          <span style="font-size: 12px;">Password</span>
+          <input
+            id="signUpPassword"
+            type="password"
+            placeholder="Enter password"
+            class="form-control"
+          />
+          <br />
+          <span style="font-size: 12px;">Re-Enter Password</span>
+          <input
+            id="signUpPasswordEnter"
+            type="password"
+            placeholder="Re-Enter password"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="createNewUser()"
+          data-toggle="modal"
+          data-target="#SignUpMsg"
+        >
+          Proceed
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 <!--Sign Up Modal Ends-->
 <!--Registration message modal-->
 <div class="modal" id="SignUpMsg" tabindex="-1" role="dialog">
- <div class="modal-dialog" role="document">
-   <div class="modal-content">
-     <div class="modal-header">
-       <h5 class="modal-title">Sign Up Response</h5>
-       <button
-         type="button"
-         class="close"
-         data-dismiss="modal"
-         aria-label="Close"
-       >
-         <span aria-hidden="true">&times;</span>
-       </button>
-     </div>
-     <div class="modal-body">
-       <div *ngIf="result; else elseBlockReg">
-         <p style="font-family:Helvetica Neue;">
-           Sign Up Successful. Log in to continue
-         </p>
-       </div>
-       <ng-template #elseBlockReg style="font-family:Helvetica Neue;"
-         >User Already Exists! Try Using Different E-Mail Id</ng-template
-       >
-     </div>
-     <div class="modal-footer">
-         <button
-         type="button"
-         class="btn btn-primary"
-         (click)="openLoginModal()"
-       >
-         Login
-       </button>
-       <div *ngIf="result;else signUpButton">
-    
-       <button
-         type="button"
-         class="btn btn-secondary"
-         data-dismiss="modal"
-       >
-         Close
-       </button>
-     </div>
-     <ng-template #signUpButton
-     > 
-   <button
-     type="button"
-     class="btn btn-secondary"
-     data-dismiss="modal"
-     (click)="openSignupModal()"
-   >
-     Sign Up
-   </button></ng-template>
-     </div>
-   </div>
- </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sign Up Response</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="result; else elseBlockReg">
+          <p style="font-family:Helvetica Neue;">
+            Sign Up Successful. Log in to continue
+          </p>
+        </div>
+        <ng-template #elseBlockReg style="font-family:Helvetica Neue;"
+          >User Already Exists! Try Using Different E-Mail Id</ng-template
+        >
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="openLoginModal()"
+        >
+          Login
+        </button>
+        <div *ngIf="result; else signUpButton">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+        <ng-template #signUpButton>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            (click)="openSignupModal()"
+          >
+            Sign Up
+          </button></ng-template
+        >
+      </div>
+    </div>
+  </div>
 </div>
 <!--registration message modal ends-->

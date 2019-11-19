@@ -32,30 +32,26 @@ export class CardetailComponent implements OnInit {
     private dateService: SendDateService
   ) {}
 
+  @ViewChild(UploadFileComponent, { static: false })
+  upload: UploadFileComponent;
+  @ViewChild(CarSelectComponent, { static: false })
+  carSelect: CarSelectComponent;
+  @ViewChild(LoginModalComponent, { static: false }) login: LoginModalComponent;
 
+  modalState: boolean = false;
+  checkBoxState: boolean = false;
 
-  @ViewChild(UploadFileComponent,{static:false}) upload:UploadFileComponent;
-  @ViewChild(CarSelectComponent, {static:false} ) carSelect:CarSelectComponent;
-  @ViewChild(LoginModalComponent,{static:false}) login:LoginModalComponent;
+  public cars: Car;
 
-  modalState:boolean=false;
-  checkBoxState:boolean=false;
- 
-  public cars:Car;
-  
-  changeState(){
-  
-    if(false){
-      console.log("ghcwdhkh")
-      this.isLogged=true;
+  changeState() {
+    if (false) {
+      console.log("ghcwdhkh");
+      this.isLogged = true;
       this.upload.open();
-      
-    }
-    else{
-      console.log("ye chalna chahiye")
+    } else {
+      console.log("ye chalna chahiye");
       this.login.openModalDialog();
-      this.isLogged=false;
-      
+      this.isLogged = false;
     }
   }
   changeQuickBookState(e: any) {
