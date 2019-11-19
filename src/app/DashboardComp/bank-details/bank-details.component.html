@@ -1,13 +1,13 @@
 <div class="jumbotron conatiner">
     <h3>Saved Cards</h3>
-    <div class="savedCardInfo shadow" id="saved-card" *ngFor="let item of items">
+    <div class="savedCardInfo shadow" id="saved-card" *ngFor="let item of cardDetails">
         <div class="row ">
             <div class="col-md-2 col-sm-2 col-2 card-logo-style">
                 <img src={{cardLogo}} alt="logo" />
             </div>
             <div class="col-md-7 col-sm-7 col-7">
-                <label for="cardLastDigits">Ending with {{cardLast4Digits}}</label><br>
-                <label for="ExpiriesIn">Expires&nbsp;&nbsp;{{validMonth}}/{{validYear}}</label>
+                <label for="cardLastDigits">Ending with {{item.cardNum}}</label><br>
+                <label for="ExpiriesIn">Expires&nbsp;&nbsp;{{item.expMonth}}/{{item.expYear}}</label>
             </div>
             <div class="col-md-3 col-sm-3 col-3">
                 <label id="editCard-{{item}}" class="edit-label" (click)="showEditModal(item)">Edit</label>

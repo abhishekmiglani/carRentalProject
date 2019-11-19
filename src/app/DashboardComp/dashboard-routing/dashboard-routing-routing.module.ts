@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { BankDetailsComponent } from '../bank-details/bank-details.component';
 
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { BookingsComponent } from '../bookings/bookings.component';
 
 
 const dashboard_routes: Routes = [
@@ -15,6 +16,9 @@ const dashboard_routes: Routes = [
     path: "dashboard", component: DashboardComponent, children: [
       {
         path: "", component: ProfileComponent
+      },
+      {
+        path: "bookings", component: BookingsComponent
       }, 
       { 
         path: 'wallet', component: WalletComponent 

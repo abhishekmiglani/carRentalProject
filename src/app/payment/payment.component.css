@@ -16,11 +16,6 @@
     transition-delay: 1s
 }
 
-label {
-    font-size: 12px;
-    font-family: 'Californian FB'
-}
-
 input {
     font-size: 12px
 }
@@ -55,40 +50,53 @@ input {
 }
 
 .cardView {
-    background-image : url('/assets/sea.jpg');
+    background-image: url('/assets/sea.jpg');
     background-size: cover;
     height: 170px;
-    margin : auto;
+    margin: auto;
     width: 300px;
     border-radius: 10px;
-    color:red;
+    color: white;
     box-shadow: 10px 10px 5px grey;
 }
-.cardChip{
-    position: absolute;
-    top: 130px;
-    left : 130px;
+
+.cardChip {
+    position: relative;
+    top: 45px;
+    left: 30px;
 }
-.cardNumberStyle{
-    position: absolute;
-    top: 165px;
-    left: 155px;
+
+.cardNumberStyle {
+    position: relative;
+    top: 80px;
+    left: 40px;
     font-size: 20px;
     font-style: bold;
     font-family: 'Courier New', Courier, monospace;
-    
 }
-.expiryDateStyle{
-    position: absolute;
-    top : 200px;
-    left: 180px;
-    font-size : 10px;
+
+.expiryDateStyle {
+    position: relative;
+    top: 110px;
+    left: 45px;
+    font-size: 10px;
 }
-.holderNameStyle{
-    position: absolute;
-    top: 220px;
-    left: 130px;
+
+.holderNameStyle {
+    position: relative;
+    top: 130px;
+    left: -90px;
 }
-.card-logo-style{
+
+.card-logo-style {
     padding: 20px;
+}
+
+.main-container {
+    margin: 20px 0 0 20px;
+}
+
+.edit-label,
+.delete-label {
+    cursor: pointer;
 }
