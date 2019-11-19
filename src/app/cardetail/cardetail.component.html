@@ -1,4 +1,5 @@
-<div class="container-fluid row">
+<app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality" ></app-location-header>
+<div class="container-fluid row" style="margin-top: 110px;">
   
 
       <!-- <div class="checkout-details"> -->
@@ -15,8 +16,6 @@
                           <div class="car-name">
                               <h3>{{cars.carName}}</h3>
                           </div>
-
-
                           <div class="features car-features" style="padding:1px">
                               <!-- <div style="float:right"><img src=" demoCar.png " height=80px width="50px"></div> -->
                               <!-- <div class="car-features"> -->
@@ -26,7 +25,7 @@
                               </span>
                               <span>
                                   <i class="fa fa-users"></i>
-                                  {{cars.numOfSeats}}Seater
+                                  {{cars.numOfSeats}} Seater
                               </span>
                               <span>
 
@@ -46,11 +45,8 @@
                       
                       <div class="img-section " >
                           <img class="load-img float-right" src={{cars.imageUrl}}>
-                              <!-- style="margin-left: 70%;margin-top:-80px;height:125px;width:180px; "> -->
-                            
+                              <!-- style="margin-left: 70%;margin-top:-80px;height:125px;width:180px; "> -->   
                       </div>
-                      
-
                   </div>
               </div>
 
@@ -60,25 +56,17 @@
               </div>
               <div class="package-details" style="margin-left: 10px;">
                   
-                      <div class="btn-group border rounded" style="width: 270px;">
+                      <div class="btn-group border rounded" style="width: 300px;">
                         <button style="background-color: lightgrey; width: 120px; " type="button" disabled class="btn">
-                            Selected Package</button>
+                            Selected Fuel Package</button>
                         <div class="btn-group sort">
-                            <button style="background-color: white; width: 100px; " type="button" class="btn dropdown-toggle"
-                                data-toggle="dropdown">
+                            <button style="background-color: white; width: 130px; " type="button" disabled class="btn ">
                                 <span id="selected">
-                                Change
+                                {{carPackage}}
                                 </span>
                             </button>
-                            <div class="dropdown-menu" id="sortMenu">
-                                <a class="dropdown-item" >60 KM</a>
-                                <a class="dropdown-item" >120 KM</a>
-                                <a class="dropdown-item" >180 KM</a>
-                            </div>
-                        </div>
+                           </div>
                     </div>
-
-
                   <div class="info-text">
                       <p style=" color: #77899b; font-size: 13px">
                           There is no travel limit. ₹ 2/km distance charge will be applied over the booking amount.
@@ -104,55 +92,34 @@
 
                               <div class="date-time-format">
 
-                                  <div class="left-section">20</div>
+                                  <div class="left-section">{{pickup.getDate()}}</div>
                                   <div class="right-section ">
-                                      <div class="month-year">Oct-2019</div>
+                                      <div class="month-year"><label>{{month[pickup.getMonth()]}}</label>-{{pickup.getFullYear()}}</div>
 
                                       <div class="hour-minute">
-                                          11:30 PM
+                                          {{pickup | date:'shortTime'}}
                                       </div>
                                   </div>
                               </div>
 
-                          
-
-                          
                               <div class="trip-hour " style="display: flex ; justify-content : center">
                                   <span style="color: #77899b">
                                       Duration
                                   </span>
                                   {{duration}}
                               </div>
-
-                         
-
-                          
-
                               <div class="date-time-format" style="display: flex;align-items: flex-end" >
-                                  <div class="left-section">20</div>
+                                  <div class="left-section">{{drop.getDate()}}</div>
                                   <div class="right-section">
-                                      <div class="month-year">Oct-2019</div>
+                                      <div class="month-year"><label>{{month[drop.getMonth()]}}</label>-{{drop.getFullYear()}}</div>
                                       <div class="hour-minute">
                                           <span>
-                                              11:30 PM
+                                            {{pickup | date:'shortTime'}}
                                           </span>
                                       </div>
                                   </div>
                               </div>
-
-                              
-
-
-
-                          
-
-
-
                       </div>
-                     
-
-
-
                   </div>
                   <div class="venue-detail-block">
                       <div class="pickup-venue-block">
@@ -165,16 +132,14 @@
 
                                       </span>
                                       <div class = "venue-name">
-                                          K R PURAM
+                                          {{locality}}
                                       </div>
                                   </span>
                               </div>
-
-                          
                           </div>
-                          <div class="venue-address">
+                          <!-- <div class="venue-address">
                                 hcbs , vyalikaval layout , nagavara
-                          </div>
+                          </div> -->
                           <div class = "venue-distance">
                                 approx 7.6 km away
                           </div>
@@ -186,27 +151,20 @@
                                     <span class = "trigger-view">
                                         <span class="map-icon pointer">
                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-
-  
                                         </span>
                                         <div class = "venue-name">
-                                            K R PURAM
+                                            {{locality}}
                                         </div>
                                     </span>
                                 </div>
-  
-                            
                             </div>
-                            <div class="venue-address">
+                            <!-- <div class="venue-address">
                                   hcbs , vyalikaval layout , nagavara
-                            </div>
+                            </div> -->
                             <div class = "venue-distance">
                                   approx 7.6 km away
                             </div>
                         </div>
-                      
-                      
-
                       </div>
                   </div>
                   
@@ -233,13 +191,6 @@
                   </ul>
 
               </div>
-
-
-
-
-
-
-          
       </div>
       </div>
           <div class="right-pane col-md-4">

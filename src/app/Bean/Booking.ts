@@ -1,7 +1,7 @@
 import { User } from './User'
 import { Car } from './Car';
 
-    export interface Booking{
+    export class Booking{
     
     bookingId : number;
 	

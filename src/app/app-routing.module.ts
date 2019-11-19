@@ -5,9 +5,6 @@ import { BanersComponent } from './baners/baners.component';
 import { CardetailComponent } from './cardetail/cardetail.component';
 import { PaymentComponent } from './payment/payment.component';
 
-
-
-
 const routes: Routes = [
         {
           path: "", component:BanersComponent
