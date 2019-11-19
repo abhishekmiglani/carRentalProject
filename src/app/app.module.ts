@@ -24,10 +24,15 @@ import { CardetailComponent } from './cardetail/cardetail.component';
 import { BanersComponent } from './baners/baners.component';
 import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashboard-routing.module';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+
 import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
+
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+
 import { GetCarsService } from './services/get-cars.service';
 import { DashboardService } from './dashboard.service';
 import { SignupComponent } from './signup/signup.component';

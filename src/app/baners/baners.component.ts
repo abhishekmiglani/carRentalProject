@@ -17,7 +17,7 @@ export class BanersComponent implements OnInit {
   
   public cards:any[];
 
-  constructor(private router : Router , private cookieservice : CookieService,private userCard:DashboardService) { }
+  constructor(private router : Router , private cookieservice : CookieService, private userCard:DashboardService) { }
    cookievalue:any;
   public message="Bangalore";
    
@@ -32,7 +32,7 @@ export class BanersComponent implements OnInit {
     });
 
     this.cookievalue = this.cookieservice.get('location');
-    this.fetchUserCardDetails();
+    
   }
 
   location(){
@@ -55,10 +55,7 @@ export class BanersComponent implements OnInit {
      
     
    }  
-    fetchUserCardDetails(){
-
-    this.userCard.getUserCardDetails().subscribe(data => this.cards = data);
-    }
+   
 
 
   }

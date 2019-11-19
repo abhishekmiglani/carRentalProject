@@ -1,0 +1,77 @@
+<div class="container shadow-sm p-3 mb-5 bg-white rounded panel">
+    <h4>Active Booking</h4>
+    <hr>
+    <div class="row shadow p-3 mb-5 booked-container">
+        <div class="col-md-3 main-date-container">
+            <label>{{day[carBookedDate.getDay()]}}</label>
+            <h1 >{{carBookedDate.getDate()}}</h1>
+            <label>{{months[carBookedDate.getMonth()]}} {{carBookedDate.getFullYear()}}</label>
+        </div>
+        <div class="col-md-9">
+            <table>
+                <tr>
+                    <th>Car Model</th>
+                    <td>{{bookings.car.model}}</td>
+                    <th>Car Number</th>
+                    <td>{{bookings.car.id}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>PickUp Date and Time</th>
+                    <th>Drop Date and Time</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{{bookings.fromDate}}</td>
+                    <td>{{bookings.tillDate}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>PickUp and drop location</th>
+                    <td>{{bookings.car.location}}</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <h4>Completed</h4>
+    <hr>
+    <div class="row shadow p-3 mb-5 bg-light">
+        <div class="col-md-3">
+            <label>{{day[bookings.fromDate.getDay()]}}</label>
+            <h1>{{bookings.fromDate.getDate()}}</h1>
+            <label>{{months[bookings.fromDate.getMonth()]}} {{bookings.fromDate.getFullYear()}}</label>
+        </div>
+        <div class="col-md-9">
+            <table>
+                <tr>
+                    <th>Car Model</th>
+                    <td>{{bookings.car.model}}</td>
+                    <th>Car Number</th>
+                    <td>{{bookings.car.id}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>PickUp Date and Time</th>
+                    <th>Drop Date and Time</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{{bookings.fromDate}}</td>
+                    <td>{{bookings.tillDate}}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>PickUp and drop location</th>
+                    <td>{{bookings.car.location}}</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
