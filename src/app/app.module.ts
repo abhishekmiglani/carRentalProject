@@ -31,13 +31,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-
-
 import { GetCarsService } from './services/get-cars.service';
 import { DashboardService } from './dashboard.service';
 import { SignupComponent } from './signup/signup.component';
 import { UserService } from './services/user.service';
 import { StorageServiceModule} from 'angular-webstorage-service';
+import { AdminComponent } from './admin/admin.component';
+import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
+import { EditCarComponent } from './edit-car/edit-car.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,11 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     BanersComponent,
     LoginModalComponent,
     CitiesModalComponent,
-    SignupComponent  ],
+    SignupComponent,
+    AdminComponent,
+    AdminDeleteCarComponent,
+    EditCarComponent,
+     ],
   imports: [
     HttpClientModule,
     BrowserModule,

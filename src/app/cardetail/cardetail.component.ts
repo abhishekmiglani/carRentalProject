@@ -98,9 +98,13 @@ export class CardetailComponent implements OnInit {
       (this.id = parseInt(params.get("modelNo"))),
         (this.package = parseInt(params.get("package")));
       console.log(this.package);
+      
+      this.getCarsService.getId(this.id)
+      .subscribe(data => this.cars = data);
+   });
 
-      this.getCarsService.getId(this.id);
-    });
+    // this.getCarsService.getCarById()
+    // .subscribe(data => this.cars = data);
 
     this.getCarsService.getCarById().subscribe(data => (this.cars = data));
 
