@@ -24,6 +24,7 @@ import { CardetailComponent } from './cardetail/cardetail.component';
 import { BanersComponent } from './baners/baners.component';
 import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashboard-routing.module';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+
 import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -37,6 +38,9 @@ import { DashboardService } from './dashboard.service';
 import { SignupComponent } from './signup/signup.component';
 import { UserService } from './services/user.service';
 import { StorageServiceModule} from 'angular-webstorage-service';
+import { AdminComponent } from './admin/admin.component';
+import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
+import { EditCarComponent } from './edit-car/edit-car.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     BanersComponent,
     LoginModalComponent,
     CitiesModalComponent,
-    SignupComponent  ],
+    SignupComponent,
+    AdminComponent,
+    AdminDeleteCarComponent,
+    EditCarComponent,
+     ],
   imports: [
     HttpClientModule,
     BrowserModule,

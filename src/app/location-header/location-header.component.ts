@@ -36,12 +36,13 @@ export class LocationHeaderComponent implements OnInit {
   public selectedCity ;
   ngOnInit() {
 
-    this.locationService.getLocationByCity().
-    subscribe(data=>
-     {
-      this.locations=data;
-      console.log(this.locations);
-    });
+    // this.locationService.getLocationByCity().
+    // subscribe(data=>
+    //  {
+    //   this.locations=data;
+    //   console.log(this.locations);
+    // });
+    this.getLocality();
    
     this.valuePickup = this.pickUp;
     this.valueDrop = this.dropTime;
@@ -96,6 +97,14 @@ export class LocationHeaderComponent implements OnInit {
       this.availableCars = data;
       console.log(this.availableCars);
       this.childEvent.emit(this.availableCars);
+    });
+  }
+  getLocality(){
+    this.locationService.getLocationByCity().
+    subscribe(data=>
+     {
+      this.locations=data;
+      console.log(this.locations);
     });
   }
  
