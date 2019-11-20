@@ -1,44 +1,27 @@
-<app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality" ></app-location-header>
+<app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality"></app-location-header>
+
 <div class="container-fluid row" style="margin-top: 110px;">
-      <div class="left-pane col-md-8" style="display: flex">
-          <div class="left-wrapper box-shadow "
-              style="  border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4)">
-              <div style="padding : 20px" class="checkout-vehicle-template">
-                  <div class="listing-car-body" style="display: flex">
-                      <div class="detail-section style = flex">
+    <div class="left-pane col-md-8" style="display: flex">
+        <div class="left-wrapper box-shadow "
+            style="  border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4)">
+            <div style="padding : 20px" class="checkout-vehicle-template">
+                <div class="listing-car-body" style="display: flex">
+                    <div class="detail-section style = flex">
+                        <div class="car-name">
+                            <h3>{{ cars.carName }}</h3>
+                        </div>
 
-                          <div class="car-name">
-                              <h3>{{cars.carName}}</h3>
-                          </div>
-                          <div class="features car-features" style="padding:1px">
-                              
-                              <span>
-                                  <br><br><i class='fas fa-gas-pump' ></i>
-                                   {{cars.fuelType}}
-                              </span>
-                              <span>
-                                  <i class="fa fa-users"></i>
-                                  {{cars.numOfSeats}} Seater
-                              </span>
-                              <span>
-
-                              </span>
-                          </div>
-
-                          <div class="list-item info-text">
-
-                              <p style=" color: #77899b; font-size: 13px"> Note:The image is for
-                                  representation purpose only. The colour of the actual car may vary </p>
-
-                          </div>
-                      </div>
-                      
-                      <div class="img-section " >
-                          <img class="load-img float-right" src={{cars.imageUrl}}>
-                              <!-- style="margin-left: 70%;margin-top:-80px;height:125px;width:180px; "> -->   
-                      </div>
-                  </div>
-              </div>
+                        <div class="features car-features" style="padding:1px">
+                            <span>
+                                <br /><br /><i class="fas fa-gas-pump"></i>
+                                {{ cars.fuelType }}
+                            </span>
+                            <span>
+                                <i class="fa fa-users"></i>
+                                {{ cars.numOfSeats }} Seater
+                            </span>
+                            >
+                        </div>
 
                         <div class="list-item info-text">
                             <p style=" color: #77899b; font-size: 13px">
@@ -99,17 +82,6 @@
                   }}
                                 </div>
 
-                                      </span>
-                                      <div class = "venue-name">
-                                          {{locality}}
-                                      </div>
-                                  </span>
-                              </div>
-                          </div>
-                          <div class = "venue-distance">
-                                approx 7.6 km away
-                          </div>
-                      </div>
                                 <div class="hour-minute">
                                     {{ pickup | date: "shortTime" }}
                                 </div>
@@ -134,61 +106,6 @@
                                     </span>
                                 </div>
                             </div>
-                           
-                            <div class = "venue-distance">
-                                  approx 7.6 km away
-                            </div>
-                        </div>
-                      </div>
-                  </div>
-              <div>
-                  <hr>
-              </div>
-              <div class="guidelines">
-                  <div class="block-heading " style="padding-bottom:8px;padding-left:20px;">
-                      Guidelines and policies
-                  </div>
-
-                  <ul>
-                      <li class="font">Please carry your original driving license along with an additional id proof when you come
-                          to pick up
-                          your vehicle</li>
-                      <li class="font">Your license must be verified by our system before you start your trip or else your trip
-                          will be
-                          cancelled</li>
-                      <li class="font">Our vehicles have a maximum speed limit of 120 km/h. Over speeding will attract fines</li>
-                      <li class="font">if you plan to travel out of state, please ensure to take the required state permits</li>
-                      <br><br>
-                  </ul>
-
-              </div>
-      </div>
-      </div>
-          <div class="right-pane col-md-4">
-       
-                  <div class="fare-details-block  box-shadow" style="padding:10px">
-                  <div class="block-heading " style="padding-left: 20px">Fare Details</div>
-                  <div class="fare-block" style="padding:10px">
-
-                      <span class="fare-name "
-                          style="font-family:proxima-nova; color: #77899b; font-size: 16px ;padding: 12px">Weekend
-                          charges</span>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span class="fare-amount">{{weekend_fare | currency:'INR'}}</span>
-                  </div>
-
-                  <div class="fare-block" style="padding:10px">
-
-                      <span class="fare-name "
-                          style="font-family:proxima-nova; color: #77899b; font-size: 16px;padding: 12px">Weekday
-                          charges</span>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span class="fare-amount">{{weekday_fare | currency:'INR'}}</span>
-
-                  </div>
-                  <div>
-                      <hr>
-                  </div>
                         </div>
                     </div>
                 </div>
@@ -226,43 +143,6 @@
                             </div>
                         </div>
 
-          </div>
-          </div>
-</div>
-<div class="fixed-bottom container-fluid bg-light" style="margin-top: 120px">
-
-  <div class="  left-wrapper box-shadow"
-      style="border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4); padding-top: 10px; padding-bottom: 10px;">
-      <div class="row">
-          <div class="col-md-4">
-              <div class="custom-control custom-checkbox">
-                  <div class="custom-control custom-checkbox ">
-                      <form>
-                          <input type="checkbox" class="custom-control-input" id="accept-agreement"
-                              name="accept-agreement-checkbox" (change)="changeQuickBookState($event)" >
-                          <label class="custom-control-label" for="accept-agreement">
-                              <span style="color  :#1f2d3d; font-size : 12px; font-weight : 500">
-                                  Rider, You are just one step away from confirming your booking. Confirm that you are
-                                  above 21 and you
-                                  agree to all the terms mentioned in
-                              </span>
-
-                          </label>
-                      </form>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4">
-
-          </div>
-          <div class="col-md-4">
-              <div class="add-to-cart " style="padding-top: 6%">
-                  <!-- <button type="button" class="btn btn-light">Add to Cart</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -->
-                  <button type="button" class="btn btn-success" (click)="changeState()" id="quick" disabled>Quick Book</button>
-              </div>
-          </div>
-      </div>
-  </div>
                         <div class="venue-distance">
                             approx 7.6 km away
                         </div>
