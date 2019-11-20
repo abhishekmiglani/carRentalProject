@@ -48,10 +48,8 @@ export class CardetailComponent implements OnInit {
       
     }
     else{
-      console.log("ye chalna chahiye")
-    
+      console.log("open the login modal")
       this.isLogged=false;
-      
     }
   
   }
@@ -91,11 +89,12 @@ export class CardetailComponent implements OnInit {
       this.package = parseInt(params.get('package'))
       console.log(this.package);
       
-      this.getCarsService.getId(this.id);
+      this.getCarsService.getId(this.id)
+      .subscribe(data => this.cars = data);
    });
 
-    this.getCarsService.getCarById()
-    .subscribe(data => this.cars = data);
+    // this.getCarsService.getCarById()
+    // .subscribe(data => this.cars = data);
 
      this.carPackage =  this.getCarsService.getCarPackage();
      this.locality = this.locationService.getLocality();
