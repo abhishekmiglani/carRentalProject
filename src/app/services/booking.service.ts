@@ -19,4 +19,6 @@ export class BookingService {
     let url : string  = "http://localhost:8083/bookings";
     return this.http.post(url,booking);
   }
+
+  
 }
