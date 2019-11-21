@@ -32,6 +32,7 @@ export class BanersComponent implements OnInit {
     });
 
     this.cookievalue = this.cookieservice.get('location');
+    
   
   }
 
