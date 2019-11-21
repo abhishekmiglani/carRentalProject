@@ -15,7 +15,6 @@ export class PaymentComponent implements OnInit {
   dates: any[];
   pickup: any;
   drop: any;
-  
 
   constructor(private getCarsService: GetCarsService,
               private locationService: GetLocationService,
