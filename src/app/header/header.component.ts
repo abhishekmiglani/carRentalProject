@@ -96,7 +96,7 @@ export class HeaderComponent implements OnInit {
     this.cookieservice.set("location", this.city);
     this.cookievalue = this.cookieservice.get("location");
     console.log("cookied " + this.cookievalue);
-
+     document.getElementById('displaysidebtn').hidden=true;
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder();
@@ -337,7 +337,9 @@ export class HeaderComponent implements OnInit {
     this.closeLoginModal();
     this.isLoggedIn();
   }
-    
+    hideSideNavbar(){
+      this.dislplayNav=false;
+    }
 
  
 }
