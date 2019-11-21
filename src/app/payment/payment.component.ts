@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GetCarsService } from 'app/services/get-cars.service';
+import { GetLocationService } from 'app/services/get-location.service';
+import { SendDateService } from 'app/services/send-date.service';
 
 @Component({
   selector: 'app-payment',
@@ -6,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  carPackage: any;
+  cars: import("c:/Users/AnkushVerma/Documents/GitHub/carRentalProject/src/app/Bean/Car").Car;
+  locality: any;
+  dates: any[];
+  pickup: any;
+  drop: any;
+  
 
-  constructor() { }
+  constructor(private getCarsService: GetCarsService,
+              private locationService: GetLocationService,
+              private dateService : SendDateService
+    
+    
+    ) { }
   ngOnInit() {
+    this.getCarsService.getCarById().subscribe(data =>(this.cars=data));
+    this.carPackage = this.getCarsService.getCarPackage();
+    this.locality = this.locationService.getLocality();
+    this.dates = this.dateService.getDate();
+    this.pickup = this.dates[0];
+    this.drop = this.dates[1];
+    console.log("ts file date" + this.pickup + this.drop);
+    console.log("service locality" + this.locality);
+  
+
   }
   cardNumber="00";
   validMonth;
@@ -41,6 +66,8 @@ export class PaymentComponent implements OnInit {
     console.log(item);
     $("#editCardModal").modal('show');
   }
+  
+
 
 
 }
