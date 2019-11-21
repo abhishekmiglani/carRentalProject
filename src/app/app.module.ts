@@ -55,7 +55,8 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     BanersComponent,
     LoginModalComponent,
     CitiesModalComponent,
-    SignupComponent  ],
+    SignupComponent ,
+    ForgotPasswordComponent ],
   imports: [
     HttpClientModule,
     BrowserModule,

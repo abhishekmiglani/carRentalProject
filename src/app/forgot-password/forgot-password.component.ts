@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
+  mail="";
+
   constructor() { }
 
   ngOnInit() {
   }
+  otpHandler(){
+    if(this.mail=="mail@gmail.com")
+      {
+        
+      }
+    }
 
 }

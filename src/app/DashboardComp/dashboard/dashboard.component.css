@@ -1,6 +1,7 @@
 .dashboard-menu{
     background: #cfcfcf;
-    margin: 20px 0 0 70px;
+    margin:auto;
+    margin-top: 20px ;
 }
 a{
     text-decoration: none;
@@ -11,7 +12,8 @@ li:hover{
     color: white;
 }
 .descr{
-    margin-top: 20px;
+    margin: auto;
+    margin-top:20px;
 }
 .background{
     background: rgb(183,220,233);

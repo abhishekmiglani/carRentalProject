@@ -1,4 +1,4 @@
-export interface Wallet{
+export class Wallet{
     balance;
     userId;
     walletId;
