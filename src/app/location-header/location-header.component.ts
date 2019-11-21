@@ -46,7 +46,7 @@ export class LocationHeaderComponent implements OnInit {
    
     this.valuePickup = this.pickUp;
     this.valueDrop = this.dropTime;
-    console.log("location service value is"+ this.headerLocation);
+    console.log("location service value is "+ this.headerLocation);
     (<HTMLInputElement> document.getElementById('locationMenu')).value=this.headerLocation;
     }
 
@@ -58,6 +58,7 @@ export class LocationHeaderComponent implements OnInit {
     else{
         this.setDate();
         this.getAvailableCars();
+
     }
   }
   
@@ -75,6 +76,7 @@ export class LocationHeaderComponent implements OnInit {
  
     this.locality = (<HTMLInputElement>document.getElementById('locationMenu')).value;
      this.locationService.setLocality(this.locality);
+     console.log("inside set locality"  +this.locality);
   }
 
   setDate(){
