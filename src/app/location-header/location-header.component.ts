@@ -50,7 +50,6 @@ export class LocationHeaderComponent implements OnInit {
     (<HTMLInputElement> document.getElementById('locationMenu')).value=this.headerLocation;
     }
 
-
   runValidations(){
     if(this.valuePickup == null || this.valueDrop == null){
       window.alert("Please select date");  
