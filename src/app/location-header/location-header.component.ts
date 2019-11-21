@@ -55,6 +55,10 @@ export class LocationHeaderComponent implements OnInit {
     if(this.valuePickup == null || this.valueDrop == null){
       window.alert("Please select date");  
     }
+    else{
+        this.setDate();
+        this.getAvailableCars();
+    }
   }
   
   // locationSelect(){
