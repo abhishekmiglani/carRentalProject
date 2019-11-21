@@ -1,122 +1,93 @@
-import { UserService } from "app/services/user.service";
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ElementRef,
-  NgZone,
-  AfterViewInit,
-  Output,
-  EventEmitter,
-  Inject
-} from "@angular/core";
-import { MapsAPILoader, MouseEvent } from "@agm/core";
-import { LoginService } from "app/services/login.service";
-import { CitiesModalComponent } from "app/cities-modal/cities-modal.component";
-import { CookieService } from "ngx-cookie-service";
-import { GetLocationService } from "app/services/get-location.service";
-import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import { Component, OnInit, ViewChild, ElementRef, NgZone, AfterViewInit, Output ,EventEmitter} from '@angular/core';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
+import { LoginService } from 'app/login.service';
+import { CitiesModalComponent } from 'app/cities-modal/cities-modal.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 // import {} from '@types/googlemaps';
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.css"]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit  {
+ 
   //  ngAfterViewInit() {
   //   this.cities = this.citiesModal.city;
   //   console.log("on init" + this.cities);
   // }
 
-  loginState: boolean = false;
+  loginState:boolean=false;
+
   dislplayNav = false;
-  city: any = "Bangalore";
+  city:any ="Banglore,India";
   latitude: number;
   longitude: number;
   zoom: number;
-  address: string;
-
+  address: string ;
+  
   private geoCoder;
-  cookievalue: any;
-  public userData:any=[]
-
+  cookievalue:any;
+  
   @Output() public childEvent = new EventEmitter();
-
-  @ViewChild("search", { read: true, static: false })
+ 
+  @ViewChild('search',{read: true, static: false })
   public searchElementRef: ElementRef;
 
-  @ViewChild(CitiesModalComponent, { static: false })
-  citiesModal: CitiesModalComponent;
+  @ViewChild(CitiesModalComponent,{static:false})
+  citiesModal : CitiesModalComponent;
+   
+  
 
-  constructor(
- 
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,
-    private loginServ: LoginService,
-    private cookieservice: CookieService,
-    private userService: UserService,
-    private locationService: GetLocationService,
-    @Inject(LOCAL_STORAGE) private storage: WebStorageService
-  ) {
-    
+  
+  
+  constructor(private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone, private loginServ:LoginService, private cookieservice : CookieService) { }
+
+  displaySideNavbar(){
+    console.log(this.dislplayNav);
+   if(this.dislplayNav)
+     this.dislplayNav=false;
+     else
+     this.dislplayNav=true;
    
   }
-  saveInLocal(key, val): void {
-    console.log('recieved= key:' + key + 'value:' + val);
-    this.storage.set(key, val);
-    this.userData[key]= this.storage.get(key);
-   }
 
-   getFromLocal(key):any {
-    console.log('recieved= key:' + key);
-    return this.storage.get(key);
-    
-   }
-  displaySideNavbar() {
-    console.log(this.dislplayNav);
-    if (this.dislplayNav) this.dislplayNav = false;
-    else this.dislplayNav = true;
-  }
-
-  isLoggedIn() {
-    let status=this.getFromLocal("loginStatus");
-    if(status==true){
+  isLogged(){
+    if(this.loginServ.isLoggedIn){
+      console.log("hshwch")
       this.loginState=true;
+
     }
     else{
       this.loginState=false;
     }
-    
   }
-
+ 
   ngOnInit() {
-
-    this.cookieservice.set("location", this.city);
-    this.cookievalue = this.cookieservice.get("location");
-    console.log("cookied " + this.cookievalue);
+    this.isLogged();  //for login and dashboard switch
+    this.cookieservice.set('location',this.city);
+    this.cookievalue = this.cookieservice.get('location');
+    console.log("cookied" + this.cookievalue);
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder();
-
-      let autocomplete = new google.maps.places.Autocomplete(
-        this.searchElementRef.nativeElement,
-        {
-          types: ["address"]
-        }
-      );
+      this.geoCoder = new google.maps.Geocoder;
+ 
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"]
+      });
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
+ 
           //verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
+ 
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
@@ -126,8 +97,8 @@ export class HeaderComponent implements OnInit {
     });
   }
   private setCurrentLocation() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
         this.zoom = 8;
@@ -135,209 +106,144 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
-
+ 
+ 
   markerDragEnd($event: MouseEvent) {
     console.log($event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);
   }
-
+ 
   getAddress(latitude, longitude) {
-    this.geoCoder.geocode(
-      { location: { lat: latitude, lng: longitude } },
-      (results, status) => {
-        console.log(results);
-        console.log(status);
-        if (status === "OK") {
-          if (results[0]) {
-            this.zoom = 12;
-            this.address = results[0].formatted_address;
-          } else {
-            window.alert("No results found");
-          }
+    this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
+      console.log(results);
+      console.log(status);
+      if (status === 'OK') {
+        if (results[0]) {
+          this.zoom = 12;
+          this.address = results[0].formatted_address;
         } else {
-          window.alert("Geocoder failed due to: " + status);
+          window.alert('No results found');
         }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
       }
-    );
+ 
+    });
   }
-  selectBangalore() {
-    this.city = "Bangalore";
-    this.focusBangalore();
+  selectBengaluru() {
+
+    this.city="Bengaluru,India";
+    
+    
+    
+    this.focusBengaluru();
     this.unfocusDelhi();
     this.unfocusHyderabad();
     this.unfocusMumbai();
     this.unfocusPune();
-    this.cookieservice.set("location", this.city);
     this.childEvent.emit(this.city);
+    
   }
 
   selectMumbai() {
-    this.city = "Mumbai";
+    this.city="Mumbai,India";
+
     this.focusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
-    this.unfocusBangalore();
+    this.unfocusBengaluru();
     this.unfocusPune();
-    this.cookieservice.set("location", this.city);
+    this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
+    
   }
 
   selectPune() {
-    this.city = "Pune";
+    this.city="Pune,India";
     this.focusPune();
     this.unfocusMumbai();
     this.unfocusDelhi();
     this.unfocusHyderabad();
-    this.unfocusBangalore();
-    this.cookieservice.set("location", this.city);
+    this.unfocusBengaluru()
+    this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
+    
   }
 
-  selectHyderabad() {
-    this.city = "Hyderabad";
+  selectHyderabad(){
+    this.city="Hyderabad,India"
     this.focusHyderabad();
     this.unfocusMumbai();
     this.unfocusDelhi();
     this.unfocusPune();
-    this.unfocusBangalore();
-    this.cookieservice.set("location", this.city);
+    this.unfocusBengaluru()
+    this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
+    
   }
 
   selectDelhi() {
-    this.city = "Delhi";
+    this.city="Delhi,India";
     this.focusDelhi();
     this.unfocusMumbai();
     this.unfocusHyderabad();
     this.unfocusPune();
-    this.unfocusBangalore();
-    this.cookieservice.set("location", this.city);
+    this.unfocusBengaluru()
+    this.cookieservice.set('location',this.city);
     this.childEvent.emit(this.city);
+    
   }
 
-  focusBangalore() {
-    document.getElementById("BangaloreCity").style.background = "#3aa5c5";
-    document.getElementById("BangaloreCity").style.color = "white";
+  focusBengaluru(){
+    document.getElementById("bengaluruCity").style.background = "#3aa5c5";
+    document.getElementById("bengaluruCity").style.color = "white";
   }
-  unfocusBangalore() {
-    document.getElementById("BangaloreCity").style.background = "white";
-    document.getElementById("BangaloreCity").style.color = "black";
+  unfocusBengaluru(){
+    document.getElementById("bengaluruCity").style.background = "white";
+    document.getElementById("bengaluruCity").style.color = "black";
   }
-  focusMumbai() {
+  focusMumbai(){
     document.getElementById("mumbaiCity").style.background = "#3aa5c5";
     document.getElementById("mumbaiCity").style.color = "white";
   }
-  unfocusMumbai() {
+  unfocusMumbai(){
     document.getElementById("mumbaiCity").style.background = "white";
     document.getElementById("mumbaiCity").style.color = "black";
   }
-  focusPune() {
+  focusPune(){
     document.getElementById("puneCity").style.background = "#3aa5c5";
     document.getElementById("puneCity").style.color = "white";
   }
-  unfocusPune() {
+  unfocusPune(){
     document.getElementById("puneCity").style.background = "white";
     document.getElementById("puneCity").style.color = "black";
   }
 
-  focusDelhi() {
+  focusDelhi(){
     document.getElementById("delhiCity").style.background = "#3aa5c5";
     document.getElementById("delhiCity").style.color = "white";
   }
-  unfocusDelhi() {
+  unfocusDelhi(){
     document.getElementById("delhiCity").style.background = "white";
     document.getElementById("delhiCity").style.color = "black";
   }
 
-  focusHyderabad() {
+  focusHyderabad(){
     document.getElementById("hyderabadCity").style.background = "#3aa5c5";
     document.getElementById("hyderabadCity").style.color = "white";
   }
-  unfocusHyderabad() {
+  unfocusHyderabad(){
     document.getElementById("hyderabadCity").style.background = "white";
     document.getElementById("hyderabadCity").style.color = "black";
   }
 
-  closeModal() {
-    $("#locationModal").modal("hide");
+  closeModal(){
+    $('#locationModal').modal('hide');
   }
-  closeSignupModal() {
-    $("#signUpModal").modal("hide");
-  }
-  openSignupModal() {
-    $("#signUpModal").modal("toggle");
   }
 
-  closeLoginModal() {
-    $("#myModal").modal("hide");
-  }
-  openLoginModal() {
-    $("#SignUpMsg").modal("hide");
-    $("#myModal").modal("toggle");
-  }
-  result;
-  createNewUser() {
-    let fullName = (<HTMLInputElement>document.getElementById("signUpName"))
-      .value;
-    console.log("fullname:" + fullName);
-    let email = (<HTMLInputElement>document.getElementById("signUpEmail"))
-      .value;
-    let phone = (<HTMLInputElement>document.getElementById("signUpMobile"))
-      .value;
-    let password = (<HTMLInputElement>document.getElementById("signUpPassword"))
-      .value;
-    let passwordReEnter = (<HTMLInputElement>(
-      document.getElementById("signUpPasswordEnter")
-    )).value;
 
-    let user = {
-      fullName: fullName,
-      email: email,
-      phone: phone,
-      password: password,
-      backLicenseImageUrl: null,
-      frontLicenseImageUrl: null,
-      userId: null
-    };
 
-    this.userService.adduser(user).subscribe(data => {
-      this.result = data;
-    });
-    this.closeSignupModal();
-  } 
 
-  loginResult:Boolean;
-  userLogin(){
-    let email = (<HTMLInputElement>document.getElementById("loginEmail"))
-      .value;
-    
-      let password = (<HTMLInputElement>document.getElementById("loginPassword"))
-      .value;
-
-    let user = {
-      fullName: null,
-      email: email,
-      phone: null,
-      password: password,
-      backLicenseImageUrl: null,
-      frontLicenseImageUrl: null,
-      userId: null
-    };
-
-    this.userService.userLogin(user).subscribe(data => {
-      this.loginResult = data;
-      console.log("login:"+this.loginResult)
-      if(this.loginResult==true){
-        this.saveInLocal("email",email);
-        this.saveInLocal("loginStatus",this.loginResult)
-      }
-    });
-    this.closeLoginModal();
-    this.isLoggedIn();
-  }
-    
-
- 
-}

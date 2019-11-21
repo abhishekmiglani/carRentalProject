@@ -7,7 +7,6 @@
       <div class="div-margin" style="margin-top: 8px">
         I need my vehicle near
       </div>
-     
       <!-- <div class="card border" style="padding: 5px; margin-top: 5px"> -->
       <!-- <button
           class="btn btn-light dropdown-toggle "       
@@ -24,40 +23,47 @@
       </select> -->
 
       <div style="margin-top: 5px;">
-        <div>
-          <select class="form-control shadow-none outline-none" id="locationMenu"
-           (change) ="setLocality()">
-            <option id="locality" [value]="location.locality" *ngFor="let location of locations">{{location.locality}}</option>
-          </select>
+        <button
+          style="background-color: white ; border : black 0.8px solid"
+          type="button"
+          class="btn dropdown-toggle form-control  shadow-none"
+          data-toggle="dropdown"
+        >
+          <span id="selectedOption">
+            Choose
+          </span>
+        </button>
+        <div class="dropdown-menu" id="locationMenu">
+          <a class="dropdown-item">Bengaluru</a>
+          <a class="dropdown-item">Delhi</a>
+          <a class="dropdown-item">Mumbai</a>
         </div>
       </div>
+      <!-- </button> -->
+      <!-- </div> -->
     </div>
     <div class="ui-g-12 ui-md-3 ">
       <div class="div-margin">Select your pickup date</div>
       <!-- <button class="btn  shadow-none "> -->
       <div class=" border-dark" style="margin-top: 6px">
         <p-calendar
-          [(ngModel)]="valuePickup"
+          [(ngModel)]="value"
           [showTime]="true"
           hourFormat="12"
-          [minDate]="minimumDate"
           dateFormat="dd MM yy"
         ></p-calendar>
       </div>
       <!-- </button> -->
     </div>
-    <div class="ui-g-12 ui-md-3 " >
+    <div class="ui-g-12 ui-md-3 ">
       <div class="div-margin">Select your drop date</div>
       <!-- <button class="btn shadow-none"> -->
-      <div style="margin-top: 6px" (click)="checkDate()" >
+      <div style="margin-top: 6px">
         <p-calendar
           [(ngModel)]="valueDrop"
           [showTime]="true"
           hourFormat="12"
-          [minDate]="valuePickup"
           dateFormat="dd MM yy"
-          [showOnFocus] = "visible"
-      
         ></p-calendar>
       </div>
       <!-- </button> -->
@@ -65,7 +71,7 @@
     <div class="ui-g-12 ui-md-3 text-center">
       <div>
         <!-- <div><br></div> --><br />
-        <button class="btn btn-success" (click)="runValidations()" (click)="setDate()" (click)="getAvailableCars()" style="width: 80%">
+        <button class="btn btn-success" (click) ="runValidations()" style="width: 80%">
           Search
         </button>
       </div>

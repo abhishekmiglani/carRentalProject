@@ -28,15 +28,9 @@ import { CitiesModalComponent } from './cities-modal/cities-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
-
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { GetCarsService } from './get-cars.service';
-
-import { GetCarsService } from './services/get-cars.service';
 import { DashboardService } from './dashboard.service';
-import { SignupComponent } from './signup/signup.component';
-import { UserService } from './services/user.service';
-import { StorageServiceModule} from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -54,7 +48,7 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     BanersComponent,
     LoginModalComponent,
     CitiesModalComponent,
-    SignupComponent  ],
+    ForgotPasswordComponent  ],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -63,13 +57,12 @@ import { StorageServiceModule} from 'angular-webstorage-service';
     CalendarModule,
     BrowserAnimationsModule,
     DashboardRoutingModule,
-    StorageServiceModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
       libraries: ["places"]
     })
   ],
-  providers: [CookieService,GetCarsService,DashboardService,UserService],
+  providers: [CookieService,GetCarsService,DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
