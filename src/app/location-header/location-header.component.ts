@@ -36,23 +36,28 @@ export class LocationHeaderComponent implements OnInit {
   public selectedCity ;
   ngOnInit() {
 
-    this.locationService.getLocationByCity().
-    subscribe(data=>
-     {
-      this.locations=data;
-      console.log(this.locations);
-    });
+    // this.locationService.getLocationByCity().
+    // subscribe(data=>
+    //  {
+    //   this.locations=data;
+    //   console.log(this.locations);
+    // });
+    this.getLocality();
    
     this.valuePickup = this.pickUp;
     this.valueDrop = this.dropTime;
-    console.log("location service value is"+ this.headerLocation);
+    console.log("location service value is "+ this.headerLocation);
     (<HTMLInputElement> document.getElementById('locationMenu')).value=this.headerLocation;
     }
-
 
   runValidations(){
     if(this.valuePickup == null || this.valueDrop == null){
       window.alert("Please select date");  
+    }
+    else{
+        this.setDate();
+        this.getAvailableCars();
+
     }
   }
   
@@ -70,6 +75,7 @@ export class LocationHeaderComponent implements OnInit {
  
     this.locality = (<HTMLInputElement>document.getElementById('locationMenu')).value;
      this.locationService.setLocality(this.locality);
+     console.log("inside set locality"  +this.locality);
   }
 
   setDate(){
@@ -96,6 +102,14 @@ export class LocationHeaderComponent implements OnInit {
       this.availableCars = data;
       console.log(this.availableCars);
       this.childEvent.emit(this.availableCars);
+    });
+  }
+  getLocality(){
+    this.locationService.getLocationByCity().
+    subscribe(data=>
+     {
+      this.locations=data;
+      console.log(this.locations);
     });
   }
  

@@ -9,7 +9,7 @@ export interface Car {
     numOfSeats:number,
     pricePerKm:number,
     transmissionType:string,
-    imageUrl: string
-    isBooked:boolean;
+    imageUrl: string,
+    isBooked:boolean
     
 }

@@ -3,11 +3,11 @@
   style=" background :whitesmoke ; padding-top: 8px; padding-bottom: 12px"
 >
   <div class="ui-g ui-fluid">
-    <div class="col-md-3  col-sm-3">
-      <div class="div-margin" style="margin-top: 8px">
+    <div class="ui-g-12 ui-sm-3 ui-md-3">
+      <div class="div-margin" style="margin-top: 2px">
         I need my vehicle near
       </div>
-     
+
       <!-- <div class="card border" style="padding: 5px; margin-top: 5px"> -->
       <!-- <button
           class="btn btn-light dropdown-toggle "       
@@ -25,14 +25,23 @@
 
       <div style="margin-top: 5px;">
         <div>
-          <select class="form-control shadow-none outline-none" id="locationMenu"
-           (change) ="setLocality()">
-            <option id="locality" [value]="location.locality" *ngFor="let location of locations">{{location.locality}}</option>
+          <select
+            class="form-control shadow-none outline-none"
+            id="locationMenu"
+            (change)="setLocality()"
+          >
+            <option
+              id="locality"
+              [value]="location.locality"
+              *ngFor="let location of locations"
+              [selected]="option === selectedOption"
+              >{{ location.locality }}</option
+            >
           </select>
         </div>
       </div>
     </div>
-    <div class="ui-g-12 ui-md-3 ">
+    <div class="ui-g-12 ui-md-3 ui-sm-3">
       <div class="div-margin">Select your pickup date</div>
       <!-- <button class="btn  shadow-none "> -->
       <div class=" border-dark" style="margin-top: 6px">
@@ -46,26 +55,31 @@
       </div>
       <!-- </button> -->
     </div>
-    <div class="ui-g-12 ui-md-3 " >
+    <div class="ui-g-12 ui-md-3 ui-sm-3">
       <div class="div-margin">Select your drop date</div>
       <!-- <button class="btn shadow-none"> -->
-      <div style="margin-top: 6px" (click)="checkDate()" >
+      <div style="margin-top: 6px" (click)="checkDate()">
         <p-calendar
           [(ngModel)]="valueDrop"
           [showTime]="true"
           hourFormat="12"
           [minDate]="valuePickup"
           dateFormat="dd MM yy"
-          [showOnFocus] = "visible"
-      
+          [showOnFocus]="visible"
         ></p-calendar>
       </div>
       <!-- </button> -->
     </div>
-    <div class="ui-g-12 ui-md-3 text-center">
+    <div class="ui-g-12 ui-md-3 ui-sm-3 text-center">
       <div>
-        <!-- <div><br></div> --><br />
-        <button class="btn btn-success" (click)="runValidations()" (click)="setDate()" (click)="getAvailableCars()" style="width: 80%">
+        <!-- <div><br></div> -->
+        
+        <button
+          class="btn btn-success form-control"
+          (click)="runValidations()"
+          (click) = "setLocality()"
+          style="margin-top:20px;"
+        >
           Search
         </button>
       </div>

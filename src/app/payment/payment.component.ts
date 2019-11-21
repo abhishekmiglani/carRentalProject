@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Wallet } from 'app/Bean/Wallet';
-import { DashboardService } from 'app/dashboard.service';
 import { WalletTransaction } from 'app/bean/WalletTransaction';
+import { DashboardService } from 'app/dashboard.service';
+import { BookingService } from 'app/services/booking.service';
+import { Booking } from 'app/bean/Booking';
 
 @Component({
   selector: 'app-payment',
@@ -10,6 +12,7 @@ import { WalletTransaction } from 'app/bean/WalletTransaction';
 })
 export class PaymentComponent implements OnInit {
 
+  bookingData:Booking;
   cardNumber = "00";
   validMonth;
   validYear;
@@ -19,9 +22,11 @@ export class PaymentComponent implements OnInit {
   isCardSaved = true;
   cardLogo = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.wsj.net%2Fim-45496%3Fwidth%3D620%26size%3D1.5&imgrefurl=https%3A%2F%2Fwww.wsj.com%2Farticles%2Fmastercard-drops-its-name-from-logo-11546858800&docid=McEmPa882hxj3M&tbnid=bBpiKDFGI00dOM%3A&vet=10ahUKEwjr68SO4qLlAhUSdCsKHS51DoQQMwhzKAAwAA..i&w=620&h=413&bih=528&biw=1280&q=mastercard%20logo&ved=0ahUKEwjr68SO4qLlAhUSdCsKHS51DoQQMwhzKAAwAA&iact=mrc&uact=8";
 
-  wallet:Wallet = new Wallet();
-  
-  constructor(private dashboardService: DashboardService) { }
+  wallet: Wallet = new Wallet();
+
+  constructor(private dashboardService: DashboardService,
+    private bookingService: BookingService)
+     { }
 
   getWalletDetails() {
     this.dashboardService.getWalletDetails(1).subscribe(walletData => {
@@ -29,12 +34,13 @@ export class PaymentComponent implements OnInit {
     })
   }
 
-  bookingHandler(){
-      
+  bookingHandler() {
+    this.bookingData = this.bookingService.getBookingData();
+    this.bookingService.addBooking(this.bookingData)
   }
 
-  walletTransactionHandler(amount){
-    this.dashboardService.enterWalletTransaction(new WalletTransaction("debit",amount,"Booking"))
+  walletTransactionHandler(amount) {
+    this.dashboardService.enterWalletTransaction(new WalletTransaction("debit", amount, "Booking"))
     this.wallet.balance = this.wallet.balance - 0;
     this.dashboardService.updateWallet(this.wallet);
     this.getWalletDetails();
@@ -42,11 +48,6 @@ export class PaymentComponent implements OnInit {
   }
 
   paymentAndBookingHandler() {
-
-    
-
-
-
 
   }
 
@@ -74,6 +75,8 @@ export class PaymentComponent implements OnInit {
     console.log(item);
     $("#editCardModal").modal('show');
   }
+
+
 
   ngOnInit() {
     this.getWalletDetails()

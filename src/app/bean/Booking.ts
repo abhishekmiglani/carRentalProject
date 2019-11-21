@@ -5,9 +5,11 @@ import { Car } from './Car';
     
     bookingId : number;
 	
-	fromDate: string;
+	fromDate: Date;
 	
-	tillDate : string;
+    tillDate : Date;
+    
+    bookingDate : Date;
 	
 	status : boolean;
 		

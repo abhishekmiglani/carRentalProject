@@ -16,7 +16,15 @@ export class GetCarsService {
 
   private _url: string = "http://localhost:8082/cars";
   private _url3 : string ;
+  private _url4 : string;
+  private _url5 : string;
+  private _url6 : string;
   public city;
+
+  getAllCars(): Observable<Car[]>{
+    this._url4 = "http://localhost:8082/cars";
+    return this.http.get<Car[]>(this._url4);
+  }
 
   getCars(): Observable<Car[]> {
     this.city = this.cookieService.get('location');
@@ -25,10 +33,11 @@ export class GetCarsService {
     return this.http.get<Car[]>(this._url);
   }
 
-  getId(carId: number) {
+  getId(carId: number): Observable<Car> {
     this.id = carId;
     this._url2 = "http://localhost:8082/cars/" + this.id;
     console.log(this.id);
+    return this.http.get<Car>(this._url2);
   }
 
   getCarById(): Observable<Car> {
@@ -47,5 +56,21 @@ export class GetCarsService {
   public getCarsByAvailability(selectedCity : any): Observable<Car[]> {
     this._url3 = "http://localhost:8082/cars/available/"+selectedCity;
         return this.http.get<Car[]>(this._url3);
+  }
+
+  addCar(car: Car) : Observable<Boolean>{
+    let url: string = "http://localhost:8082/cars";
+    return this.http.post<Boolean>(url, car);
+  }
+  
+  deleteCar(carId: number): Observable<any> {
+    console.log("inside delete car" + carId);
+    this._url5 = "http://localhost:8082/cars/"+carId+"/id";
+    return this.http.delete<any>(this._url5);
+  }
+
+  editCar(carId :any, car :Car) : Observable<any>{
+    this._url6 = "http://localhost:8082/cars/"+carId;
+    return this.http.put<any>(this._url6, car);
   }
 }

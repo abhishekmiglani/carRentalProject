@@ -3,35 +3,40 @@
   <nav
     id="sidebar"
     *ngIf="dislplayNav"
-    class="bg-light"
+    class="bg-light  "
     style="margin-top:97px; margin-left:18px;"
   >
     <ul class="list-unstyled components">
       <li>
-        <a href="#">Home</a>
+        <a (click)="hideSideNavbar()" href="#">Home</a>
       </li>
+      <hr>
       <li>
-        <a href="#">How Dhoom Car Works</a>
+        <a  (click)="hideSideNavbar()" href="#working">How Dhoom Car Works</a>
       </li>
-
+ <hr>
       <li>
-        <a href="#">About</a>
+        <a  (click)="hideSideNavbar()" href="#features">About</a>
       </li>
-
+<hr>
       <li>
-        <a href="#">Contact</a>
+        <a  (click)="hideSideNavbar()" href="#footer">Contact</a>
       </li>
+      <hr>
     </ul>
   </nav>
 
   <!-- Page Content  -->
   <div id="content">
     <nav
-      class="navbar navbar-expand-lg navbar-expand-md navbar-light bg-info "
+      class="navbar navbar-expand-md navbar-expand-lg  navbar-light bg-info "
       style="border-radius: 10px;"
     >
-      <div class="container-fluid">
-        <button
+    
+      
+    <div class="container-fluid">
+       
+      <button
           type="button"
           style="background-color:turquoise; color: white;"
           id="sidebarCollapse"
@@ -41,6 +46,20 @@
           <i class="fa fa-align-left" style="font-size:25px;"></i>
           <span></span>
         </button>
+
+        <div id="displaysidebtn" class = "navbar-header navbar-expand-md" style="float: right;">
+          <button class = "navbar-toggle btn "  style="background-color: turquoise;color: white;"
+             data-toggle = "collapse" data-target = "#navbarSupportedContent" aria-expanded="false" aria-controls="navbarSupportedContent" aria-label="Toggelnavigation">
+             <i class="fa fa-align-left" style="font-size:25px;"></i>
+             <!-- <span class = "sr-only">Toggle navigation</span> -->
+             <span class = "icon-bar"></span>
+             <span class = "icon-bar"></span>
+             <span class = "icon-bar"></span>
+          </button>
+    <!-- 		
+          <a class = "navbar-brand" href = "#">TutorialsPoint</a> -->
+       </div>
+    
 
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
           <ul class="nav navbar-nav ml-auto">
@@ -105,6 +124,7 @@
           </ul>
         </div>
       </div>
+      
     </nav>
 
     <div class="modal container modal fade" id="myModal1" role="dialog">
