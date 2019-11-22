@@ -1,6 +1,7 @@
 <app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality"></app-location-header>
 
 <div class="container-fluid row" style="margin-top: 110px;">
+    <button (click)=bookingConfirmHandler()> check it</button>
     <div class="left-pane col-md-8" style="display: flex">
         <div class="left-wrapper box-shadow "
             style="  border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4)">
@@ -22,7 +23,7 @@
                             </span>
                         </div>
 
-                        <div class="list-item info-text">
+                        <div class="list-item info-text"> 
                             <p style=" color: #77899b; font-size: 13px">
                                 Note:The image is for representation purpose only. The colour of
                                 the actual car may vary
@@ -237,7 +238,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="add-to-cart " style="padding-top: 6%">
-                    <button type="button" class="btn btn-success" (click)="changeState()" id="quick"  disabled>
+                    <button type="button" class="btn btn-success" (click)="changeState()"  id="quick"  disabled>
                         Quick Book
                     </button>
                 </div>

@@ -37,6 +37,7 @@ export class PaymentComponent implements OnInit {
   bookingHandler() {
     this.bookingData = this.bookingService.getBookingData();
     this.bookingService.addBooking(this.bookingData)
+    console.log(this.bookingData);
   }
 
   walletTransactionHandler(amount) {
@@ -48,7 +49,8 @@ export class PaymentComponent implements OnInit {
   }
 
   paymentAndBookingHandler() {
-
+    this.walletTransactionHandler(0);
+    this.bookingHandler();
   }
 
   focusYearTab() {

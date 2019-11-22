@@ -7,4 +7,8 @@ export class User {
     backLicenseImageUrl: string;
     password: string;
 
+    constructor(userId){
+        this.userId =userId;
+    }
+
 }
