@@ -24,7 +24,7 @@ export class CardetailComponent implements OnInit {
   total_fare: number = this.weekday_fare + this.weekend_fare;
   duration: any = "2h";
 
-  isLogged: boolean = false;
+  isLogged: boolean = true;
 
   constructor(
     private getCarsService: GetCarsService,
@@ -48,10 +48,10 @@ export class CardetailComponent implements OnInit {
   public cars: Car;
 
   changeState() {
-    if (false) {
+    if (this.isLogged) {
       console.log("ghcwdhkh");
-      this.isLogged = true;
       this.upload.open();
+      this.isLogged = false;
     } else {
       console.log("ye chalna chahiye");
       this.login.openModalDialog();
