@@ -26,7 +26,7 @@ import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashbo
 import { LoginModalComponent } from './login-modal/login-modal.component';
 
 import { CitiesModalComponent } from './cities-modal/cities-modal.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -41,6 +41,7 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -74,12 +75,23 @@ import { EditCarComponent } from './edit-car/edit-car.component';
     BrowserAnimationsModule,
     DashboardRoutingModule,
     StorageServiceModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps:[HttpClient]
+      }
+    }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
       libraries: ["places"]
     })
   ],
-  providers: [CookieService,GetCarsService,DashboardService,UserService],
+  providers: [CookieService,GetCarsService,DashboardService,UserService,TranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
