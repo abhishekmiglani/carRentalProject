@@ -51,7 +51,7 @@ export class CardetailComponent implements OnInit {
     } else {
       console.log("ye chalna chahiye");
       this.login.openModalDialog();
-      this.isLogged = false;
+      this.isLogged = true;
     }
   }
   changeQuickBookState(e: any) {
