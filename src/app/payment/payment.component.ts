@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  carPackage: any;
+  cars: import("c:/Users/AnkushVerma/Documents/GitHub/carRentalProject/src/app/Bean/Car").Car;
+  locality: any;
+  dates: any[];
+  pickup: any;
+  drop: any;
+  
 
   constructor() { }
   ngOnInit() {
