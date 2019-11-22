@@ -7,4 +7,11 @@ export class WalletTransaction{
 	transactionDate:Date;
 	wallet:Wallet;
 	transactionDetail:String;
+
+	constructor(transactionType,transactionAmount,transactionDetail){
+		this.transactionType = transactionType;
+		this.transactionAmount = transactionAmount;
+		this.transactionDetail = transactionDetail;
+		
+	}
 }

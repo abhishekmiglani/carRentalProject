@@ -1,4 +1,5 @@
 <div>
+    <button (click)=bookingHandler()>Congratulation</button>
     <div class="row main-container">
         <div class=" shadow-lg p-3 mb-5 bg-light rounded col-md-6 main ">
             <form action="" class="form-group bg-light">
@@ -79,27 +80,32 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- Paypal payment option -->
                         <div class="card">
                             <div class="card-header">
                                 <a class="card-link" href="#">
                                     <div class="row">
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <span class="paypal-name">PayPal</span>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <img src="/assets/paypal.png" alt="paypal">
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
+
+                        <!-- Wallet Payment Option-->
                         <div class="card">
                             <div class="card-header">
-                                <a class="card-link" href="#">
+                                <a class="card-link" style="cursor: pointer;" (click)=paymentAndBookingHandler()>
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-7">
                                             <span class="wallet-text">Car Wallet</span>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span class="balance-text">Balance : {{wallet.balance}}</span>
                                         </div>
                                         <div class="col-md-2">
                                             <img src="/assets/walletIcon.png" alt="paypal">
@@ -115,6 +121,8 @@
         </div>
     </div>
 
+
+    <!-- MODAL -->
     <div class="modal fade" id="editCardModal">
         <div class="modal-dialog">
             <div class="modal-content">
