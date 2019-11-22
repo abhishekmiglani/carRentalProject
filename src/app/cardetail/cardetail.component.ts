@@ -1,14 +1,15 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { UploadFileComponent } from "app/upload-file/upload-file.component";
-import { LoginService } from "app/services/login.service";
-import { LoginModalComponent } from "app/login-modal/login-modal.component";
-import { GetCarsService } from "app/services/get-cars.service";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+import { Booking } from 'app/bean/Booking';
 import { Car } from "app/Bean/Car";
 import { CarSelectComponent } from "app/car-select/car-select.component";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { LoginModalComponent } from "app/login-modal/login-modal.component";
+import { GetCarsService } from "app/services/get-cars.service";
 import { GetLocationService } from "app/services/get-location.service";
 import { SendDateService } from "app/services/send-date.service";
-import { HeaderComponent } from "app/header/header.component";
+import { UploadFileComponent } from "app/upload-file/upload-file.component";
+import { BookingService } from 'app/services/booking.service';
+import { User } from 'app/bean/User';
 
 declare var $: any;
 @Component({
@@ -29,7 +30,8 @@ export class CardetailComponent implements OnInit {
     private getCarsService: GetCarsService,
     private route: ActivatedRoute,
     private locationService: GetLocationService,
-    private dateService: SendDateService
+    private dateService: SendDateService,
+    private bookingService : BookingService
   ) {}
 
   @ViewChild(UploadFileComponent, { static: false })
@@ -37,6 +39,8 @@ export class CardetailComponent implements OnInit {
   @ViewChild(CarSelectComponent, { static: false })
   carSelect: CarSelectComponent;
   @ViewChild(LoginModalComponent, { static: false }) login: LoginModalComponent;
+    bookingData:Booking = new Booking();
+    
 
   modalState: boolean = false;
   checkBoxState: boolean = false;
@@ -54,6 +58,10 @@ export class CardetailComponent implements OnInit {
       this.isLogged = true;
     }
   }
+
+  sendBookingData(booking:Booking){
+    this.bookingService.setBookingData(booking);
+  }
   changeQuickBookState(e: any) {
     this.checkBoxState = e.target.checked;
     if (this.checkBoxState) {
@@ -61,6 +69,16 @@ export class CardetailComponent implements OnInit {
     } else {
       document.getElementById("quick").setAttribute("disabled", "true");
     }
+  }
+
+  bookingConfirmHandler(){
+    this.bookingData.fromDate = this.pickup;
+    this.bookingData.tillDate = this.drop;
+    this.bookingData.bookingDate = new Date();
+    this.bookingData.car = this.cars;
+    this.bookingData.status=true;
+    this.bookingData.userDetails=new User(1);
+    this.sendBookingData(this.bookingData);
   }
 
   id: any;

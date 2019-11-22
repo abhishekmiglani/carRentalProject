@@ -58,6 +58,8 @@ import { EditCarComponent } from './edit-car/edit-car.component';
     BanersComponent,
     LoginModalComponent,
     CitiesModalComponent,
+    SignupComponent ,
+    ForgotPasswordComponent,
     SignupComponent,
     AdminComponent,
     AdminDeleteCarComponent,

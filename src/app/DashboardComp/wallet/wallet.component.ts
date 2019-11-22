@@ -12,7 +12,7 @@ export class WalletComponent implements OnInit {
   balance = 0.00;
   amount:number;
   walletTransactions: WalletTransaction[];
-  walletTransaction:WalletTransaction = new WalletTransaction();
+  walletTransaction:WalletTransaction = new WalletTransaction("","","");
   /* walletTransaction = ["credit", "debit","credit","credit","debit","credit"]; */
   walletId;
   userId;
@@ -47,7 +47,6 @@ export class WalletComponent implements OnInit {
    this.balance = this.balance+this.amount;
    alert(this.amount)
    this.walletTransaction.transactionAmount = this.amount;
-   this.walletTransaction.transactionDate = new Date();
    this.walletTransaction.transactionDetail = "Added Money to wallet by you"
    this.walletTransaction.transactionType = "credit";
    
