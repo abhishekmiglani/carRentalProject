@@ -30,7 +30,8 @@ export class HeaderComponent implements OnInit {
   //   console.log("on init" + this.cities);
   // }
 
-  loginState: boolean = false;
+  
+  loginState: boolean;
   dislplayNav = false;
   city: any = "Bangalore";
   latitude: number;
@@ -92,7 +93,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    
+    this.loginState=this.storage.get("loginStatus");
     this.cookieservice.set("location", this.city);
     this.cookievalue = this.cookieservice.get("location");
     console.log("cookied " + this.cookievalue);

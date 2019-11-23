@@ -9,6 +9,7 @@ import { User } from "app/Bean/User";
 
 export class UserService {
   constructor(private http: HttpClient) {}
+  
   getAllUsers(): Observable<User[]> {
     let url: string = "http://localhost:8081/users";
     return this.http.get<User[]>(url);
