@@ -50,7 +50,7 @@ export class CardetailComponent implements OnInit {
 
   changeState() {
     if (localStorage.length!=0 && localStorage.getItem("loginStatus")=="true") {
-      if(localStorage.getItem("uploadStatus")=="true"){
+      if(localStorage.getItem("uploadStatus")!="true"){
       console.log("ghcwdhkh");
       this.upload.open();
       this.isLogged = true;
