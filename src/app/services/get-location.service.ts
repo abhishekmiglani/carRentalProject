@@ -21,7 +21,7 @@ export class GetLocationService {
 
   getLocationByCity(): Observable<Locations[]> {
     this.location = this.cookieservice.get('location');
-    this._url = "http://localhost:8084/locations/" + this.location;
+    this._url = "http://localhost:8099/locationservice/locations/" + this.location;
       return this.http.get<Locations[]>(this._url);
   }
 
