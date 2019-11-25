@@ -105,7 +105,7 @@
               class="nav-link"
               data-toggle="modal"
               data-target="#myModal"
-              href="#"
+            
               ><i
                 class="fa fa-user-circle"
                 aria-hidden="true"
@@ -573,3 +573,46 @@
     </div>
   </div>
 </div>
+
+
+<!--login message modal-->
+
+  <div class="modal" id="loginModalMsg" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Message</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close" (click)="redirectAfterLogout()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="loginResult;else loginElse">
+         You have successfully logged in...
+          </div>
+          <ng-template #loginElse>
+              E-Mail or Password incorrect...
+          </ng-template>
+        </div>
+        <div class="modal-footer">
+            
+       
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            (click)="redirectAfterLogout()"
+          >
+            Close
+          </button>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+  

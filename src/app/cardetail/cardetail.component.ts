@@ -1,5 +1,8 @@
+
 import { Component, OnInit, ViewChild, Inject } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Booking } from 'app/bean/Booking';
 import { Car } from "app/Bean/Car";
 import { CarSelectComponent } from "app/car-select/car-select.component";
@@ -28,19 +31,25 @@ export class CardetailComponent implements OnInit {
   total_fare: number = this.weekday_fare + this.weekend_fare;
   duration: any = "2h";
 
-  isLogged: boolean = true;
+  isLogged: boolean;
 
   constructor(@Inject(TranslateService) public translate:TranslateService,
     private getCarsService: GetCarsService,
     private route: ActivatedRoute,
     private locationService: GetLocationService,
     private dateService: SendDateService,
+
     private bookingService : BookingService
   ) {
     translate.addLangs(['en','fr','de','hi','pj'])
     translate.setDefaultLang('en');
     translate.use('en');
   }
+
+    private bookingService : BookingService,
+    private router:Router
+  ) {}
+
 
   @ViewChild(UploadFileComponent, { static: false })
   upload: UploadFileComponent;
@@ -56,14 +65,19 @@ export class CardetailComponent implements OnInit {
   public cars: Car;
 
   changeState() {
-    if (this.isLogged) {
+    if (localStorage.length!=0 && localStorage.getItem("loginStatus")=="true") {
+      if(localStorage.getItem("uploadStatus")!="true"){
       console.log("ghcwdhkh");
       this.upload.open();
-      this.isLogged = false;
+      this.isLogged = true;
+      }
+      else{
+        this.router.navigateByUrl("/car/payments");
+      }
     } else {
       console.log("ye chalna chahiye");
       this.login.openModalDialog();
-      this.isLogged = true;
+      this.isLogged = false;
     }
   }
 
