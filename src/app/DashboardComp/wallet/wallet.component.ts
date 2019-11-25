@@ -14,18 +14,16 @@ export class WalletComponent implements OnInit {
   walletTransactions: WalletTransaction[];
   walletTransaction:WalletTransaction = new WalletTransaction("","","");
   /* walletTransaction = ["credit", "debit","credit","credit","debit","credit"]; */
-  walletId:number;
+  walletId;
   userId;
 
   constructor(private dashboardService: DashboardService) { }
 
 
-  async getWalletDetails() {
+  getWalletDetails() {
     this.dashboardService.getWalletDetails(this.userId).subscribe(walletData => {
       this.balance = walletData.balance;
       this.walletId = walletData.walletId;
-      console.log("wallet Id"+this.walletId)
-      this.getWalletTransactions();
     })
   }
 
@@ -37,10 +35,11 @@ export class WalletComponent implements OnInit {
       /* console.log(walletTransactionData); */
     })
   }
-  async isTransactionRecord(){
+  isTransactionRecord(){
     if (this.walletTransactions != null) {
       document.getElementById('walletTransactionContainer').className = "wallet-transaction shadow-sm p-3 mb-5 bg-white rounded";
       /* document.getElementById('noTransaction').innerHTML = ""; */
+      console.log("Its in the null ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     }
   }
 
@@ -57,6 +56,7 @@ export class WalletComponent implements OnInit {
   }
   ngOnInit() {
     this.getWalletDetails();
+    this.getWalletTransactions();
   }
 
 }

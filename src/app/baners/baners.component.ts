@@ -2,6 +2,7 @@ import { Component, OnInit,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { DashboardService } from 'app/dashboard.service';
+import { UserCard } from 'app/Bean/UserCard';
 
 
 

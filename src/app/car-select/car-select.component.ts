@@ -750,7 +750,7 @@ export class CarSelectComponent implements OnInit {
   }
 
    getAvailableCar(){
-     
+     //console.log(this.message);
     }
 
 }
