@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, Inject } from "@angular/core";
 import { GetCarsService } from 'app/services/get-cars.service';
 import { LocationHeaderComponent } from 'app/location-header/location-header.component';
 import { RouterLink, Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'app/Bean/Car';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 @Component({
@@ -31,7 +32,15 @@ export class CarSelectComponent implements OnInit {
   public package;
   duplicateCarList: any[];
 
-  constructor(private getCarsService: GetCarsService, private router: Router) { }
+  constructor( private getCarsService: GetCarsService, private router: Router) { 
+
+    // translate.addLangs(['en','fr','de','hi','pj'])
+    // translate.setDefaultLang('en');
+    // translate.use('en');
+
+
+
+  }
   @ViewChild(LocationHeaderComponent, { static: false }) locationHeader: LocationHeaderComponent;
 
   ngOnInit() {

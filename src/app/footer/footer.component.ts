@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -7,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(@Inject(TranslateService) public translate: TranslateService) {
+    translate.addLangs(['en','ur','hi','pu'])
+    translate.setDefaultLang('en');
+    translate.use('en');
+}
+
+
+
 
   ngOnInit() {
   }

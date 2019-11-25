@@ -1,3 +1,6 @@
+
+import { Component, OnInit, ViewChild, Inject } from "@angular/core";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Booking } from 'app/bean/Booking';
@@ -10,6 +13,10 @@ import { SendDateService } from "app/services/send-date.service";
 import { UploadFileComponent } from "app/upload-file/upload-file.component";
 import { BookingService } from 'app/services/booking.service';
 import { User } from 'app/bean/User';
+
+
+import{ TranslateService} from '@ngx-translate/core';
+
 
 declare var $: any;
 @Component({
@@ -26,14 +33,23 @@ export class CardetailComponent implements OnInit {
 
   isLogged: boolean;
 
-  constructor(
+  constructor(@Inject(TranslateService) public translate:TranslateService,
     private getCarsService: GetCarsService,
     private route: ActivatedRoute,
     private locationService: GetLocationService,
     private dateService: SendDateService,
+
+    private bookingService : BookingService
+  ) {
+    translate.addLangs(['en','fr','de','hi','pj'])
+    translate.setDefaultLang('en');
+    translate.use('en');
+  }
+
     private bookingService : BookingService,
     private router:Router
   ) {}
+
 
   @ViewChild(UploadFileComponent, { static: false })
   upload: UploadFileComponent;
