@@ -14,6 +14,10 @@ import { UploadFileComponent } from "app/upload-file/upload-file.component";
 import { BookingService } from 'app/services/booking.service';
 import { User } from 'app/bean/User';
 
+
+import{ TranslateService} from '@ngx-translate/core';
+
+
 declare var $: any;
 @Component({
   selector: "app-cardetail",
@@ -27,9 +31,9 @@ export class CardetailComponent implements OnInit {
   total_fare: number = this.weekday_fare + this.weekend_fare;
   duration: any = "2h";
 
-  isLogged: boolean = true;
+  isLogged: boolean;
 
-  constructor(
+  constructor(@Inject(TranslateService) public translate:TranslateService,
     private getCarsService: GetCarsService,
     private route: ActivatedRoute,
     private locationService: GetLocationService,
@@ -37,6 +41,7 @@ export class CardetailComponent implements OnInit {
     private bookingService : BookingService,
     private router:Router
   ) {}
+
 
   @ViewChild(UploadFileComponent, { static: false })
   upload: UploadFileComponent;
@@ -52,14 +57,19 @@ export class CardetailComponent implements OnInit {
   public cars: Car;
 
   changeState() {
-    if (this.isLogged) {
+    if (localStorage.length!=0 && localStorage.getItem("loginStatus")=="true") {
+      if(localStorage.getItem("uploadStatus")!="true"){
       console.log("ghcwdhkh");
       this.upload.open();
-      this.isLogged = false;
+      this.isLogged = true;
+      }
+      else{
+        this.router.navigateByUrl("/car/payments");
+      }
     } else {
       console.log("ye chalna chahiye");
       this.login.openModalDialog();
-      this.isLogged = true;
+      this.isLogged = false;
     }
   }
 

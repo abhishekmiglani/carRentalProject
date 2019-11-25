@@ -30,7 +30,8 @@ export class HeaderComponent implements OnInit {
   //   console.log("on init" + this.cities);
   // }
 
-  loginState: boolean = false;
+  
+  loginState: boolean;
   dislplayNav = false;
   city: any = "Bangalore";
   latitude: number;
@@ -92,7 +93,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    
+    this.loginState=this.storage.get("loginStatus");
     this.cookieservice.set("location", this.city);
     this.cookievalue = this.cookieservice.get("location");
     console.log("cookied " + this.cookievalue);
@@ -263,6 +265,9 @@ export class HeaderComponent implements OnInit {
   closeModal() {
     $("#locationModal").modal("hide");
   }
+  loginModalMsgToggle() {
+    $("#loginModalMsg").modal("toggle");
+  }
   closeSignupModal() {
     $("#signUpModal").modal("hide");
   }
@@ -332,10 +337,13 @@ export class HeaderComponent implements OnInit {
       if(this.loginResult==true){
         this.saveInLocal("email",email);
         this.saveInLocal("loginStatus",this.loginResult)
+
       }
+      this.isLoggedIn();
     });
+    this.loginModalMsgToggle();
     this.closeLoginModal();
-    this.isLoggedIn();
+    
   }
     hideSideNavbar(){
       this.dislplayNav=false;
