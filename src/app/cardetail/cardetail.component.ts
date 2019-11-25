@@ -71,6 +71,7 @@ export class CardetailComponent implements OnInit {
       this.login.openModalDialog();
       this.isLogged = false;
     }
+    this.bookingConfirmHandler();
   }
 
   sendBookingData(booking:Booking){

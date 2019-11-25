@@ -101,8 +101,8 @@ export class UploadFileComponent implements OnInit {
       email: email,
       phone: null,
       password: null,
-      backLicenseImageUrl: "https://www.dropbox.com/request/HpWEP1Ix1tBDBwonS1sM",
-      frontLicenseImageUrl: "https://www.dropbox.com/request/HpWEP1Ix1tBDBwonS1sM",
+      backLicenseImageUrl: this.fileBack,
+      frontLicenseImageUrl: this.fileFront,
       userId: null
     };
     this.userService.postLicenseFile(user,this.fileFront,this.fileBack).subscribe(data => {

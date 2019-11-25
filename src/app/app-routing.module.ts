@@ -37,7 +37,7 @@ const routes: Routes = [
             path:"", component: CarSelectComponent
           },
           {
-            path: "payments" , component: PaymentComponent,canActivate:[PaymentGuardGuard]
+            path: "payments" , component: PaymentComponent/* ,canActivate:[PaymentGuardGuard] */
           },
           {
             path: ":modelNo" , component: CardetailComponent
