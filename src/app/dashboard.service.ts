@@ -5,7 +5,6 @@ import { Observable } from "rxjs";
 import { WalletTransaction } from './bean/WalletTransaction';
 import { Booking } from './bean/Booking';
 import { Card } from './bean/Card';
-import { UserCard } from './Bean/UserCard';
 import { User } from './bean/User';
 
 @Injectable({
@@ -22,13 +21,13 @@ export class DashboardService {
   }
 
   getWalletTransactions(walletId): Observable<WalletTransaction[]> {
-    let url = "http://localhost:8088/walletTransactions/101" /* + walletId */;
+    let url = "http://localhost:8088/walletTransactions/" + walletId;
     return this.http.get<WalletTransaction[]>(url);
   }
 
   enterWalletTransaction(walletTransaction){
     
-    let url = "http://localhost:8088/walletTransactions/101";
+    let url = "http://localhost:8088/walletTransactions/"+walletTransaction.walletId;
     return this.http.post(url,walletTransaction);
   }
 
@@ -55,4 +54,14 @@ export class DashboardService {
     let url = "http://localhost:8081/users/"+user.userId;
     return this.http.put(url,user);
   }
+  deleteCardByCardId(cardId):Observable<any>{
+    let url = "http://localhost:8085/cards/"+cardId;
+    console.log("card deleted")
+     return this.http.delete(url);
+  }
+  updateCard(card:Card):Observable<any>{
+    let url = "";
+    return this.http.put(url,card);
+  }
+
 }
