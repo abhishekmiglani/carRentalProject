@@ -18,5 +18,4 @@ li:hover{
 .background{
     background: rgb(183,220,233);
     background: linear-gradient(143deg, rgba(181, 217, 230, 0.345) 20%, rgba(152, 163, 168, 0.345) 70%);
-    margin: auto;
 }

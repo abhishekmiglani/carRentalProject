@@ -11,12 +11,12 @@ export class BookingService {
   constructor(private http : HttpClient) { }
 
   getAllBookings() : Observable<Booking[]>{
-    let url : string  = "http://localhost:8099/bookingservice/bookings";
+    let url : string  = "http://localhost:8083/bookings";
     return this.http.get<Booking[]>(url);
   }
 
   addBooking(booking : Booking){
-    let url : string  = "http://localhost:8099/bookingservice/bookings";
+    let url : string  = "http://localhost:8083/bookings";
     return this.http.post(url,booking);
   }
 
