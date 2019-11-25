@@ -26,7 +26,7 @@ import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashbo
 import { LoginModalComponent } from './login-modal/login-modal.component';
 
 import { CitiesModalComponent } from './cities-modal/cities-modal.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -92,15 +92,15 @@ export function HttpLoaderFactory(http: HttpClient) {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps:[HttpClient],
-        
       }
+      })
 
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
-      libraries: ["places"]
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
+    //   libraries: ["places"]
 
-    })
-  ],
+    // })
+    ],
   providers: [CookieService,GetCarsService,DashboardService,UserService],
   bootstrap: [AppComponent]
 })
