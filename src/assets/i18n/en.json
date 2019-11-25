@@ -153,6 +153,18 @@
           "p_255" : "Our Team"
            
 
+      },
+      "dashboard":
+      {
+          "h_12" : "Profile",
+          "h_17" : "My Booking",
+          "h_22" : "My Wallet",
+          "h_27" : "My Cards",
+          "h_32" : "Change Password",
+          "h_37" : "Logout",
+          "h_57" : "Messages",
+          "d_63" : "You have successfully logged out",
+          "b_70" : "Close"
       }
 
 }
