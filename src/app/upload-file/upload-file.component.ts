@@ -95,7 +95,7 @@ export class UploadFileComponent implements OnInit {
     console.log("uploading....");
     //Upload file here send a binary data
     
-    this.http.post('src/assets/', this.fileFront)
+    this.http.post('./assets/', this.fileFront)
     .subscribe();
     }
  

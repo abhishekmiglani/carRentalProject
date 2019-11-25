@@ -265,6 +265,9 @@ export class HeaderComponent implements OnInit {
   closeModal() {
     $("#locationModal").modal("hide");
   }
+  loginModalMsgToggle() {
+    $("#loginModalMsg").modal("toggle");
+  }
   closeSignupModal() {
     $("#signUpModal").modal("hide");
   }
@@ -334,10 +337,13 @@ export class HeaderComponent implements OnInit {
       if(this.loginResult==true){
         this.saveInLocal("email",email);
         this.saveInLocal("loginStatus",this.loginResult)
+
       }
+      this.isLoggedIn();
     });
+    this.loginModalMsgToggle();
     this.closeLoginModal();
-    this.isLoggedIn();
+    
   }
     hideSideNavbar(){
       this.dislplayNav=false;
