@@ -98,3 +98,11 @@ img{
     display: inline-block;
     margin: 100px auto;
 }
+.btn-gradient{
+    margin-bottom: 10%;
+    background: linear-gradient(to right, rgb(90, 148, 248),rgb(117, 235, 178));
+    transition: all 10s;
+}
+.btn-gradient:hover{
+    background: linear-gradient(to left, rgb(90, 148, 248),rgb(117, 235, 178));
+}
