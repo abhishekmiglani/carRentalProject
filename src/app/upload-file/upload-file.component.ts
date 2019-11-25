@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, ViewChild, Inject } from '@angular/core';
-import { UserService } from 'app/services/user.service';
-import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -19,7 +18,7 @@ export class UploadFileComponent implements OnInit {
 
   fileFront:File;
   fileBack:File;
-  constructor(private userService:UserService,@Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
+  constructor(private http:HttpClient) { }
   previewFront(files) {
     if (files.length === 0)
       return;
@@ -68,7 +67,6 @@ export class UploadFileComponent implements OnInit {
 
   uploadFileBack(event,files) {
     this.fileBack = files[0];
-    console.log("qwerasdf:"+this.fileBack)
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files.push(element.name)
@@ -93,28 +91,12 @@ export class UploadFileComponent implements OnInit {
     console.log("child");
     document.getElementById("openModal2").click();
   }
-  uploadResult;
   onUploadFile() {
-    let email=localStorage.getItem("email");
-    let user = {
-      fullName: null,
-      email: email,
-      phone: null,
-      password: null,
-      backLicenseImageUrl: "https://www.dropbox.com/request/HpWEP1Ix1tBDBwonS1sM",
-      frontLicenseImageUrl: "https://www.dropbox.com/request/HpWEP1Ix1tBDBwonS1sM",
-      userId: null
-    };
-    this.userService.postLicenseFile(user,this.fileFront,this.fileBack).subscribe(data => {
-      this.uploadResult = data;
-      console.log("upload:"+this.uploadResult)
-      if(this.uploadResult==true){
-        
-        this.storage.set("uploadStatus",this.uploadResult);
-
-      }
-     
-    });
+    console.log("uploading....");
+    //Upload file here send a binary data
+    
+    this.http.post('src/assets/', this.fileFront)
+    .subscribe();
     }
  
 
