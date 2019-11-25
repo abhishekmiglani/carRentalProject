@@ -41,7 +41,6 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -75,23 +74,16 @@ import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-transla
     BrowserAnimationsModule,
     DashboardRoutingModule,
     StorageServiceModule,
-    TranslateModule.forRoot({
-      loader:{
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps:[HttpClient]
-      }
-    }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
       libraries: ["places"]
     })
   ],
-  providers: [CookieService,GetCarsService,DashboardService,UserService,TranslateService],
+  providers: [CookieService,GetCarsService,DashboardService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  // return new TranslateHttpLoader(http);
 }
 
