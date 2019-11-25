@@ -9,7 +9,6 @@ import { BankDetailsComponent } from '../bank-details/bank-details.component';
 
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { BookingsComponent } from '../bookings/bookings.component';
-import { AuthGuard } from 'app/auth.guard';
 
 
 const dashboard_routes: Routes = [
@@ -31,7 +30,7 @@ const dashboard_routes: Routes = [
         path: 'bank-detail', component: BankDetailsComponent 
       }
 
-    ], canActivate: [AuthGuard]
+    ]
   }
 
 ]

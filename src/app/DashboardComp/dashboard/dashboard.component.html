@@ -1,78 +1,46 @@
-<div class="background">
-  <app-header></app-header>
-  <div class="row" style="margin-top: -480px;">
+<app-header></app-header>
+<div class="row background" style="margin-top: -600px;">
     <div class="col-md-3 col-sm-3 col-10 card dashboard-menu shadow-sm p-3 mb-5 bg-white rounded">
-      <div class="card-header">
-        <h3> Hi {{userName}} </h3>
-      </div>
-      <div class="card-body">
-        <ul class="list-group list-group-flush ">
-          <a routerLink="/dashboard">
-            <li class="list-group-item">
-              <h5 class="far fa-user-circle"> Profile</h5>
-            </li>
-          </a>
-          <a routerLink="/dashboard/bookings">
-            <li class="list-group-item">
-              <h5 class="far fa-calendar-alt"> My Bookings</h5>
-            </li>
-          </a>
-          <a routerLink="/dashboard/wallet">
-            <li class="list-group-item">
-              <h5 class="far fa-money-bill-alt"> My Wallet</h5>
-            </li>
-          </a>
-          <a routerLink="/dashboard/bank-detail">
-            <li class="list-group-item">
-              <h5 class="far fa-credit-card"> My Cards</h5>
-            </li>
-          </a>
-          <a routerLink="/dashboard/change-password">
-            <li class="list-group-item">
-              <h5 class="fab fa-keycdn"> Change Password</h5>
-            </li>
-          </a>
-          <a routerLink="/dashboard/logout" (click)="logout()">
-            <li class="list-group-item">
-              <h5 class="fas fa-sign-out-alt"> Logout</h5>
-            </li>
-          </a>
-        </ul>
-      </div>
-    </div>
-
-
-    <div class="col-md-8 col-sm-8 col-12 descr">
-      <!-- <app-bank-details></app-bank-details> -->
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-
-  <!--logout modal-->
-  <div class="container">
-    <div class="modal" id="logoutModalMsg" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Message</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="redirectAfterLogout()">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            You have successfully logged out...
-
-          </div>
-          <div class="modal-footer">
-
-
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="redirectAfterLogout()">
-              Close
-            </button>
-
-          </div>
+        <div class="card-header">
+            <h3> Hi {{userName}} </h3>
         </div>
-      </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush ">
+                <a routerLink="/dashboard">
+                    <li class="list-group-item">
+                        <h5 class="far fa-user-circle"> Profile</h5>
+                    </li>
+                </a>
+                <a routerLink="/dashboard/bookings">
+                    <li class="list-group-item">
+                        <h5 class="far fa-calendar-alt"> My Bookings</h5>
+                    </li>
+                </a>
+                <a routerLink="/dashboard/wallet">
+                    <li class="list-group-item">
+                        <h5 class="far fa-money-bill-alt"> My Wallet</h5>
+                    </li>
+                </a>
+                <a routerLink="/dashboard/bank-detail">
+                    <li class="list-group-item">
+                        <h5 class="far fa-credit-card"> My Cards</h5>
+                    </li>
+                </a>
+                <a routerLink="/dashboard/change-password">
+                    <li class="list-group-item">
+                        <h5 class="fab fa-keycdn"> Change Password</h5>
+                    </li>
+                </a>
+                <a routerLink="/dashboard/logout">
+                    <li class="list-group-item">
+                        <h5 class="fas fa-sign-out-alt"> Logout</h5>
+                    </li>
+                </a>
+            </ul>
+        </div>
     </div>
-  </div>
+    <div class="col-md-8 col-sm-8 col-12 descr">
+        <!-- <app-bank-details></app-bank-details> -->
+        <router-outlet></router-outlet>        
+    </div>
 </div>
