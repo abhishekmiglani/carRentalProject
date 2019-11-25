@@ -10,9 +10,9 @@ declare var $: any;
 })
 export class ProfileComponent implements OnInit {
 
-  fullName = "XYZ";
-  email = "xyz@123.com"
-  mobile = "xxxxxxxxxx"
+  fullName = "";
+  email = ""
+  mobile = ""
   totalHours = 0;
   totalDistance = 0 ;
   user:User;
