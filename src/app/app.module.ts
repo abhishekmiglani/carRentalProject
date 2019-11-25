@@ -26,7 +26,7 @@ import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashbo
 import { LoginModalComponent } from './login-modal/login-modal.component';
 
 import { CitiesModalComponent } from './cities-modal/cities-modal.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -41,8 +41,16 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
+
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 
+<<<<<<< HEAD
+=======
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+>>>>>>> parent of 004ac98... Revert "Merge branch 'master' of https://github.com/abhishekmiglani/carRentalProject"
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,23 +83,43 @@ import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-transla
     BrowserAnimationsModule,
     DashboardRoutingModule,
     StorageServiceModule,
+<<<<<<< HEAD
+=======
+
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
+      libraries: ["places"]
+    }),
+>>>>>>> parent of 004ac98... Revert "Merge branch 'master' of https://github.com/abhishekmiglani/carRentalProject"
     TranslateModule.forRoot({
       loader:{
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps:[HttpClient]
       }
+<<<<<<< HEAD
     }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
       libraries: ["places"]
+=======
+
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
+      libraries: ["places"]
+
+>>>>>>> parent of 004ac98... Revert "Merge branch 'master' of https://github.com/abhishekmiglani/carRentalProject"
     })
   ],
-  providers: [CookieService,GetCarsService,DashboardService,UserService,TranslateService],
+  providers: [CookieService,GetCarsService,DashboardService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+<<<<<<< HEAD
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+=======
+>>>>>>> parent of 004ac98... Revert "Merge branch 'master' of https://github.com/abhishekmiglani/carRentalProject"
 
