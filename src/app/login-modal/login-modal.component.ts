@@ -18,6 +18,10 @@ export class LoginModalComponent implements OnInit {
   }
   ngOnInit() {
   }
+
+  loginModalMsgToggle() {
+    $("#loginModalMsg").modal("toggle");
+  }
   
   isLoggedIn() {
     let status=this.getFromLocal("loginStatus");
@@ -110,9 +114,11 @@ export class LoginModalComponent implements OnInit {
         this.saveInLocal("email",email);
         this.saveInLocal("loginStatus",this.loginResult)
       }
+      this.isLoggedIn();
     });
+    this.loginModalMsgToggle();
     this.closeLoginModal();
-    this.isLoggedIn();
+    
   }
     
 

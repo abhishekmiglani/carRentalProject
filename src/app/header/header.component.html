@@ -592,7 +592,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div *ngIf="loginState;else loginElse">
+          <div *ngIf="loginResult;else loginElse">
          You have successfully logged in...
           </div>
           <ng-template #loginElse>
