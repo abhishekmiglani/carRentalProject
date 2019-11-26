@@ -31,24 +31,23 @@ export class UserService {
     }
 
 
-    postFrontFile(frontData,email): Observable<number> {
+    postFrontFile(frontData): Observable<number> {
       console.log("user service")
-      const endpoint = 'http://localhost:8099/userservice/users/front/'+email;
-
       
+      let endpoint:string = "http://localhost:8099/userservice/users/front";
+    
+      console.log(" inside front img method "+endpoint );
       return  this.http.put<number>(endpoint, frontData);
  
        
 
         
 }
-postBackFile(backData,email): Observable<number> {
+postBackFile(backData): Observable<number> {
   console.log("user service2")
-
-  const endpoint2 = 'http://localhost:8099/userservice/users/back/qwerty@gmail.com'+email;
-  
-
-  return this.http.put<number>(endpoint2, backData);
+  let endpoint:string = "http://localhost:8099/userservice/users/back";
+      
+  return this.http.put<number>(endpoint, backData);
    
 
     

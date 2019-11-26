@@ -96,10 +96,11 @@ export class UploadFileComponent implements OnInit {
   }
   uploadResult;
   onFrontUpload(){
-    const email=localStorage.getItem("email");
-    const frontData=new FormData();
+    let email:string=localStorage.getItem("email");
+    var frontData=new FormData();
     frontData.append("front",this.fileFront,this.files[0]);
-    this.userService.postFrontFile(frontData,email).subscribe(data => {
+    frontData.append("email",email)
+    this.userService.postFrontFile(frontData).subscribe(data => {
       this.uploadResult = data;
       console.log("upload:"+this.uploadResult)
       if(this.uploadResult==1){
@@ -116,15 +117,19 @@ export class UploadFileComponent implements OnInit {
   }
   onBackUpload() {
    
-    const backData=new FormData();
-    const email=localStorage.getItem("email");
+    var backData=new FormData();
+    let email:string=localStorage.getItem("email");
+    console.log(email)
     console.log("back:"+this.files[1]+" tydwy:"+this.fileBack.name);
     
     backData.append("back",this.fileBack,this.files[1]);
+    backData.append("email",email);
+    console.log("has back:"+backData.has("back"));
+    console.log("has email:"+backData.has("email"));
 
     
 
-    this.userService.postBackFile(backData,email).subscribe(data => {
+    this.userService.postBackFile(backData).subscribe(data => {
       this.uploadResult = data;
       console.log("upload:"+this.uploadResult)
       if(this.uploadResult==1){
