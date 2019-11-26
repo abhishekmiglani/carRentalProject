@@ -117,3 +117,9 @@ th,td{
     height: fit-content;
     width: fit-content;
 }
+.payment-header{
+    background: linear-gradient(to right, #3aa5c5 , #6eaabd );
+    /* background: #3aa5c5; */
+    padding: 2%;
+    color: white;
+}

@@ -1,23 +1,22 @@
 <div>
-    <button (click)=bookingHandler()>Congratulation{{'payment.b_2'|translate}}</button>
+    <div class="payment-header row bg-info">
+        <div class="col-8 col-md-8 col-sm-8">
+            <h1>Payment Gateway</h1>
+        </div>
+    </div>
+    <!-- <button (click)=bookingHandler()>Congratulation{{'payment.b_2'|translate}}</button> -->
 
     <div class="row main-container">
         <div class=" shadow-lg p-3 mb-5 bg-light rounded col-md-6 col-10 col-sm-6 main">
             <form action="" class="form-group bg-light">
                 <div>
                     <label for="BillingHeading">
-                        <h4>Billing Details{{'payment.h_8'|translate}}</h4>
+                        <h4>{{'payment.h_8'|translate}}</h4>
                     </label><br>
-                    <<<<<<< HEAD <label for="firstName">First Name</label>
+                        <label for="firstName">{{'payment.l_10'|translate}}</label>
                         <input type="text" id="biilingPersonFirstName" class="form-control" placeholder="First Name"
                             required>
-                        <label for="lastName">Last Name</label>
-                        =======
-                        <label for="firstName">First Name{{'payment.l_10'|translate}}</label>
-                        <input type="text" id="biilingPersonFirstName" class="form-control" placeholder="First Name"
-                            required>
-                        <label for="lastName">Last Name{{'payment.l_12'|translate}}</label>
-                        >>>>>>> e7854e1a82cb1a0b55cf719346da64dd3661779b
+                        <label for="lastName">{{'payment.l_12'|translate}}</label>
                         <input type="text" id="biilingPersonLastName" class="form-control" placeholder="Last Name"
                             required>
                         <label for="email">Email Id</label>
@@ -25,7 +24,7 @@
                 </div>
                 <div class="">
                     <label for="paymentHeading">
-                        <h4>Payment Options{{'payment.h_19'|translate}}</h4>
+                        <h4>{{'payment.h_19'|translate}}</h4>
                     </label>
                     <div id="accordion">
                         <div class="card">
