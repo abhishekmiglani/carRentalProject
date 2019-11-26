@@ -21,7 +21,8 @@ input {
 }
 
 .main {
-    background: #eeecec
+    background: #eeecec;
+    margin: auto;
 }
 
 .card-name {
@@ -98,4 +99,21 @@ input {
 
 .edit-label, .delete-label {
     cursor: pointer;
+}
+
+table{
+    text-align: center;
+    width:80%;
+}
+th{
+    color: gray;
+    font-weight: 500;
+}
+th,td{
+    text-align: center;
+}
+.fare-summary{
+    background: #eeecec;
+    height: fit-content;
+    width: fit-content;
 }

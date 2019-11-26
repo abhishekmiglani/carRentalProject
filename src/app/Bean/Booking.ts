@@ -3,15 +3,15 @@ import { Car } from './Car';
 
     export class Booking{
     
-    bookingId : number;
+    bookingId;
 	
-	fromDate: Date;
+	fromDate;
 	
-    tillDate : Date;
+    tillDate;
     
-    bookingDate : Date;
+    bookingDate;
 	
-	status : boolean;
+	status;
 		
 	userDetails : User;
 	
