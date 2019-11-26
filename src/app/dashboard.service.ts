@@ -25,14 +25,14 @@ export class DashboardService {
     return this.http.get<WalletTransaction[]>(url);
   }
 
-  enterWalletTransaction(walletTransaction){
+  enterWalletTransaction(walletTransaction:WalletTransaction,walletId:Number){
     
-    let url = "http://localhost:8099/walletservice/walletTransactions/"+walletTransaction.walletId;
+    let url = "http://localhost:8099/walletservice/walletTransactions/"+walletId;
     return this.http.post(url,walletTransaction);
   }
 
   getBookings(userId): Observable<Booking[]>{
-    let url = "http://localhost:8099/bookings/"+userId;
+    let url = "http://localhost:8099/bookingservice/bookings/"+userId;
     return this.http.get<Booking[]>(url);
   }
 
