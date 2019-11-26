@@ -28,11 +28,13 @@ export class UserService {
     logout(){
       localStorage.clear();
     }
-    postLicenseFile(user:User,frontImg:File,backImg:File): Observable<Boolean> {
-      const endpoint = 'http://localhost:8081/users';
-      this.http.post("https://www.dropbox.com/request/HpWEP1Ix1tBDBwonS1sM",frontImg);
-      this.http.post("https://www.dropbox.com/request/HpWEP1Ix1tBDBwonS1sM",backImg);
-       return this.http.put<Boolean>(endpoint, user);
+    postLicenseFile(frontData,backData): Observable<Boolean> {
+      const endpoint = 'http://localhost:8099/userservice/users/abc@gmail.com';
+      
+       this.http.put<Boolean>(endpoint, frontData);
+      return this.http.put<Boolean>(endpoint, backData);
+       
+
         
 }
 }
