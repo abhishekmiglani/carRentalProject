@@ -63,11 +63,11 @@ export class CardetailComponent implements OnInit {
       this.upload.open();
       this.isLogged = true;
       }
-      else{
+     else{
         this.router.navigateByUrl("/car/payments");
-      }
+     }
     } else {
-      console.log("ye chalna chahiye");
+      
       this.login.openModalDialog();
       this.isLogged = false;
     }

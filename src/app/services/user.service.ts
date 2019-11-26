@@ -27,10 +27,19 @@ export class UserService {
   logout() {
     localStorage.clear();
   }
-  postLicenseFile(frontData, backData): Observable<Boolean> {
-    const endpoint = "http://localhost:8099/userservice/users/abc@gmail.com";
 
-    this.http.put<Boolean>(endpoint, frontData);
-    return this.http.put<Boolean>(endpoint, backData);
+  postFrontFile(frontData): Observable<number> {
+    console.log("user service");
+
+    let endpoint: string = "http://localhost:8099/userservice/users/front";
+
+    console.log(" inside front img method " + endpoint);
+    return this.http.put<number>(endpoint, frontData);
+  }
+  postBackFile(backData): Observable<number> {
+    console.log("user service2");
+    let endpoint: string = "http://localhost:8099/userservice/users/back";
+
+    return this.http.put<number>(endpoint, backData);
   }
 }

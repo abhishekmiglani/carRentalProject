@@ -21,21 +21,18 @@ input {
 }
 
 .main {
-    background: #eeecec
+    background: #eeecec;
+    margin: auto;
 }
 
-.card-name {
+.card-name ,.paypal-name,.wallet-text{
     font-family: 'Courier New', Courier, monospace;
-    color: red
+    color: navy;
+    font-weight: 800;
 }
 
 .bg-success {
     color: #fff
-}
-
-.paypal-name {
-    font-family: 'Courier New', Courier, monospace;
-    color: red
 }
 
 .pay-button {
@@ -62,13 +59,13 @@ input {
 
 .cardChip {
     position: relative;
-    top: 45px;
+    top: 25px;
     left: 30px;
 }
 
 .cardNumberStyle {
     position: relative;
-    top: 80px;
+    top: 60px;
     left: 40px;
     font-size: 20px;
     font-style: bold;
@@ -77,14 +74,14 @@ input {
 
 .expiryDateStyle {
     position: relative;
-    top: 110px;
+    top: 90px;
     left: 45px;
     font-size: 10px;
 }
 
 .holderNameStyle {
     position: relative;
-    top: 130px;
+    top: 110px;
     left: -90px;
 }
 
@@ -98,4 +95,27 @@ input {
 
 .edit-label, .delete-label {
     cursor: pointer;
+}
+
+table{
+    text-align: center;
+    width:80%;
+}
+th{
+    color: gray;
+    font-weight: 500;
+}
+th,td{
+    text-align: center;
+}
+.fare-summary{
+    background: #eeecec;
+    height: fit-content;
+    width: fit-content;
+}
+.payment-header{
+    background: linear-gradient(to right, #3aa5c5 , #6eaabd );
+    /* background: #3aa5c5; */
+    padding: 2%;
+    color: white;
 }

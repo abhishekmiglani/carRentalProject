@@ -31,7 +31,7 @@ const dashboard_routes: Routes = [
         path: 'bank-detail', component: BankDetailsComponent 
       }
 
-    ], canActivate: [AuthGuard]
+    ]//, canActivate: [AuthGuard]
   }
 
 ]

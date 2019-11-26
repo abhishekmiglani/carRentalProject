@@ -56,6 +56,7 @@ export class UploadFileComponent implements OnInit {
   }
   uploadFileFront(event,files) {
     this.fileFront =files[0];
+
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files.push(element.name)
@@ -94,22 +95,58 @@ export class UploadFileComponent implements OnInit {
     document.getElementById("openModal2").click();
   }
   uploadResult;
-  onUploadFile() {
-    const frontData=new FormData();
-    const backData=new FormData();
+  onFrontUpload(){
+    let email:string=localStorage.getItem("email");
+    var frontData=new FormData();
     frontData.append("front",this.fileFront,this.files[0]);
-    backData.append("back",this.fileBack,this.files[1]);
-
-    this.userService.postLicenseFile(frontData,backData).subscribe(data => {
+    frontData.append("email",email)
+    this.userService.postFrontFile(frontData).subscribe(data => {
       this.uploadResult = data;
       console.log("upload:"+this.uploadResult)
-      if(this.uploadResult==true){
+      if(this.uploadResult==1){
         
-        this.storage.set("uploadStatus",this.uploadResult);
+        this.storage.set("uploadStatus",true);
 
+      }
+      else{
+        console.log("front:gvhxuwqxuvwvxq")
       }
      
     });
+
+  }
+  onBackUpload() {
+   
+    var backData=new FormData();
+    let email:string=localStorage.getItem("email");
+    console.log(email)
+    console.log("back:"+this.files[1]+" tydwy:"+this.fileBack.name);
+    
+    backData.append("back",this.fileBack,this.files[1]);
+    backData.append("email",email);
+    console.log("has back:"+backData.has("back"));
+    console.log("has email:"+backData.has("email"));
+
+    
+
+    this.userService.postBackFile(backData).subscribe(data => {
+      this.uploadResult = data;
+      console.log("upload:"+this.uploadResult)
+      if(this.uploadResult==1){
+        
+        this.storage.set("uploadStatus",true);
+
+      }
+      else{
+        console.log("back:gvhxuwqxuvwvxq")
+      }
+     
+    });
+    }
+
+    onUploadFile(){
+      this.onBackUpload();
+      this.onFrontUpload();
     }
  
 
