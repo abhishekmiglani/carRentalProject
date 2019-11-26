@@ -10,11 +10,12 @@ import {DatePipe} from '@angular/common';
 })
 export class BookingsComponent implements OnInit {
 
-  constructor(private dashboardService: DashboardService, private datePipe : DatePipe) { }
+  constructor(private dashboardService: DashboardService) { }
   bookings: Booking[] = null;
-  activeBooking: Booking = new Booking();
+  activeBooking: Booking;
   pastBookings: Booking[] = null;
   index;
+  isActiveBooking = false;
 
   carBookedDate = new Date();
   day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -26,6 +27,7 @@ export class BookingsComponent implements OnInit {
     console.log("my date::"+new Date())
     this.dashboardService.getBookings(userId).subscribe(bookingData => {
       this.bookings = bookingData;
+      if(this.bookings!=null){
       for (let i = 0; i < this.bookings.length; i++) {
         if (this.bookings[i].status == true){
           this.index = i;
@@ -42,8 +44,10 @@ export class BookingsComponent implements OnInit {
           this.pastBookings.push(this.bookings[i]);
         }     
       }
+    }
       if (this.activeBooking != null) {
         document.getElementById('activeBookingContainer').removeAttribute('class');
+        this.isActiveBooking=true;
       }
       if (this.pastBookings != null) {
         document.getElementById('pastBookingContainer').removeAttribute('class');
@@ -51,8 +55,8 @@ export class BookingsComponent implements OnInit {
 
     });
   }
-  testing() {
-    // alert(this.activeBooking)\
+  testing(){
+    // alert(this.activeBooking)
     this.getBookingDetailsByUserId(1);
 
   }

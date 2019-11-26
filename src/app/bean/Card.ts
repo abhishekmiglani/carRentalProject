@@ -9,8 +9,7 @@ export class Card{
     cardHolderName;
     userDetails:User;
 
-    constructor(cardId,cardNum,cvv,expMonth,expYear,cardHolderName,userDetails){
-        this.cardId = cardId;
+    constructor(cardNum,cvv,expMonth,expYear,cardHolderName,userDetails){
         this.cardNum = cardNum;
         this.cvv = cvv;
         this.expMonth = expMonth;

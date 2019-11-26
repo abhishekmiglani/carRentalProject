@@ -63,5 +63,10 @@ export class DashboardService {
     let url = "";
     return this.http.put(url,card);
   }
+  addCard(card:Card):Observable<Card>{
+    let url = "http://localhost:8099/cardservice/users/1/cards";
+    return this.http.post<Card>(url,card);
+
+  }
 
 }

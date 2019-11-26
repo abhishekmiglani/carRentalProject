@@ -59,13 +59,13 @@ input {
 
 .cardChip {
     position: relative;
-    top: 45px;
+    top: 25px;
     left: 30px;
 }
 
 .cardNumberStyle {
     position: relative;
-    top: 80px;
+    top: 60px;
     left: 40px;
     font-size: 20px;
     font-style: bold;
@@ -74,14 +74,14 @@ input {
 
 .expiryDateStyle {
     position: relative;
-    top: 110px;
+    top: 90px;
     left: 45px;
     font-size: 10px;
 }
 
 .holderNameStyle {
     position: relative;
-    top: 130px;
+    top: 110px;
     left: -90px;
 }
 

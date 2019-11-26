@@ -59,12 +59,12 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="text" name="creditCvv" id="creditCvv"
-                                                        class="form-control" placeholder="cvv" maxlength="3">
+                                                        class="form-control" placeholder="cvv" [(ngModel)]='validCvv' maxlength="3">
                                                 </div>
                                             </div>
                                             <input type="text" name="cardHolderName" id="cardHolderName"
                                                 placeholder="Card Holder Name" required class="form-control"
-                                                [(ngModel)]='cardHolderName'>
+                                                [(ngModel)]='cardHolderName' [(ngModel)]='validName'>
                                             <input type="button" value="Add Card" class="form-control bg-success"
                                                 (click)="cardHandler()">
                                         </form>
@@ -86,14 +86,14 @@
 
                                     <!-- Showing details of multiple cards -->
                                     <div class="savedCardInfo shadow" *ngIf="isCardSaved">
-                                        <div class="row ">
+                                        <div class="row " ngFor= "let item of cards">
                                             <div class="col-md-2 col-sm-2 col-2 card-logo-style">
                                                 <img src={{cardLogo}} alt="logo" />
                                             </div>
                                             <div class="col-md-7 col-sm-7 col-7">
-                                                <label for="cardLastDigits">Ending with {{cardLast4Digits}}</label><br>
+                                                <label for="cardLastDigits">Ending with {{item.cardNum}}</label><br>
                                                 <label
-                                                    for="ExpiriesIn">Expires&nbsp;&nbsp;{{validMonth}}/{{validYear}}</label>
+                                                    for="ExpiriesIn">Expires&nbsp;&nbsp;{{item.expMonth}}/{{item.expYear}}</label>
                                             </div>
                                             <div class="col-md-3 col-sm-3 col-3">
                                                 <label id="editCard-{{item}}" class="edit-label"

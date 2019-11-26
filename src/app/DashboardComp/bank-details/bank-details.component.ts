@@ -22,12 +22,20 @@ export class BankDetailsComponent implements OnInit {
   cardDetails:Card[];
   deleteCardId;
   editCard:Card;
+  validCvv;
+  validName;
   
   constructor(private dashboardService:DashboardService) { }
 
   cardController() {
 
   }
+
+  showAddCardModal(){
+    $('#addCardModal').modal('show')
+  }
+
+
   showEditModal(item:Card) {
     console.log(item);
     $("#editCardModal").modal('show');
@@ -84,6 +92,8 @@ export class BankDetailsComponent implements OnInit {
       })
       
    }
+
+
 
   ngOnInit(): void {
     this.getCardDetails(1);
