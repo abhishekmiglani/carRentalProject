@@ -41,6 +41,7 @@ import { StorageServiceModule} from 'angular-webstorage-service';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
+import {DatePipe} from '@angular/common';
 
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';

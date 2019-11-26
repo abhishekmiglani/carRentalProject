@@ -33,7 +33,7 @@ export class CardetailComponent implements OnInit {
 
   isLogged: boolean;
 
-  constructor(@Inject(TranslateService) public translate:TranslateService,
+  constructor( 
     private getCarsService: GetCarsService,
     private route: ActivatedRoute,
     private locationService: GetLocationService,

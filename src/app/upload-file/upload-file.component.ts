@@ -95,17 +95,12 @@ export class UploadFileComponent implements OnInit {
   }
   uploadResult;
   onUploadFile() {
-    let email=localStorage.getItem("email");
-    let user = {
-      fullName: null,
-      email: email,
-      phone: null,
-      password: null,
-      backLicenseImageUrl: this.fileBack,
-      frontLicenseImageUrl: this.fileFront,
-      userId: null
-    };
-    this.userService.postLicenseFile(user,this.fileFront,this.fileBack).subscribe(data => {
+    const frontData=new FormData();
+    const backData=new FormData();
+    frontData.append("front",this.fileFront,this.files[0]);
+    backData.append("back",this.fileBack,this.files[1]);
+
+    this.userService.postLicenseFile(frontData,backData).subscribe(data => {
       this.uploadResult = data;
       console.log("upload:"+this.uploadResult)
       if(this.uploadResult==true){

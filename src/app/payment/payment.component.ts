@@ -40,7 +40,12 @@ export class PaymentComponent implements OnInit {
   bookingHandler() {
     this.bookingData = this.bookingService.getBookingData();
     this.bookingService.addBooking(this.bookingData)
-    console.log(this.bookingData);
+    // console.log("hello" + this.bookingData.fromDate);
+    if(this.wallet.balance>=this.bookingData.car.bookingPrice)
+      this.bookingService.addBooking(this.bookingData).subscribe(data=>{
+        console.log(this.bookingData);
+        alert("Booking Confirmed")
+      });
   }
 
   walletTransactionHandler(amount) {
@@ -51,8 +56,9 @@ export class PaymentComponent implements OnInit {
   }
 
   paymentAndBookingHandler() {
-    this.walletTransactionHandler(0);
+    this.walletTransactionHandler(this.bookingData.car.bookingPrice+200+800);
     this.bookingHandler();
+
   }
 
   enableConfirmButton(){
