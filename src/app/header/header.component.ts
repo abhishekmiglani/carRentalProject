@@ -15,8 +15,7 @@ import { LoginService } from "app/services/login.service";
 import { CitiesModalComponent } from "app/cities-modal/cities-modal.component";
 import { CookieService } from "ngx-cookie-service";
 import { GetLocationService } from "app/services/get-location.service";
-import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
-
+import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
 
 // import {} from '@types/googlemaps';
 @Component({
@@ -30,7 +29,56 @@ export class HeaderComponent implements OnInit {
   //   console.log("on init" + this.cities);
   // }
 
-  
+  //Sign up Code
+  signUpEmail;
+  signUpName;
+  signUpMobile;
+  signUpPassword;
+  signUpRePassword;
+  var = false;
+
+  isEmailValid: boolean = true;
+
+  validateEmail() {
+    if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.signUpEmail)
+    ) {
+      this.isEmailValid = true;
+    } else {
+      this.isEmailValid = false;
+    }
+  }
+
+  //Sign Up Code End
+
+  //Login Code
+
+  isLoginValid: boolean;
+  isLoginPasswordValid: boolean;
+
+  validateLoginEmail() {
+    let email = (<HTMLInputElement>document.getElementById("loginEmail")).value;
+    console.log("hello" + email);
+
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      this.isLoginValid = true;
+    } else {
+      this.isLoginValid = false;
+    }
+  }
+
+  validatePassword() {
+    let password = (<HTMLInputElement>document.getElementById("loginPassword"))
+      .value;
+    if (password.length > 0) {
+      this.isLoginPasswordValid = true;
+    } else {
+      this.isLoginPasswordValid = false;
+    }
+  }
+
+  //
+
   loginState: boolean;
   dislplayNav = false;
   city: any = "Bangalore";
@@ -41,7 +89,7 @@ export class HeaderComponent implements OnInit {
 
   private geoCoder;
   cookievalue: any;
-  public userData:any=[]
+  public userData: any = [];
 
   @Output() public childEvent = new EventEmitter();
 
@@ -52,7 +100,6 @@ export class HeaderComponent implements OnInit {
   citiesModal: CitiesModalComponent;
 
   constructor(
- 
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private loginServ: LoginService,
@@ -60,21 +107,17 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
     private locationService: GetLocationService,
     @Inject(LOCAL_STORAGE) private storage: WebStorageService
-  ) {
-    
-   
-  }
+  ) {}
   saveInLocal(key, val): void {
-    console.log('recieved= key:' + key + 'value:' + val);
+    console.log("recieved= key:" + key + "value:" + val);
     this.storage.set(key, val);
-    this.userData[key]= this.storage.get(key);
-   }
+    this.userData[key] = this.storage.get(key);
+  }
 
-   getFromLocal(key):any {
-    console.log('recieved= key:' + key);
+  getFromLocal(key): any {
+    console.log("recieved= key:" + key);
     return this.storage.get(key);
-    
-   }
+  }
   displaySideNavbar() {
     console.log(this.dislplayNav);
     if (this.dislplayNav) this.dislplayNav = false;
@@ -82,23 +125,20 @@ export class HeaderComponent implements OnInit {
   }
 
   isLoggedIn() {
-    let status=this.getFromLocal("loginStatus");
-    if(status==true){
-      this.loginState=true;
+    let status = this.getFromLocal("loginStatus");
+    if (status == true) {
+      this.loginState = true;
+    } else {
+      this.loginState = false;
     }
-    else{
-      this.loginState=false;
-    }
-    
   }
 
   ngOnInit() {
-    
-    this.loginState=this.storage.get("loginStatus");
+    this.loginState = this.storage.get("loginStatus");
     this.cookieservice.set("location", this.city);
     this.cookievalue = this.cookieservice.get("location");
     console.log("cookied " + this.cookievalue);
-     document.getElementById('displaysidebtn').hidden=true;
+    document.getElementById("displaysidebtn").hidden = true;
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder();
@@ -309,16 +349,16 @@ export class HeaderComponent implements OnInit {
 
     this.userService.adduser(user).subscribe(data => {
       this.result = data;
+      $("#SignUpMsg").modal("toggle");
     });
     this.closeSignupModal();
-  } 
+  }
 
-  loginResult:Boolean;
-  userLogin(){
-    let email = (<HTMLInputElement>document.getElementById("loginEmail"))
-      .value;
-    
-      let password = (<HTMLInputElement>document.getElementById("loginPassword"))
+  loginResult: Boolean;
+  userLogin() {
+    let email = (<HTMLInputElement>document.getElementById("loginEmail")).value;
+
+    let password = (<HTMLInputElement>document.getElementById("loginPassword"))
       .value;
 
     let user = {
@@ -333,21 +373,18 @@ export class HeaderComponent implements OnInit {
 
     this.userService.userLogin(user).subscribe(data => {
       this.loginResult = data;
-      console.log("login:"+this.loginResult)
-      if(this.loginResult==true){
-        this.saveInLocal("email",email);
-        this.saveInLocal("loginStatus",this.loginResult)
-
+      console.log("login:" + this.loginResult);
+      if (this.loginResult == true) {
+        this.saveInLocal("email", email);
+        this.saveInLocal("loginStatus", this.loginResult);
       }
       this.isLoggedIn();
+      this.loginModalMsgToggle();
     });
-    this.loginModalMsgToggle();
-    this.closeLoginModal();
-    
-  }
-    hideSideNavbar(){
-      this.dislplayNav=false;
-    }
 
- 
+    this.closeLoginModal();
+  }
+  hideSideNavbar() {
+    this.dislplayNav = false;
+  }
 }
