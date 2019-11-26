@@ -94,10 +94,10 @@
                                             </div>
                                             <div class="col-md-3 col-sm-3 col-3">
                                                 <label id="editCard-{{item}}" class="edit-label"
-                                                    (click)="showEditModal(item)">Edit{{'payment.l_75'|translate}}</label>
+                                                    (click)="showEditModal(item)">{{'payment.l_75'|translate}}</label>
                                                 &nbsp;|&nbsp;
                                                 <label id="deleteCard-{{item}}" class="delete-label"
-                                                    (click)="showDeleteModal(item)">Delete{{'payment.l_76'|translate}}</label>
+                                                    (click)="showDeleteModal(item)">{{'payment.l_76'|translate}}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -126,10 +126,10 @@
                                 <a class="card-link" style="cursor: pointer;" (click)=paymentAndBookingHandler()>
                                     <div class="row">
                                         <div class="col-md-7">
-                                            <span class="wallet-text">Car Wallet{{'payment.s_105'|translate}}</span>
+                                            <span class="wallet-text">{{'payment.s_105'|translate}}</span>
                                         </div>
                                         <div class="col-md-3">
-                                            <span class="balance-text">Balance {{'payment.s_108'|translate}}:
+                                            <span class="balance-text"> {{'payment.s_108'|translate}}:
                                                 {{wallet.balance}}</span>
                                         </div>
                                         <div class="col-md-2">
@@ -182,7 +182,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Card{{'payment.h_132'|translate}}</h4>
+                    <h4 class="modal-title">{{'payment.h_132'|translate}}</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
 
@@ -228,18 +228,17 @@
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Are you sure?{{'payment.h_174'|translate}}</h4>
+                    <h4 class="modal-title">{{'payment.h_174'|translate}}</h4>
 
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Do you really want to delete these records? This process cannot be
-                        undone.{{'payment.p_179'|translate}}</p>
+                    <p>{{'payment.p_179'|translate}}</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info"
-                        data-dismiss="modal">Cancel{{'payment.b_182'|translate}}</button>
-                    <button type="button" class="btn btn-danger">Delete{{'payment.b_183'|translate}}</button>
+                        data-dismiss="modal">{{'payment.b_182'|translate}}</button>
+                    <button type="button" class="btn btn-danger">{{'payment.b_183'|translate}}</button>
                 </div>
             </div>
         </div>

@@ -24,8 +24,8 @@
     {
         "a_11" : "Home",
         "a_15" : "How it works",
-        "a_19" : "about",
-        "a_23" : "contact",
+        "a_19" : "About",
+        "a_23" : "Contact",
         "h_139" : "Pickup location",
         "l_155" : "Enter address",
         "h_214" : "Welcome to Dhoomcar"
@@ -170,6 +170,7 @@
 
       "dashboard":
       {
+          "h_6":"Hi",
           "h_12" : "Profile",
           "h_17" : "My Booking",
           "h_22" : "My Wallet",
