@@ -56,6 +56,7 @@ export class UploadFileComponent implements OnInit {
   }
   uploadFileFront(event,files) {
     this.fileFront =files[0];
+
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files.push(element.name)
@@ -94,22 +95,53 @@ export class UploadFileComponent implements OnInit {
     document.getElementById("openModal2").click();
   }
   uploadResult;
-  onUploadFile() {
+  onFrontUpload(){
+    const email=localStorage.getItem("email");
     const frontData=new FormData();
-    const backData=new FormData();
     frontData.append("front",this.fileFront,this.files[0]);
-    backData.append("back",this.fileBack,this.files[1]);
-
-    this.userService.postLicenseFile(frontData,backData).subscribe(data => {
+    this.userService.postFrontFile(frontData,email).subscribe(data => {
       this.uploadResult = data;
       console.log("upload:"+this.uploadResult)
-      if(this.uploadResult==true){
+      if(this.uploadResult==1){
         
-        this.storage.set("uploadStatus",this.uploadResult);
+        this.storage.set("uploadStatus",true);
 
+      }
+      else{
+        console.log("front:gvhxuwqxuvwvxq")
       }
      
     });
+
+  }
+  onBackUpload() {
+   
+    const backData=new FormData();
+    const email=localStorage.getItem("email");
+    console.log("back:"+this.files[1]+" tydwy:"+this.fileBack.name);
+    
+    backData.append("back",this.fileBack,this.files[1]);
+
+    
+
+    this.userService.postBackFile(backData,email).subscribe(data => {
+      this.uploadResult = data;
+      console.log("upload:"+this.uploadResult)
+      if(this.uploadResult==1){
+        
+        this.storage.set("uploadStatus",true);
+
+      }
+      else{
+        console.log("back:gvhxuwqxuvwvxq")
+      }
+     
+    });
+    }
+
+    onUploadFile(){
+      this.onBackUpload();
+      this.onFrontUpload();
     }
  
 

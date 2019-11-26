@@ -28,13 +28,26 @@ export class UserService {
     logout(){
       localStorage.clear();
     }
-    postLicenseFile(frontData,backData): Observable<Boolean> {
-      const endpoint = 'http://localhost:8099/userservice/users/abc@gmail.com';
+    postFrontFile(frontData,email): Observable<number> {
+      console.log("user service")
+      const endpoint = 'http://localhost:8099/userservice/users/front/'+email;
+
       
-       this.http.put<Boolean>(endpoint, frontData);
-      return this.http.put<Boolean>(endpoint, backData);
+      return  this.http.put<number>(endpoint, frontData);
+ 
        
 
         
+}
+postBackFile(backData,email): Observable<number> {
+  console.log("user service2")
+
+  const endpoint2 = 'http://localhost:8099/userservice/users/back/qwerty@gmail.com'+email;
+  
+
+  return this.http.put<number>(endpoint2, backData);
+   
+
+    
 }
 }
