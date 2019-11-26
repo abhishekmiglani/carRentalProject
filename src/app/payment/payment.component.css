@@ -25,18 +25,14 @@ input {
     margin: auto;
 }
 
-.card-name {
+.card-name ,.paypal-name,.wallet-text{
     font-family: 'Courier New', Courier, monospace;
-    color: red
+    color: navy;
+    font-weight: 800;
 }
 
 .bg-success {
     color: #fff
-}
-
-.paypal-name {
-    font-family: 'Courier New', Courier, monospace;
-    color: red
 }
 
 .pay-button {
