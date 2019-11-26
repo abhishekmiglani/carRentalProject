@@ -153,6 +153,21 @@
           "p_255" : "Our Team"
            
 
+      },
+      "profile":
+      {
+          "l_5" : "Total Distance",
+          "l_7" : "Total Hours",
+          "d_18" : "Full Name",
+          "d_19" : "Email ID",
+          "d_20" : "Mobile Number",
+          "s_26" : "Edit",
+          "s_32" : "Edit",
+          "s_38" : "Edit",
+          "b_46" : "Upload License"
+
       }
+
+      
 
 }
