@@ -113,6 +113,7 @@ export class LoginModalComponent implements OnInit {
       if(this.loginResult==true){
         this.saveInLocal("email",email);
         this.saveInLocal("loginStatus",this.loginResult)
+        this.isLoggedIn();
       }
       this.isLoggedIn();
     });
