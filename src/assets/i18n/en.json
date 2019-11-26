@@ -62,7 +62,7 @@
 
     },
 
-    "cardetail " : 
+    "cardetail" : 
 
         {
             "p_27" : " Note:The image is for representation purpose only. The colour of the actual car may vary",
@@ -75,6 +75,7 @@
             "l_167" : " Your license must be verified by our system before you start your trip or else your trip will be cancelled",
             "l_171" : "  Our vehicles have a maximum speed limit of 120 km/h. Over speeding will attract fines",
             "l_174" : "  Our vehicles have a maximum speed limit of 120 km/h. Over speeding will attract fines",
+            "l_175": "if you plan to travel out of state, please ensure to take the required state permits",
             "d_185" : "Fare Details",
             "s_228" : "   Rider, You are just one step away from confirming your booking. Confirm that you are above 21 and you agree to all the terms mentioned in",
             "b_242" : "Quick Book",
