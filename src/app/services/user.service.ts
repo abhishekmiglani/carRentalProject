@@ -26,8 +26,11 @@ export class UserService {
     }
 
     logout(){
+     
       localStorage.clear();
     }
+
+
     postFrontFile(frontData,email): Observable<number> {
       console.log("user service")
       const endpoint = 'http://localhost:8099/userservice/users/front/'+email;
