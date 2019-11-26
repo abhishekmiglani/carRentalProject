@@ -26,7 +26,7 @@ import { DashboardRoutingModule } from './DashboardComp/dashboard-routing/dashbo
 import { LoginModalComponent } from './login-modal/login-modal.component';
 
 import { CitiesModalComponent } from './cities-modal/cities-modal.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -43,6 +43,13 @@ import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.com
 import { EditCarComponent } from './edit-car/edit-car.component';
 import {DatePipe} from '@angular/common';
 
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +74,7 @@ import {DatePipe} from '@angular/common';
     EditCarComponent,
      ],
   imports: [
-    HttpClientModule,
+    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -75,12 +82,30 @@ import {DatePipe} from '@angular/common';
     BrowserAnimationsModule,
     DashboardRoutingModule,
     StorageServiceModule,
+
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
       libraries: ["places"]
-    })
-  ],
-  providers: [CookieService,GetCarsService,DashboardService,UserService,DatePipe],
+    }),
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps:[HttpClient],
+      }
+      })
+
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
+    //   libraries: ["places"]
+
+    // })
+    ],
+  providers: [CookieService,GetCarsService,DashboardService,UserService],
   bootstrap: [AppComponent]
 })
+    
+  
+  
 export class AppModule { }

@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+
+import { Component, OnInit, ViewChild, Inject } from "@angular/core";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+ 
+import {  Router } from "@angular/router";
 import { Booking } from 'app/bean/Booking';
 import { Car } from "app/Bean/Car";
 import { CarSelectComponent } from "app/car-select/car-select.component";
@@ -10,6 +13,10 @@ import { SendDateService } from "app/services/send-date.service";
 import { UploadFileComponent } from "app/upload-file/upload-file.component";
 import { BookingService } from 'app/services/booking.service';
 import { User } from 'app/bean/User';
+
+
+import{ TranslateService} from '@ngx-translate/core';
+
 
 declare var $: any;
 @Component({
@@ -26,7 +33,7 @@ export class CardetailComponent implements OnInit {
 
   isLogged: boolean;
 
-  constructor(
+  constructor( 
     private getCarsService: GetCarsService,
     private route: ActivatedRoute,
     private locationService: GetLocationService,
@@ -34,6 +41,7 @@ export class CardetailComponent implements OnInit {
     private bookingService : BookingService,
     private router:Router
   ) {}
+
 
   @ViewChild(UploadFileComponent, { static: false })
   upload: UploadFileComponent;
