@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input, ViewChild, Inject } from '@angular/core';
+import { UserService } from 'app/services/user.service';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 
 
@@ -18,7 +19,7 @@ export class UploadFileComponent implements OnInit {
 
   fileFront:File;
   fileBack:File;
-  constructor(private http:HttpClient) { }
+  constructor(private userService:UserService,@Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
   previewFront(files) {
     if (files.length === 0)
       return;
@@ -67,6 +68,7 @@ export class UploadFileComponent implements OnInit {
 
   uploadFileBack(event,files) {
     this.fileBack = files[0];
+    console.log("qwerasdf:"+this.fileBack)
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files.push(element.name)
@@ -91,12 +93,23 @@ export class UploadFileComponent implements OnInit {
     console.log("child");
     document.getElementById("openModal2").click();
   }
+  uploadResult;
   onUploadFile() {
-    console.log("uploading....");
-    //Upload file here send a binary data
-    
-    this.http.post('src/assets/', this.fileFront)
-    .subscribe();
+    const frontData=new FormData();
+    const backData=new FormData();
+    frontData.append("front",this.fileFront,this.files[0]);
+    backData.append("back",this.fileBack,this.files[1]);
+
+    this.userService.postLicenseFile(frontData,backData).subscribe(data => {
+      this.uploadResult = data;
+      console.log("upload:"+this.uploadResult)
+      if(this.uploadResult==true){
+        
+        this.storage.set("uploadStatus",this.uploadResult);
+
+      }
+     
+    });
     }
  
 

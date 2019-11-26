@@ -1,6 +1,7 @@
 <app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality"></app-location-header>
 
 <div class="container-fluid row" style="margin-top: 110px;">
+    <!-- <button (click)=bookingConfirmHandler()> check it</button> -->
     <div class="left-pane col-md-8" style="display: flex">
         <div class="left-wrapper box-shadow "
             style="  border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4)">
@@ -22,10 +23,10 @@
                             </span>
                         </div>
 
-                        <div class="list-item info-text">
+                        <div class="list-item info-text"> 
                             <p style=" color: #77899b; font-size: 13px">
-                                Note:The image is for representation purpose only. The colour of
-                                the actual car may vary
+                               {{'cardetail.p_27'|translate}}
+
                             </p>
                         </div>
                     </div>
@@ -43,7 +44,7 @@
             <div class="package-details" style="margin-left: 10px;">
                 <div class="btn-group border rounded" style="width: 300px;">
                     <button style="background-color: lightgrey; width: 120px; " type="button" disabled class="btn">
-                        Selected Fuel Package
+                        {{'cardetail.b_47'|translate}}
                     </button>
                     <div class="btn-group sort">
                         <button style="background-color: white; width: 130px; " type="button" disabled class="btn ">
@@ -55,9 +56,7 @@
                 </div>
                 <div class="info-text">
                     <p style=" color: #77899b; font-size: 13px">
-                        There is no travel limit. ₹ 2/km distance charge will be applied
-                        over the booking amount. Fuel bills are not reimbursed in this
-                        package.
+                        {{'cardetail.p_59'|translate}}
                     </p>
                 </div>
             </div>
@@ -69,7 +68,7 @@
             <div class="ride-details" style="padding:20px; display:flex ; flex-direction: column">
                 <div class="pickup-drop-time">
                     <div class="block-heading  " style="display: flex">
-                        Pick up & Drop
+                        {{'cardetail.d_73'|translate}}
                     </div>
                     <div class="start-time " style="display: flex">
                         <div class="date-time-format">
@@ -89,7 +88,7 @@
 
                         <div class="trip-hour " style="display: flex ; justify-content : center">
                             <span style="color: #77899b">
-                                Duration
+                                {{'cardetail.s_93' | translate}}
                             </span>
                             {{ duration }}
                         </div>
@@ -154,25 +153,21 @@
             </div>
             <div class="guidelines">
                 <div class="block-heading " style="padding-bottom:8px;padding-left:20px;">
-                    Guidelines and policies
+                    {{"cardetail.d_158"|translate}}
                 </div>
 
                 <ul>
                     <li class="font">
-                        Please carry your original driving license along with an additional
-                        id proof when you come to pick up your vehicle
+                    {{'cardetail.l_163'|translate}}
                     </li>
                     <li class="font">
-                        Your license must be verified by our system before you start your
-                        trip or else your trip will be cancelled
+                      {{'cardetail.l_167'|translate}}
                     </li>
                     <li class="font">
-                        Our vehicles have a maximum speed limit of 120 km/h. Over speeding
-                        will attract fines
+                        {{'cardetail.l_171'|translate}}
                     </li>
                     <li class="font">
-                        if you plan to travel out of state, please ensure to take the
-                        required state permits
+                      {{'cardetail.l_175'|translate}}
                     </li>
                     <br /><br />
                 </ul>
@@ -181,7 +176,7 @@
     </div>
     <div class="right-pane col-md-4">
         <div class="fare-details-block  box-shadow" style="padding:10px">
-            <div class="block-heading " style="padding-left: 20px">Fare Details</div>
+            <div class="block-heading " style="padding-left: 20px">{{'cardetail.d_185'|translate}}</div>
             <div class="fare-block" style="padding:10px">
                 <span class="fare-name "
                     style="font-family:proxima-nova; color: #77899b; font-size: 16px ;padding: 12px">Weekend
@@ -204,7 +199,7 @@
             <div class="total-charge" style="padding:20px">
                 <span class="fare-name "
                     style="font-family:proxima-nova; color: #77899b; font-size: 20px ;padding: 20px">
-                    Total
+                  {{'cardetail.s_208'|translate}}
                 </span>
 
                 <span class="fare-amount">{{ total_fare | currency: "INR" }}</span>
@@ -225,9 +220,7 @@
                                 name="accept-agreement-checkbox" (change)="changeQuickBookState($event)" />
                             <label class="custom-control-label" for="accept-agreement">
                                 <span style="color  :#1f2d3d; font-size : 12px; font-weight : 500">
-                                    Rider, You are just one step away from confirming your
-                                    booking. Confirm that you are above 21 and you agree to all
-                                    the terms mentioned in
+                                    {{'cardetail.s_228'|translate}}
                                 </span>
                             </label>
                         </form>
@@ -237,8 +230,8 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="add-to-cart " style="padding-top: 6%">
-                    <button type="button" class="btn btn-success" (click)="changeState()" id="quick"  disabled>
-                        Quick Book
+                    <button type="button" class="btn btn-success" (click)="changeState()"  id="quick"  disabled>
+                        {{'cardetail.b_242'|translate}}
                     </button>
                 </div>
             </div>

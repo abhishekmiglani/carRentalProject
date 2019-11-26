@@ -7,18 +7,25 @@ import { Booking } from 'app/Bean/Booking';
   providedIn: 'root'
 })
 export class BookingService {
-
+ bookingData:Booking;
   constructor(private http : HttpClient) { }
 
   getAllBookings() : Observable<Booking[]>{
-    let url : string  = "http://localhost:8083/bookings";
+    let url : string  = "http://localhost:8099/bookingservice/bookings";
     return this.http.get<Booking[]>(url);
   }
 
   addBooking(booking : Booking){
-    let url : string  = "http://localhost:8083/bookings";
+    let url : string  = "http://localhost:8099/bookingservice/bookings";
     return this.http.post(url,booking);
   }
 
-  
+  getBookingData():Booking{
+    return this.bookingData;
+    
+  }
+  setBookingData(bookingData){
+    this.bookingData=bookingData;
+    console.log("service booking" + this.bookingData);
+  }
 }

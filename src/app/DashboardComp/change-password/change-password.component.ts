@@ -22,10 +22,13 @@ export class ChangePasswordComponent implements OnInit {
 
   }
   validationHandler(){
-    if(this.currentPassword!="" && this.newPassword!="")
-      console.log("working")
+    if(this.currentPassword==this.newPassword && this.currentPassword!="" && this.newPassword!="")
+      document.getElementById('saveBtn').removeAttribute('disabled')
+    else{
+      document.getElementById('saveBtn').setAttribute('disabled','true')
+    }
   }
   passwordUpdateHandler(){
-   
+       
   }
 }

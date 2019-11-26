@@ -20,44 +20,73 @@ export class BankDetailsComponent implements OnInit {
   isCardSaved = true;
   cardLogo = "/assets/masterCardLogo.png"
   cardDetails:Card[];
-
+  deleteCardId;
+  editCard:Card;
   
   constructor(private dashboardService:DashboardService) { }
 
   cardController() {
 
   }
-  showEditModal(item) {
+  showEditModal(item:Card) {
     console.log(item);
     $("#editCardModal").modal('show');
+    this.cardNumber = item.cardNum;
+    this.tempCardNumber = item.cardNum;
+    this.cardLast4Digits= item.cardNum;
+    this.validMonth  =item.expMonth;
+    this.validYear = item.expYear;
+    this.tempValidMonth= item.expMonth;
+    this.tempValidYear=item.expYear;
+    this.editCard=item;
+
   }
 
-  showDeleteModal(item) {
-    console.log("delete" + item)
+  showDeleteModal(item:Card) {
+    console.log("delete" + item.cardId)
     $("#cardDeleteConfirm").modal('show');
+    this.deleteCardId=item.cardId;
+
   }
 
   enableConfirmButton(value) {
     /*  console.log(value) */
     /* console.log(document.getElementById('cardNum').value) */
     if ((this.cardNumber != this.tempCardNumber) && (this.cardNumber.length == 16))
-      console.log("working")
+      document.getElementById('editConfirmButton').removeAttribute('disabled')
     if (this.validMonth != this.tempValidMonth && this.validMonth.length == 2)
-      console.log("working")
+      document.getElementById('editConfirmButton').removeAttribute('disabled')
     if (this.validYear != this.tempValidYear && this.validYear.length == 2)
-      console.log("working")
-
+      document.getElementById('editConfirmButton').removeAttribute('disabled')
   }
 
   getCardDetails(userId){
     this.dashboardService.getCards(userId).subscribe(cardData=>{
       this.cardDetails=cardData;
-      console.log(this.cardDetails);
     })
-  }
+   }
+
+   deleteCard(){
+     console.log(this.deleteCardId)
+    this.dashboardService.deleteCardByCardId(this.deleteCardId).subscribe(data=>{
+      console.log(data);
+      this.getCardDetails(1);
+    });
+   }
+   updateCard(){
+     this.editCard.cardNum = this.cardNumber;
+     this.editCard.expMonth = this.validMonth;
+     this.editCard.expYear = this.validYear;
+     this.dashboardService.updateCard(this.editCard).subscribe(data=>
+      {
+        console.log(data)
+        this.getCardDetails(1);
+      })
+      
+   }
 
   ngOnInit(): void {
-    this.getCardDetails(11);
+    this.getCardDetails(1);
 
   }
 

@@ -1,14 +1,22 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { UploadFileComponent } from "app/upload-file/upload-file.component";
-import { LoginService } from "app/services/login.service";
-import { LoginModalComponent } from "app/login-modal/login-modal.component";
-import { GetCarsService } from "app/services/get-cars.service";
+
+import { Component, OnInit, ViewChild, Inject } from "@angular/core";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+ 
+import {  Router } from "@angular/router";
+import { Booking } from 'app/bean/Booking';
 import { Car } from "app/Bean/Car";
 import { CarSelectComponent } from "app/car-select/car-select.component";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { LoginModalComponent } from "app/login-modal/login-modal.component";
+import { GetCarsService } from "app/services/get-cars.service";
 import { GetLocationService } from "app/services/get-location.service";
 import { SendDateService } from "app/services/send-date.service";
-import { HeaderComponent } from "app/header/header.component";
+import { UploadFileComponent } from "app/upload-file/upload-file.component";
+import { BookingService } from 'app/services/booking.service';
+import { User } from 'app/bean/User';
+
+
+import{ TranslateService} from '@ngx-translate/core';
+
 
 declare var $: any;
 @Component({
@@ -23,20 +31,25 @@ export class CardetailComponent implements OnInit {
   total_fare: number = this.weekday_fare + this.weekend_fare;
   duration: any = "2h";
 
-  isLogged: boolean = false;
+  isLogged: boolean;
 
-  constructor(
+  constructor( 
     private getCarsService: GetCarsService,
     private route: ActivatedRoute,
     private locationService: GetLocationService,
-    private dateService: SendDateService
+    private dateService: SendDateService,
+    private bookingService : BookingService,
+    private router:Router
   ) {}
+
 
   @ViewChild(UploadFileComponent, { static: false })
   upload: UploadFileComponent;
   @ViewChild(CarSelectComponent, { static: false })
   carSelect: CarSelectComponent;
   @ViewChild(LoginModalComponent, { static: false }) login: LoginModalComponent;
+    bookingData:Booking = new Booking();
+    
 
   modalState: boolean = false;
   checkBoxState: boolean = false;
@@ -44,15 +57,25 @@ export class CardetailComponent implements OnInit {
   public cars: Car;
 
   changeState() {
-    if (false) {
+    if (localStorage.length!=0 && localStorage.getItem("loginStatus")=="true") {
+      if(localStorage.getItem("uploadStatus")!="true"){
       console.log("ghcwdhkh");
-      this.isLogged = true;
       this.upload.open();
+      this.isLogged = true;
+      }
+      else{
+        this.router.navigateByUrl("/car/payments");
+      }
     } else {
       console.log("ye chalna chahiye");
       this.login.openModalDialog();
       this.isLogged = false;
     }
+    this.bookingConfirmHandler();
+  }
+
+  sendBookingData(booking:Booking){
+    this.bookingService.setBookingData(booking);
   }
   changeQuickBookState(e: any) {
     this.checkBoxState = e.target.checked;
@@ -61,6 +84,16 @@ export class CardetailComponent implements OnInit {
     } else {
       document.getElementById("quick").setAttribute("disabled", "true");
     }
+  }
+
+  bookingConfirmHandler(){
+    this.bookingData.fromDate = this.pickup;
+    this.bookingData.tillDate = this.drop;
+    this.bookingData.bookingDate = new Date();
+    this.bookingData.car = this.cars;
+    this.bookingData.status=true;
+    this.bookingData.userDetails=new User(1);
+    this.sendBookingData(this.bookingData);
   }
 
   id: any;
