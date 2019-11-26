@@ -3,8 +3,8 @@ export class User {
     userId: number;
     email: string;
     phone: string;
-    frontLicenseImageUrl: string;
-    backLicenseImageUrl: string;
+    frontLicenseImageUrl: File;
+    backLicenseImageUrl: File;
     password: string;
 
     constructor(userId){

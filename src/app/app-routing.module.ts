@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AdminComponent } from './admin/admin.component';
 import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
+import { PaymentGuardGuard } from './payment-guard.guard';
 
 const routes: Routes = [
   {
@@ -36,7 +37,7 @@ const routes: Routes = [
             path:"", component: CarSelectComponent
           },
           {
-            path: "payments" , component: PaymentComponent
+            path: "payments" , component: PaymentComponent/* ,canActivate:[PaymentGuardGuard] */
           },
           {
             path: ":modelNo" , component: CardetailComponent

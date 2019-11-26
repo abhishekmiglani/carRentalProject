@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+
+import { Component, OnInit, ViewChild, Inject } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
+ 
+import {  Router } from "@angular/router";
 import { Booking } from 'app/bean/Booking';
 import { Car } from "app/Bean/Car";
 import { CarSelectComponent } from "app/car-select/car-select.component";
@@ -10,6 +13,10 @@ import { SendDateService } from "app/services/send-date.service";
 import { UploadFileComponent } from "app/upload-file/upload-file.component";
 import { BookingService } from 'app/services/booking.service';
 import { User } from 'app/bean/User';
+
+
+import{ TranslateService} from '@ngx-translate/core';
+
 
 declare var $: any;
 @Component({
@@ -24,15 +31,17 @@ export class CardetailComponent implements OnInit {
   total_fare: number = this.weekday_fare + this.weekend_fare;
   duration: any = "2h";
 
-  isLogged: boolean = true;
+  isLogged: boolean;
 
-  constructor(
+  constructor( 
     private getCarsService: GetCarsService,
     private route: ActivatedRoute,
     private locationService: GetLocationService,
     private dateService: SendDateService,
-    private bookingService : BookingService
+    private bookingService : BookingService,
+    private router:Router
   ) {}
+
 
   @ViewChild(UploadFileComponent, { static: false })
   upload: UploadFileComponent;
@@ -48,15 +57,21 @@ export class CardetailComponent implements OnInit {
   public cars: Car;
 
   changeState() {
-    if (this.isLogged) {
+    if (localStorage.length!=0 && localStorage.getItem("loginStatus")=="true") {
+      if(localStorage.getItem("uploadStatus")!="true"){
       console.log("ghcwdhkh");
       this.upload.open();
-      this.isLogged = false;
+      this.isLogged = true;
+      }
+      else{
+        this.router.navigateByUrl("/car/payments");
+      }
     } else {
       console.log("ye chalna chahiye");
       this.login.openModalDialog();
-      this.isLogged = true;
+      this.isLogged = false;
     }
+    this.bookingConfirmHandler();
   }
 
   sendBookingData(booking:Booking){

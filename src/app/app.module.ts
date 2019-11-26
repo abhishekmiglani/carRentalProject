@@ -42,6 +42,13 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
 
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +73,7 @@ import { EditCarComponent } from './edit-car/edit-car.component';
     EditCarComponent,
      ],
   imports: [
-    HttpClientModule,
+    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -74,16 +81,30 @@ import { EditCarComponent } from './edit-car/edit-car.component';
     BrowserAnimationsModule,
     DashboardRoutingModule,
     StorageServiceModule,
+
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
       libraries: ["places"]
-    })
-  ],
+    }),
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps:[HttpClient],
+      }
+      })
+
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCnWdxluRSHlGPLlmm_ozrxlH_9ABeEn3Y',
+    //   libraries: ["places"]
+
+    // })
+    ],
   providers: [CookieService,GetCarsService,DashboardService,UserService],
   bootstrap: [AppComponent]
 })
+    
+  
+  
 export class AppModule { }
-export function HttpLoaderFactory(http: HttpClient) {
-  // return new TranslateHttpLoader(http);
-}
-

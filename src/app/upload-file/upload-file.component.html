@@ -14,19 +14,19 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Provide Information</h4>
+          <h4 class="modal-title">Provide Information{{'upload-file.h_17'|translate}}</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-          <h5><b>Upload License</b></h5><br><br>
+          <h5><b>Upload License{{'upload-file.h_23'|translate}}</b></h5><br><br>
           <ul>
-            <li>Upload clear front and back images of the original driving license</li>
-            <li>Photo, license number and date of birth should be clearly visible</li>
-            <li>A valid 4 wheeler license is must to drive a car and a valid 2 wheeler to drive a bike</li>
-            <li>Learner's license is not a valid government ID proof</li>
-            <li>Once a license is linked to an account, it cannot be modified.</li>
+            <li>Upload clear front and back images of the original driving license{{'upload-file.l_25'|translate}}</li>
+            <li>Photo, license number and date of birth should be clearly visible{{'upload-file.l_26'|translate}}</li>
+            <li>A valid 4 wheeler license is must to drive a car and a valid 2 wheeler to drive a bike{{'upload-file.l_27'|translate}}</li>
+            <li>Learner's license is not a valid government ID proof{{'upload-file.l_28'|translate}}</li>
+            <li>Once a license is linked to an account, it cannot be modified.{{'upload-file.l_29'|translate}}</li>
             
 
           </ul>
@@ -35,13 +35,13 @@
             <div class="row">
               <div class="col-sm-6">
               <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFileFront($event,fileInput.files)">
-            <div class="uploadfilecontainertext">Upload Front Image</div>
+            <div class="uploadfilecontainertext">Upload Front Image{{'upload-file.d_38'|translate}}</div>
             <input hidden type="file" accept='image/*' #fileInput (change)="uploadFileFront($event.target.files,fileInput.files)">
           </div>
         </div>
         <div class="col-sm-6">
           <div class="uploadfilecontainer" (click)="fileInput2.click()" appDragDrop (onFileDropped)="uploadFileBack($event,fileInput2.files)">
-            <div class="uploadfilecontainertext">Upload Back Image</div>
+            <div class="uploadfilecontainertext">Upload Back Image{{'upload-file.d_44'|translate}}</div>
             <input hidden type="file" accept='image/*' #fileInput2 (change)="uploadFileBack($event.target.files,fileInput2.files)">
           </div>
         </div>
@@ -75,9 +75,15 @@
      
        <div class="modal-footer">
         <span *ngIf="buttonState;else elseBlock">
-        <button type="button" class="btn btn-success" data-dismiss="modal" ><a routerLink="/car/payments" (click)="onUploadFile()" >  Upload License</a></button>
+
+        <button type="button" class="btn btn-success" data-dismiss="modal" ><a routerLink="/car/payments" (click)="onUploadFile()" >  Upload License{{'upload-file.b_78'|translate}}</a></button>
         </span>
-        <ng-template #elseBlock><button type="button" class="btn btn-success"  style="margin:20px;" disabled>Upload License</button></ng-template>
+        <ng-template #elseBlock><button type="button" class="btn btn-success"  style="margin:20px;" disabled>Upload License{{'upload-file.b_80'|translate}}</button></ng-template>
+
+        <button type="button" style="color: white;"  class="btn btn-success" data-dismiss="modal" ><a routerLink="/car/payments" (click)="onUploadFile()" >  Upload License</a></button>
+        <!-- </span> -->
+        <ng-template #elseBlock><button type="button" class="btn btn-success"  style="margin:20px; color: white;" disabled>Upload License</button></ng-template>
+
         
       </div>
        
