@@ -1,13 +1,14 @@
 <div>
     <div class="row main-container">
-        <div class=" shadow-lg p-3 mb-5 bg-light rounded col-md-6 main ">
+        <div class=" shadow-lg p-3 mb-5 bg-light rounded col-md-6 col-10 col-sm-6 main">
             <form action="" class="form-group bg-light">
                 <div>
                     <label for="BillingHeading">
                         <h4>Billing Details</h4>
                     </label><br>
                     <label for="firstName">First Name</label>
-                    <input type="text" id="biilingPersonFirstName" class="form-control" placeholder="First Name" required>
+                    <input type="text" id="biilingPersonFirstName" class="form-control" placeholder="First Name"
+                        required>
                     <label for="lastName">Last Name</label>
                     <input type="text" id="biilingPersonLastName" class="form-control" placeholder="Last Name" required>
                     <label for="email">Email Id</label>
@@ -32,19 +33,29 @@
                                 <div class="card-body" id="cardArea">
                                     <div class="inner-form" *ngIf="isCardDetailsEntered">
                                         <form action="">
-                                            <input type="text" name="creditCardNo" id="creditCardNo" placeholder="Card Number" class="form-control" [(ngModel)]='cardNumber'>
+                                            <input type="text" name="creditCardNo" id="creditCardNo"
+                                                placeholder="Card Number" class="form-control" [(ngModel)]='cardNumber'>
                                             <div class="row">
                                                 <div class="input-group mb-2 col-md-4">
-                                                    <input type="text" id="creditCardExpiryMonth" name="creditCardExpiryMonth" class="form-control" placeholder="MM" (input)="focusYearTab()" maxlength="2" (blur)="blurYearTab()" [(ngModel)]='validMonth'>
+                                                    <input type="text" id="creditCardExpiryMonth"
+                                                        name="creditCardExpiryMonth" class="form-control"
+                                                        placeholder="MM" (input)="focusYearTab()" maxlength="2"
+                                                        (blur)="blurYearTab()" [(ngModel)]='validMonth'>
 
-                                                    <input type="text" id="creditCardExpiryYear" name="creditCardExpiryYear" class="form-control" placeholder="YY" maxlength="2" [(ngModel)]='validYear'>
+                                                    <input type="text" id="creditCardExpiryYear"
+                                                        name="creditCardExpiryYear" class="form-control"
+                                                        placeholder="YY" maxlength="2" [(ngModel)]='validYear'>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" name="creditCvv" id="creditCvv" class="form-control" placeholder="cvv" maxlength="3">
+                                                    <input type="text" name="creditCvv" id="creditCvv"
+                                                        class="form-control" placeholder="cvv" maxlength="3">
                                                 </div>
                                             </div>
-                                            <input type="text" name="cardHolderName" id="cardHolderName" placeholder="Card Holder Name" required class="form-control" [(ngModel)]='cardHolderName'>
-                                            <input type="button" value="Add Card" class="form-control bg-success" (click)="cardHandler()">
+                                            <input type="text" name="cardHolderName" id="cardHolderName"
+                                                placeholder="Card Holder Name" required class="form-control"
+                                                [(ngModel)]='cardHolderName'>
+                                            <input type="button" value="Add Card" class="form-control bg-success"
+                                                (click)="cardHandler()">
                                         </form>
                                     </div>
 
@@ -52,11 +63,13 @@
                                     <div class="container" *ngIf="showCard">
                                         <div id="card" class="cardView">
                                             <img src="/assets/chip.png" alt="chip" class="cardChip">
-                                            <label for="cardNumber" id="cardNumberView" class="cardNumberStyle">{{cardNumber}}</label>
+                                            <label for="cardNumber" id="cardNumberView"
+                                                class="cardNumberStyle">{{cardNumber}}</label>
                                             <label for="expiryDate" id="expiryDateView" class="expiryDateStyle">VALID
                                                 UPTO
                                                 &nbsp; &nbsp;{{validMonth}}/{{validYear}} </label>
-                                            <label for="cardHolderName" id="cardHolderName" class="holderNameStyle">{{cardHolderName}}</label>
+                                            <label for="cardHolderName" id="cardHolderName"
+                                                class="holderNameStyle">{{cardHolderName}}</label>
                                         </div>
                                     </div>
 
@@ -68,11 +81,14 @@
                                             </div>
                                             <div class="col-md-7 col-sm-7 col-7">
                                                 <label for="cardLastDigits">Ending with {{cardLast4Digits}}</label><br>
-                                                <label for="ExpiriesIn">Expires&nbsp;&nbsp;{{validMonth}}/{{validYear}}</label>
+                                                <label
+                                                    for="ExpiriesIn">Expires&nbsp;&nbsp;{{validMonth}}/{{validYear}}</label>
                                             </div>
                                             <div class="col-md-3 col-sm-3 col-3">
-                                                <label id="editCard-{{item}}" class="edit-label" (click)="showEditModal(item)">Edit</label> &nbsp;|&nbsp;
-                                                <label id="deleteCard-{{item}}" class="delete-label" (click)="showDeleteModal(item)">Delete</label>
+                                                <label id="editCard-{{item}}" class="edit-label"
+                                                    (click)="showEditModal(item)">Edit</label> &nbsp;|&nbsp;
+                                                <label id="deleteCard-{{item}}" class="delete-label"
+                                                    (click)="showDeleteModal(item)">Delete</label>
                                             </div>
                                         </div>
                                     </div>
@@ -84,10 +100,10 @@
                             <div class="card-header">
                                 <a class="card-link" href="#">
                                     <div class="row">
-                                        <div class="col-md-10">
+                                        <div class="col-md-9">
                                             <span class="paypal-name">PayPal</span>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <img src="/assets/paypal.png" alt="paypal">
                                         </div>
                                     </div>
@@ -118,6 +134,36 @@
                 <input type="submit" value="Pay" class="bg-success pay-button form-control">
             </form>
         </div>
+
+        <!-- Payment Summary -->
+        <div class="shadow-lg p-3 mb-5 bg-light rounded col-md-6 col-10 col-sm-6 fare-summary">
+            <table>
+                <tr>
+                    <th>Fare Detail</th>
+                    <td>{{bookingData.car.bookingPrice}}</td>
+                </tr>
+                <tr>
+                    <th>Weekend Charges</th>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <th>WeekDays Charges</th>
+                    <td>800</td>
+                </tr>
+                <td>
+                    <hr>
+                </td>
+                <td>
+                    <hr>
+                </td>
+                <tr>
+                    <th>Total</th>
+                    <td>{{bookingData.car.bookingPrice+1000}}</td>
+                </tr>
+            </table>
+
+
+        </div>
     </div>
     <!-- MODAL -->
     <div class="modal fade" id="editCardModal">
@@ -136,7 +182,9 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="cardDNumber">Number</label>
                         <div class="col-md-6">
-                            <input id="cardNum" name="cardNumber" type="text" [(ngModel)]='cardNumber' placeholder="Enter your card Number" autofocus="" class="form-control" required="" (input)=enableConfirmButton(cardNumber)>
+                            <input id="cardNum" name="cardNumber" type="text" [(ngModel)]='cardNumber'
+                                placeholder="Enter your card Number" autofocus="" class="form-control" required=""
+                                (input)=enableConfirmButton(cardNumber)>
 
                         </div>
                     </div>
@@ -146,10 +194,12 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="month">Enter expiry</label>
                         <div class="col-md-2">
-                            <input id="month" name="month" type="text" placeholder="MM" [(ngModel)]='validMonth' class="form-control" required="" (input)=enableConfirmButton(validMonth)>
+                            <input id="month" name="month" type="text" placeholder="MM" [(ngModel)]='validMonth'
+                                class="form-control" required="" (input)=enableConfirmButton(validMonth)>
                         </div>
                         <div class="col-md-2">
-                            <input id="year" name="year" type="text" placeholder="YY" [(ngModel)]='validYear' class="form-control" required="" (input)=enableConfirmButton(validYear)>
+                            <input id="year" name="year" type="text" placeholder="YY" [(ngModel)]='validYear'
+                                class="form-control" required="" (input)=enableConfirmButton(validYear)>
                         </div>
                     </div>
                 </div>
