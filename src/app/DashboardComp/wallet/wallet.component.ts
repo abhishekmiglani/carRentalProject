@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'app/dashboard.service';
 import { WalletTransaction } from 'app/bean/WalletTransaction';
+import { Wallet } from 'app/Bean/Wallet';
 declare var $: any;
 
 @Component({
@@ -16,6 +17,7 @@ export class WalletComponent implements OnInit {
   /* walletTransaction = ["credit", "debit","credit","credit","debit","credit"]; */
   walletId:number;
   userId;
+  wallet:Wallet;
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -24,6 +26,7 @@ export class WalletComponent implements OnInit {
     this.dashboardService.getWalletDetails(this.userId).subscribe(walletData => {
       this.balance = walletData.balance;
       this.walletId = walletData.walletId;
+      this.wallet=walletData;
       console.log("wallet Id"+this.walletId)
       this.getWalletTransactions();
     })
@@ -45,15 +48,20 @@ export class WalletComponent implements OnInit {
   }
 
   addMoneyHandler(){
-   this.balance = this.balance+this.amount;
-   alert(this.amount)
+  //  this.balance = this.balance+this.amount;
+  //  alert(this.amount)
+  
    this.walletTransaction.transactionAmount = this.amount;
    this.walletTransaction.transactionDetail = "Added Money to wallet by you"
    this.walletTransaction.transactionType = "credit";
-   
-   this.dashboardService.enterWalletTransaction(this.walletTransaction).subscribe(data=>{
+   console.log("walletData walletId = "+this.walletId)
+   this.dashboardService.enterWalletTransaction(this.walletTransaction,this.walletId).subscribe(data=>{
      console.log(data);
    });
+   this.dashboardService.updateWallet(this.wallet).subscribe(data=>{
+     console.log(data)
+   })
+   this.getWalletDetails();
   }
   ngOnInit() {
     this.getWalletDetails();

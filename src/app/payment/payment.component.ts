@@ -6,6 +6,7 @@ import { DashboardService } from 'app/dashboard.service';
 import { BookingService } from 'app/services/booking.service';
 import { Card } from 'app/bean/Card';
 import { User } from 'app/bean/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -34,7 +35,7 @@ export class PaymentComponent implements OnInit {
   wallet: Wallet = new Wallet();
 
   constructor(private dashboardService: DashboardService,
-    private bookingService: BookingService) { }
+    private bookingService: BookingService,private route:Router) { }
 
   getWalletDetails() {
     this.dashboardService.getWalletDetails(1).subscribe(walletData => {
@@ -50,6 +51,16 @@ export class PaymentComponent implements OnInit {
       this.bookingService.addBooking(this.bookingData).subscribe(data => {
         console.log(this.bookingData);
         alert("Booking Confirmed")
+        this.getWalletDetails()
+        this.wallet.balance = this.wallet.balance-(this.bookingData.car.bookingPrice+1000);
+        this.dashboardService.enterWalletTransaction(new WalletTransaction("debit",this.bookingData.car.bookingPrice+1000,"booking")).subscribe(data=>{
+          console.log(data);
+        })
+        this.dashboardService.updateWallet(this.wallet).subscribe(data=>{
+          console.log(data)
+        })
+        this.route.navigateByUrl("");
+
       });
   }
 
@@ -61,7 +72,7 @@ export class PaymentComponent implements OnInit {
   }
 
   paymentAndBookingHandler() {
-    this.walletTransactionHandler(this.bookingData.car.bookingPrice + 200 + 800);
+    //this.walletTransactionHandler(this.bookingData.car.bookingPrice + 200 + 800);
     this.bookingHandler();
 
   }

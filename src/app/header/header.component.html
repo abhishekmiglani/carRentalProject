@@ -215,29 +215,36 @@
           </div>
           <form style="width: 90%;margin-left: 5%;">
             <div class="form-group">
-              <span id="emailText" style="font-size: 12px;">Email address</span>
+              <span id="emailText" style="font-size: 12px;">Email address{{isLoginValid}}</span>
               <input
                 type="email"
                 class="form-control"
                 id="loginEmail"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                [(ngModel)] = "validMail"
+                (input) = "validateLoginEmail()"
               />
               <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 
-              <span id="passwordText" style="font-size: 12px;">Password</span>
+              <span id="passwordText" style="font-size: 12px;">Password{{isLoginPasswordValid}}
+                  </span>
               <input
                 type="password"
                 class="form-control"
                 id="loginPassword"
                 aria-describedby="emailHelp"
                 placeholder="Enter password"
+                (input) = "validatePassword()"
+                
               />
               <br />
               <button
                 type="button"
                 class="btn btn-success"
                 style="width: 100%;"
+                [disabled]="(!isLoginvalid && !isLoginPasswordValid)"
+                id="signInBtn"
                 (click)="userLogin()"
               >
                 Login
@@ -364,6 +371,7 @@
             </button>
           </div>
           <div class="modal-body">
+            <form #signUpForm = "ngForm">
             <div class="form-group">
               <span style="font-size: 12px;">Email address</span>
               <input
@@ -371,40 +379,91 @@
                 type="email"
                 placeholder="Enter email"
                 class="form-control"
+                required
+                [(ngModel)] = "signUpEmail"
+                name = "email"
+                #mail= "ngModel"
+                (input)="validateEmail()"
               />
-              <br />
+              <div [hidden]="mail.valid || mail.pristine"
+              class="alert alert-danger">
+              Email is required
+              </div>
+              <div [hidden]="isEmailValid"
+              class="alert alert-danger">
+              Invalid Email
+              </div>
+              <div *ngIf="(mail.valid || mail.pristine)"><br></div>
               <span style="font-size: 12px;">Full Name</span>
               <input
                 id="signUpName"
                 type="text"
                 placeholder="Enter name"
                 class="form-control"
+                required
+                [(ngModel)] = "signUpName"
+                name = "userName"
+                #userName = "ngModel"
               />
-              <br />
+              <div [hidden]="userName.valid || userName.pristine"
+              class="alert alert-danger">
+              Name is required
+              </div>
+              <div *ngIf="(userName.valid || userName.pristine)"><br></div>
               <span style="font-size: 12px;">Mobile Number</span>
               <input
                 id="signUpMobile"
                 type="text"
                 placeholder="Enter mobile"
                 class="form-control"
+                required
+                [(ngModel)] = "signUpMobile"
+                name = "mobile"
+                #userMobile= "ngModel"
               />
-              <br />
+              <div [hidden]="userMobile.valid || userMobile.pristine"
+              class="alert alert-danger">
+              Mobile is required
+              </div>
+              <div *ngIf="(userMobile.valid || userMobile.pristine)"><br></div>
               <span style="font-size: 12px;">Password</span>
               <input
                 id="signUpPassword"
                 type="password"
                 placeholder="Enter password"
                 class="form-control"
+                required
+                [(ngModel)] = "signUpPassword"
+                name = "password"
+                #userPassword= "ngModel"
               />
-              <br />
+              <div [hidden]="userPassword.valid || userPassword.pristine"
+              class="alert alert-danger">
+              Please enter password
+              </div>
+              <div *ngIf="(userPassword.valid || userPassword.pristine)"><br></div>
+
               <span style="font-size: 12px;">Re-Enter Password</span>
               <input
                 id="signUpPasswordEnter"
                 type="password"
                 placeholder="Re-Enter password"
                 class="form-control"
+                required
+                [(ngModel)] = "signUpRePassword"
+                name = "rePassword"
+                #userRePassword= "ngModel"
               />
+              <div [hidden]="userRePassword.valid || userRePassword.pristine"
+              class="alert alert-danger">
+              Please Re-enter password
+              </div>
+              <div [hidden]= " (signUpPassword == signUpRePassword)"
+              class="alert alert-danger">
+              Passwords do not match
+              </div>
             </div>
+          </form>
           </div>
           <div class="modal-footer">
             <button
@@ -418,8 +477,7 @@
               type="button"
               class="btn btn-success"
               (click)="createNewUser()"
-              data-toggle="modal"
-              data-target="#SignUpMsg"
+              [disabled]="!signUpForm.form.valid  || !(signUpPassword == signUpRePassword) || !isEmailValid"
             >
               Proceed
             </button>
@@ -586,7 +644,7 @@
             type="button"
             class="close"
             data-dismiss="modal"
-            aria-label="Close" (click)="redirectAfterLogout()"
+            aria-label="Close"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -606,7 +664,6 @@
             type="button"
             class="btn btn-secondary"
             data-dismiss="modal"
-            (click)="redirectAfterLogout()"
           >
             Close
           </button>
