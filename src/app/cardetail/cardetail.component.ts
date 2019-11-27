@@ -66,7 +66,7 @@ export class CardetailComponent implements OnInit {
         this.router.navigateByUrl("/car/payments");
      }
     } else {
-      
+      console.log("Not logged in");
       this.login.openModalDialog();
       this.isLogged = false;
     }

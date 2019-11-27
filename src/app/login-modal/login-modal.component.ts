@@ -63,6 +63,7 @@ export class LoginModalComponent implements OnInit {
     @Inject(LOCAL_STORAGE) private storage: WebStorageService
   ) {}
   openModalDialog() {
+    console.log("Clicked");
     document.getElementById("openModal1").click();
   }
   ngOnInit() {}
