@@ -8,7 +8,7 @@
 >
   Open modal
 </button>
-<div id="myModal1" class="modal fade" role="dialog">
+<div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
 
@@ -37,45 +37,53 @@
       </div>
       <form style="width: 90%;margin-left: 5%;">
         <div class="form-group">
-          <span id="emailText" style="font-size: 12px;">Email address</span>
+          <span id="emailText" style="font-size: 12px;"
+            >Email address{{ isLoginValid }}</span
+          >
           <input
             type="email"
             class="form-control"
             id="loginEmail"
             aria-describedby="emailHelp"
             placeholder="Enter email"
+            [(ngModel)]="validMail"
+            (input)="validateLoginEmail()"
           />
           <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 
-          <span id="passwordText"  style="font-size: 12px;">Password</span>
+          <span id="passwordText" style="font-size: 12px;"
+            >Password{{ isLoginPasswordValid }}
+          </span>
           <input
             type="password"
             class="form-control"
             id="loginPassword"
             aria-describedby="emailHelp"
             placeholder="Enter password"
-            
+            (input)="validatePassword()"
           />
           <br />
           <button
             type="button"
             class="btn btn-success"
             style="width: 100%;"
+            [disabled]="!isLoginvalid && !isLoginPasswordValid"
+            id="signInBtn"
             (click)="userLogin()"
           >
             Login
           </button>
           <br /><br />
           <!-- <h4 style="text-align: center;"> ______OR______</h4>
-        <br><br> -->
+          <br><br> -->
 
           <!-- <button type="button" class="btn btn-primary" style="width: 100%;"> <img
-            src="https://image.flaticon.com/icons/svg/281/281764.svg" width="15px" height="20px"> continue with
-          Gmail </button>
-        &nbsp;&nbsp;
-        <button type="button" class="btn btn-primary" style="width: 100%;"> <img
-            src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" width="18px"
-            height="18px"> continue with facebook</button> -->
+              src="https://image.flaticon.com/icons/svg/281/281764.svg" width="15px" height="20px"> continue with
+            Gmail </button>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-primary" style="width: 100%;"> <img
+              src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" width="18px"
+              height="18px"> continue with facebook</button> -->
           <!-- <div class="text-center" style="font-size: 13px;">New to DhoomCar? <span  data-toggle="modal" data-target="#signUpModal">Sign up</span></div> -->
           <hr />
           <div class="text-center" style="font-size: 14px;">
@@ -128,47 +136,112 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <span style="font-size: 12px;">Email address</span>
-          <input
-            id="signUpEmail"
-            type="email"
-            placeholder="Enter email"
-            class="form-control"
-          />
-          <br />
-          <span style="font-size: 12px;">Full Name</span>
-          <input
-            id="signUpName"
-            type="text"
-            placeholder="Enter name"
-            class="form-control"
-          />
-          <br />
-          <span style="font-size: 12px;">Mobile Number</span>
-          <input
-            id="signUpMobile"
-            type="text"
-            placeholder="Enter mobile"
-            class="form-control"
-          />
-          <br />
-          <span style="font-size: 12px;">Password</span>
-          <input
-            id="signUpPassword"
-            type="password"
-            placeholder="Enter password"
-            class="form-control"
-          />
-          <br />
-          <span style="font-size: 12px;">Re-Enter Password</span>
-          <input
-            id="signUpPasswordEnter"
-            type="password"
-            placeholder="Re-Enter password"
-            class="form-control"
-          />
-        </div>
+        <form #signUpForm="ngForm">
+          <div class="form-group">
+            <span style="font-size: 12px;">Email address</span>
+            <input
+              id="signUpEmail"
+              type="email"
+              placeholder="Enter email"
+              class="form-control"
+              required
+              [(ngModel)]="signUpEmail"
+              name="email"
+              #mail="ngModel"
+              (input)="validateEmail()"
+            />
+            <div
+              [hidden]="mail.valid || mail.pristine"
+              class="alert alert-danger"
+            >
+              Email is required
+            </div>
+            <div [hidden]="isEmailValid" class="alert alert-danger">
+              Invalid Email
+            </div>
+            <div *ngIf="mail.valid || mail.pristine"><br /></div>
+            <span style="font-size: 12px;">Full Name</span>
+            <input
+              id="signUpName"
+              type="text"
+              placeholder="Enter name"
+              class="form-control"
+              required
+              [(ngModel)]="signUpName"
+              name="userName"
+              #userName="ngModel"
+            />
+            <div
+              [hidden]="userName.valid || userName.pristine"
+              class="alert alert-danger"
+            >
+              Name is required
+            </div>
+            <div *ngIf="userName.valid || userName.pristine"><br /></div>
+            <span style="font-size: 12px;">Mobile Number</span>
+            <input
+              id="signUpMobile"
+              type="text"
+              placeholder="Enter mobile"
+              class="form-control"
+              required
+              [(ngModel)]="signUpMobile"
+              name="mobile"
+              #userMobile="ngModel"
+            />
+            <div
+              [hidden]="userMobile.valid || userMobile.pristine"
+              class="alert alert-danger"
+            >
+              Mobile is required
+            </div>
+            <div *ngIf="userMobile.valid || userMobile.pristine"><br /></div>
+            <span style="font-size: 12px;">Password</span>
+            <input
+              id="signUpPassword"
+              type="password"
+              placeholder="Enter password"
+              class="form-control"
+              required
+              [(ngModel)]="signUpPassword"
+              name="password"
+              #userPassword="ngModel"
+            />
+            <div
+              [hidden]="userPassword.valid || userPassword.pristine"
+              class="alert alert-danger"
+            >
+              Please enter password
+            </div>
+            <div *ngIf="userPassword.valid || userPassword.pristine">
+              <br />
+            </div>
+
+            <span style="font-size: 12px;">Re-Enter Password</span>
+            <input
+              id="signUpPasswordEnter"
+              type="password"
+              placeholder="Re-Enter password"
+              class="form-control"
+              required
+              [(ngModel)]="signUpRePassword"
+              name="rePassword"
+              #userRePassword="ngModel"
+            />
+            <div
+              [hidden]="userRePassword.valid || userRePassword.pristine"
+              class="alert alert-danger"
+            >
+              Please Re-enter password
+            </div>
+            <div
+              [hidden]="signUpPassword == signUpRePassword"
+              class="alert alert-danger"
+            >
+              Passwords do not match
+            </div>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -178,8 +251,11 @@
           type="button"
           class="btn btn-success"
           (click)="createNewUser()"
-          data-toggle="modal"
-          data-target="#SignUpMsg"
+          [disabled]="
+            !signUpForm.form.valid ||
+            !(signUpPassword == signUpRePassword) ||
+            !isEmailValid
+          "
         >
           Proceed
         </button>
@@ -241,44 +317,3 @@
   </div>
 </div>
 <!--registration message modal ends-->
-<!--login message modal-->
-
-<div class="modal" id="loginModalMsg" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Message</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close" (click)="redirectAfterLogout()"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div *ngIf="loginResult;else loginElse">
-       You have successfully logged in...
-        </div>
-        <ng-template #loginElse>
-            E-Mail or Password incorrect...
-        </ng-template>
-      </div>
-      <div class="modal-footer">
-          
-     
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-dismiss="modal"
-          (click)="redirectAfterLogout()"
-        >
-          Close
-        </button>
-     
-      </div>
-    </div>
-  </div>
-</div>
-

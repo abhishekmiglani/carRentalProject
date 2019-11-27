@@ -379,10 +379,10 @@ export class HeaderComponent implements OnInit {
         this.saveInLocal("loginStatus", this.loginResult);
       }
       this.isLoggedIn();
+      this.closeSignupModal();
+      this.closeLoginModal();
       this.loginModalMsgToggle();
     });
-
-    this.closeLoginModal();
   }
   hideSideNavbar() {
     this.dislplayNav = false;
