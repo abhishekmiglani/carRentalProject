@@ -80,7 +80,6 @@ export class LoginModalComponent implements OnInit {
       frontLicenseImageUrl: null,
       userId: null
     };
-    
 
     this.userService.adduser(user).subscribe(data => {
       this.result = data;
@@ -88,7 +87,9 @@ export class LoginModalComponent implements OnInit {
     });
     this.closeSignupModal();
   }
- 
+
+  loginResult: Boolean;
+  
   userLogin() {
     let email = (<HTMLInputElement>document.getElementById("loginEmail")).value;
 
@@ -104,20 +105,17 @@ export class LoginModalComponent implements OnInit {
       frontLicenseImageUrl: null,
       userId: null
     };
-    let loginValue : String;
 
     this.userService.userLogin(user).subscribe(data => {
-       loginValue = data;
-      console.log("login:" + loginValue);
-      if (loginValue == "success") {
+      this.loginResult = data;
+      console.log("login:" + this.loginResult);
+      if (this.loginResult == true) {
         this.saveInLocal("email", email);
-        this.saveInLocal("loginStatus", loginValue);
+        this.saveInLocal("loginStatus", this.loginResult);
       }
-      if(loginValue == "service")
-      {
-        console.log(loginValue);
+      else{
+        console.log("service is down")
       }
-
       this.isLoggedIn();
       this.closeLoginModal();
       this.loginModalMsgToggle();
