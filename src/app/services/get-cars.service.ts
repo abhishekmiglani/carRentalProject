@@ -29,7 +29,8 @@ export class GetCarsService {
   getCars(): Observable<Car[]> {
     this.city = this.cookieService.get('location');
     console.log("inside get cars method" + this.city);
-    this._url = "http://localhost:8099/carservice/cars/list/"+this.city;
+    // this._url = "http://localhost:8099/carservice/cars/list/"+this.city;
+    this._url = "http://localhost:7070/carservice/"+this.city;
     return this.http.get<Car[]>(this._url);
   }
 

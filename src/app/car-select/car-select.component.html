@@ -139,6 +139,10 @@
                         <button class="btn btn-info" (click)="runValidation(car.id)">{{'car-select.b_171'|translate}}</button>
                     </div>
                 </div>
+
+                <div *ngIf="showerr" style="margin-top: 100px; margin-left: 70px; font-style: italic; color: navy;">
+                    <h3>oops!.. Something went wrong, Please try again later</h3>
+                </div>
            
             </div>
         </div>

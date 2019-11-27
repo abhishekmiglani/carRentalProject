@@ -148,9 +148,10 @@ export class CardetailComponent implements OnInit {
     this.drop = this.dates[1];
     console.log("ts file date" + this.pickup + this.drop);
     console.log("service locality" + this.locality);
-    if (this.pickup.getHours() > 12) {
-      document.getElementById("timeZone").innerHTML = "PM";
-    }
+
+    // if (this.pickup.getHours() > 12) {
+    //   document.getElementById("timeZone").innerHTML = "PM";
+    // }
   }
 }
 

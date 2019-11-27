@@ -4,6 +4,7 @@ import { LocationHeaderComponent } from 'app/location-header/location-header.com
 import { RouterLink, Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'app/Bean/Car';
 import { TranslateService } from '@ngx-translate/core';
+import { empty } from 'rxjs';
 
 declare var $: any;
 @Component({
@@ -31,22 +32,19 @@ export class CarSelectComponent implements OnInit {
   carId: number;
   public package;
   duplicateCarList: any[];
+  showerr : boolean = false;
 
   constructor( private getCarsService: GetCarsService, private router: Router) { 
 
     // translate.addLangs(['en','fr','de','hi','pj'])
     // translate.setDefaultLang('en');
     // translate.use('en');
-
-
-
   }
   @ViewChild(LocationHeaderComponent, { static: false }) locationHeader: LocationHeaderComponent;
 
   ngOnInit() {
     $(function () {
       $("#sortMenu a").click(function () {
-        console.log("Hey!");
         $("#selected").text($(this).text());
         $("#selected").val($(this).text());
       });
@@ -56,6 +54,9 @@ export class CarSelectComponent implements OnInit {
       .subscribe(data => {
         this.cars = data;
         this.duplicateCarList = data;
+        if(this.cars.length == 0){
+            this.showerr = true;
+        }
       });
 
   }
