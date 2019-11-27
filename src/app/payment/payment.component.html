@@ -34,9 +34,9 @@
                             <div class="card-header">
                                 <a class="card-link" data-toggle="collapse" href="#collapseOne">
                                     <div class="row">
-                                        <div class="col-md-10"><span class="card-name">Credit Card / Debit Card</span>
+                                        <div class="col-md-8 col-sm-6 col-6"><span class="card-name">Credit Card / Debit Card</span>
                                         </div>
-                                        <div class="col-md-2"><img src="/assets/card.png" alt="Credit Card"></div>
+                                        <div class="col-md-4 col-sm-6 col-6"><img src="/assets/card.png" alt="Credit Card"></div>
                                     </div>
                                 </a>
                             </div>
@@ -86,22 +86,22 @@
 
                                     <!-- Showing details of multiple cards -->
                                     <div class="savedCardInfo shadow" *ngIf="isCardSaved">
-                                        <div class="row " ngFor= "let item of cards">
-                                            <div class="col-md-2 col-sm-2 col-2 card-logo-style">
+                                        <div class="row " *ngFor= "let card of cards">
+                                            <div class="col-md-2 col-sm-2 col-10 card-logo-style">
                                                 <img src={{cardLogo}} alt="logo" />
                                             </div>
-                                            <div class="col-md-7 col-sm-7 col-7">
-                                                <label for="cardLastDigits">Ending with {{item.cardNum}}</label><br>
+                                            <div class="col-md-7 col-sm-7 col-8">
+                                                <label for="cardLastDigits">Ending with {{card.cardNum}}</label><br>
                                                 <label
-                                                    for="ExpiriesIn">Expires&nbsp;&nbsp;{{item.expMonth}}/{{item.expYear}}</label>
+                                                    for="ExpiriesIn">Expires&nbsp;&nbsp;{{card.expMonth}}/{{card.expYear}}</label>
                                             </div>
-                                            <div class="col-md-3 col-sm-3 col-3">
+                                            <!-- <div class="col-md-3 col-sm-3 col-4">
                                                 <label id="editCard-{{item}}" class="edit-label"
                                                     (click)="showEditModal(item)">{{'payment.l_75'|translate}}</label>
                                                 &nbsp;|&nbsp;
                                                 <label id="deleteCard-{{item}}" class="delete-label"
                                                     (click)="showDeleteModal(item)">{{'payment.l_76'|translate}}</label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -110,12 +110,12 @@
                         <!-- Paypal payment option -->
                         <div class="card">
                             <div class="card-header">
-                                <a class="card-link" href="#">
+                                <a class="card-link" href="www.paypal.com"> 
                                     <div class="row">
-                                        <div class="col-md-9">
+                                        <div class="col-md-8">
                                             <span class="paypal-name">PayPal</span>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <img src="/assets/paypal.png" alt="paypal">
                                         </div>
                                     </div>
@@ -128,14 +128,14 @@
                             <div class="card-header">
                                 <a class="card-link" style="cursor: pointer;" (click)=paymentAndBookingHandler()>
                                     <div class="row">
-                                        <div class="col-md-7">
+                                        <div class="col-md-4">
                                             <span class="wallet-text">{{'payment.s_105'|translate}}</span>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <span class="balance-text"> {{'payment.s_108'|translate}}:
                                                 {{wallet.balance}}</span>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
                                             <img src="/assets/walletIcon.png" alt="paypal">
                                         </div>
                                     </div>
@@ -144,7 +144,6 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="Pay" class="bg-success pay-button form-control">
             </form>
         </div>
 
@@ -153,15 +152,11 @@
             <table>
                 <tr>
                     <th>Fare Detail</th>
-                    <td>{{bookingData.car.bookingPrice}}</td>
+                    <td>{{bookingData.car.bookingPrice|currency:'INR'}}</td>
                 </tr>
                 <tr>
-                    <th>Weekend Charges</th>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <th>WeekDays Charges</th>
-                    <td>800</td>
+                    <th>Package Charges (Package Selected : {{packageDetail}}Kms)</th>
+                    <td>{{packageAmount |currency:'INR'}}</td>
                 </tr>
                 <td>
                     <hr>
@@ -171,27 +166,27 @@
                 </td>
                 <tr>
                     <th>Total</th>
-                    <td>{{bookingData.car.bookingPrice+1000}}</td>
+                    <td>{{totalAmount|currency:'INR'}}</td>
                 </tr>
             </table>
 
 
         </div>
     </div>
-    <!-- MODAL -->
+    <!-- MODAL
     <div class="modal fade" id="editCardModal">
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <!-- Modal Header -->
+                #Modal Header
                 <div class="modal-header">
                     <h4 class="modal-title">{{'payment.h_132'|translate}}</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
 
-                <!-- Modal body -->
+                #Modal body
                 <div class="modal-body">
-                    <!-- Text input-->
+                    #Text input
                     <div class="row">
                         <label class="col-md-4 control-label" for="cardDNumber">Number</label>
                         <div class="col-md-6">
@@ -203,7 +198,7 @@
                     </div>
                     <br>
 
-                    <!-- Text input-->
+                    #Text input
                     <div class="row">
                         <label class="col-md-4 control-label" for="month">Enter expiry</label>
                         <div class="col-md-2">
@@ -217,7 +212,7 @@
                     </div>
                 </div>
 
-                <!-- Modal footer -->
+                #Modal footer
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-success" disabled="" id="editConfirmButton">Confirm</button>
@@ -226,7 +221,7 @@
         </div>
     </div>
 
-    <!-- Delete Modal -->
+    #Delete Modal
     <div id="cardDeleteConfirm" class="modal fade">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
@@ -241,10 +236,10 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info"
                         data-dismiss="modal">{{'payment.b_182'|translate}}</button>
-                    <button type="button" class="btn btn-danger">{{'payment.b_183'|translate}}</button>
+                    <button type="button" class="btn btn-danger"n(click)="deleteCard()">{{'payment.b_183'|translate}}</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
