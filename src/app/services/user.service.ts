@@ -19,9 +19,10 @@ export class UserService {
     return this.http.post<Boolean>(url, user);
   }
 
-  userLogin(user: User): Observable<Boolean> {
-    let url: string = "http://localhost:8099/userservice/users/login";
-    return this.http.post<Boolean>(url, user);
+  userLogin(user: User): Observable<String> {
+    // let url: string = "http://localhost:8099/userservice/users/login";
+    let url: string = "http://localhost:7070/userservice";
+    return this.http.post<String>(url, user);
   }
 
   logout() {
