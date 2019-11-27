@@ -11,13 +11,8 @@ import { User } from './bean/User';
   providedIn: 'root'
 })
 export class DashboardService {
-  
 
   constructor(private http: HttpClient) {
-  }
-  updateUserPassword(newPassword: any) {
-    let url = ""
-    return this.http.put(url,newPassword);
   }
 
   getWalletDetails(userId): Observable<Wallet> {
@@ -42,14 +37,13 @@ export class DashboardService {
   }
 
   getCards(userId): Observable<Card[]>{
-    let url = "http://localhost:8099/cardservice/users/"+userId+"/cards"
+    let url = "http://localhost:8099/userservice/user/"+userId+"/cards"
     return this.http.get<Card[]>(url);
   }
 
-  updateWallet(wallet):Observable<number>{
-    let url = "http://localhost:8099/walletservice/wallets/"+wallet.walletId+"/transaction";
-    console.log("url ========="+url + "###")
-    return this.http.put<number>(url, null);
+  updateWallet(wallet){
+    let url = "http://localhost:8099/walletservice/wallets/"+wallet.walletId;
+    return this.http.put(url,wallet);
   }
   getUserById(userId):Observable<User>{
     let url = "http://localhost:8099/userservice/users/"+userId;
@@ -61,7 +55,7 @@ export class DashboardService {
     return this.http.put(url,user);
   }
   deleteCardByCardId(cardId):Observable<any>{
-    let url = "http://localhost:8099/cardservice/users/cards/"+cardId;
+    let url = "http://localhost:8099/cardservice/cards/"+cardId;
     console.log("card deleted")
      return this.http.delete(url);
   }

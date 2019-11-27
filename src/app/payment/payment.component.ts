@@ -7,7 +7,6 @@ import { BookingService } from 'app/services/booking.service';
 import { Card } from 'app/bean/Card';
 import { User } from 'app/bean/User';
 import { Router } from '@angular/router';
-import { GetCarsService } from 'app/services/get-cars.service';
 
 @Component({
   selector: 'app-payment',
@@ -17,7 +16,7 @@ import { GetCarsService } from 'app/services/get-cars.service';
 export class PaymentComponent implements OnInit {
 
   bookingData: Booking;
-  cardNumber;
+  cardNumber = "00";
   tempCardNumber;
   tempValidMonth;
   tempValidYear;
@@ -25,23 +24,18 @@ export class PaymentComponent implements OnInit {
   validYear;
   validCvv;
   validName;
-  totalAmount:number=0;
-  packageAmount:number=0;
-  packageDetail;
-
 
   cardHolderName = "unk";
   isCardDetailsEntered = true;
   showCard = false;
   isCardSaved = false;
-  cards: Card[]=null;
+  cards: Card[];
   cardLogo = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.wsj.net%2Fim-45496%3Fwidth%3D620%26size%3D1.5&imgrefurl=https%3A%2F%2Fwww.wsj.com%2Farticles%2Fmastercard-drops-its-name-from-logo-11546858800&docid=McEmPa882hxj3M&tbnid=bBpiKDFGI00dOM%3A&vet=10ahUKEwjr68SO4qLlAhUSdCsKHS51DoQQMwhzKAAwAA..i&w=620&h=413&bih=528&biw=1280&q=mastercard%20logo&ved=0ahUKEwjr68SO4qLlAhUSdCsKHS51DoQQMwhzKAAwAA&iact=mrc&uact=8";
 
   wallet: Wallet = new Wallet();
 
   constructor(private dashboardService: DashboardService,
-    private bookingService: BookingService,private route:Router,
-    private getCarService:GetCarsService) { }
+    private bookingService: BookingService,private route:Router) { }
 
   getWalletDetails() {
     this.dashboardService.getWalletDetails(1).subscribe(walletData => {
@@ -50,27 +44,36 @@ export class PaymentComponent implements OnInit {
   }
 
   bookingHandler() {
+    this.bookingData = this.bookingService.getBookingData();
+    this.bookingService.addBooking(this.bookingData)
     // console.log("hello" + this.bookingData.fromDate);
-    if (this.wallet.balance >= this.totalAmount)
+    if (this.wallet.balance >= this.bookingData.car.bookingPrice)
       this.bookingService.addBooking(this.bookingData).subscribe(data => {
         console.log(this.bookingData);
         alert("Booking Confirmed")
+        this.getWalletDetails()
+        this.wallet.balance = this.wallet.balance-(this.bookingData.car.bookingPrice+1000);
+        this.dashboardService.enterWalletTransaction(new WalletTransaction("debit",this.bookingData.car.bookingPrice+1000,"booking")).subscribe(data=>{
+          console.log(data);
+        })
+        this.dashboardService.updateWallet(this.wallet).subscribe(data=>{
+          console.log(data)
+        })
         this.route.navigateByUrl("");
 
       });
   }
 
   walletTransactionHandler(amount) {
-    this.dashboardService.enterWalletTransaction(new WalletTransaction("debit", amount, "Booking"),this.wallet.walletId)
+    this.dashboardService.enterWalletTransaction(new WalletTransaction("debit", amount, "Booking"))
+    this.wallet.balance = this.wallet.balance - 0;
     this.dashboardService.updateWallet(this.wallet);
     this.getWalletDetails();
   }
 
   paymentAndBookingHandler() {
-    // this.walletTransactionHandler(this.totalAmount);
+    //this.walletTransactionHandler(this.bookingData.car.bookingPrice + 200 + 800);
     this.bookingHandler();
-    // alert("ThankYou Your Booking Has been Confirmed");
-    console.log(this.bookingData)
 
   }
 
@@ -116,35 +119,16 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
     this.getWalletDetails()
-
     this.dashboardService.getCards(1).subscribe(data => {
       this.cards = data;
       console.log("card dAta==================" + this.cards);
+      if (this.cards != null) {
 
-      if (this.cards.length>0) {
-        
         this.isCardDetailsEntered = false;
-        this.showCard = false;
-        this.isCardSaved=true;
+        this.showCard = true;
       }
     })
-    this.packageDetail = this.getCarService.getCarPackage();
-    // alert(this.packageDetail);
-    if(this.packageDetail=="No-Fuel")
-      this.packageAmount=0;
-    else if(this.packageDetail=="60 kms")
-      this.packageAmount=400;
-    else if(this.packageDetail=="120kms")
-      this.packageAmount=700;
-    else if(this.packageDetail=180)
-      this.packageAmount=1050;
 
-    this.bookingData = this.bookingService.getBookingData();
-    this.totalAmount= Number.parseInt(this.bookingData.car.bookingPrice.toString())+ Number.parseInt(this.packageAmount.toString());
-    
-
-
-    
   }
 
 

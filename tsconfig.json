@@ -14,7 +14,7 @@
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types",
- 
+      "googlemaps"
     ],
     "lib": [
       "es2018",

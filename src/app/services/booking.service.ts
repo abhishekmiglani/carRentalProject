@@ -16,7 +16,7 @@ export class BookingService {
   }
 
   addBooking(booking : Booking){
-    let url : string  = "http://localhost:8099/bookingservice/bookings/bookednow";
+    let url : string  = "http://localhost:8099/bookingservice/bookings";
     return this.http.post(url,booking);
   }
 

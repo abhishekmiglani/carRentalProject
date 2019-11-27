@@ -1,13 +1,8 @@
-<!-- <app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality"></app-location-header> -->
-
-
-
-
 <app-location-header [pickUp]="pickup" [dropTime]="drop" [headerLocation]="locality"></app-location-header>
 
-<div class="container row" style="margin-top: 110px;">
+<div class="container-fluid row" style="margin-top: 110px;">
     <!-- <button (click)=bookingConfirmHandler()> check it</button> -->
-    <div class="left-pane col-md-8 container"   style="display: flex;">
+    <div class="left-pane col-md-8" style="display: flex">
         <div class="left-wrapper box-shadow "
             style="  border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4)">
             <div style="padding : 20px" class="checkout-vehicle-template">
@@ -37,7 +32,7 @@
                     </div>
 
                     <div class="img-section ">
-                        <img class="load-img  float-right" src="{{ cars.imageUrl }}" />
+                        <img class="load-img img-responsive float-right" src="{{ cars.imageUrl }}" />
                     </div>
                 </div>
             </div>
@@ -184,18 +179,18 @@
             <div class="block-heading " style="padding-left: 20px">{{'cardetail.d_185'|translate}}</div>
             <div class="fare-block" style="padding:10px">
                 <span class="fare-name "
-                    style="font-family:proxima-nova; color: #77899b; font-size: 16px ;padding: 12px">Booking
+                    style="font-family:proxima-nova; color: #77899b; font-size: 16px ;padding: 12px">Weekend
                     charges</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="fare-amount">{{ bookingFare|currency: "INR" }}</span>
+                <span class="fare-amount">{{ weekend_fare | currency: "INR" }}</span>
             </div>
 
             <div class="fare-block" style="padding:10px">
                 <span class="fare-name "
-                    style="font-family:proxima-nova; color: #77899b; font-size: 16px;padding: 12px">Package
+                    style="font-family:proxima-nova; color: #77899b; font-size: 16px;padding: 12px">Weekday
                     charges</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="fare-amount">{{ packageFare|currency: "INR" }}</span>
+                <span class="fare-amount">{{ weekday_fare | currency: "INR" }}</span>
             </div>
             <div>
                 <hr />
@@ -213,7 +208,7 @@
     </div>
 </div>
 
-<div class="fixed-bottom container bg-light" style="margin-top: 120px">
+<div class="fixed-bottom container-fluid bg-light" style="margin-top: 120px">
     <div class="  left-wrapper box-shadow"
         style="border-radius : 6px; box-shadow: 0px 2px 8px -2px rgba(31,45,61,0.4); padding-top: 10px; padding-bottom: 10px;">
         <div class="row">
