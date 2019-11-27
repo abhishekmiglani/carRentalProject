@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GetCarsService } from 'app/services/get-cars.service';
-import { Router } from '@angular/router';
-import { AdminloggedService } from 'app/adminlogged.service';
 
 @Component({
   selector: 'app-admin',
@@ -10,18 +8,10 @@ import { AdminloggedService } from 'app/adminlogged.service';
 })
 export class AdminComponent implements OnInit {
 
-  isAdminLoggedIn: boolean = false;
-
-  constructor(private carService : GetCarsService,private route:Router,private isAdminLogged:AdminloggedService) { }
+  constructor(private carService : GetCarsService) { }
 
 
   ngOnInit() {
-    // if(this.isAdminLoggedIn == false){
-    //   this.route.navigateByUrl("");
-    // }
-    
-     this.isAdminLogged.isAdminLogged();
-
   }
 
   closeAddCarModal() {

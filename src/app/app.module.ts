@@ -45,7 +45,6 @@ import {DatePipe} from '@angular/common';
 
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -73,7 +72,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminComponent,
     AdminDeleteCarComponent,
     EditCarComponent,
-    AdminLoginComponent,
      ],
   imports: [
     
