@@ -27,9 +27,7 @@ export class CardetailComponent implements OnInit {
   location: String;
   weekday_fare: number = 140;
   weekend_fare: number = 150;
-
-  
-  
+  total_fare: number = this.weekday_fare + this.weekend_fare;
   duration: any = "2h";
 
   isLogged: boolean;
@@ -54,13 +52,8 @@ export class CardetailComponent implements OnInit {
 
   modalState: boolean = false;
   checkBoxState: boolean = false;
- 
-  public cars: Car;
-  
-  packageFare : any;
-  bookingFare=this.cars.bookingPrice;
-  total_fare: number = this.packageFare + this.bookingFare;
 
+  public cars: Car;
 
   changeState() {
     if (localStorage.length!=0 && localStorage.getItem("loginStatus")=="true") {
@@ -132,7 +125,7 @@ export class CardetailComponent implements OnInit {
         $("#selected").val($(this).text());
       });
     });
-    
+
     this.route.paramMap.subscribe((params: ParamMap) => {
       (this.id = parseInt(params.get("modelNo"))),
         (this.package = parseInt(params.get("package")));
@@ -144,7 +137,7 @@ export class CardetailComponent implements OnInit {
 
     // this.getCarsService.getCarById()
     // .subscribe(data => this.cars = data);
-    
+
     this.getCarsService.getCarById().subscribe(data => (this.cars = data));
 
     this.carPackage = this.getCarsService.getCarPackage();
@@ -157,28 +150,7 @@ export class CardetailComponent implements OnInit {
     if (this.pickup.getHours() > 12) {
       document.getElementById("timeZone").innerHTML = "PM";
     }
- 
-    switch(this.carPackage)
-    {
-      case 0 : this.packageFare = this.cars.bookingPrice;
-          break;
-      case 60 : this.packageFare = this.cars.bookingPrice + 140;
-          break;
-      case 120 : this.packageFare = this.cars.bookingPrice +280;
-
-          break;
-
-
-      case 180 : this.packageFare = this.cars.bookingPrice + 580;
-
-
-    }
-
   }
- 
-
-  
-
-
-
 }
+
+
