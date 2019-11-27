@@ -10,6 +10,54 @@ import { LOCAL_STORAGE, WebStorageService } from "angular-webstorage-service";
 export class LoginModalComponent implements OnInit {
   loginState: boolean = false;
 
+  //Sign up Code
+  signUpEmail;
+  signUpName;
+  signUpMobile;
+  signUpPassword;
+  signUpRePassword;
+  var = false;
+
+  isEmailValid: boolean = true;
+
+  validateEmail() {
+    if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.signUpEmail)
+    ) {
+      this.isEmailValid = true;
+    } else {
+      this.isEmailValid = false;
+    }
+  }
+
+  //Sign Up Code End
+
+  //Login Code
+
+  isLoginValid: boolean;
+  isLoginPasswordValid: boolean;
+
+  validateLoginEmail() {
+    let email = (<HTMLInputElement>document.getElementById("loginEmail")).value;
+    console.log("hello" + email);
+
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      this.isLoginValid = true;
+    } else {
+      this.isLoginValid = false;
+    }
+  }
+
+  validatePassword() {
+    let password = (<HTMLInputElement>document.getElementById("loginPassword"))
+      .value;
+    if (password.length > 0) {
+      this.isLoginPasswordValid = true;
+    } else {
+      this.isLoginPasswordValid = false;
+    }
+  }
+
   constructor(
     private userService: UserService,
     @Inject(LOCAL_STORAGE) private storage: WebStorageService
@@ -89,6 +137,7 @@ export class LoginModalComponent implements OnInit {
   }
 
   loginResult: Boolean;
+  
   userLogin() {
     let email = (<HTMLInputElement>document.getElementById("loginEmail")).value;
 
@@ -111,6 +160,9 @@ export class LoginModalComponent implements OnInit {
       if (this.loginResult == true) {
         this.saveInLocal("email", email);
         this.saveInLocal("loginStatus", this.loginResult);
+      }
+      else{
+        console.log("service is down")
       }
       this.isLoggedIn();
       this.closeLoginModal();

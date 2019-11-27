@@ -1,5 +1,7 @@
 <!-- <app-header></app-header> -->
 <!-- <div style="margin-top: -450px;" > </div>  -->
+
+
 <app-location-header (childEvent)="cars=$event"></app-location-header>
 
 <div class="container-fluid" style="margin-top:110px">
@@ -139,7 +141,10 @@
                         <button class="btn btn-info" (click)="runValidation(car.id)">{{'car-select.b_171'|translate}}</button>
                     </div>
                 </div>
-           
+
+                <div *ngIf ="showMsg" style="color: navy;font-style: italic; margin-top: 100px; margin-left: 100px;">
+                   <h1>Oops! Something went wrong.Please try after sometime....</h1>
+                </div>
             </div>
         </div>
     </div>

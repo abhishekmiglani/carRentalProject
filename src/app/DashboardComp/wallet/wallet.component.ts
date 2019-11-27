@@ -50,18 +50,23 @@ export class WalletComponent implements OnInit {
   addMoneyHandler(){
   //  this.balance = this.balance+this.amount;
   //  alert(this.amount)
-  
+  this.walletTransaction.transactionDate = new Date();
    this.walletTransaction.transactionAmount = this.amount;
    this.walletTransaction.transactionDetail = "Added Money to wallet by you"
    this.walletTransaction.transactionType = "credit";
    console.log("walletData walletId = "+this.walletId)
    this.dashboardService.enterWalletTransaction(this.walletTransaction,this.walletId).subscribe(data=>{
      console.log(data);
+     this.getWalletTransactions();
+     this.updateWallet();
    });
-   this.dashboardService.updateWallet(this.wallet).subscribe(data=>{
-     console.log(data)
-   })
-   this.getWalletDetails();
+  }
+
+  updateWallet(){
+    this.dashboardService.updateWallet(this.wallet).subscribe(data=>{
+      this.balance = data;
+      console.log("Data: " + this.balance);
+    })
   }
   ngOnInit() {
     this.getWalletDetails();
