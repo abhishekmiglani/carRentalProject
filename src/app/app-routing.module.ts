@@ -10,12 +10,15 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminDeleteCarComponent } from './admin-delete-car/admin-delete-car.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
 import { PaymentGuardGuard } from './payment-guard.guard';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const routes: Routes = [
   {
       path: "admin", component:AdminComponent,
   },
-
+  {
+    path : "admin-login", component: AdminLoginComponent,
+  },
   {
     path: "admin/deletecar", component:AdminDeleteCarComponent
   },
