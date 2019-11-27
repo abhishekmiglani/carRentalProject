@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'app/dashboard.service';
 import { Card } from 'app/bean/Card';
+import { User } from 'app/bean/User';
 declare var $: any;
 
 @Component({
@@ -19,41 +20,43 @@ export class BankDetailsComponent implements OnInit {
   tempValidYear = "XX";
   isCardSaved = true;
   cardLogo = "/assets/masterCardLogo.png"
-  cardDetails:Card[];
+  cardDetails: Card[];
   deleteCardId;
-  editCard:Card;
+  editCard: Card;
   validCvv;
-  validName;
-  
-  constructor(private dashboardService:DashboardService) { }
+  validName = "";
+  userId = 1;
+
+  constructor(private dashboardService: DashboardService) { }
 
   cardController() {
 
   }
 
-  showAddCardModal(){
+  showAddCardModal() {
     $('#addCardModal').modal('show')
   }
 
 
-  showEditModal(item:Card) {
+  showEditModal(item: Card) {
     console.log(item);
     $("#editCardModal").modal('show');
     this.cardNumber = item.cardNum;
     this.tempCardNumber = item.cardNum;
-    this.cardLast4Digits= item.cardNum;
-    this.validMonth  =item.expMonth;
+    this.cardLast4Digits = item.cardNum;
+    this.validMonth = item.expMonth;
     this.validYear = item.expYear;
-    this.tempValidMonth= item.expMonth;
-    this.tempValidYear=item.expYear;
-    this.editCard=item;
+    this.tempValidMonth = item.expMonth;
+    this.tempValidYear = item.expYear;
+    this.editCard = item;
 
   }
 
-  showDeleteModal(item:Card) {
+  showDeleteModal(item: Card) {
     console.log("delete" + item.cardId)
     $("#cardDeleteConfirm").modal('show');
-    this.deleteCardId=item.cardId;
+    this.deleteCardId = item.cardId;
+    console.log(this.deleteCardId)
 
   }
 
@@ -68,30 +71,45 @@ export class BankDetailsComponent implements OnInit {
       document.getElementById('editConfirmButton').removeAttribute('disabled')
   }
 
-  getCardDetails(userId){
-    this.dashboardService.getCards(userId).subscribe(cardData=>{
-      this.cardDetails=cardData;
-    })
-   }
+  enableAddButton() {
+    /*  console.log(value) */
+    /* console.log(document.getElementById('cardNum').value) */
+    if (this.cardNumber.length == 16 && this.validCvv.length==3 && this.validMonth.length==2 && this.validYear.length==2 && this.validName!=""){
+      document.getElementById('addButton').removeAttribute('disabled')
+    }
+    else
+      document.getElementById('addbutton').setAttribute('disabled','true')
+  }
 
-   deleteCard(){
-     console.log(this.deleteCardId)
-    this.dashboardService.deleteCardByCardId(this.deleteCardId).subscribe(data=>{
+  getCardDetails(userId) {
+    this.dashboardService.getCards(userId).subscribe(cardData => {
+      this.cardDetails = cardData;
+    })
+  }
+  addCard(){
+    this.dashboardService.addCard(new Card(this.cardNumber,this.validCvv,this.validMonth,this.validYear,this.validName,new User(this.userId))).subscribe(data=>{
+      alert("Card Has Been Added")
+      this.getCardDetails(this.userId)
+    })
+  }
+
+  deleteCard() {
+    console.log(this.deleteCardId)
+    this.dashboardService.deleteCardByCardId(this.deleteCardId).subscribe(data => {
       console.log(data);
       this.getCardDetails(1);
     });
-   }
-   updateCard(){
-     this.editCard.cardNum = this.cardNumber;
-     this.editCard.expMonth = this.validMonth;
-     this.editCard.expYear = this.validYear;
-     this.dashboardService.updateCard(this.editCard).subscribe(data=>
-      {
-        console.log(data)
-        this.getCardDetails(1);
-      })
-      
-   }
+  }
+  updateCard() {
+    this.editCard.cardNum = this.cardNumber;
+    this.editCard.expMonth = this.validMonth;
+    this.editCard.expYear = this.validYear;
+    this.dashboardService.updateCard(this.editCard).subscribe(data => {
+      console.log(data)
+      this.getCardDetails(1);
+    })
+
+  }
 
 
 
