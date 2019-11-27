@@ -1,3 +1,6 @@
+.container-fluid{
+  max-width: 100%;
+}
 .div-margin{
     font-size: 12px;
   }

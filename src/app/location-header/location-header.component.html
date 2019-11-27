@@ -2,9 +2,6 @@
   class="card container-fluid fixed-top rounded"
   style=" background :whitesmoke ; padding-top: 8px; padding-bottom: 12px"
 >
-
-
-
   <div class="ui-g ui-fluid">
 
     <div class="ui-g-12 ui-sm-3 ui-md-3">
@@ -30,6 +27,7 @@
         </div>
       </div>
     </div>
+
     <div class="ui-g-12 ui-md-3 ui-sm-3">
       <div class="div-margin">Select your pickup date</div>
       <!-- <button class="btn  shadow-none "> -->
@@ -59,33 +57,22 @@
       </div>
       <!-- </button> -->
     </div>
-    <div class="ui-g-12 ui-md-1 ui-sm-1 text-center">
-      <div>
-        <!-- <div><br></div> -->
-        
+    <div class="ui-g-12 ui-md-3 ui-sm-3 text-center">
+      <div class="div-margin" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      <div style="margin-top: 6px" >       
+        <!-- <div class="div-margin" style="margin-bottom: 8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
         <button
           class="btn btn-success form-control"
           (click)="runValidations()"
           (click) = "setLocality()"
           (click) = "getAvailableCars()"
-          style="margin-top:20px;"
+          
         >
           Search
         </button>
       </div>
     </div>
 
-       <div class="ui-g-12 ui-md-1 ui-sm-1 text-center">
-          <div>  
-            <a
-               [routerLink]="['']"
-              class="btn btn-success form-control"
-              style="margin-top:20px; width: 150px; color: white;"
-            >
-              Change City
-          </a>
-          </div>
-        </div>
-
   </div>
 </div>
+

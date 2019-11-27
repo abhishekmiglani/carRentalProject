@@ -99,39 +99,7 @@
             <div class="row">
                 <div style="width: 100%; margin-left: 10px;">
                     <div class="row">
-                        <div class="col-md-9">
-                         <!--   <div style="margin-top: 10px;">
-                                <span class="border rounded" style="padding: 8px; margin-right: 8px;"
-                                    *ngIf="hatchbackFilter">Hatchback<span class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;"
-                                        (click)="hideHatchback()"></span></span>
-                                <span class="border rounded" style="padding: 8px; margin-right: 8px"
-                                    *ngIf="sedanFilter">Sedan<span class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;" (click)="hideSedan()"></span></span>
-                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
-                                    *ngIf="suvFilter">SUV<span class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;" (click)="hideSUV()"></span></span>
-                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
-                                    *ngIf="miniSUVFilter">Mini-SUV<span class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;"
-                                        (click)="hideMiniSUV()"></span></span>
-                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
-                                    *ngIf="manualTransmissionFilter">Manual<span class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;" (click)="hideManual()"></span></span>
-                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
-                                    *ngIf="petrolFilter">Petrol<span class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;" (click)="hidePetrol()"></span></span>
-                            </div>
-                            <br>
-                            <div>
-                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
-                                    *ngIf="autoTransmissionFilter">Automatic<span class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;"
-                                        (click)="hideAutomatic()"></span></span>
-                                <span class="border rounded" style="padding: 8px;margin-right: 8px"
-                                    *ngIf="dieselFilter">Diesel<span class="pointer far fa-window-close"
-                                        style="margin-left: 5px; font-size: 17px;" (click)="hideDiesel()"></span></span>
-                            </div>-->
+                        <div class="col-md-9 ">
                             <br>
                         </div> 
                         <div class="col-md-3 col-sm-3">
@@ -154,10 +122,12 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="card" style="width: 31%; margin-left: 15px; margin-bottom: 15px; margin-top: 10px; box-shadow: none;"
+                    
+                <div class="card" style="width: auto; margin-left: 10px; margin-bottom: 15px; margin-top: 10px; box-shadow: none;"
                     *ngFor="let car of cars">
-                    <img src={{car.imageUrl}} class="card-img-top" alt="...">
+                    <div class="text-center">
+                    <img src={{car.imageUrl}} style="width: 70%;" class="card-img-top" alt="...">
+                    </div>
 
                     <div class="card-body" style="margin-top: -30px; text-align: center;">
                         <hr>
@@ -169,6 +139,7 @@
                         <button class="btn btn-info" (click)="runValidation(car.id)">{{'car-select.b_171'|translate}}</button>
                     </div>
                 </div>
+           
             </div>
         </div>
     </div>
