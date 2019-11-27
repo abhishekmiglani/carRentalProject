@@ -91,8 +91,8 @@ export class PaymentComponent implements OnInit {
       {
         console.log("card has been added into the data base : " + data)
       })
-      // this.isCardDetailsEntered = false;
-      // this.showCard = true;
+      this.isCardDetailsEntered = false;
+      this.showCard = true;
   }
 
   showDeleteModal(item) {
