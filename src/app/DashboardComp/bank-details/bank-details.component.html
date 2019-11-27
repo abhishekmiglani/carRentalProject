@@ -111,7 +111,7 @@
                         <label class="col-md-4 control-label" for="cardDNumber">Number</label>
                         <div class="col-md-6">
                             <input id="cardNum" name="cardNumber" type="text" placeholder="Enter your card Number"
-                                autofocus="" class="form-control" required="" [(ngModel)]="cardNumber" (input)=enableAddButton()>
+                                autofocus="" class="form-control" required="" (input)=enableConfirmButton(cardNumber)>
 
                         </div>
                     </div>
@@ -121,12 +121,12 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="month">Enter expiry</label>
                         <div class="col-md-2">
-                            <input id="addMmonth" name="addmonth" type="text" [(ngModel)]="validMonth" placeholder="MM" class="form-control"
-                                required="" (input)=enableAddButton()>
+                            <input id="addMmonth" name="addmonth" type="text" placeholder="MM" class="form-control"
+                                required="" (input)=enableAddButton(validMonth)>
                         </div>
                         <div class="col-md-2">
-                            <input id="addYear" name="addYear" type="text" placeholder="YY" [(ngModel)]="validYear" class="form-control"
-                                required="" (input)=enableAddButton()>
+                            <input id="addYear" name="addYear" type="text" placeholder="YY" class="form-control"
+                                required="" (input)=enableAddButton(validYear)>
                         </div>
                     </div>
                     <br>
@@ -134,7 +134,7 @@
                     <div class="row">
                         <label class="col-md-4 control-label" for="cvv">Enter cvv</label>
                         <div class="col-md-2">
-                            <input id="addCvv" name="addCvv" type="text" placeholder="cvv" [(ngModel)]="validCvv" class="form-control"
+                            <input id="addCvv" name="addCvv" type="text" placeholder="cvv" class="form-control"
                                 required="" (input)=enableAddButton(validCvv)>
                         </div>
 
@@ -144,7 +144,7 @@
                         <label class="col-md-4 control-label" for="cvv">Enter Card Holder Name</label>
                         <div class="col-md-6">
                             <input id="addName" name="addName" type="text" placeholder="Card Holder Name"
-                                class="form-control" required="" [(ngModel)]="validName" (input) = "enableAddButton()"> 
+                                class="form-control" required="" (input)=enableAddButton(validName)>
                         </div>
 
                     </div>
@@ -152,8 +152,8 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" (click)=enableAddButton()>Cancel</button>
-                    <button type="button" class="btn btn-success" disabled="" id="addButton" (click)=addCard()
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" disabled="" id="addButton" (click)=updateCard()
                         data-dismiss="modal">ADD</button>
                 </div>
             </div>
