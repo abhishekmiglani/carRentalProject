@@ -15,13 +15,14 @@ export class DashboardService {
 
   constructor(private http: HttpClient) {
   }
-  updateUserPassword(newPassword: any) {
-    let url = ""
+  updateUserPassword(newPassword: String) {
+    let userId  = localStorage.getItem("userId");
+    let url = "http://localhost:8099/userservice/users/1/user"
     return this.http.put(url,newPassword);
   }
 
   getWalletDetails(userId): Observable<Wallet> {
-    let url = "http://localhost:8099/walletservice/wallets/1";
+    let url = "http://localhost:8099/walletservice/wallets/"+userId;
     return this.http.get<Wallet>(url);
   }
 
@@ -70,9 +71,16 @@ export class DashboardService {
     return this.http.put(url,card);
   }
   addCard(card:Card):Observable<Card>{
-    let url = "http://localhost:8099/cardservice/users/1/cards";
+    let userId = localStorage.getItem("userId");
+    let url = "http://localhost:8099/cardservice/users/"+userId+"/cards";
     return this.http.post<Card>(url,card);
 
+  }
+
+  updatePassword(newPassword):Observable<any>{
+    let userId = localStorage.getItem("userId");
+    let url = "http://localhost:8099/userservice/users/"+userId+"/user"
+    return this.http.put<any>(url,newPassword)
   }
 
 }

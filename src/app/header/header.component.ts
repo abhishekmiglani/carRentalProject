@@ -380,6 +380,9 @@ export class HeaderComponent implements OnInit {
       this.closeSignupModal();
       this.closeLoginModal();
       this.loginModalMsgToggle();
+      this.userService.getUserId().subscribe(data=>{
+        this.saveInLocal("userId",data);
+      })
     });
   }
   hideSideNavbar() {

@@ -13,7 +13,7 @@ import { Car } from './Car';
 	
 	status;
 		
-	userDetails : User;
+userDetails : User;
 	
     car : Car;
     

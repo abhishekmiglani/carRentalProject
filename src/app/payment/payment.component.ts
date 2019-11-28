@@ -25,8 +25,8 @@ export class PaymentComponent implements OnInit {
   validYear;
   validCvv;
   validName;
-  totalAmount:number=0;
-  packageAmount:number=0;
+  totalAmount: number = 0;
+  packageAmount: number = 0;
   packageDetail;
 
 
@@ -34,14 +34,14 @@ export class PaymentComponent implements OnInit {
   isCardDetailsEntered = true;
   showCard = false;
   isCardSaved = false;
-  cards: Card[]=null;
+  cards: Card[] = null;
   cardLogo = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.wsj.net%2Fim-45496%3Fwidth%3D620%26size%3D1.5&imgrefurl=https%3A%2F%2Fwww.wsj.com%2Farticles%2Fmastercard-drops-its-name-from-logo-11546858800&docid=McEmPa882hxj3M&tbnid=bBpiKDFGI00dOM%3A&vet=10ahUKEwjr68SO4qLlAhUSdCsKHS51DoQQMwhzKAAwAA..i&w=620&h=413&bih=528&biw=1280&q=mastercard%20logo&ved=0ahUKEwjr68SO4qLlAhUSdCsKHS51DoQQMwhzKAAwAA&iact=mrc&uact=8";
 
   wallet: Wallet = new Wallet();
 
   constructor(private dashboardService: DashboardService,
-    private bookingService: BookingService,private route:Router,
-    private getCarService:GetCarsService) { }
+    private bookingService: BookingService, private route: Router,
+    private getCarService: GetCarsService) { }
 
   getWalletDetails() {
     this.dashboardService.getWalletDetails(1).subscribe(walletData => {
@@ -61,13 +61,19 @@ export class PaymentComponent implements OnInit {
   }
 
   walletTransactionHandler(amount) {
-    this.dashboardService.enterWalletTransaction(new WalletTransaction("debit", amount, "Booking"),this.wallet.walletId)
-    this.dashboardService.updateWallet(this.wallet);
-    this.getWalletDetails();
+    this.dashboardService.enterWalletTransaction(new WalletTransaction(new Date(),"debit", amount, "Booking"), this.wallet.walletId).subscribe(data=>{
+      console.log(data);
+      this.dashboardService.updateWallet(this.wallet).subscribe(data=>{
+        this.wallet.balance=data;
+      });
+     this.getWalletDetails();
+    })
+    
   }
 
   paymentAndBookingHandler() {
-    // this.walletTransactionHandler(this.totalAmount);
+    this.walletTransactionHandler(this.totalAmount);
+    // console.log(this.bookingData.car.bookingPrice + "##########" + this.bookingData.car.bookingPrice + "##########" + this.bookingData.car.carName + "##########" + this.bookingData.car.carType + "##########" + this.bookingData.car.city + "##########" + this.bookingData.car.fuelType + "##########" + this.bookingData.car.id + "##########" + this.bookingData.car.imageUrl + "##########" + this.bookingData.car.isBooked + "##########" + this.bookingData.car.location + "##########" + this.bookingData.car.numOfSeats + "##########" + this.bookingData.car.pricePerKm + "##########" + this.bookingData.car.transmissionType + "")
     this.bookingHandler();
     // alert("ThankYou Your Booking Has been Confirmed");
     console.log(this.bookingData)
@@ -95,12 +101,11 @@ export class PaymentComponent implements OnInit {
     // document.getElementById('creditCardExpiryMonth').style.border="1px rgba(211, 211, 211, 0.795) solid";}
   }
   cardHandler() {
-    this.dashboardService.addCard(new Card(this.cardNumber, this.validCvv, this.validMonth, this.validYear, this.validName, new User(1))).subscribe(data=>
-      {
-        console.log("card has been added into the data base : " + data)
-      })
-      this.isCardDetailsEntered = false;
-      this.showCard = true;
+    this.dashboardService.addCard(new Card(this.cardNumber, this.validCvv, this.validMonth, this.validYear, this.validName, new User(1))).subscribe(data => {
+      console.log("card has been added into the data base : " + data)
+    })
+    this.isCardDetailsEntered = false;
+    this.showCard = true;
   }
 
   showDeleteModal(item) {
@@ -121,30 +126,30 @@ export class PaymentComponent implements OnInit {
       this.cards = data;
       console.log("card dAta==================" + this.cards);
 
-      if (this.cards.length>0) {
-        
+      if (this.cards.length > 0) {
+
         this.isCardDetailsEntered = false;
         this.showCard = false;
-        this.isCardSaved=true;
+        this.isCardSaved = true;
       }
     })
     this.packageDetail = this.getCarService.getCarPackage();
     // alert(this.packageDetail);
-    if(this.packageDetail=="No-Fuel")
-      this.packageAmount=0;
-    else if(this.packageDetail=="60 kms")
-      this.packageAmount=400;
-    else if(this.packageDetail=="120kms")
-      this.packageAmount=700;
-    else if(this.packageDetail=180)
-      this.packageAmount=1050;
+    if (this.packageDetail == "No-Fuel")
+      this.packageAmount = 0;
+    else if (this.packageDetail == "60 kms")
+      this.packageAmount = 400;
+    else if (this.packageDetail == "120kms")
+      this.packageAmount = 700;
+    else if (this.packageDetail = 180)
+      this.packageAmount = 1050;
 
     this.bookingData = this.bookingService.getBookingData();
-    this.totalAmount= Number.parseInt(this.bookingData.car.bookingPrice.toString())+ Number.parseInt(this.packageAmount.toString());
-    
+    this.totalAmount = Number.parseInt(this.bookingData.car.bookingPrice.toString()) + Number.parseInt(this.packageAmount.toString());
 
 
-    
+
+
   }
 
 

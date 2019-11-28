@@ -30,8 +30,10 @@ export class ChangePasswordComponent implements OnInit {
     }  
   }
   passwordUpdateHandler(newPassword){
+    $("#successModal").modal('show');
     this.dashboardService.updateUserPassword(newPassword).subscribe(data=>{
       console.log("Password Updated")
+      $("#successModal").modal('show');
     });
   }
 }

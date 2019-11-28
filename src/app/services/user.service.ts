@@ -42,4 +42,13 @@ export class UserService {
 
     return this.http.put<number>(endpoint, backData);
   }
+
+  getUserId():Observable<any>{
+    let mail:string = localStorage.getItem("email");
+    mail=(mail.replace('"','')).trim();
+    mail=(mail.replace('"','')).trim();
+    let url = "http://localhost:8099/userservice/users/"+mail+"/userId";
+    console.log("trxrsr:"+url)
+    return this.http.get<any>(url);
+  }
 }

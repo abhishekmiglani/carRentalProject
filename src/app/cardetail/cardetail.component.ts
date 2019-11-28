@@ -92,7 +92,7 @@ export class CardetailComponent implements OnInit {
     this.bookingData.bookingDate = new Date();
     this.bookingData.car = this.cars;
     this.bookingData.status=true;
-    this.bookingData.userDetails=new User(1);
+    this.bookingData.userDetails=new User(localStorage.getItem("userId"));
     this.sendBookingData(this.bookingData);
   }
 

@@ -45,6 +45,7 @@ import {DatePipe} from '@angular/common';
 
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { UploadComponent } from './dashboardcomp/upload/upload.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -72,6 +73,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminComponent,
     AdminDeleteCarComponent,
     EditCarComponent,
+    UploadComponent,
      ],
   imports: [
     

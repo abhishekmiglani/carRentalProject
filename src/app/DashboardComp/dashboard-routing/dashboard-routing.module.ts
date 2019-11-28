@@ -9,6 +9,8 @@ import { ChangePasswordComponent } from '../change-password/change-password.comp
 import { BankDetailsComponent } from '../bank-details/bank-details.component';
 import { FormsModule } from '@angular/forms';
 import { BookingsComponent } from '../bookings/bookings.component';
+import { UploadComponent } from '../upload/upload.component';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { BookingsComponent } from '../bookings/bookings.component';
     WalletComponent,
     ChangePasswordComponent,
     BankDetailsComponent,
-    BookingsComponent
+    BookingsComponent,
+    UploadComponent
   ],
   imports: [
     CommonModule,

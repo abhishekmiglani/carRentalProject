@@ -1,6 +1,14 @@
 <div class="background">
-  <app-header></app-header>
-  <div class="row" style="margin-top: -480px;">
+  <div class="dashboard-header row bg-info">
+    <div class="col-10 col-md-10 col-sm-10">
+      <h1>DASHBOARD</h1>
+    </div>
+    <div class="col-2 col-md-2 col-sm-2 text-center" style="cursor: pointer;" routerLink="">
+      <h2 class="fas fa-arrow-circle-left"></h2>
+      <h5>Back to Home</h5>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-3 col-sm-3 col-10 card dashboard-menu shadow-sm p-3 mb-5 bg-white rounded">
       <div class="card-header">
         <h3> {{'dashboard.h_6'|translate}} {{userName}} </h3>
@@ -60,7 +68,7 @@
             </button>
           </div>
           <div class="modal-body">
-           {{'dashboard.d_63'|translate}}
+            {{'dashboard.d_63'|translate}}
 
           </div>
           <div class="modal-footer">

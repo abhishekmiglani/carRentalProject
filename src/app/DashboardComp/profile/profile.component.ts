@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from 'app/dashboard.service';
 import { User } from 'app/bean/User';
+import { UploadFileComponent } from 'app/upload-file/upload-file.component';
+import { UploadComponent } from '../upload/upload.component';
 declare var $: any;
 
 @Component({
@@ -9,7 +11,7 @@ declare var $: any;
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+@ViewChild(UploadComponent,{static:false}) upload:UploadComponent;
   fullName = "";
   email = ""
   mobile = ""
@@ -29,7 +31,9 @@ export class ProfileComponent implements OnInit {
     })
 
   }
-
+  uploadLicenese(){
+    this.upload.open();
+  }
   updateUser(btnId,inputId){
     
     if(document.getElementById(btnId).innerHTML=="Edit"){
@@ -63,7 +67,7 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getUser(1);
+    this.getUser(localStorage.getItem("userId"));
   }
 
 }

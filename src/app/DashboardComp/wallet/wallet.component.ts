@@ -13,7 +13,7 @@ export class WalletComponent implements OnInit {
   balance = 0.00;
   amount:number;
   walletTransactions: WalletTransaction[];
-  walletTransaction:WalletTransaction = new WalletTransaction("","","");
+  walletTransaction:WalletTransaction = new WalletTransaction(new Date(),"","","");
   /* walletTransaction = ["credit", "debit","credit","credit","debit","credit"]; */
   walletId:number;
   userId;

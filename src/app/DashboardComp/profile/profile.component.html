@@ -42,9 +42,10 @@
             </div>
         </div>
         <div class="col-md-3 upload-license">
-            <button class="btn btn-success btn-lg" id="licenseBtn" (click)=uploadLicenseHandler()><i id="licenceBtnIcon" class="fa fa-upload" aria-hidden="true"></i>
+            <button class="btn btn-success btn-lg" id="licenseBtn" (click)=uploadLicenseHandler()><i id="licenceBtnIcon" class="fa fa-upload" aria-hidden="true" (click)="uploadLicenese()"></i>
                 Upload License
             </button>
         </div>
         <!-- <app-upload-file></app-upload-file> -->
     </div>
+       <app-upload></app-upload>

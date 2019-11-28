@@ -21,7 +21,7 @@ export class BookingsComponent implements OnInit {
   day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  userId = 1;
+  userId = localStorage.getItem("userId");
 
   getBookingDetailsByUserId(userId) {
     console.log("my date::"+new Date())
@@ -61,7 +61,7 @@ export class BookingsComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.getBookingDetailsByUserId(1);
+    this.getBookingDetailsByUserId(localStorage.getItem("userId"));
   }
 
 }
