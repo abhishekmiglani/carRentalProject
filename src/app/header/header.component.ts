@@ -10,6 +10,7 @@ import {
   EventEmitter,
   Inject
 } from "@angular/core";
+import { MapsAPILoader, MouseEvent } from "@agm/core";
 import { LoginService } from "app/services/login.service";
 import { CitiesModalComponent } from "app/cities-modal/cities-modal.component";
 import { CookieService } from "ngx-cookie-service";
@@ -99,6 +100,7 @@ export class HeaderComponent implements OnInit {
   citiesModal: CitiesModalComponent;
 
   constructor(
+    private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private loginServ: LoginService,
     private cookieservice: CookieService,
@@ -201,7 +203,7 @@ export class HeaderComponent implements OnInit {
   //       }
   //     }
   //   );
-   }
+  }
   selectBangalore() {
     this.city = "Bangalore";
     this.focusBangalore();

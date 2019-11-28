@@ -72,8 +72,3 @@
     font-family: proxima-nova;
     text-rendering: optimizeLegibility;
 }
-
-.container{
-    max-width: 100%;
-    overflow-x:hidden;
-}

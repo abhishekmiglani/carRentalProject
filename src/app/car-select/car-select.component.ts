@@ -32,9 +32,8 @@ export class CarSelectComponent implements OnInit {
   carId: number;
   public package;
   duplicateCarList: any[];
-  showMsg : boolean = false;
-  showCar : boolean = true;
- 
+  showerr : boolean = false;
+
   constructor( private getCarsService: GetCarsService, private router: Router) { 
 
     // translate.addLangs(['en','fr','de','hi','pj'])
@@ -55,14 +54,10 @@ export class CarSelectComponent implements OnInit {
       .subscribe(data => {
         this.cars = data;
         this.duplicateCarList = data;
-
         if(this.cars.length == 0){
-          console.log("inside if method");
-          this.showMsg = true;
-          this.showCar = false;
+            this.showerr = true;
         }
       });
-
 
   }
 

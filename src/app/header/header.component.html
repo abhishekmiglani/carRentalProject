@@ -168,7 +168,7 @@
                 />
               </div>
 
-              <agm-map
+              <!-- <agm-map
                 [latitude]="latitude"
                 [longitude]="longitude"
                 [zoom]="zoom"
@@ -179,7 +179,7 @@
                   [markerDraggable]="true"
                   (dragEnd)="markerDragEnd($event)"
                 ></agm-marker>
-              </agm-map>
+              </agm-map> -->
             </div>
           </div>
         </div>
@@ -220,6 +220,7 @@
                 type="email"
                 class="form-control"
                 id="loginEmail"
+                name="email"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
                 [(ngModel)] = "validMail"

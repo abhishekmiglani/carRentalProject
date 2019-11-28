@@ -15,6 +15,7 @@ export class LoginModalComponent implements OnInit {
     @Inject(LOCAL_STORAGE) private storage: WebStorageService
   ) {}
   openModalDialog() {
+    console.log("Clicked");
     document.getElementById("openModal1").click();
   }
   ngOnInit() {}
@@ -89,7 +90,6 @@ export class LoginModalComponent implements OnInit {
   }
 
   loginResult: Boolean;
-  
   userLogin() {
     let email = (<HTMLInputElement>document.getElementById("loginEmail")).value;
 
@@ -112,9 +112,6 @@ export class LoginModalComponent implements OnInit {
       if (this.loginResult == true) {
         this.saveInLocal("email", email);
         this.saveInLocal("loginStatus", this.loginResult);
-      }
-      else{
-        console.log("service is down")
       }
       this.isLoggedIn();
       this.closeLoginModal();

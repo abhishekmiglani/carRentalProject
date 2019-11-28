@@ -17,7 +17,7 @@ import { GetCarsService } from 'app/services/get-cars.service';
 export class PaymentComponent implements OnInit {
 
   bookingData: Booking;
-  cardNumber;
+  cardNumber = "00";
   tempCardNumber;
   tempValidMonth;
   tempValidYear;
@@ -41,7 +41,7 @@ export class PaymentComponent implements OnInit {
 
   constructor(private dashboardService: DashboardService,
     private bookingService: BookingService, private route: Router,
-    private getCarService: GetCarsService) { }
+    private getCarService: GetCarsService,) { }
 
   getWalletDetails() {
     this.dashboardService.getWalletDetails(1).subscribe(walletData => {
@@ -50,11 +50,21 @@ export class PaymentComponent implements OnInit {
   }
 
   bookingHandler() {
+    this.bookingData = this.bookingService.getBookingData();
+    this.bookingService.addBooking(this.bookingData)
     // console.log("hello" + this.bookingData.fromDate);
-    if (this.wallet.balance >= this.totalAmount)
+    if (this.wallet.balance >= this.bookingData.car.bookingPrice)
       this.bookingService.addBooking(this.bookingData).subscribe(data => {
         console.log(this.bookingData);
         alert("Booking Confirmed")
+        this.getWalletDetails()
+        this.wallet.balance = this.wallet.balance-(this.bookingData.car.bookingPrice+1000);
+        this.dashboardService.enterWalletTransaction(new WalletTransaction(new Date(),"debit",this.totalAmount,"booking")).subscribe(data=>{
+          console.log(data);
+        })
+        this.dashboardService.updateWallet(this.wallet).subscribe(data=>{
+          console.log(data)
+        })
         this.route.navigateByUrl("");
 
       });
@@ -75,8 +85,6 @@ export class PaymentComponent implements OnInit {
     this.walletTransactionHandler(this.totalAmount);
     // console.log(this.bookingData.car.bookingPrice + "##########" + this.bookingData.car.bookingPrice + "##########" + this.bookingData.car.carName + "##########" + this.bookingData.car.carType + "##########" + this.bookingData.car.city + "##########" + this.bookingData.car.fuelType + "##########" + this.bookingData.car.id + "##########" + this.bookingData.car.imageUrl + "##########" + this.bookingData.car.isBooked + "##########" + this.bookingData.car.location + "##########" + this.bookingData.car.numOfSeats + "##########" + this.bookingData.car.pricePerKm + "##########" + this.bookingData.car.transmissionType + "")
     this.bookingHandler();
-    // alert("ThankYou Your Booking Has been Confirmed");
-    console.log(this.bookingData)
 
   }
 
@@ -121,10 +129,10 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
     this.getWalletDetails()
-
     this.dashboardService.getCards(1).subscribe(data => {
       this.cards = data;
       console.log("card dAta==================" + this.cards);
+      if (this.cards != null) {
 
       if (this.cards.length > 0) {
 
@@ -132,7 +140,8 @@ export class PaymentComponent implements OnInit {
         this.showCard = false;
         this.isCardSaved = true;
       }
-    })
+    }
+  })
     this.packageDetail = this.getCarService.getCarPackage();
     // alert(this.packageDetail);
     if (this.packageDetail == "No-Fuel")

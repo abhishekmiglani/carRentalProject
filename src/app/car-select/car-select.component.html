@@ -1,7 +1,5 @@
 <!-- <app-header></app-header> -->
 <!-- <div style="margin-top: -450px;" > </div>  -->
-
-<div class="container">
 <app-location-header (childEvent)="cars=$event"></app-location-header>
 
 <div class="container-fluid" style="margin-top:110px">
@@ -142,12 +140,11 @@
                     </div>
                 </div>
 
-                <div *ngIf ="showMsg">
-                   <h1>Daffa hojo..</h1>
+                <div *ngIf="showerr" style="margin-top: 100px; margin-left: 70px; font-style: italic; color: navy;">
+                    <h3>oops!.. Something went wrong, Please try again later</h3>
                 </div>
            
             </div>
         </div>
     </div>
-</div>
 </div>

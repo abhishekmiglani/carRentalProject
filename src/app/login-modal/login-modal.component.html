@@ -3,7 +3,7 @@
   id="openModal1"
   class="btn btn-primary"
   data-toggle="modal"
-  data-target="#myModal1"
+  data-target="#myModal"
   hidden="true"
 >
   Open modal
@@ -38,12 +38,13 @@
       <form style="width: 90%;margin-left: 5%;">
         <div class="form-group">
           <span id="emailText" style="font-size: 12px;"
-            >Email address{{ isLoginValid }}</span
+            >Email address</span
           >
           <input
             type="email"
             class="form-control"
             id="loginEmail"
+            name = "email"
             aria-describedby="emailHelp"
             placeholder="Enter email"
             [(ngModel)]="validMail"
@@ -52,7 +53,7 @@
           <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 
           <span id="passwordText" style="font-size: 12px;"
-            >Password{{ isLoginPasswordValid }}
+            >Password
           </span>
           <input
             type="password"

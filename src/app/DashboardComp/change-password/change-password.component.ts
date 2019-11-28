@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { GetCarsService } from 'app/services/get-cars.service';
 import { DashboardService } from 'app/dashboard.service';
-import { User } from 'app/bean/User';
 declare var $: any;
 
 @Component({
@@ -16,10 +15,11 @@ export class ChangePasswordComponent implements OnInit {
 
   isOldPasswordCorrect = true;
   currentPassword = "";
+  tempCurrentPassword = ""
   newPassword = "";
 
   passwordResetForm: FormGroup;
-  constructor(private dashboardService : DashboardService) {
+  constructor(private ggetcarService: GetCarsService,private dashboardService:DashboardService) {
 
   }
   validationHandler(){
@@ -27,7 +27,7 @@ export class ChangePasswordComponent implements OnInit {
       document.getElementById('saveBtn').removeAttribute('disabled')
     else{
       document.getElementById('saveBtn').setAttribute('disabled','true')
-    }  
+    }
   }
   passwordUpdateHandler(newPassword){
     $("#successModal").modal('show');
